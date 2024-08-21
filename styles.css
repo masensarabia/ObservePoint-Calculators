@@ -2,13 +2,13 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #f0f0f0;
-    background-color: #1b1b1b; /* Adjusted lighter grey background */
+    background-color: #1a1a1a;
     margin: 0;
     padding: 0;
-    background-image: url('home-vector-slider.png');
-    background-position: bottom right; /* Positioning the image in the bottom right */
-    background-size: 25%; /* Reduced size to match the ObservePoint website */
+    background-image: linear-gradient(to right, transparent 80%, #1a1a1a 20%), url('home-vector-slider.png');
+    background-size: contain;
     background-repeat: no-repeat;
+    background-position: bottom right;
 }
 
 .header-inner {
@@ -17,7 +17,7 @@ body {
     align-items: center;
     padding: 1rem 2rem;
     background-color: rgba(0, 0, 0, 0.8);
-    border-bottom: 2px solid #F0CE12; /* Matching yellow color */
+    border-bottom: 2px solid #F0CE12;
 }
 
 .logo img {
@@ -46,7 +46,7 @@ body {
 }
 
 h1, h2 {
-    color: #F0CE12; /* Matching yellow color */
+    color: #F0CE12;
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 1rem;
@@ -72,7 +72,7 @@ h1 {
 }
 
 .calculator-card {
-    background-color: #1a1a1a;
+    background-color: #333;
     padding: 1.5rem;
     border-radius: 8px;
     width: 48%;
@@ -91,19 +91,19 @@ input[type="number"] {
     margin-bottom: 1rem;
     border-radius: 5px;
     border: 1px solid #666;
-    background-color: #333;
+    background-color: #444;
     color: #f0f0f0;
 }
 
 input[type="number"]:focus {
     outline: none;
-    border-color: #F0CE12; /* Matching yellow color */
+    border-color: #F0CE12;
 }
 
 button.calculate-btn {
     width: 100%;
     padding: 1rem;
-    background-color: #F0CE12; /* Matching yellow color */
+    background-color: #F0CE12;
     border: none;
     color: #0c0c0c;
     font-size: 1.2rem;
@@ -114,7 +114,7 @@ button.calculate-btn {
 }
 
 button.calculate-btn:hover {
-    background-color: #e0ba10; /* Slightly darker yellow for hover */
+    background-color: #FFC400;
 }
 
 .results-summary {
@@ -123,7 +123,7 @@ button.calculate-btn:hover {
 
 .results-summary h2 {
     font-size: 1.5rem;
-    color: #F0CE12; /* Matching yellow color */
+    color: #F0CE12;
 }
 
 .results-summary p {

@@ -3,118 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ObservePoint - Audits Time & Cost Savings Calculator</title>
+    <title>Audits - Time & Cost Savings Calculator</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
-    <header>
-        <div class="header-inner">
-            <div class="logo">
-                <img src="observepoint-logo.png" alt="ObservePoint Logo">
-            </div>
-            <nav class="site-navigation">
-                <ul>
-                    <li><a href="#">Audits - Time & Cost Savings Calculator</a></li>
-                    <li><a href="#">Journey Downtime Savings Calculator</a></li>
-                    <li><a href="#">Journeys - Time & Cost Savings Calculator</a></li>
-                    <li><a href="#">Operational & Compliance Savings Calculator</a></li>
-                </ul>
-            </nav>
+    <header class="header-inner">
+        <div class="logo">
+            <img src="OP_Logo.png" alt="ObservePoint Logo">
         </div>
+        <nav class="site-navigation">
+            <ul>
+                <li><a href="#">Audits - Time & Cost Savings Calculator</a></li>
+                <li><a href="#">Journey Downtime Savings Calculator</a></li>
+                <li><a href="#">Journeys - Time & Cost Savings Calculator</a></li>
+                <li><a href="#">Operational & Compliance Savings Calculator</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main>
-        <div class="calculator-container">
-            <h1>Audits - Time & Cost Savings Calculator</h1>
+    <div class="calculator-container">
+        <h1>AUDITS - TIME & COST SAVINGS CALCULATOR</h1>
+        <div class="calculator-grid">
+            <!-- Manual Employee Testing Section -->
+            <div class="calculator-card">
+                <h2>Manual Employee Testing</h2>
+                <label for="manualTime">Employee's Time to Manually Test One Page (minutes):</label>
+                <input type="number" id="manualTime" placeholder="Enter minutes here">
 
-            <div class="calculator-grid">
-                <div class="calculator-card">
-                    <h2>Manual Employee Testing</h2>
-                    <label for="manual-time">Employee's Time to Manually Test One Page (minutes):</label>
-                    <input type="number" id="manual-time" placeholder="Enter minutes here">
+                <label for="pagesToTest">Total Number of Pages to Test:</label>
+                <input type="number" id="pagesToTest" placeholder="Enter number of pages here">
 
-                    <label for="manual-pages">Total Number of Pages to Test:</label>
-                    <input type="number" id="manual-pages" placeholder="Enter number of pages here">
+                <label for="hourlyRate">Employee's Hourly Rate for Manual Testing:</label>
+                <input type="number" id="hourlyRate" placeholder="Enter hourly rate in dollars here">
 
-                    <label for="manual-rate">Employee's Hourly Rate for Manual Testing:</label>
-                    <input type="number" id="manual-rate" placeholder="Enter hourly rate in dollars here">
-
-                    <p>Total Manual Testing Time:</p>
-                    <p id="manual-time-total"></p>
-
-                    <p>Total Cost for Employee Manual Testing:</p>
-                    <p id="manual-cost-total"></p>
-                </div>
-
-                <div class="calculator-card">
-                    <h2>ObservePoint Scanning</h2>
-                    <label for="op-rate">ObservePoint Scanning Rate (pages per minute):</label>
-                    <input type="number" id="op-rate" placeholder="Enter pages per minute here">
-
-                    <label for="op-pages">Total Number of Pages to Scan:</label>
-                    <input type="number" id="op-pages" placeholder="Enter number of pages here">
-
-                    <label for="op-cost">ObservePoint Cost per Page:</label>
-                    <input type="number" id="op-cost" placeholder="Enter cost per page here">
-
-                    <p>Total ObservePoint Scanning Time:</p>
-                    <p id="op-time-total"></p>
-
-                    <p>Total Cost for ObservePoint Scanning:</p>
-                    <p id="op-cost-total"></p>
-                </div>
+                <p>Total Manual Testing Time: <span id="manualTestingTime"></span></p>
+                <p>Total Cost for Employee Manual Testing: <span id="manualTestingCost"></span></p>
             </div>
 
-            <div class="results-summary">
-                <h2>Time & Cost Saved</h2>
-                <p>Total Hours Saved:</p>
-                <p id="time-saved"></p>
+            <!-- ObservePoint Scanning Section -->
+            <div class="calculator-card">
+                <h2>ObservePoint Scanning</h2>
+                <label for="scanRate">ObservePoint Scanning Rate (pages per minute):</label>
+                <input type="number" id="scanRate" placeholder="Enter pages per minute here">
 
-                <p>Total Cost Saved:</p>
-                <p id="cost-saved"></p>
+                <label for="pagesToScan">Total Number of Pages to Scan:</label>
+                <input type="number" id="pagesToScan" placeholder="Enter number of pages here">
+
+                <label for="costPerPage">ObservePoint Cost per Page:</label>
+                <input type="number" id="costPerPage" placeholder="Enter cost per page here">
+
+                <p>Total ObservePoint Scanning Time: <span id="observePointTime"></span></p>
+                <p>Total Cost for ObservePoint Scanning: <span id="observePointCost"></span></p>
             </div>
-
-            <div class="calculator-grid">
-                <div class="calculator-card">
-                    <h2>Actual Manual Employee Testing</h2>
-                    <label for="actual-manual-hours">Time Spent Each Year Manually Testing Pages (hours):</label>
-                    <input type="number" id="actual-manual-hours" placeholder="Enter hours here">
-
-                    <label for="actual-manual-pages">Total Number of Pages Tested Within That Time:</label>
-                    <input type="number" id="actual-manual-pages" placeholder="Enter number of pages here">
-
-                    <p>Total Actual Cost Per Year for Manual Testing:</p>
-                    <p id="actual-manual-cost-total"></p>
-                </div>
-
-                <div class="calculator-card">
-                    <h2>Actual ObservePoint Testing</h2>
-                    <label for="actual-op-rate">Actual ObservePoint Scanning Rate (pages per minute):</label>
-                    <input type="number" id="actual-op-rate" placeholder="Enter pages per minute here">
-
-                    <label for="actual-op-cost">Total Cost per Page:</label>
-                    <input type="number" id="actual-op-cost" placeholder="Enter cost per page here">
-
-                    <p>Total ObservePoint Scanning Time:</p>
-                    <p id="actual-op-time-total"></p>
-
-                    <p>Total Cost for ObservePoint Scanning:</p>
-                    <p id="actual-op-cost-total"></p>
-                </div>
-            </div>
-
-            <div class="results-summary">
-                <h2>Actual Time & Cost Saved</h2>
-                <p>Total Hours Saved:</p>
-                <p id="actual-time-saved"></p>
-
-                <p>Total Cost Saved:</p>
-                <p id="actual-cost-saved"></p>
-            </div>
-
-            <button class="calculate-btn" onclick="calculateSavings()">Calculate</button>
         </div>
-    </main>
+
+        <!-- Time & Cost Saved Section -->
+        <div class="results-summary">
+            <h2>Time & Cost Saved</h2>
+            <p>Total Hours Saved: <span id="hoursSaved"></span></p>
+            <p>Total Cost Saved: <span id="costSaved"></span></p>
+        </div>
+
+        <!-- Actual Manual Employee Testing Section -->
+        <div class="calculator-grid">
+            <div class="calculator-card">
+                <h2>Actual Manual Employee Testing</h2>
+                <label for="actualHoursSpent">Time Spent Each Year Manually Testing Pages (hours):</label>
+                <input type="number" id="actualHoursSpent" placeholder="Enter hours here">
+
+                <label for="actualPagesTested">Total Number of Pages Tested Within That Time:</label>
+                <input type="number" id="actualPagesTested" placeholder="Enter number of pages here">
+
+                <p>Total Actual Cost Per Year for Manual Testing: <span id="actualManualTestingCost"></span></p>
+            </div>
+
+            <!-- Actual ObservePoint Testing Section -->
+            <div class="calculator-card">
+                <h2>Actual ObservePoint Testing</h2>
+                <label for="actualScanRate">Actual ObservePoint Scanning Rate (pages per minute):</label>
+                <input type="number" id="actualScanRate" placeholder="Enter pages per minute here">
+
+                <label for="actualCostPerPage">Actual Cost per Page:</label>
+                <input type="number" id="actualCostPerPage" placeholder="Enter cost per page here">
+
+                <p>Total ObservePoint Scanning Time: <span id="actualObservePointTime"></span></p>
+                <p>Total Cost for ObservePoint Scanning: <span id="actualObservePointCost"></span></p>
+            </div>
+        </div>
+
+        <!-- Actual Time & Cost Saved Section -->
+        <div class="results-summary">
+            <h2>Actual Time & Cost Saved</h2>
+            <p>Total Hours Saved: <span id="actualHoursSaved"></span></p>
+            <p>Total Cost Saved: <span id="actualCostSaved"></span></p>
+        </div>
+
+        <button class="calculate-btn" onclick="calculate()">Calculate</button>
+    </div>
 
     <script src="script.js"></script>
 </body>

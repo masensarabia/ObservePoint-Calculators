@@ -1,65 +1,54 @@
-function calculateScanningTimes() {
-    // Get input values for manual employee testing
-    const manualTestTime = parseFloat(document.getElementById('manualTestTime').value) || 0;
-    const numPagesTest = parseInt(document.getElementById('numPagesTest').value) || 0;
-    const hourlyRate = parseFloat(document.getElementById('hourlyRate').value) || 0;
+function calculateSavings() {
+    // Hypothetical Manual Employee Testing
+    let manualTime = parseFloat(document.getElementById('manualTime').value);
+    let pagesToTest = parseFloat(document.getElementById('pagesToTest').value);
+    let manualRate = parseFloat(document.getElementById('manualRate').value);
+    
+    let totalManualTestingTime = (manualTime * pagesToTest) / 60;
+    let totalManualCost = totalManualTestingTime * manualRate;
+    
+    document.getElementById('totalManualTime').textContent = totalManualTestingTime.toFixed(2) + " hours";
+    document.getElementById('totalManualCost').textContent = "$" + totalManualCost.toFixed(2);
 
-    // Get input values for ObservePoint scanning
-    const pagesPerMinute = parseFloat(document.getElementById('pagesPerMinute').value) || 0;
-    const costPerPage = parseFloat(document.getElementById('costPerPage').value) || 0;
+    // Hypothetical ObservePoint Scanning
+    let opRate = parseFloat(document.getElementById('opRate').value);
+    let opPages = parseFloat(document.getElementById('opPages').value);
+    let opCost = parseFloat(document.getElementById('opCost').value);
+    
+    let totalOPTestingTime = opPages / opRate / 60;
+    let totalOPCost = opPages * opCost;
+    
+    document.getElementById('totalOPTime').textContent = totalOPTestingTime.toFixed(2) + " hours";
+    document.getElementById('totalOPCost').textContent = "$" + totalOPCost.toFixed(2);
+    
+    // Time and Money Saved (Hypothetical)
+    let timeSaved = totalManualTestingTime - totalOPTestingTime;
+    let moneySaved = totalManualCost - totalOPCost;
+    
+    document.getElementById('totalHoursSaved').textContent = timeSaved.toFixed(2) + " hours";
+    document.getElementById('totalMoneySaved').textContent = "$" + moneySaved.toFixed(2);
 
-    // Calculate manual testing time and cost
-    const totalManualTestingTimeMinutes = manualTestTime * numPagesTest;
-    const totalManualTestingTimeHours = totalManualTestingTimeMinutes / 60;
-    const manualDays = Math.floor(totalManualTestingTimeHours / 24);
-    const manualHours = Math.floor(totalManualTestingTimeHours % 24);
-    const manualMinutes = totalManualTestingTimeMinutes % 60;
-    const manualTimeOutput = `${manualDays} days ${manualHours} hrs ${manualMinutes.toFixed(0)} mins`;
+    // Actual Manual Employee Testing
+    let actualManualTime = parseFloat(document.getElementById('actualManualTime').value);
+    let actualPagesTested = parseFloat(document.getElementById('actualPagesTested').value);
+    let actualManualCost = actualManualTime * manualRate;
+    
+    document.getElementById('actualManualCost').textContent = "$" + actualManualCost.toFixed(2);
+    
+    // Actual ObservePoint Testing
+    let actualOPRate = parseFloat(document.getElementById('actualOPRate').value);
+    let actualOPCostPerPage = parseFloat(document.getElementById('actualOPCost').value);
+    
+    let actualOPTestingTime = actualPagesTested / actualOPRate / 60;
+    let actualTotalOPCost = actualPagesTested * actualOPCostPerPage;
+    
+    let actualTimeSaved = actualManualTime - actualOPTestingTime;
+    let actualCostSaved = actualManualCost - actualTotalOPCost;
+    
+    document.getElementById('actualTimeSaved').textContent = actualTimeSaved.toFixed(2) + " hours";
+    document.getElementById('actualCostSaved').textContent = "$" + actualCostSaved.toFixed(2);
 
-    const totalCostManualTesting = totalManualTestingTimeHours * hourlyRate;
-
-    // Calculate ObservePoint scanning time and cost
-    const totalObservePointScanningTimeMinutes = numPagesTest / pagesPerMinute;
-    const totalObservePointScanningTimeHours = totalObservePointScanningTimeMinutes / 60;
-    const observePointDays = Math.floor(totalObservePointScanningTimeHours / 24);
-    const observePointHours = Math.floor(totalObservePointScanningTimeHours % 24);
-    const observePointMinutes = totalObservePointScanningTimeMinutes % 60;
-    const observePointTimeOutput = `${observePointDays} days ${observePointHours} hrs ${observePointMinutes.toFixed(0)} mins`;
-
-    const totalCostObservePoint = numPagesTest * costPerPage;
-
-    // Calculate ROI metrics
-    const hoursSaved = totalManualTestingTimeHours - totalObservePointScanningTimeHours;
-    const moneySaved = totalCostManualTesting - totalCostObservePoint;
-
-    // Get input values for actual manual employee testing
-    const actualHoursSpent = parseFloat(document.getElementById('actualHoursSpent').value) || 0;
-    const actualPagesTested = parseInt(document.getElementById('actualPagesTested').value) || 0;
-    const actualCostPerYearManualTesting = actualHoursSpent * hourlyRate;
-
-    // Calculate additional ROI metrics
-    const totalTimeSavedPerYear = actualHoursSpent - totalObservePointScanningTimeHours;
-    const totalCostSavedPerYear = actualCostPerYearManualTesting - totalCostObservePoint;
-
-    // Format dollar amounts
-    const formattedTotalCostObservePoint = `$${totalCostObservePoint.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
-    const formattedTotalCostManualTesting = `$${totalCostManualTesting.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
-    const formattedMoneySaved = `$${moneySaved.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
-    const formattedActualCostPerYearManualTesting = `$${actualCostPerYearManualTesting.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
-    const formattedTotalCostSavedPerYear = `$${totalCostSavedPerYear.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
-
-    // Set output values
-    document.getElementById('manualTimeOutput').innerText = manualTimeOutput;
-    document.getElementById('manualCostOutput').innerText = formattedTotalCostManualTesting;
-    document.getElementById('observePointTimeOutput').innerText = observePointTimeOutput;
-    document.getElementById('observePointCostOutput').innerText = formattedTotalCostObservePoint;
-    document.getElementById('hoursSavedOutput').innerText = `${hoursSaved.toFixed(2)} hrs`;
-    document.getElementById('moneySavedOutput').innerText = formattedMoneySaved;
-
-    // Set values for actual manual employee testing
-    document.getElementById('actualManualCostOutput').innerText = formattedActualCostPerYearManualTesting;
-
-    // Set additional ROI values
-    document.getElementById('totalTimeSavedPerYearOutput').innerText = `${totalTimeSavedPerYear.toFixed(2)} hrs`;
-    document.getElementById('totalCostSavedPerYearOutput').innerText = formattedTotalCostSavedPerYear;
+    // Actual Time and Money Saved (Summary)
+    document.getElementById('actualTotalHoursSaved').textContent = actualTimeSaved.toFixed(2) + " hours";
+    document.getElementById('actualTotalMoneySaved').textContent = "$" + actualCostSaved.toFixed(2);
 }

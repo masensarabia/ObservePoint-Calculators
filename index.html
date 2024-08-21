@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audits - Time & Cost Savings Calculator</title>
-    <link rel="icon" href="favicon.png" type="image/png">
+    <title>ObservePoint Calculators</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="site-header">
+    <header>
         <div class="header-inner">
-            <a href="#" class="logo">
+            <div class="logo">
                 <img src="OP_Logo.png" alt="ObservePoint Logo">
-            </a>
+            </div>
             <nav class="site-navigation">
-                <ul class="menu">
+                <ul>
                     <li><a href="#">Audits - Time & Cost Savings Calculator</a></li>
                     <li><a href="#">Journey Downtime Savings Calculator</a></li>
                     <li><a href="#">Journeys - Time & Cost Savings Calculator</a></li>
@@ -25,42 +24,48 @@
     </header>
 
     <main>
-        <section class="calculator-container">
+        <div class="calculator-container">
             <h1>Audits - Time & Cost Savings Calculator</h1>
             <div class="calculator-grid">
                 <div class="calculator-card">
                     <h2>Manual Employee Testing</h2>
-                    <label for="employeeTime">Employee's Time to Manually Test One Page (minutes):</label>
-                    <input type="number" id="employeeTime">
-                    <label for="pagesToTest">Total Number of Pages to Test:</label>
-                    <input type="number" id="pagesToTest">
+                    <label for="manualTestTime">Employee's Time to Manually Test One Page (minutes):</label>
+                    <input type="number" id="manualTestTime" step="0.1">
+
+                    <label for="numPagesTest">Total Number of Pages to Test:</label>
+                    <input type="number" id="numPagesTest" step="1">
+
                     <label for="hourlyRate">Employee's Hourly Rate for Manual Testing:</label>
-                    <input type="number" id="hourlyRate">
-                    <div class="results">
-                        <p>Total Manual Testing Time: <span id="manualTime"></span></p>
-                        <p>Total Cost for Employee Manual Testing: <span id="manualCost"></span></p>
-                    </div>
+                    <input type="number" id="hourlyRate" step="0.01">
+
+                    <p>Total Manual Testing Time: <span id="manualTimeOutput"></span></p>
+                    <p>Total Cost for Employee Manual Testing: <span id="manualCostOutput"></span></p>
                 </div>
+
                 <div class="calculator-card">
                     <h2>ObservePoint Scanning</h2>
-                    <label for="scanRate">ObservePoint Scanning Rate (pages per minute):</label>
-                    <input type="number" id="scanRate">
-                    <label for="pagesToScan">Total Number of Pages to Scan:</label>
-                    <input type="number" id="pagesToScan">
-                    <div class="results">
-                        <p>Total ObservePoint Scanning Time: <span id="scanTime"></span></p>
-                        <p>ObservePoint Cost per Page: <span id="opCost"></span></p>
-                        <p>Total Cost for ObservePoint Scanning: <span id="totalOpCost"></span></p>
-                    </div>
+                    <label for="pagesPerMinute">ObservePoint Scanning Rate (pages per minute):</label>
+                    <input type="number" id="pagesPerMinute" step="0.1">
+
+                    <label for="numPagesScan">Total Number of Pages to Scan:</label>
+                    <input type="number" id="numPagesScan" step="1">
+
+                    <label for="costPerPage">ObservePoint Cost per Page:</label>
+                    <input type="number" id="costPerPage" step="0.01">
+
+                    <p>Total ObservePoint Scanning Time: <span id="observePointTimeOutput"></span></p>
+                    <p>Total Cost for ObservePoint Scanning: <span id="observePointCostOutput"></span></p>
                 </div>
             </div>
-            <button class="calculate-btn" onclick="calculate()">Calculate</button>
+
+            <button class="calculate-btn" onclick="calculateScanningTimes()">Calculate</button>
+
             <div class="results-summary">
                 <h2>Time and Money Saved</h2>
-                <p>Total Hours Saved: <span id="hoursSaved"></span></p>
-                <p>Total Money Saved: <span id="moneySaved"></span></p>
+                <p>Total Hours Saved: <span id="hoursSavedOutput"></span></p>
+                <p>Total Money Saved: <span id="moneySavedOutput"></span></p>
             </div>
-        </section>
+        </div>
     </main>
 
     <script src="script.js"></script>

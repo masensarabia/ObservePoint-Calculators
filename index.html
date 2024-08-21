@@ -1,68 +1,156 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audits - Time & Cost Savings Calculator</title>
-    <link rel="icon" href="favicon.png" type="image/png">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header class="site-header">
-        <div class="header-inner">
-            <a href="#" class="logo">
-                <img src="OP_Logo.png" alt="ObservePoint Logo">
-            </a>
-            <nav class="site-navigation">
-                <ul class="menu">
-                    <li><a href="#">Audits - Time & Cost Savings Calculator</a></li>
-                    <li><a href="#">Journey Downtime Savings Calculator</a></li>
-                    <li><a href="#">Journeys - Time & Cost Savings Calculator</a></li>
-                    <li><a href="#">Operational & Compliance Savings Calculator</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f0f0f0;
+    background-color: #0c0c0c;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to right, transparent 50%, rgba(0, 0, 0, 0.9) 50%), url('home-vector-slider.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 
-    <main>
-        <section class="calculator-container">
-            <h1>Audits - Time & Cost Savings Calculator</h1>
-            <div class="calculator-grid">
-                <div class="calculator-card">
-                    <h2>Manual Employee Testing</h2>
-                    <label for="employeeTime">Employee's Time to Manually Test One Page (minutes):</label>
-                    <input type="number" id="employeeTime">
-                    <label for="pagesToTest">Total Number of Pages to Test:</label>
-                    <input type="number" id="pagesToTest">
-                    <label for="hourlyRate">Employee's Hourly Rate for Manual Testing:</label>
-                    <input type="number" id="hourlyRate">
-                    <div class="results">
-                        <p>Total Manual Testing Time: <span id="manualTime"></span></p>
-                        <p>Total Cost for Employee Manual Testing: <span id="manualCost"></span></p>
-                    </div>
-                </div>
-                <div class="calculator-card">
-                    <h2>ObservePoint Scanning</h2>
-                    <label for="scanRate">ObservePoint Scanning Rate (pages per minute):</label>
-                    <input type="number" id="scanRate">
-                    <label for="pagesToScan">Total Number of Pages to Scan:</label>
-                    <input type="number" id="pagesToScan">
-                    <div class="results">
-                        <p>Total ObservePoint Scanning Time: <span id="scanTime"></span></p>
-                        <p>ObservePoint Cost per Page: <span id="opCost"></span></p>
-                        <p>Total Cost for ObservePoint Scanning: <span id="totalOpCost"></span></p>
-                    </div>
-                </div>
-            </div>
-            <button class="calculate-btn" onclick="calculate()">Calculate</button>
-            <div class="results-summary">
-                <h2>Time and Money Saved</h2>
-                <p>Total Hours Saved: <span id="hoursSaved"></span></p>
-                <p>Total Money Saved: <span id="moneySaved"></span></p>
-            </div>
-        </section>
-    </main>
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-bottom: 2px solid #FFC400; /* Updated yellow color */
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+.logo img {
+    height: 50px;
+}
+
+.site-navigation ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.site-navigation ul li {
+    margin-left: 20px;
+}
+
+.site-navigation ul li a {
+    color: #FFFFFF; /* White color for header links */
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.site-navigation ul li a:hover {
+    text-decoration: underline;
+}
+
+h1, h2 {
+    color: #FFC400; /* Updated yellow color */
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.calculator-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+}
+
+.calculator-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.calculator-card {
+    background-color: #1a1a1a;
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 48%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: 1px solid #666;
+    background-color: #333;
+    color: #f0f0f0;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #FFC400; /* Updated yellow color */
+}
+
+button.calculate-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: #FFC400; /* Updated yellow color */
+    border: none;
+    color: #0c0c0c;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    font-weight: 700;
+}
+
+button.calculate-btn:hover {
+    background-color: #FFB300; /* Slightly darker yellow for hover */
+}
+
+.results-summary {
+    margin-top: 2rem;
+}
+
+.results-summary h2 {
+    font-size: 1.5rem;
+    color: #FFC400; /* Updated yellow color */
+}
+
+.results-summary p {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .calculator-grid {
+        flex-direction: column;
+    }
+
+    .calculator-card {
+        width: 100%;
+    }
+
+    .header-inner {
+        flex-direction: column;
+    }
+
+    .site-navigation ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .site-navigation ul li {
+        margin: 10px 0;
+    }
+}

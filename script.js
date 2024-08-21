@@ -52,3 +52,4 @@ function calculateSavings() {
     document.getElementById('actualTotalHoursSaved').textContent = actualTimeSaved.toFixed(2) + " hours";
     document.getElementById('actualTotalMoneySaved').textContent = "$" + actualCostSaved.toFixed(2);
 }
+ 

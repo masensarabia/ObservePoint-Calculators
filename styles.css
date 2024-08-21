@@ -48,6 +48,12 @@ body {
     text-decoration: underline;
 }
 
+/* Highlight the active navigation link */
+.active-link a {
+    color: #F1CD14;
+    text-decoration: underline;
+}
+
 h1, h2 {
     color: #F1CD14;
     text-transform: uppercase;

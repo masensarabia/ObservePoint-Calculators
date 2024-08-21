@@ -15,7 +15,7 @@ function calculateSavings() {
     let opPages = parseFloat(document.getElementById('opPages').value);
     let opCost = parseFloat(document.getElementById('opCost').value);
     
-    let totalOPTestingTime = opPages / opRate / 60;
+    let totalOPTestingTime = opPages / opRate; // Corrected: Removed the second division by 60
     let totalOPCost = opPages * opCost;
     
     document.getElementById('totalOPTime').textContent = formatNumber(totalOPTestingTime) + " hours";
@@ -39,7 +39,7 @@ function calculateSavings() {
     let actualOPRate = parseFloat(document.getElementById('actualOPRate').value);
     let actualOPCostPerPage = parseFloat(document.getElementById('actualOPCost').value);
     
-    let actualOPTestingTime = actualPagesTested / actualOPRate / 60;
+    let actualOPTestingTime = actualPagesTested / actualOPRate; // Corrected: Removed the second division by 60
     let actualTotalOPCost = actualPagesTested * actualOPCostPerPage;
     
     let actualTimeSaved = actualManualTime - actualOPTestingTime;

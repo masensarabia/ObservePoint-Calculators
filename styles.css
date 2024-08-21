@@ -17,7 +17,7 @@ body {
     align-items: center;
     padding: 1rem 2rem;
     background-color: rgba(0, 0, 0, 0.8);
-    border-bottom: 2px solid #F0CE12; /* Updated yellow color */
+    border-bottom: 2px solid #F1CD14; /* Correct yellow color */
 }
 
 .logo img {
@@ -46,7 +46,7 @@ body {
 }
 
 h1, h2 {
-    color: #F0CE12; /* Updated yellow color */
+    color: #F1CD14; /* Correct yellow color */
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 1rem;
@@ -97,13 +97,13 @@ input[type="number"] {
 
 input[type="number"]:focus {
     outline: none;
-    border-color: #F0CE12; /* Updated yellow color */
+    border-color: #F1CD14; /* Correct yellow color */
 }
 
 button.calculate-btn {
     width: 100%;
     padding: 1rem;
-    background-color: #F0CE12; /* Updated yellow color */
+    background-color: #F1CD14; /* Correct yellow color */
     border: none;
     color: #0c0c0c;
     font-size: 1.2rem;
@@ -123,7 +123,7 @@ button.calculate-btn:hover {
 
 .results-summary h2 {
     font-size: 1.5rem;
-    color: #F0CE12; /* Updated yellow color */
+    color: #F1CD14; /* Correct yellow color */
 }
 
 .results-summary p {

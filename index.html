@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>ObservePoint ROI Calculator</h1>
+        <div class="calculator">
+            <label for="numPageScans">Number of Page Scans:</label>
+            <input type="number" id="numPageScans">
+
+            <label for="avgCostPerError">Average Cost per Error:</label>
+            <input type="number" id="avgCostPerError">
+
+            <label for="errorDetectionRate">Error Detection Rate:</label>
+            <input type="number" id="errorDetectionRate">
+
+            <label for="timeSavedPerPage">Time Saved per Page (minutes):</label>
+            <input type="number" id="timeSavedPerPage">
+
+            <label for="hourlyRate">Hourly Rate:</label>
+            <input type="number" id="hourlyRate">
+
+            <label for="subscriptionCost">Subscription Cost:</label>
+            <input type="number" id="subscriptionCost">
+
+            <button onclick="calculateROI()">Calculate ROI</button>
+
+            <h2>Results:</h2>
+            <p>Total Errors Detected: <span id="totalErrorsDetected"></span></p>
+            <p>Cost Savings from Error Detection: <span id="costSavingsFromErrorDetection"></span></p>
+            <p>Time Saved (Minutes): <span id="timeSavedMinutes"></span></p>
+            <p>Time Saved (Hours): <span id="timeSavedHours"></span></p>
+            <p>Cost Savings from Time Efficiency: <span id="costSavingsFromTimeEfficiency"></span></p>
+            <p>Total Savings: <span id="totalSavings"></span></p>
+            <p>Net Savings: <span id="netSavings"></span></p>
+            <p>ROI Percentage: <span id="roiPercentage"></span></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -2,13 +2,13 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #f0f0f0;
-    background-color: #0c0c0c;
+    background-color: #1b1b1b; /* Adjusted lighter grey background */
     margin: 0;
     padding: 0;
-    background-image: linear-gradient(to right, #0c0c0c 50%, transparent 50%), url('home-vector-slider.png');
-    background-size: cover;
+    background-image: url('home-vector-slider.png');
+    background-position: bottom right; /* Positioning the image in the bottom right */
+    background-size: 25%; /* Reduced size to match the ObservePoint website */
     background-repeat: no-repeat;
-    background-attachment: fixed;
 }
 
 .header-inner {
@@ -17,7 +17,7 @@ body {
     align-items: center;
     padding: 1rem 2rem;
     background-color: rgba(0, 0, 0, 0.8);
-    border-bottom: 2px solid #F0CE12; /* Updated yellow color */
+    border-bottom: 2px solid #F0CE12; /* Matching yellow color */
 }
 
 .logo img {
@@ -46,7 +46,7 @@ body {
 }
 
 h1, h2 {
-    color: #F0CE12; /* Updated yellow color */
+    color: #F0CE12; /* Matching yellow color */
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 1rem;
@@ -97,13 +97,13 @@ input[type="number"] {
 
 input[type="number"]:focus {
     outline: none;
-    border-color: #F0CE12; /* Updated yellow color */
+    border-color: #F0CE12; /* Matching yellow color */
 }
 
 button.calculate-btn {
     width: 100%;
     padding: 1rem;
-    background-color: #F0CE12; /* Updated yellow color */
+    background-color: #F0CE12; /* Matching yellow color */
     border: none;
     color: #0c0c0c;
     font-size: 1.2rem;
@@ -114,7 +114,7 @@ button.calculate-btn {
 }
 
 button.calculate-btn:hover {
-    background-color: #E0B500; /* Slightly darker yellow for hover */
+    background-color: #e0ba10; /* Slightly darker yellow for hover */
 }
 
 .results-summary {
@@ -123,7 +123,7 @@ button.calculate-btn:hover {
 
 .results-summary h2 {
     font-size: 1.5rem;
-    color: #F0CE12; /* Updated yellow color */
+    color: #F0CE12; /* Matching yellow color */
 }
 
 .results-summary p {

@@ -8,7 +8,7 @@ function calculateScanningTimes() {
     const pagesPerMinute = parseFloat(document.getElementById('pagesPerMinute').value) || 0;
     const costPerPage = parseFloat(document.getElementById('costPerPage').value) || 0;
 
-    // Calculate manual testing time
+    // Calculate manual testing time and cost
     const totalManualTestingTimeMinutes = manualTestTime * numPagesTest;
     const totalManualTestingTimeHours = totalManualTestingTimeMinutes / 60;
     const manualDays = Math.floor(totalManualTestingTimeHours / 24);
@@ -16,10 +16,9 @@ function calculateScanningTimes() {
     const manualMinutes = totalManualTestingTimeMinutes % 60;
     const manualTimeOutput = `${manualDays} days ${manualHours} hrs ${manualMinutes.toFixed(0)} mins`;
 
-    // Calculate cost for manual testing
     const totalCostManualTesting = totalManualTestingTimeHours * hourlyRate;
 
-    // Calculate ObservePoint scanning time
+    // Calculate ObservePoint scanning time and cost
     const totalObservePointScanningTimeMinutes = numPagesTest / pagesPerMinute;
     const totalObservePointScanningTimeHours = totalObservePointScanningTimeMinutes / 60;
     const observePointDays = Math.floor(totalObservePointScanningTimeHours / 24);
@@ -27,14 +26,13 @@ function calculateScanningTimes() {
     const observePointMinutes = totalObservePointScanningTimeMinutes % 60;
     const observePointTimeOutput = `${observePointDays} days ${observePointHours} hrs ${observePointMinutes.toFixed(0)} mins`;
 
-    // Calculate cost for ObservePoint scanning
     const totalCostObservePoint = numPagesTest * costPerPage;
 
     // Calculate ROI metrics
     const hoursSaved = totalManualTestingTimeHours - totalObservePointScanningTimeHours;
     const moneySaved = totalCostManualTesting - totalCostObservePoint;
 
-    // Get input values for Actual Manual Employee Testing
+    // Get input values for actual manual employee testing
     const actualHoursSpent = parseFloat(document.getElementById('actualHoursSpent').value) || 0;
     const actualPagesTested = parseInt(document.getElementById('actualPagesTested').value) || 0;
     const actualCostPerYearManualTesting = actualHoursSpent * hourlyRate;
@@ -58,8 +56,10 @@ function calculateScanningTimes() {
     document.getElementById('hoursSavedOutput').innerText = `${hoursSaved.toFixed(2)} hrs`;
     document.getElementById('moneySavedOutput').innerText = formattedMoneySaved;
 
-    // Set values for Actual Manual Employee Testing
+    // Set values for actual manual employee testing
     document.getElementById('actualManualCostOutput').innerText = formattedActualCostPerYearManualTesting;
 
     // Set additional ROI values
-    document.getElementById('totalTimeSavedPerYearOutput').innerText = `${totalTimeSavedPerYear
+    document.getElementById('totalTimeSavedPerYearOutput').innerText = `${totalTimeSavedPerYear.toFixed(2)} hrs`;
+    document.getElementById('totalCostSavedPerYearOutput').innerText = formattedTotalCostSavedPerYear;
+}

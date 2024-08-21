@@ -1,58 +1,63 @@
 function calculateSavings() {
-    // Manual Employee Testing Calculations
+    // Hypothetical Manual Employee Testing
     let manualTime = parseFloat(document.getElementById('manualTime').value);
     let pagesToTest = parseFloat(document.getElementById('pagesToTest').value);
     let manualRate = parseFloat(document.getElementById('manualRate').value);
-
+    
     let totalManualTestingTime = (manualTime * pagesToTest) / 60;
     let totalManualCost = totalManualTestingTime * manualRate;
+    
+    document.getElementById('totalManualTime').textContent = formatNumber(totalManualTestingTime) + " hours";
+    document.getElementById('totalManualCost').textContent = formatCurrency(totalManualCost);
 
-    document.getElementById('totalManualTime').textContent = numberWithCommas(totalManualTestingTime.toFixed(2)) + " hours";
-    document.getElementById('totalManualCost').textContent = "$" + numberWithCommas(totalManualCost.toFixed(2));
-
-    // ObservePoint Scanning Calculations
+    // Hypothetical ObservePoint Scanning
     let opRate = parseFloat(document.getElementById('opRate').value);
     let opPages = parseFloat(document.getElementById('opPages').value);
     let opCost = parseFloat(document.getElementById('opCost').value);
-
+    
     let totalOPTestingTime = (opPages / opRate) / 60;
     let totalOPCost = opPages * opCost;
-
-    document.getElementById('totalOPTime').textContent = numberWithCommas(totalOPTestingTime.toFixed(2)) + " hours";
-    document.getElementById('totalOPCost').textContent = "$" + numberWithCommas(totalOPCost.toFixed(2));
-
-    // Time and Cost Saved Calculations
+    
+    document.getElementById('totalOPTime').textContent = formatNumber(totalOPTestingTime) + " hours";
+    document.getElementById('totalOPCost').textContent = formatCurrency(totalOPCost);
+    
+    // Time and Cost Saved (Hypothetical)
     let timeSaved = totalManualTestingTime - totalOPTestingTime;
-    let costSaved = totalManualCost - totalOPCost;
+    let moneySaved = totalManualCost - totalOPCost;
+    
+    document.getElementById('totalHoursSaved').textContent = formatNumber(timeSaved) + " hours";
+    document.getElementById('totalMoneySaved').textContent = formatCurrency(moneySaved);
 
-    document.getElementById('totalHoursSaved').textContent = numberWithCommas(timeSaved.toFixed(2)) + " hours";
-    document.getElementById('totalMoneySaved').textContent = "$" + numberWithCommas(costSaved.toFixed(2));
-
-    // Actual Manual Employee Testing Calculations
+    // Actual Manual Employee Testing
     let actualManualTime = parseFloat(document.getElementById('actualManualTime').value);
     let actualPagesTested = parseFloat(document.getElementById('actualPagesTested').value);
-
-    let actualManualCost = (actualManualTime / totalManualTestingTime) * totalManualCost;
-    document.getElementById('actualManualCost').textContent = "$" + numberWithCommas(actualManualCost.toFixed(2));
-
-    // Actual ObservePoint Testing Calculations
+    let actualManualCost = (actualManualTime * manualRate);
+    
+    document.getElementById('actualManualCost').textContent = formatCurrency(actualManualCost);
+    
+    // Actual ObservePoint Testing
     let actualOPRate = parseFloat(document.getElementById('actualOPRate').value);
-    let actualOPCost = parseFloat(document.getElementById('actualOPCost').value);
-
+    let actualOPCostPerPage = parseFloat(document.getElementById('actualOPCost').value);
+    
     let actualOPTestingTime = (actualPagesTested / actualOPRate) / 60;
-    let actualTotalOPCost = actualPagesTested * actualOPCost;
-
-    document.getElementById('actualOPTime').textContent = numberWithCommas(actualOPTestingTime.toFixed(2)) + " hours";
-    document.getElementById('actualOPCostDisplay').textContent = "$" + numberWithCommas(actualTotalOPCost.toFixed(2));
-
-    // Actual Time and Cost Saved Summary Calculations
+    let actualTotalOPCost = actualPagesTested * actualOPCostPerPage;
+    
+    document.getElementById('actualOPTime').textContent = formatNumber(actualOPTestingTime) + " hours";
+    document.getElementById('actualOPCost').textContent = formatCurrency(actualTotalOPCost);
+    
+    // Actual Time and Cost Saved (Summary)
     let actualTimeSaved = actualManualTime - actualOPTestingTime;
     let actualCostSaved = actualManualCost - actualTotalOPCost;
-
-    document.getElementById('actualTotalHoursSaved').textContent = numberWithCommas(actualTimeSaved.toFixed(2)) + " hours";
-    document.getElementById('actualTotalMoneySaved').textContent = "$" + numberWithCommas(actualCostSaved.toFixed(2));
+    
+    document.getElementById('actualTotalHoursSaved').textContent = formatNumber(actualTimeSaved) + " hours";
+    document.getElementById('actualTotalMoneySaved').textContent = formatCurrency(actualCostSaved);
 }
 
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+// Helper functions to format numbers and currencies
+function formatNumber(number) {
+    return number.toLocaleString('en-US', { maximumFractionDigits: 4 });
+}
+
+function formatCurrency(number) {
+    return "$" + number.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).slice(1);
 }

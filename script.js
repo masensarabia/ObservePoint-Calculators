@@ -34,10 +34,21 @@ function calculateScanningTimes() {
     const hoursSaved = totalManualTestingTimeHours - totalObservePointScanningTimeHours;
     const moneySaved = totalCostManualTesting - totalCostObservePoint;
 
+    // Get input values for Actual Manual Employee Testing
+    const actualHoursSpent = parseFloat(document.getElementById('actualHoursSpent').value) || 0;
+    const actualPagesTested = parseInt(document.getElementById('actualPagesTested').value) || 0;
+    const actualCostPerYearManualTesting = actualHoursSpent * hourlyRate;
+
+    // Calculate additional ROI metrics
+    const totalTimeSavedPerYear = actualHoursSpent - totalObservePointScanningTimeHours;
+    const totalCostSavedPerYear = actualCostPerYearManualTesting - totalCostObservePoint;
+
     // Format dollar amounts
     const formattedTotalCostObservePoint = `$${totalCostObservePoint.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
     const formattedTotalCostManualTesting = `$${totalCostManualTesting.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
     const formattedMoneySaved = `$${moneySaved.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+    const formattedActualCostPerYearManualTesting = `$${actualCostPerYearManualTesting.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+    const formattedTotalCostSavedPerYear = `$${totalCostSavedPerYear.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
 
     // Set output values
     document.getElementById('manualTimeOutput').innerText = manualTimeOutput;
@@ -46,4 +57,9 @@ function calculateScanningTimes() {
     document.getElementById('observePointCostOutput').innerText = formattedTotalCostObservePoint;
     document.getElementById('hoursSavedOutput').innerText = `${hoursSaved.toFixed(2)} hrs`;
     document.getElementById('moneySavedOutput').innerText = formattedMoneySaved;
-}
+
+    // Set values for Actual Manual Employee Testing
+    document.getElementById('actualManualCostOutput').innerText = formattedActualCostPerYearManualTesting;
+
+    // Set additional ROI values
+    document.getElementById('totalTimeSavedPerYearOutput').innerText = `${totalTimeSavedPerYear

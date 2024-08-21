@@ -5,9 +5,10 @@ body {
     background-color: #0c0c0c;
     margin: 0;
     padding: 0;
-    background-image: linear-gradient(to right, transparent 50%, rgba(0, 0, 0, 0.9) 50%), url('home-vector-slider.png');
-    background-size: cover;
+    background-image: url('home-vector-slider.png'), linear-gradient(to right, transparent 50%, rgba(0, 0, 0, 0.9) 50%);
+    background-size: 35%, cover;
     background-repeat: no-repeat;
+    background-position: right bottom;
     background-attachment: fixed;
 }
 
@@ -17,11 +18,11 @@ body {
     align-items: center;
     padding: 1rem 2rem;
     background-color: rgba(0, 0, 0, 0.8);
-    border-bottom: 2px solid #F1CD14; /* Correct yellow color */
+    border-bottom: 2px solid #F1CD14;
 }
 
 .logo img {
-    height: 40px; /* Adjusted to be smaller */
+    height: 40px; /* Smaller logo size */
 }
 
 .site-navigation ul {
@@ -36,7 +37,7 @@ body {
 }
 
 .site-navigation ul li a {
-    color: #FFFFFF; /* White color for header links */
+    color: #FFFFFF;
     text-decoration: none;
     font-size: 1rem;
 }
@@ -46,7 +47,7 @@ body {
 }
 
 h1, h2 {
-    color: #F1CD14; /* Correct yellow color */
+    color: #F1CD14;
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 1rem;
@@ -97,13 +98,13 @@ input[type="number"] {
 
 input[type="number"]:focus {
     outline: none;
-    border-color: #F1CD14; /* Correct yellow color */
+    border-color: #F1CD14;
 }
 
 button.calculate-btn {
     width: 100%;
     padding: 1rem;
-    background-color: #F1CD14; /* Correct yellow color */
+    background-color: #F1CD14;
     border: none;
     color: #0c0c0c;
     font-size: 1.2rem;
@@ -114,7 +115,7 @@ button.calculate-btn {
 }
 
 button.calculate-btn:hover {
-    background-color: #E2BD0E; /* Slightly darker yellow for hover */
+    background-color: #E1BD13;
 }
 
 .results-summary {
@@ -123,7 +124,7 @@ button.calculate-btn:hover {
 
 .results-summary h2 {
     font-size: 1.5rem;
-    color: #F1CD14; /* Correct yellow color */
+    color: #F1CD14;
 }
 
 .results-summary p {

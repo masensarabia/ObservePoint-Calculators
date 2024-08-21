@@ -6,23 +6,54 @@ body {
     padding: 0;
 }
 
-.calculator-container {
-    width: 80%;
-    margin: auto;
+header {
+    background-color: #000000;
     padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.header {
-    text-align: center;
+.logo img {
+    width: 150px;
 }
 
-.header img {
-    width: 200px;
-    margin-bottom: 20px;
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
 }
 
-h1, h2 {
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
     color: #FFD700;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #ffffff;
+}
+
+.calculator-container {
+    background-color: #333333;
+    color: #FFD700;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    max-width: 1200px;
+    margin: 50px auto;
+}
+
+h1 {
+    color: #FFD700;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .calculator {
@@ -32,19 +63,23 @@ h1, h2 {
 }
 
 .manual-testing, .observepoint-testing, .results {
-    background-color: #333333;
+    background-color: #2b2b2b;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    color: #FFD700;
+    margin-bottom: 15px;
 }
 
 .input-group, .output-group {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 input {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     margin-top: 5px;
     border-radius: 5px;
     border: 1px solid #555;
@@ -62,6 +97,7 @@ button {
     font-size: 16px;
     cursor: pointer;
     font-weight: bold;
+    grid-column: span 2;
 }
 
 button:hover {

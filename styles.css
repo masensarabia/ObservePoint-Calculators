@@ -2,7 +2,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #f0f0f0;
-    background-color: #1f1f1f;
+    background-color: #1f1f1f; /* Adjusted grey to match the ObservePoint site */
     margin: 0;
     padding: 0;
     background-image: url('home-vector-slider.png'), linear-gradient(to right, #1f1f1f 50%, #1f1f1f 50%);
@@ -18,11 +18,11 @@ body {
     align-items: center;
     padding: 1rem 2rem;
     background-color: rgba(0, 0, 0, 0.8);
-    border-bottom: 2px solid #F1CD14;
+    border-bottom: 2px solid #F1CD14; /* Correct yellow */
 }
 
 .logo img {
-    height: 40px;
+    height: 40px; /* Adjusted size to match the website */
 }
 
 .site-navigation ul {
@@ -39,7 +39,7 @@ body {
 }
 
 .site-navigation ul li a {
-    color: #FFFFFF;
+    color: #FFFFFF; /* White color for header links */
     text-decoration: none;
     font-size: 1rem;
 }
@@ -49,7 +49,7 @@ body {
 }
 
 h1, h2 {
-    color: #F1CD14;
+    color: #F1CD14; /* Correct yellow */
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 1rem;
@@ -100,13 +100,13 @@ input[type="number"] {
 
 input[type="number"]:focus {
     outline: none;
-    border-color: #F1CD14;
+    border-color: #F1CD14; /* Correct yellow */
 }
 
 button.calculate-btn {
     width: 100%;
     padding: 1rem;
-    background-color: #F1CD14;
+    background-color: #F1CD14; /* Correct yellow */
     border: none;
     color: #0c0c0c;
     font-size: 1.2rem;
@@ -117,7 +117,7 @@ button.calculate-btn {
 }
 
 button.calculate-btn:hover {
-    background-color: #e5b812;
+    background-color: #e5b812; /* Slightly darker yellow for hover */
 }
 
 .results-summary {
@@ -126,7 +126,7 @@ button.calculate-btn:hover {
 
 .results-summary h2 {
     font-size: 1.5rem;
-    color: #F1CD14;
+    color: #F1CD14; /* Correct yellow */
 }
 
 .results-summary p {
@@ -134,6 +134,7 @@ button.calculate-btn:hover {
     margin: 0.5rem 0;
 }
 
+/* Media Queries */
 @media screen and (max-width: 768px) {
     .calculator-grid {
         flex-direction: column;
@@ -148,3 +149,11 @@ button.calculate-btn:hover {
     }
 
     .site-navigation ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .site-navigation ul li {
+        margin: 10px 0;
+    }
+}

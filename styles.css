@@ -5,7 +5,7 @@ body {
     background-color: #0c0c0c;
     margin: 0;
     padding: 0;
-    background-image: url('home-vector-slider.png');
+    background-image: linear-gradient(to right, transparent 50%, rgba(0, 0, 0, 0.9) 50%), url('home-vector-slider.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -17,7 +17,7 @@ body {
     align-items: center;
     padding: 1rem 2rem;
     background-color: rgba(0, 0, 0, 0.8);
-    border-bottom: 2px solid #ffc107;
+    border-bottom: 2px solid #FFC400; /* Updated yellow color */
 }
 
 .logo img {
@@ -36,7 +36,7 @@ body {
 }
 
 .site-navigation ul li a {
-    color: #ffc107;
+    color: #FFFFFF; /* White color for header links */
     text-decoration: none;
     font-size: 1rem;
 }
@@ -46,7 +46,7 @@ body {
 }
 
 h1, h2 {
-    color: #ffc107;
+    color: #FFC400; /* Updated yellow color */
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 1rem;
@@ -97,13 +97,13 @@ input[type="number"] {
 
 input[type="number"]:focus {
     outline: none;
-    border-color: #ffc107;
+    border-color: #FFC400; /* Updated yellow color */
 }
 
 button.calculate-btn {
     width: 100%;
     padding: 1rem;
-    background-color: #ffc107;
+    background-color: #FFC400; /* Updated yellow color */
     border: none;
     color: #0c0c0c;
     font-size: 1.2rem;
@@ -114,7 +114,7 @@ button.calculate-btn {
 }
 
 button.calculate-btn:hover {
-    background-color: #ffa000;
+    background-color: #FFB300; /* Slightly darker yellow for hover */
 }
 
 .results-summary {
@@ -123,7 +123,7 @@ button.calculate-btn:hover {
 
 .results-summary h2 {
     font-size: 1.5rem;
-    color: #ffc107;
+    color: #FFC400; /* Updated yellow color */
 }
 
 .results-summary p {

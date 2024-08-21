@@ -1,102 +1,156 @@
-/* Importing a modern font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
+/* General Styles */
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #1c1c1c; /* Slightly darker background */
-  color: #f4f4f4; /* Lighter text color */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f0f0f0;
+    background-color: #0c0c0c;
+    margin: 0;
+    padding: 0;
+    background-image: url('home-vector-slider.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
-header {
-  background-color: #0f0f0f;
-  padding: 20px;
-  border-bottom: 2px solid #ffcc00;
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-bottom: 2px solid #ffc107;
 }
 
-header h1 {
-  font-size: 2.5rem;
-  color: #ffcc00;
-  margin: 0;
+.logo img {
+    height: 50px;
 }
 
-header nav a {
-  color: #f4f4f4;
-  margin-right: 15px;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
+.site-navigation ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
 }
 
-header nav a:hover {
-  color: #ffcc00;
+.site-navigation ul li {
+    margin-left: 20px;
+}
+
+.site-navigation ul li a {
+    color: #ffc107;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.site-navigation ul li a:hover {
+    text-decoration: underline;
+}
+
+h1, h2 {
+    color: #ffc107;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
 }
 
 .calculator-container {
-  background-color: #292929; /* Dark grey background */
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  max-width: 1200px;
-  margin: 40px auto;
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
 }
 
-section h2 {
-  color: #ffcc00;
-  font-size: 1.5rem;
-  border-bottom: 2px solid #ffcc00;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
+.calculator-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
 }
 
-.input-group {
-  margin-bottom: 15px;
+.calculator-card {
+    background-color: #1a1a1a;
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 48%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.input-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 1rem;
-  color: #ffcc00;
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
 }
 
-.input-group input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 2px solid #333;
-  background-color: #1c1c1c;
-  color: #fff;
-  font-size: 1rem;
+input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: 1px solid #666;
+    background-color: #333;
+    color: #f0f0f0;
 }
 
-.input-group input::placeholder {
-  color: #999;
+input[type="number"]:focus {
+    outline: none;
+    border-color: #ffc107;
 }
 
-button {
-  background-color: #ffcc00;
-  color: #0f0f0f;
-  border: none;
-  padding: 12px 20px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 15px;
+button.calculate-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: #ffc107;
+    border: none;
+    color: #0c0c0c;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    font-weight: 700;
 }
 
-button:hover {
-  background-color: #f4b800;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+button.calculate-btn:hover {
+    background-color: #ffa000;
 }
 
-.results {
-  margin-top: 20px;
+.results-summary {
+    margin-top: 2rem;
 }
 
-.results p {
-  font-size: 1.2rem;
-  margin: 5px 0;
-  color: #ffcc00;
+.results-summary h2 {
+    font-size: 1.5rem;
+    color: #ffc107;
+}
+
+.results-summary p {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .calculator-grid {
+        flex-direction: column;
+    }
+
+    .calculator-card {
+        width: 100%;
+    }
+
+    .header-inner {
+        flex-direction: column;
+    }
+
+    .site-navigation ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .site-navigation ul li {
+        margin: 10px 0;
+    }
 }

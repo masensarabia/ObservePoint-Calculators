@@ -2,7 +2,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #f0f0f0;
-    background-color: #1f1f1f; /* Adjusted grey to match the ObservePoint site */
+    background-color: #1f1f1f;
     margin: 0;
     padding: 0;
     background-image: url('home-vector-slider.png'), linear-gradient(to right, #1f1f1f 50%, #1f1f1f 50%);
@@ -23,17 +23,25 @@ body {
 
 .logo img {
     height: 40px; /* Adjusted size to match the website */
+    max-width: 100%; 
+    vertical-align: middle;
+}
+
+.site-navigation {
+    flex-grow: 1;
+    text-align: center; /* Centers the navigation */
 }
 
 .site-navigation ul {
     list-style: none;
     display: flex;
+    justify-content: center; /* Spread out the links */
     margin: 0;
     padding: 0;
 }
 
 .site-navigation ul li {
-    margin-left: 20px;
+    margin: 0 20px;
 }
 
 .site-navigation ul li a {
@@ -86,10 +94,6 @@ label {
     font-size: 1rem;
 }
 
-input[type="number"]::placeholder {
-    color: #888; /* Placeholder text color */
-}
-
 input[type="number"] {
     width: 100%;
     padding: 0.5rem;
@@ -98,6 +102,10 @@ input[type="number"] {
     border: 1px solid #666;
     background-color: #333;
     color: #f0f0f0;
+}
+
+input[type="number"]::placeholder {
+    color: #888; /* Placeholder color */
 }
 
 input[type="number"]:focus {

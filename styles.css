@@ -2,12 +2,11 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #f0f0f0;
-    background-color: #1f1f1f; /* Lighter grey for consistency */
+    background-color: #232323;
     margin: 0;
     padding: 0;
-    background-image: linear-gradient(to right, transparent 50%, rgba(0, 0, 0, 0.9) 50%), url('home-vector-slider.png');
-    background-size: 30%; /* Reduced size */
-    background-position: bottom right;
+    background-image: linear-gradient(to right, #2b2b2b 50%, transparent 50%), url('home-vector-slider.png');
+    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
@@ -22,7 +21,7 @@ body {
 }
 
 .logo img {
-    height: 40px; /* Slightly smaller logo */
+    height: 40px; /* Reduced logo size */
 }
 
 .site-navigation ul {
@@ -68,7 +67,6 @@ h1 {
 
 .calculator-grid {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     gap: 2rem;
 }
@@ -77,7 +75,7 @@ h1 {
     background-color: #1a1a1a;
     padding: 1.5rem;
     border-radius: 8px;
-    flex: 1 1 48%;
+    width: 48%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -116,7 +114,7 @@ button.calculate-btn {
 }
 
 button.calculate-btn:hover {
-    background-color: #d1b010; /* Slightly darker yellow for hover */
+    background-color: #FFB300; /* Slightly darker yellow for hover */
 }
 
 .results-summary {

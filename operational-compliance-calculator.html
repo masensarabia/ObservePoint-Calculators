@@ -1,1 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operational & Compliance Savings Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <header class="header-inner">
+        <div class="logo">
+            <img src="OP_Logo.png" alt="ObservePoint Logo">
+        </div>
+        <nav class="site-navigation">
+            <ul>
+                <li><a href="index.html">Audits - Time & Cost Savings Calculator</a></li>
+                <li><a href="operational-compliance-calculator.html">Operational & Compliance Savings Calculator</a></li>
+                <!-- Future links for other calculators -->
+            </ul>
+        </nav>
+    </header>
+
+    <div class="calculator-container">
+        <h1>Operational & Compliance Savings Calculator</h1>
+        <div class="calculator-grid">
+            <div class="calculator-card">
+                <h2>Manual Implementation Costs</h2>
+                <label for="hourlyRate">Hourly Rate:</label>
+                <input type="number" id="hourlyRate" placeholder="Enter hourly rate in dollars">
+                <label for="timeIncorrect">Time to Implement Incorrectly (hours):</label>
+                <input type="number" id="timeIncorrect" placeholder="Enter hours">
+                <label for="timeTest">Time to Test One Page (minutes):</label>
+                <input type="number" id="timeTest" placeholder="Enter minutes">
+                <label for="numberOfPages">Total Number of Pages:</label>
+                <input type="number" id="numberOfPages" placeholder="Enter number of pages">
+                <label for="costOfFine">Cost of Privacy Fine:</label>
+                <input type="number" id="costOfFine" placeholder="Enter cost in dollars">
+                <p>Total Cost to Implement Incorrectly: <span id="costImplementIncorrectly">$0</span></p>
+                <p>Total Cost to Implement Correctly: <span id="costImplementCorrectly">$0</span></p>
+                <p>Time to Implement Correctly: <span id="timeImplementCorrectly">0 hours</span></p>
+                <p>Estimated Privacy Fines: <span id="totalCostPrivacyFines">$0</span></p>
+                <p>Total Savings: <span id="totalSavingsManual">$0</span></p>
+            </div>
+
+            <div class="calculator-card">
+                <h2>ObservePoint Scanning</h2>
+                <label for="costPerPage">Cost per Page:</label>
+                <input type="number" id="costPerPage" placeholder="Enter cost per page">
+                <label for="scanningRate">Scanning Rate (pages per minute):</label>
+                <input type="number" id="scanningRate" placeholder="Enter pages per minute">
+                <p>Total Scanning Time: <span id="timeObservePointScan">0 hours</span></p>
+                <p>Total Cost for ObservePoint Scanning: <span id="costObservePointScan">$0</span></p>
+                <p>Total Savings with ObservePoint: <span id="totalSavingsObservePoint">$0</span></p>
+            </div>
+        </div>
+
+        <button class="calculate-btn" onclick="calculateCMPImplementationCosts()">Calculate</button>
+    </div>
+
+    <script src="operational-compliance-script.js"></script>
+</body>
+</html>
 

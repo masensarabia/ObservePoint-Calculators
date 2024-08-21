@@ -45,10 +45,10 @@ function calculateSavings() {
     let actualTimeSaved = actualManualTime - actualOPTestingTime;
     let actualCostSaved = actualManualCost - actualTotalOPCost;
     
-    document.getElementById('actualTimeSaved').textContent = actualTimeSaved.toFixed(4) + " hours";
-    document.getElementById('actualCostSaved').textContent = "$" + actualCostSaved.toLocaleString(undefined, {minimumFractionDigits: 2});
+    document.getElementById('actualOPTime').textContent = actualOPTestingTime.toFixed(4) + " hours";
+    document.getElementById('actualOPTotalCost').textContent = "$" + actualTotalOPCost.toLocaleString(undefined, {minimumFractionDigits: 2});
 
-    // Actual Time and Money Saved (Summary)
+    // Actual Time and Cost Saved (Summary)
     document.getElementById('actualTotalHoursSaved').textContent = actualTimeSaved.toFixed(4) + " hours";
     document.getElementById('actualTotalMoneySaved').textContent = "$" + actualCostSaved.toLocaleString(undefined, {minimumFractionDigits: 2});
 }

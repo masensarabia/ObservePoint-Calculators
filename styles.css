@@ -18,7 +18,6 @@ body {
     align-items: center;
     padding: 1rem 2rem;
     background: linear-gradient(to bottom, #000000 0%, #333333 100%); /* Gradient background from black to dark gray */
-    border-bottom: 2px solid #F1CD14;
 }
 
 .logo img {

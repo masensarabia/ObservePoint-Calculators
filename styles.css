@@ -46,29 +46,7 @@ body {
 
 .site-navigation ul li.active-link a {
     color: #F1CD14; /* Yellow color for active link */
-    text-decoration: none; /* Remove underline */
-    border-bottom: 2px solid #F1CD14; /* Add yellow underline */
-}
-
-/* Description Section */
-.description-container {
-    text-align: center;
-    padding: 2rem 1rem;
-    margin-bottom: 2rem;
-    background-color: rgba(0, 0, 0, 0.85);
-    border-radius: 10px;
-}
-
-.description-container h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-}
-
-.description-container p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin: 0 auto;
-    max-width: 800px;
+    text-decoration: none; /* No underline */
 }
 
 h1, h2 {
@@ -173,13 +151,5 @@ button.calculate-btn:hover {
 
     .site-navigation ul li {
         margin: 10px 0;
-    }
-
-    .description-container {
-        padding: 1rem;
-    }
-
-    .description-container p {
-        font-size: 1rem;
     }
 }

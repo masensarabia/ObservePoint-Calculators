@@ -14,7 +14,7 @@
         </div>
         <nav class="site-navigation">
             <ul>
-                <li class="active-link"><a href="index.html">Audits - Time & Cost Savings Calculator</a></li>
+                <li><a href="index.html">Audits - Time & Cost Savings Calculator</a></li>
                 <li><a href="operational-compliance-calculator.html">Operational & Compliance Savings Calculator</a></li>
                 <li><a href="#">Journey Downtime Savings Calculator</a></li>
                 <li><a href="#">Journeys - Time & Cost Savings Calculator</a></li>
@@ -87,5 +87,17 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // Highlight the active link based on the current path
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('.site-navigation ul li a');
+
+        navLinks.forEach(link => {
+            const linkPath = link.getAttribute('href');
+            if (linkPath === currentPath || (linkPath === 'index.html' && currentPath === '/')) {
+                link.parentElement.classList.add('active-link');
+            }
+        });
+    </script>
 </body>
 </html>

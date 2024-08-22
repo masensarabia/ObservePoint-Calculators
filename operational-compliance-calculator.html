@@ -56,3 +56,24 @@
         <div class="results-summary">
             <h2>Total Savings</h2>
             <p>Total Manual Savings: <span id="totalSavingsManual">$0</span></p>
+            <p>Total Savings with ObservePoint: <span id="totalSavingsObservePoint">$0</span></p>
+        </div>
+
+        <button class="calculate-btn" onclick="calculateCMPImplementationCosts()">Calculate</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('.site-navigation ul li a');
+
+            navLinks.forEach(link => {
+                const linkPath = link.getAttribute('href');
+                if (linkPath === currentPath || (linkPath === 'index.html' && currentPath === '/')) {
+                    link.parentElement.classList.add('active-link');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

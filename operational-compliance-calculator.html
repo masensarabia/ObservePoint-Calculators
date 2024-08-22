@@ -15,7 +15,7 @@
         <nav class="site-navigation">
             <ul>
                 <li><a href="index.html">Audits - Time & Cost Savings Calculator</a></li>
-                <li><a href="operational-compliance-calculator.html">Operational & Compliance Savings Calculator</a></li>
+                <li class="active-link"><a href="operational-compliance-calculator.html">Operational & Compliance Savings Calculator</a></li>
                 <li><a href="journey-downtime-calculator.html">Journey Downtime Savings Calculator</a></li>
                 <li><a href="journeys-calculator.html">Journeys - Time & Cost Savings Calculator</a></li>
             </ul>
@@ -41,7 +41,6 @@
                 <p>Total Correct Implementation Time: <span id="timeImplementCorrectly">0 hrs 0 mins</span></p>
                 <p>Total Cost to Implement Correctly: <span id="costImplementCorrectly">$0</span></p>
             </div>
-
             <div class="calculator-card">
                 <h2>ObservePoint Scanning</h2>
                 <label for="costPerPage">ObservePoint Cost per Page:</label>
@@ -69,7 +68,7 @@
 
             navLinks.forEach(link => {
                 const linkPath = link.getAttribute('href');
-                if (linkPath === currentPath || (linkPath === 'index.html' && currentPath === '/')) {
+                if (linkPath === currentPath) {
                     link.parentElement.classList.add('active-link');
                 }
             });

@@ -86,17 +86,17 @@
         <button class="calculate-btn" onclick="calculateSavings()">Calculate</button>
     </div>
 
-    <script src="script.js"></script>
     <script>
-        // Highlight the active link based on the current path
-        const currentPath = window.location.pathname;
-        const navLinks = document.querySelectorAll('.site-navigation ul li a');
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('.site-navigation ul li a');
 
-        navLinks.forEach(link => {
-            const linkPath = link.getAttribute('href');
-            if (linkPath === currentPath || (linkPath === 'index.html' && currentPath === '/')) {
-                link.parentElement.classList.add('active-link');
-            }
+            navLinks.forEach(link => {
+                const linkPath = link.getAttribute('href');
+                if (linkPath === currentPath || (linkPath === 'index.html' && currentPath === '/')) {
+                    link.parentElement.classList.add('active-link');
+                }
+            });
         });
     </script>
 </body>

@@ -16,9 +16,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    background-color: rgba(0, 0, 0, 0.8);
+    padding: 1.5rem 2.5rem;
+    background-color: rgba(0, 0, 0, 0.9);
     border-bottom: 2px solid #F1CD14;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .logo img {
@@ -42,11 +43,14 @@ body {
     color: #FFFFFF;
     text-decoration: none;
     font-size: 1rem;
+    transition: color 0.3s ease;
 }
 
+.site-navigation ul li a:hover,
 .site-navigation ul li.active-link a {
-    color: #F1CD14; /* Yellow color for active link */
-    text-decoration: none;
+    color: #F1CD14;
+    text-decoration: underline;
+    border-bottom: 2px solid #F1CD14;
 }
 
 h1, h2 {
@@ -54,13 +58,13 @@ h1, h2 {
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 1rem;
-    text-align: center; /* Centers the titles h1 and h2 */
+    text-align: center;
 }
 
 .calculator-container {
     max-width: 1000px;
-    margin: 2rem auto;
-    padding: 2rem;
+    margin: 2.5rem auto;
+    padding: 2.5rem;
     background-color: rgba(0, 0, 0, 0.9);
     border-radius: 10px;
 }
@@ -82,7 +86,7 @@ h1, h2 {
 label {
     display: block;
     margin-bottom: 0.5rem;
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
 input[type="number"] {
@@ -111,6 +115,7 @@ button.calculate-btn {
     cursor: pointer;
     margin-top: 1.5rem;
     font-weight: 700;
+    transition: background-color 0.3s ease;
 }
 
 button.calculate-btn:hover {
@@ -124,6 +129,7 @@ button.calculate-btn:hover {
 .results-summary h2 {
     font-size: 1.5rem;
     color: #F1CD14;
+    text-align: center;
 }
 
 .results-summary p {
@@ -147,6 +153,7 @@ button.calculate-btn:hover {
 
     .site-navigation ul {
         flex-direction: column;
+        align-items: center;
     }
 
     .site-navigation ul li {

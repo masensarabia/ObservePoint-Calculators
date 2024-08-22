@@ -17,7 +17,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: rgba(0, 0, 0, 0.8);
+    background: linear-gradient(to bottom, #000000 0%, #333333 100%); /* Gradient background from black to dark gray */
     border-bottom: 2px solid #F1CD14;
 }
 
@@ -45,8 +45,7 @@ body {
 }
 
 .site-navigation ul li.active-link a {
-    color: #F1CD14; /* Yellow color for active link */
-    text-decoration: none; /* No underline */
+    color: #F1CD14;
 }
 
 h1, h2 {
@@ -54,7 +53,7 @@ h1, h2 {
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 1rem;
-    text-align: center; /* Centers the titles h1 and h2 */
+    text-align: center;
 }
 
 .calculator-container {

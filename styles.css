@@ -44,14 +44,9 @@ body {
     font-size: 1rem;
 }
 
-.site-navigation ul li a:hover {
-    text-decoration: underline;
-}
-
-/* Highlight the active navigation link */
-.active-link a {
-    color: #F1CD14;
-    text-decoration: underline;
+.site-navigation ul li.active-link a {
+    color: #F1CD14; /* Yellow color for active link */
+    text-decoration: none;
 }
 
 h1, h2 {
@@ -59,11 +54,6 @@ h1, h2 {
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 1rem;
-}
-
-h1 {
-    font-size: 2rem;
-    text-align: center;
 }
 
 .calculator-container {
@@ -156,7 +146,6 @@ button.calculate-btn:hover {
 
     .site-navigation ul {
         flex-direction: column;
-        align-items: center;
     }
 
     .site-navigation ul li {

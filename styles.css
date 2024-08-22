@@ -54,6 +54,7 @@ h1, h2 {
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 1rem;
+    text-align: center; /* Centers the titles h1 and h2 */
 }
 
 .calculator-container {

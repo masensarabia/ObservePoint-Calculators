@@ -16,12 +16,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    background: linear-gradient(to bottom, #1f1f1f 0%, rgba(0, 0, 0, 0.8) 100%);
+    padding: 0.5rem 2rem;
+    background: linear-gradient(to bottom, #000000 0%, #1f1f1f 80%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .logo img {
-    height: 30px; /* Adjusted logo size */
+    height: 36px; /* Adjusted for better alignment */
+    margin-top: 6px;
 }
 
 .site-navigation ul {
@@ -41,10 +43,12 @@ body {
     color: #FFFFFF;
     text-decoration: none;
     font-size: 1rem;
+    padding: 0.5rem 0; /* Padding for better alignment */
 }
 
 .site-navigation ul li.active-link a {
-    color: #F1CD14; /* Yellow color for active link */
+    color: #F1CD14;
+    text-decoration: none;
 }
 
 h1, h2 {
@@ -52,7 +56,7 @@ h1, h2 {
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 1rem;
-    text-align: center; /* Centers the titles h1 and h2 */
+    text-align: center;
 }
 
 .calculator-container {

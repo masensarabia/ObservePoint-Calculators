@@ -17,27 +17,28 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 2rem; /* Increased padding for better spacing */
-    background: linear-gradient(to bottom, #000000 0%, #1f1f1f 100%); /* Matching header gradient */
+    padding: 1rem 2rem;
+    background: linear-gradient(to bottom, #000000 0%, #1f1f1f 100%);
     border-bottom: none;
     position: relative;
-    z-index: 1;
+    height: 100px; /* Adjusted height to match the www site */
 }
 
 .logo img {
-    height: 35px; /* Slightly reduced height for better size */
-    margin-top: 10px; /* Adjusted margin for precise placement */
-    margin-bottom: 0;
+    height: 40px; /* Adjust as needed */
+    margin-top: 10px; /* Added margin to lower the logo */
+    margin-left: 20px; /* Adjust left margin */
 }
 
+/* Site Navigation Styles */
 .site-navigation ul {
     list-style: none;
     display: flex;
-    justify-content: center;
-    width: 100%;
+    justify-content: flex-end;
+    width: auto;
     margin: 0;
-    padding: 0;
-    align-items: flex-end; /* Align links to the bottom of the header */
+    padding-right: 60px; /* Increased right padding for spacing */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Match the font */
 }
 
 .site-navigation ul li {
@@ -48,12 +49,12 @@ body {
     color: #FFFFFF;
     text-decoration: none;
     font-size: 1rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .site-navigation ul li.active-link a {
     color: #F1CD14; /* Yellow color for active link */
     text-decoration: none;
+    font-weight: bold; /* Match weight */
 }
 
 /* Header Gradient */
@@ -63,7 +64,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 150px;
+    height: 200px;
     z-index: -1;
 }
 
@@ -169,6 +170,7 @@ button.calculate-btn:hover {
 
     .site-navigation ul {
         flex-direction: column;
+        padding-right: 0;
     }
 
     .site-navigation ul li {

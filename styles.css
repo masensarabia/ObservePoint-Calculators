@@ -190,8 +190,7 @@ button.calculate-btn:hover {
     .header-inner {
         flex-direction: column;
         align-items: center; /* Center all items */
-        justify-content: center; /* Center items vertically */
-        padding: 2rem 1rem; /* Add more padding to extend the background */
+        padding: 1.5rem 1rem; /* Adjust padding to balance logo and links */
         text-align: center;
         background: linear-gradient(to bottom, #000000 0%, #1f1f1f 100%);
         position: relative;
@@ -200,13 +199,12 @@ button.calculate-btn:hover {
     }
 
     .site-navigation {
-        margin-top: 1rem;
+        margin-top: 0.5rem; /* Slightly reduced margin to fit better */
         width: 100%;
     }
 
     .site-navigation ul {
         flex-direction: column;
-        align-items: center; /* Center the links horizontally */
         padding: 0;
         margin: 0;
         width: 100%;
@@ -221,7 +219,7 @@ button.calculate-btn:hover {
     .description-section {
         clear: both;
         padding: 1rem;
-        margin-top: 12rem; /* Add more margin to ensure space between header and content */
+        margin-top: 8rem; /* Adjust space based on new header height */
     }
 
     .calculator-container {

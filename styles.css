@@ -37,7 +37,7 @@ body {
     justify-content: flex-end;
     width: auto;
     margin: 0;
-    padding-right: 60px; /* Increased right padding for spacing */
+    padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Match the font */
 }
 
@@ -52,9 +52,9 @@ body {
 }
 
 .site-navigation ul li.active-link a {
-    color: #F1CD14; /* Yellow color for active link */
+    color: #FFFFFF; /* Keep the link color white */
     text-decoration: none;
-    font-weight: bold; /* Match weight */
+    font-weight: normal; /* Remove bold */
 }
 
 /* Header Gradient */
@@ -170,7 +170,6 @@ button.calculate-btn:hover {
 
     .site-navigation ul {
         flex-direction: column;
-        padding-right: 0;
     }
 
     .site-navigation ul li {

@@ -191,16 +191,22 @@ button.calculate-btn:hover {
         flex-direction: column;
         align-items: center;
         justify-content: center; /* Center the header content */
-        padding: 1.5rem 1rem;
+        padding: 1rem; /* Simplified padding */
         text-align: center;
         background: linear-gradient(to bottom, #000000 0%, #1f1f1f 100%);
         width: 100%; /* Ensure full width */
-        box-sizing: border-box; /* Prevents padding from overflowing the header */
+        box-sizing: border-box;
+    }
+
+    /* Logo */
+    .logo img {
+        height: auto; /* Allow the logo to scale naturally */
+        margin-bottom: 1rem; /* Add some space between logo and navigation */
     }
 
     /* Navigation */
     .site-navigation {
-        margin-top: 1rem;
+        margin-top: 0.5rem;
         width: 100%;
     }
 
@@ -225,14 +231,13 @@ button.calculate-btn:hover {
 
     /* Center and Adjust the Yellow Box */
     .description-section {
-        max-width: 95%; /* Ensure the section is centered */
+        max-width: 95%;
         margin: 2rem auto;
         padding: 1.5rem;
         text-align: center;
     }
-}
 
-
+    /* Adjustments for the Calculator Section */
     .calculator-container {
         padding: 1rem;
         margin: 2rem auto;
@@ -256,7 +261,3 @@ button.calculate-btn:hover {
         padding: 0.75rem;
     }
 }
-
-
-
-

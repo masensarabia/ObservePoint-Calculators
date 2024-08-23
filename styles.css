@@ -17,7 +17,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1rem 3rem; /* Adjusted padding to push the navigation links to the right */
     background: linear-gradient(to bottom, #000000 0%, #1f1f1f 100%);
     border-bottom: none;
     position: relative;
@@ -52,9 +52,9 @@ body {
 }
 
 .site-navigation ul li.active-link a {
-    color: #FFFFFF; /* Keep the link color white */
+    color: #F1CD14; /* Yellow color for active link */
     text-decoration: none;
-    font-weight: normal; /* Remove bold */
+    font-weight: normal; /* No bold for active link */
 }
 
 /* Header Gradient */

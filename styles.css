@@ -187,72 +187,42 @@ button.calculate-btn:hover {
 
 /* Media Queries for Mobile Devices */
 @media screen and (max-width: 768px) {
-    /* Header */
     .header-inner {
-        display: flex;
-        flex-direction: column; /* Stack elements vertically */
+        padding: 1rem;
+        flex-direction: column;
         align-items: center;
-        justify-content: center; /* Center content horizontally */
-        padding: 1.5rem; /* Adjust space around header content */
-        text-align: center;
-        background: linear-gradient(to bottom, #000000 0%, #1f1f1f 100%);
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    /* Logo */
-    .logo img {
-        width: 80%; /* Control logo size */
-        height: auto;
-        margin-bottom: 1rem; /* Space below logo */
-    }
-
-    /* Navigation */
-    .site-navigation {
-        margin-top: 0; /* Adjust space above navigation */
-        width: 100%;
     }
 
     .site-navigation ul {
-        flex-direction: column; /* Stack links vertically */
-        align-items: center; /* Center the links */
-        padding: 0;
+        flex-direction: column;
         margin: 0;
-        width: 100%;
+        padding: 0;
+        text-align: center;
     }
 
     .site-navigation ul li {
-        margin: 8px 0; /* Space between each link */
-        text-align: center; /* Center link text */
+        margin: 10px 0;
     }
 
-    .site-navigation ul li a {
-        color: #B1BAC3;
-        text-decoration: none;
-        font-size: 1rem;
-    }
-
-    /* Description Section */
     .description-section {
-        max-width: 95%; /* Ensure the section is centered */
-        margin: 2rem auto; /* Space above and below the section */
+        margin: 2rem auto;
         padding: 1.5rem;
-        text-align: center; /* Center content */
+        text-align: center;
+        width: 100%;
     }
 
-    /* Calculator Section */
     .calculator-container {
-        padding: 1rem; /* Space within the calculator */
-        margin: 2rem auto; /* Space above and below the calculator */
+        padding: 1rem;
+        margin: 2rem auto;
     }
 
     .calculator-grid {
-        flex-direction: column; /* Stack calculator sections vertically */
-        gap: 1rem; /* Space between calculator sections */
+        flex-direction: column;
+        gap: 1rem;
     }
 
     h1, h2 {
-        font-size: 1.5rem; /* Adjust font sizes */
+        font-size: 1.5rem;
     }
 
     p, label {
@@ -261,8 +231,6 @@ button.calculate-btn:hover {
 
     button.calculate-btn {
         font-size: 1rem;
-        padding: 0.75rem; /* Adjust button size */
+        padding: 0.75rem;
     }
 }
-
-

@@ -216,7 +216,7 @@ button.calculate-btn:hover {
     .description-section {
         clear: both;
         padding: 1rem;
-        margin-top: 7rem; /* Ensure enough space between header and content */
+        margin-top: 9rem; /* Ensure enough space between header and content */
     }
 
     .calculator-container {

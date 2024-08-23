@@ -12,19 +12,20 @@ body {
     background-attachment: fixed;
 }
 
+/* Header Styles */
 .header-inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background: linear-gradient(to bottom, #000000, #333333); /* Updated background gradient */
-    padding-bottom: 1rem; /* Adds space to match the www site's header */
-    border-bottom: none; /* Removes any visible border under the header */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(31, 31, 31, 0) 100%);
+    border-bottom: none; /* Removed the bottom border */
+    padding-bottom: 2rem;
 }
 
 .logo img {
-    height: 38px; /* Adjusts logo height for better balance */
-    margin-top: 10px; /* Adjusts vertical centering */
+    height: 40px;
+    margin-top: 10px; /* Adjusts the vertical position of the logo */
 }
 
 .site-navigation ul {
@@ -44,11 +45,11 @@ body {
     color: #FFFFFF;
     text-decoration: none;
     font-size: 1rem;
+    padding: 10px 0;
 }
 
 .site-navigation ul li.active-link a {
     color: #F1CD14; /* Yellow color for active link */
-    text-decoration: none;
 }
 
 h1, h2 {
@@ -56,7 +57,7 @@ h1, h2 {
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 1rem;
-    text-align: center; /* Centers the titles h1 and h2 */
+    text-align: center;
 }
 
 .calculator-container {

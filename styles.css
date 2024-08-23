@@ -12,20 +12,18 @@ body {
     background-attachment: fixed;
 }
 
-/* Header Styles */
 .header-inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(31, 31, 31, 0) 100%);
-    border-bottom: none; /* Removed the bottom border */
-    padding-bottom: 2rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(31, 31, 31, 0) 100%);
+    border-bottom: none;
 }
 
 .logo img {
     height: 40px;
-    margin-top: 10px; /* Adjusts the vertical position of the logo */
+    margin-left: 2rem;
 }
 
 .site-navigation ul {
@@ -45,11 +43,11 @@ body {
     color: #FFFFFF;
     text-decoration: none;
     font-size: 1rem;
-    padding: 10px 0;
 }
 
 .site-navigation ul li.active-link a {
     color: #F1CD14; /* Yellow color for active link */
+    text-decoration: none;
 }
 
 h1, h2 {
@@ -57,7 +55,7 @@ h1, h2 {
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 1rem;
-    text-align: center;
+    text-align: center; /* Centers the titles h1 and h2 */
 }
 
 .calculator-container {

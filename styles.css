@@ -17,12 +17,17 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 3rem; /* Adjusted padding to push the navigation links to the right */
+    padding: 1rem 5rem 1rem 3rem; /* Adjusted padding */
     background: linear-gradient(to bottom, #000000 0%, #1f1f1f 100%);
     border-bottom: none;
     position: relative;
     height: 100px; /* Adjusted height to match the www site */
 }
+
+.site-navigation {
+    margin-left: auto; /* Pushes the navigation links to the right */
+}
+
 
 .logo img {
     height: 35px; /* Adjust as needed */

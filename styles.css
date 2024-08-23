@@ -51,18 +51,26 @@ body {
     margin: 0 20px;
 }
 
+/* Header Links */
 .site-navigation ul li a {
-    color: #B1BAC3;
+    color: #B1BAC3; /* Default color */
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 400;
+    transition: color 0.3s ease; /* Smooth transition */
 }
 
+.site-navigation ul li a:hover {
+    color: #F1CD14; /* Yellow on hover */
+}
+
+/* Active Link */
 .site-navigation ul li.active-link a {
-    color: #F1CD14;
+    color: #F1CD14; /* Yellow for the active link */
     text-decoration: none;
     font-weight: 400;
 }
+
 
 /* Header Gradient */
 .header-gradient {
@@ -165,13 +173,16 @@ button.calculate-btn {
     border-radius: 5px;
     cursor: pointer;
     font-weight: 700;
+    width: 100%; /* Make the button stretch across the container */
+    text-align: center;
     transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
 }
 
 button.calculate-btn:hover {
     background-color: #F1CD14; /* Yellow background on hover */
-    color: #0c0c0c; /* Black text on hover */
+    color: transparent; /* Transparent text on hover */
 }
+
 
 
 .results-summary {

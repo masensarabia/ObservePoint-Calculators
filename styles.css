@@ -1,35 +1,38 @@
+/* General body settings */
 body {
-    background-color: #1e1e1e;
-    color: #f8f8f8;
-    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: #ffffff;
 }
 
+/* Header styles */
 header {
-    background: linear-gradient(to bottom, #0e0e0e, #1e1e1e 85%);
+    background: linear-gradient(180deg, #0e0e0e, #1e1e1e 85%);
     padding: 20px 0;
     position: fixed;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Logo adjustments */
 header .logo {
     float: left;
-    margin-left: 30px;
+    margin-left: 50px;
 }
 
 header .logo img {
-    max-height: 55px;
+    height: 40px;
+    width: auto;
     vertical-align: middle;
-    margin-top: 5px; /* Adjusted to lower the logo slightly */
 }
 
+/* Navigation styles */
 nav {
     float: right;
-    margin-right: 30px;
-    font-size: 16px;
+    margin-right: 50px;
 }
 
 nav ul {
@@ -41,13 +44,14 @@ nav ul {
 }
 
 nav ul li {
-    margin-left: 25px;
+    margin-left: 30px;
 }
 
 nav ul li a {
-    color: #f8f8f8;
+    color: #e0e0e0;
     text-decoration: none;
-    padding: 8px 0;
+    font-size: 16px;
+    padding: 5px 0;
     position: relative;
 }
 
@@ -59,7 +63,7 @@ nav ul li a.active {
 nav ul li a.active::after {
     content: '';
     width: 100%;
-    height: 3px;
+    height: 2px;
     background: #ffd700;
     position: absolute;
     left: 0;
@@ -67,37 +71,38 @@ nav ul li a.active::after {
     border-radius: 2px;
 }
 
-/* Reset default styles */
-* {
-    box-sizing: border-box;
-}
-
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-h1, h2, h3 {
-    color: #ffd700;
-}
-
+/* Container for the content */
 .container {
     width: 90%;
     margin: 0 auto;
-    padding: 100px 0 40px;
+    padding-top: 120px; /* Adjust this value based on header size */
 }
 
-section {
-    margin-bottom: 40px;
-}
-
+/* Footer styles */
 footer {
     background-color: #0e0e0e;
     color: #ffffff;
     text-align: center;
     padding: 20px 0;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
+    margin-top: 40px;
 }
+
+/* Ensure the header is clear from content */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* H1, H2, H3 styles */
+h1, h2, h3 {
+    color: #ffd700;
+}
+
+/* Section padding and margins */
+section {
+    margin-bottom: 40px;
+    padding: 20px 0;
+}
+
+/* Add more specific styles as needed */

@@ -17,15 +17,16 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 2rem; /* Increased padding for logo placement */
-    background-color: rgba(0, 0, 0, 0.8);
+    padding: 1.5rem 2rem;
+    background-color: rgba(0, 0, 0, 0.9); /* Slight transparency to match the gradient */
     border-bottom: none;
     position: relative;
 }
 
 .logo img {
-    height: 40px; /* Adjust as needed */
-    margin-top: 10px; /* Added margin to lower the logo */
+    height: 35px; /* Adjusted for a better size match */
+    margin-top: 5px; /* Fine-tuned placement */
+    transform: translateY(5px); /* Lower the logo slightly */
 }
 
 .site-navigation ul {
@@ -59,7 +60,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 150px;
+    height: 160px; /* Adjusted height to match the background better */
     z-index: -1;
 }
 

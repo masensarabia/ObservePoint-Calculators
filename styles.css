@@ -189,52 +189,58 @@ button.calculate-btn:hover {
     /* Header */
     .header-inner {
         flex-direction: column;
-        padding: 1rem; /* Adjust padding */
+        padding: 1rem; 
         text-align: center;
+        position: relative;
+        z-index: 2; /* Ensure header is above other content */
     }
 
     .site-navigation {
-        margin-top: 1rem; /* Add margin to separate from the logo */
-        width: 100%; /* Ensure it takes full width */
+        margin-top: 1rem;
+        width: 100%;
     }
 
     .site-navigation ul {
-        flex-direction: column; /* Stack navigation links vertically */
+        flex-direction: column;
         padding: 0;
         margin: 0;
-        width: 100%; /* Ensure full width */
+        width: 100%;
     }
 
     .site-navigation ul li {
-        margin: 10px 0; /* Add space between links */
+        margin: 10px 0;
+        text-align: center;
     }
 
+    /* This prevents overlap by pushing content below the header */
     .description-section {
-        padding: 1rem; /* Adjust padding inside the box */
-        margin-top: 2rem; /* Increase top margin to create space between navigation and content */
+        clear: both;
+        padding: 1rem;
+        margin-top: 4rem; /* Ensure enough space between header and content */
     }
 
     .calculator-container {
-        padding: 1rem; /* Adjust padding for smaller screens */
-        margin: 1.5rem auto;
+        padding: 1rem;
+        margin: 2rem auto;
     }
 
     .calculator-grid {
-        flex-direction: column; /* Stack the cards vertically */
-        gap: 1rem; /* Reduce gap between cards */
+        flex-direction: column;
+        gap: 1rem;
     }
 
     h1, h2 {
-        font-size: 1.5rem; /* Adjust font size for headings */
+        font-size: 1.5rem;
     }
 
     p, label {
-        font-size: 1rem; /* Adjust font size for text */
+        font-size: 1rem;
     }
 
     button.calculate-btn {
-        font-size: 1rem; /* Adjust button font size */
-        padding: 0.75rem; /* Adjust button padding */
+        font-size: 1rem;
+        padding: 0.75rem;
     }
 }
+
 

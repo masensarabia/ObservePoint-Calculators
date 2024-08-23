@@ -11,7 +11,7 @@ body {
     background-position: right bottom, left;
     background-attachment: fixed;
     font-weight: 400;
-    line-height: 1.6; /* Increase line-height for better readability */
+    line-height: 1.6; /* Keeps overall line-height comfortable */
 }
 
 /* Header Styles */
@@ -19,7 +19,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5rem 1rem 3rem;
+    padding: 1rem 5rem 1rem 3rem; /* Original padding */
     background: linear-gradient(to bottom, #000000 0%, #1f1f1f 100%);
     border-bottom: none;
     position: relative;
@@ -27,7 +27,7 @@ body {
 }
 
 .site-navigation {
-    margin-left: 4rem;
+    margin-left: 4rem; /* Original margin */
 }
 
 .logo img {
@@ -79,14 +79,15 @@ body {
 .description-section {
     border: 2px solid #F1CD14;
     border-radius: 10px;
-    padding: 2rem; /* Increase padding inside the box */
-    margin: 2.5rem auto; /* Increase margin to create more space */
+    padding: 1.5rem; /* Adjusted padding inside the box */
+    margin: 2rem auto; /* Margin around the box */
     max-width: 1000px;
     background-color: transparent;
 }
 
 .description-section p {
-    margin-bottom: 1.2rem; /* Add space between paragraphs */
+    margin-bottom: 1rem; /* Adjust space between paragraphs */
+    line-height: 1.4; /* Adjust space between lines of text */
 }
 
 /* Titles */
@@ -94,7 +95,7 @@ h1, h2 {
     font-weight: 400;
     color: #F1CD14;
     text-transform: uppercase;
-    margin-bottom: 1.5rem; /* Increase bottom margin for better spacing */
+    margin-bottom: 1rem;
     text-align: center;
 }
 
@@ -106,8 +107,8 @@ h1, h2 {
 /* Calculator Container */
 .calculator-container {
     max-width: 1000px;
-    margin: 3rem auto; /* Increase margin to create more space */
-    padding: 2.5rem;
+    margin: 2rem auto;
+    padding: 2rem;
     background-color: rgba(0, 0, 0, 0.9);
     border-radius: 10px;
 }
@@ -116,13 +117,13 @@ h1, h2 {
 .calculator-grid {
     display: flex;
     justify-content: space-between;
-    gap: 2.5rem; /* Increase gap between calculator cards */
+    gap: 2rem;
 }
 
 /* Calculator Card */
 .calculator-card {
     background-color: #1a1a1a;
-    padding: 2rem; /* Increase padding inside each card */
+    padding: 1.5rem;
     border-radius: 8px;
     width: 48%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -130,15 +131,15 @@ h1, h2 {
 
 label {
     display: block;
-    margin-bottom: 1rem; /* Increase margin below labels */
+    margin-bottom: 0.5rem;
     font-size: 1rem;
     font-weight: 400;
 }
 
 input[type="number"] {
     width: 100%;
-    padding: 0.75rem; /* Increase padding for input fields */
-    margin-bottom: 1.5rem; /* Increase margin between input fields */
+    padding: 0.5rem;
+    margin-bottom: 1rem;
     border-radius: 5px;
     border: 1px solid #666;
     background-color: #333;
@@ -159,7 +160,7 @@ button.calculate-btn {
     font-size: 1.2rem;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 2rem; /* Increase margin above button */
+    margin-top: 1.5rem;
     font-weight: 700;
 }
 
@@ -168,19 +169,18 @@ button.calculate-btn:hover {
 }
 
 .results-summary {
-    margin-top: 3rem; /* Increase margin above the results section */
+    margin-top: 2rem;
 }
 
 .results-summary h2 {
     font-size: 1.5rem;
     color: #F1CD14;
     font-weight: 400;
-    margin-bottom: 1.5rem; /* Increase bottom margin for spacing */
 }
 
 .results-summary p {
     font-size: 1.2rem;
-    margin: 0.75rem 0; /* Increase margin between paragraphs */
+    margin: 0.5rem 0;
     font-weight: 400;
 }
 

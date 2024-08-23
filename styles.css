@@ -25,7 +25,7 @@ body {
 }
 
 .site-navigation {
-    margin-left: auto; /* Pushes the navigation links to the right */
+    margin-left: 2rem; /* Pushes the navigation links to the right */
 }
 
 .header-inner {

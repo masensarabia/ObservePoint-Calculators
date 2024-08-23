@@ -99,6 +99,10 @@ h1, h2 {
     text-align: center;
 }
 
+h1 {
+    text-decoration: underline; /* Underline main heading */
+}
+
 /* Bold Styling Only for the Specific Heading */
 .calculator-container h1 {
     font-weight: 700;
@@ -194,29 +198,19 @@ button.calculate-btn:hover {
     background-color: transparent; /* Background color */
 }
 
-.content-section h1, 
-.content-section h2, 
-.content-section h3, 
-.content-section p {
-    color: #F1CD14; /* Set the text color to yellow */
-}
-
 .content-section h1 {
-    font-size: 2rem; /* Font size for the main heading */
-    margin-bottom: 1.5rem; /* Space below the heading */
+    color: #F1CD14; /* Yellow */
+    text-decoration: underline; /* Underline */
+    text-align: center; /* Center align */
 }
 
-.content-section h2 {
-    font-size: 1.75rem; /* Font size for subheadings */
-    margin-bottom: 1.25rem; /* Space below the subheading */
-}
-
+.content-section h2, 
 .content-section h3 {
-    font-size: 1.5rem; /* Font size for sub-subheadings */
-    margin-bottom: 1rem; /* Space below the sub-subheading */
+    color: #F1CD14; /* Yellow */
 }
 
 .content-section p {
+    color: #f0f0f0; /* White for detailed text */
     font-size: 1rem; /* Font size for paragraphs */
     margin-bottom: 0.75rem; /* Space below the paragraphs */
     line-height: 1.6; /* Line height for paragraphs */

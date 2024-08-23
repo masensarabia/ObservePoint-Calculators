@@ -28,6 +28,11 @@ body {
     margin-left: auto; /* Pushes the navigation links to the right */
 }
 
+.header-inner {
+    padding: 1rem 5rem 1rem 3rem; /* Adjusted right padding to push the navigation links to the right */
+}
+
+
 
 .logo img {
     height: 35px; /* Adjust as needed */

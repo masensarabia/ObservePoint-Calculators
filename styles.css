@@ -80,7 +80,7 @@ body {
     padding: 1.5rem; /* Padding inside the box */
     margin: 2rem auto; /* Center the box with some margin */
     max-width: 1000px; /* Set max width for the box */
-    background-color: rgba(0, 0, 0, 0.7); /* Optional: Add background color for contrast */
+    background-color: transparent; /* Transparent background */
 }
 
 /* Titles */

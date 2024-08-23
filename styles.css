@@ -180,8 +180,9 @@ button.calculate-btn {
 
 button.calculate-btn:hover {
     background-color: #F1CD14; /* Yellow background on hover */
-    color: transparent; /* Transparent text on hover */
+    color: #0c0c0c; /* Black text on hover */
 }
+
 
 
 

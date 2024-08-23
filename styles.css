@@ -201,7 +201,7 @@ button.calculate-btn:hover {
     }
 
     .site-navigation ul li {
-        margin: 0px 6;
+        margin: -10px 0;
     }
 
     .description-section {

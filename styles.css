@@ -109,9 +109,10 @@ h1, h2 {
     max-width: 1000px;
     margin: 2rem auto;
     padding: 2rem;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, #1f1f1f 100%); /* Apply gradient */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); /* Black to transparent gradient */
     border-radius: 10px;
 }
+
 
 /* Calculator Grid */
 .calculator-grid {

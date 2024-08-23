@@ -192,8 +192,8 @@ button.calculate-btn:hover {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center; /* Center the header content */
-        padding: 1rem; /* Simplified padding */
+        justify-content: center;
+        padding: 1.5rem; /* Adjusted padding */
         text-align: center;
         background: linear-gradient(to bottom, #000000 0%, #1f1f1f 100%);
         width: 100%;
@@ -202,9 +202,9 @@ button.calculate-btn:hover {
 
     /* Logo */
     .logo img {
-        max-width: 100%;
-        height: auto; /* Ensure logo scales properly */
-        margin-bottom: 1rem; /* Space between logo and navigation */
+        width: 80%; /* Scales logo to fit mobile screens while remaining visible */
+        height: auto;
+        margin-bottom: 1rem;
     }
 
     /* Navigation */
@@ -222,7 +222,7 @@ button.calculate-btn:hover {
     }
 
     .site-navigation ul li {
-        margin: 5px 0;
+        margin: 8px 0;
         text-align: center;
     }
 
@@ -230,6 +230,12 @@ button.calculate-btn:hover {
         color: #B1BAC3;
         text-decoration: none;
         font-size: 1rem;
+    }
+
+    /* Ensure full-width header background */
+    header {
+        width: 100%;
+        background: linear-gradient(to bottom, #000000 0%, #1f1f1f 100%);
     }
 
     /* Center and Adjust the Yellow Box */
@@ -264,3 +270,4 @@ button.calculate-btn:hover {
         padding: 0.75rem;
     }
 }
+

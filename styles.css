@@ -12,16 +12,19 @@ body {
     background-attachment: fixed;
 }
 
+/* Header Styles */
 .header-inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background: linear-gradient(to bottom, #000000 0%, #333333 100%); /* Gradient background from black to dark gray */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 60%, rgba(31, 31, 31, 1) 100%);
+    border-bottom: none;
 }
 
 .logo img {
     height: 40px;
+    margin-left: 1rem; /* Adjusts the placement of the logo */
 }
 
 .site-navigation ul {
@@ -43,18 +46,22 @@ body {
     font-size: 1rem;
 }
 
+/* Remove underlines and add color highlight for active link */
 .site-navigation ul li.active-link a {
-    color: #F1CD14;
+    color: #F1CD14; /* Yellow color for active link */
+    text-decoration: none;
 }
 
+/* Titles */
 h1, h2 {
     color: #F1CD14;
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 1rem;
-    text-align: center;
+    text-align: center; /* Centers the titles h1 and h2 */
 }
 
+/* Calculator Container */
 .calculator-container {
     max-width: 1000px;
     margin: 2rem auto;
@@ -63,6 +70,7 @@ h1, h2 {
     border-radius: 10px;
 }
 
+/* Calculator Grid */
 .calculator-grid {
     display: flex;
     justify-content: space-between;
@@ -77,6 +85,7 @@ h1, h2 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+/* Input fields */
 label {
     display: block;
     margin-bottom: 0.5rem;
@@ -98,6 +107,7 @@ input[type="number"]:focus {
     border-color: #F1CD14;
 }
 
+/* Button Styles */
 button.calculate-btn {
     width: 100%;
     padding: 1rem;
@@ -115,6 +125,7 @@ button.calculate-btn:hover {
     background-color: #e5b812;
 }
 
+/* Results Summary */
 .results-summary {
     margin-top: 2rem;
 }

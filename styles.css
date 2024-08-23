@@ -155,22 +155,24 @@ input[type="number"]:focus {
     border-color: #F1CD14;
 }
 
+/* Button Styles */
 button.calculate-btn {
-    width: 100%;
+    color: #F1CD14; /* Yellow lettering */
+    background-color: transparent; /* Transparent background */
+    border: 2px solid #F1CD14; /* Yellow outline */
     padding: 1rem;
-    background-color: #F1CD14;
-    border: none;
-    color: #0c0c0c;
     font-size: 1.2rem;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 1.5rem;
     font-weight: 700;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
 }
 
 button.calculate-btn:hover {
-    background-color: #e5b812;
+    background-color: #F1CD14; /* Yellow background on hover */
+    color: #0c0c0c; /* Black text on hover */
 }
+
 
 .results-summary {
     margin-top: 2rem;

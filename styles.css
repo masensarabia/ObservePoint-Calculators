@@ -25,9 +25,9 @@ body {
 }
 
 .logo img {
-    height: 40px; /* Adjust as needed */
-    margin-top: 10px; /* Added margin to lower the logo */
-    margin-left: 20px; /* Adjust left margin */
+    height: 30px; /* Adjust as needed */
+    margin-top: 8px; /* Added margin to lower the logo */
+    margin-left: 16px; /* Adjust left margin */
 }
 
 /* Site Navigation Styles */

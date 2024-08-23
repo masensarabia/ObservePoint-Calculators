@@ -1,6 +1,6 @@
 /* General Styles */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Reverted to the original font */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #f0f0f0;
     background-color: #1f1f1f;
     margin: 0;
@@ -10,7 +10,8 @@ body {
     background-repeat: no-repeat;
     background-position: right bottom, left;
     background-attachment: fixed;
-    font-weight: 400; /* Set default font weight to normal */
+    font-weight: 400;
+    line-height: 1.6; /* Increase line-height for better readability */
 }
 
 /* Header Styles */
@@ -18,21 +19,21 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5rem 1rem 3rem; /* Adjusted padding */
+    padding: 1rem 5rem 1rem 3rem;
     background: linear-gradient(to bottom, #000000 0%, #1f1f1f 100%);
     border-bottom: none;
     position: relative;
-    height: 100px; /* Adjusted height to match the www site */
+    height: 100px;
 }
 
 .site-navigation {
-    margin-left: 4rem; /* Pushes the navigation links to the right */
+    margin-left: 4rem;
 }
 
 .logo img {
-    height: 35px; /* Adjust as needed */
-    margin-top: 8px; /* Added margin to lower the logo */
-    margin-left: 16px; /* Adjust left margin */
+    height: 35px;
+    margin-top: 8px;
+    margin-left: 16px;
 }
 
 /* Site Navigation Styles */
@@ -43,7 +44,7 @@ body {
     width: auto;
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif; /* Keep Poppins for header links */
+    font-family: 'Poppins', sans-serif;
 }
 
 .site-navigation ul li {
@@ -54,13 +55,13 @@ body {
     color: #B1BAC3;
     text-decoration: none;
     font-size: 0.9rem;
-    font-weight: 400; /* Ensure normal font weight for links */
+    font-weight: 400;
 }
 
 .site-navigation ul li.active-link a {
-    color: #F1CD14; /* Yellow color for active link */
+    color: #F1CD14;
     text-decoration: none;
-    font-weight: 400; /* No bold for active link */
+    font-weight: 400;
 }
 
 /* Header Gradient */
@@ -76,33 +77,37 @@ body {
 
 /* Instruction Section Box */
 .description-section {
-    border: 2px solid #F1CD14; /* Yellow border */
-    border-radius: 10px; /* Rounded edges */
-    padding: 1.5rem; /* Padding inside the box */
-    margin: 2rem auto; /* Center the box with some margin */
-    max-width: 1000px; /* Set max width for the box */
-    background-color: transparent; /* Transparent background */
+    border: 2px solid #F1CD14;
+    border-radius: 10px;
+    padding: 2rem; /* Increase padding inside the box */
+    margin: 2.5rem auto; /* Increase margin to create more space */
+    max-width: 1000px;
+    background-color: transparent;
+}
+
+.description-section p {
+    margin-bottom: 1.2rem; /* Add space between paragraphs */
 }
 
 /* Titles */
 h1, h2 {
-    font-weight: 400; /* Default font weight for all headings */
+    font-weight: 400;
     color: #F1CD14;
     text-transform: uppercase;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem; /* Increase bottom margin for better spacing */
     text-align: center;
 }
 
 /* Bold Styling Only for the Specific Heading */
 .calculator-container h1 {
-    font-weight: 700; /* Make only this heading bold */
+    font-weight: 700;
 }
 
 /* Calculator Container */
 .calculator-container {
     max-width: 1000px;
-    margin: 2rem auto;
-    padding: 2rem;
+    margin: 3rem auto; /* Increase margin to create more space */
+    padding: 2.5rem;
     background-color: rgba(0, 0, 0, 0.9);
     border-radius: 10px;
 }
@@ -111,13 +116,13 @@ h1, h2 {
 .calculator-grid {
     display: flex;
     justify-content: space-between;
-    gap: 2rem;
+    gap: 2.5rem; /* Increase gap between calculator cards */
 }
 
 /* Calculator Card */
 .calculator-card {
     background-color: #1a1a1a;
-    padding: 1.5rem;
+    padding: 2rem; /* Increase padding inside each card */
     border-radius: 8px;
     width: 48%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -125,15 +130,15 @@ h1, h2 {
 
 label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem; /* Increase margin below labels */
     font-size: 1rem;
-    font-weight: 400; /* Normal font weight */
+    font-weight: 400;
 }
 
 input[type="number"] {
     width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
+    padding: 0.75rem; /* Increase padding for input fields */
+    margin-bottom: 1.5rem; /* Increase margin between input fields */
     border-radius: 5px;
     border: 1px solid #666;
     background-color: #333;
@@ -154,8 +159,8 @@ button.calculate-btn {
     font-size: 1.2rem;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 1.5rem;
-    font-weight: 700; /* Ensure button text is bold */
+    margin-top: 2rem; /* Increase margin above button */
+    font-weight: 700;
 }
 
 button.calculate-btn:hover {
@@ -163,19 +168,20 @@ button.calculate-btn:hover {
 }
 
 .results-summary {
-    margin-top: 2rem;
+    margin-top: 3rem; /* Increase margin above the results section */
 }
 
 .results-summary h2 {
     font-size: 1.5rem;
     color: #F1CD14;
-    font-weight: 400; /* Normal font weight */
+    font-weight: 400;
+    margin-bottom: 1.5rem; /* Increase bottom margin for spacing */
 }
 
 .results-summary p {
     font-size: 1.2rem;
-    margin: 0.5rem 0;
-    font-weight: 400; /* Normal font weight */
+    margin: 0.75rem 0; /* Increase margin between paragraphs */
+    font-weight: 400;
 }
 
 /* Media Queries */

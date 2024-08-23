@@ -1,6 +1,6 @@
 /* General Styles */
 body {
-    font-family: 'Poppins', sans-serif; /* Updated to use the same font as header links */
+    font-family: 'Poppins', sans-serif; /* Consistent font for the entire page */
     color: #f0f0f0;
     background-color: #1f1f1f;
     margin: 0;
@@ -10,6 +10,7 @@ body {
     background-repeat: no-repeat;
     background-position: right bottom, left;
     background-attachment: fixed;
+    font-weight: 400; /* Set default font weight to normal */
 }
 
 /* Header Styles */
@@ -42,7 +43,6 @@ body {
     width: auto;
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif; /* Updated font-family */
 }
 
 .site-navigation ul li {
@@ -53,13 +53,13 @@ body {
     color: #B1BAC3;
     text-decoration: none;
     font-size: 0.9rem;
-    font-weight: 500; /* Matches medium weight similar to Texta Alt Medium */
+    font-weight: 400; /* Ensure normal font weight for links */
 }
 
 .site-navigation ul li.active-link a {
     color: #F1CD14; /* Yellow color for active link */
     text-decoration: none;
-    font-weight: normal; /* No bold for active link */
+    font-weight: 400; /* No bold for active link */
 }
 
 /* Header Gradient */
@@ -85,11 +85,16 @@ body {
 
 /* Titles */
 h1, h2 {
+    font-weight: 400; /* Default font weight for all headings */
     color: #F1CD14;
     text-transform: uppercase;
-    font-weight: 700;
     margin-bottom: 1rem;
     text-align: center;
+}
+
+/* Bold Styling Only for the Specific Heading */
+.calculator-container h1 {
+    font-weight: 700; /* Make only this heading bold */
 }
 
 /* Calculator Container */
@@ -121,6 +126,7 @@ label {
     display: block;
     margin-bottom: 0.5rem;
     font-size: 1rem;
+    font-weight: 400; /* Normal font weight */
 }
 
 input[type="number"] {
@@ -148,7 +154,7 @@ button.calculate-btn {
     border-radius: 5px;
     cursor: pointer;
     margin-top: 1.5rem;
-    font-weight: 700;
+    font-weight: 700; /* Ensure button text is bold */
 }
 
 button.calculate-btn:hover {
@@ -162,11 +168,13 @@ button.calculate-btn:hover {
 .results-summary h2 {
     font-size: 1.5rem;
     color: #F1CD14;
+    font-weight: 400; /* Normal font weight */
 }
 
 .results-summary p {
     font-size: 1.2rem;
     margin: 0.5rem 0;
+    font-weight: 400; /* Normal font weight */
 }
 
 /* Media Queries */

@@ -38,7 +38,7 @@ body {
     width: auto;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Match the font */
+    font-family: 'Poppins', sans-serif; /* Updated font-family */
 }
 
 .site-navigation ul li {
@@ -49,6 +49,7 @@ body {
     color: #B1BAC3;
     text-decoration: none;
     font-size: 1rem;
+    font-weight: 500; /* Matches medium weight similar to Texta Alt Medium */
 }
 
 .site-navigation ul li.active-link a {

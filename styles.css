@@ -1,6 +1,6 @@
 /* General Styles */
 body {
-    font-family: 'Poppins', sans-serif; /* Consistent font for the entire page */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Reverted to the original font */
     color: #f0f0f0;
     background-color: #1f1f1f;
     margin: 0;
@@ -43,6 +43,7 @@ body {
     width: auto;
     margin: 0;
     padding: 0;
+    font-family: 'Poppins', sans-serif; /* Keep Poppins for header links */
 }
 
 .site-navigation ul li {

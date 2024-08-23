@@ -17,17 +17,16 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 2rem; /* Padding to control the space inside the header */
-    background-color: rgba(0, 0, 0, 0.9); /* Darker background for header */
+    padding: 2rem 3rem; /* Adjusted padding for better logo placement */
+    background-color: rgba(0, 0, 0, 0.8);
+    border-bottom: none;
     position: relative;
-    height: 120px; /* Adjusted height for better logo placement */
+    height: 100px; /* Increase the header height for better logo placement */
 }
 
 .logo img {
-    height: 50px; /* Standard logo size */
-    margin-top: 0; /* Remove unnecessary margin */
-    align-self: center; /* Center vertically */
-    transform: translateY(0); /* Reset any transform */
+    height: 36px; /* Adjusted height to match www.observepoint.com */
+    margin-top: 20px; /* Fine-tuned margin to lower the logo */
 }
 
 .site-navigation ul {

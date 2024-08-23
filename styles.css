@@ -212,6 +212,11 @@ button.calculate-btn:hover {
         padding: 0.5rem 0; /* Add padding for easier tapping */
     }
 
+    .description-section {
+        padding: 1rem; /* Adjust padding inside the box */
+        margin: 2.5rem auto; /* Increase top margin to create space between navigation and content */
+    }
+
     .calculator-container {
         padding: 1rem; /* Adjust padding for smaller screens */
         margin: 1.5rem auto;
@@ -220,11 +225,6 @@ button.calculate-btn:hover {
     .calculator-grid {
         flex-direction: column; /* Stack the cards vertically */
         gap: 1rem; /* Reduce gap between cards */
-    }
-
-    .description-section {
-        padding: 1rem; /* Adjust padding inside the box */
-        margin: 1.5rem auto; /* Adjust margin */
     }
 
     h1, h2 {
@@ -241,4 +241,3 @@ button.calculate-btn:hover {
     }
 }
 
-}

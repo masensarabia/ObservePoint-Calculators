@@ -193,14 +193,23 @@ button.calculate-btn:hover {
         text-align: center;
     }
 
+    .site-navigation {
+        margin-top: 1rem; /* Add margin to separate from the logo */
+    }
+
     .site-navigation ul {
         flex-direction: column; /* Stack navigation links vertically */
         padding: 0;
-        margin-top: 1rem;
+        margin: 0;
     }
 
     .site-navigation ul li {
         margin: 10px 0; /* Add space between links */
+    }
+
+    .site-navigation ul li a {
+        font-size: 1rem; /* Ensure links are large enough for touch */
+        padding: 0.5rem 0; /* Add padding for easier tapping */
     }
 
     .calculator-container {
@@ -230,4 +239,6 @@ button.calculate-btn:hover {
         font-size: 1rem; /* Adjust button font size */
         padding: 0.75rem; /* Adjust button padding */
     }
+}
+
 }

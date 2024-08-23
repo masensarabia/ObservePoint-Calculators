@@ -113,7 +113,6 @@ h1, h2 {
     border-radius: 10px;
 }
 
-
 /* Calculator Grid */
 .calculator-grid {
     display: flex;
@@ -185,6 +184,43 @@ button.calculate-btn:hover {
     font-weight: 400;
 }
 
+/* Content Section Styles */
+.content-section {
+    border: 2px solid #F1CD14; /* Yellow border */
+    border-radius: 10px;       /* Rounded corners */
+    padding: 1.5rem;           /* Padding inside the box */
+    margin: 2rem auto;         /* Margin around the box */
+    max-width: 1000px;         /* Maximum width */
+    background-color: transparent; /* Background color */
+}
+
+.content-section h1, 
+.content-section h2, 
+.content-section h3, 
+.content-section p {
+    color: #F1CD14; /* Set the text color to yellow */
+}
+
+.content-section h1 {
+    font-size: 2rem; /* Font size for the main heading */
+    margin-bottom: 1.5rem; /* Space below the heading */
+}
+
+.content-section h2 {
+    font-size: 1.75rem; /* Font size for subheadings */
+    margin-bottom: 1.25rem; /* Space below the subheading */
+}
+
+.content-section h3 {
+    font-size: 1.5rem; /* Font size for sub-subheadings */
+    margin-bottom: 1rem; /* Space below the sub-subheading */
+}
+
+.content-section p {
+    font-size: 1rem; /* Font size for paragraphs */
+    margin-bottom: 0.75rem; /* Space below the paragraphs */
+    line-height: 1.6; /* Line height for paragraphs */
+}
 
 /* Media Queries for Mobile Devices */
 @media screen and (max-width: 768px) {
@@ -235,4 +271,3 @@ button.calculate-btn:hover {
         padding: 0.75rem;
     }
 }
- 

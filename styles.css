@@ -1,6 +1,6 @@
 /* General Styles */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif; /* Updated to use the same font as header links */
     color: #f0f0f0;
     background-color: #1f1f1f;
     margin: 0;

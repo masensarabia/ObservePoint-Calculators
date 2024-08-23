@@ -62,6 +62,27 @@
         <button class="calculate-btn" onclick="calculateCMPImplementationCosts()">Calculate</button>
     </div>
 
+    <div class="content-section">
+        <h1>Introduction to Data Privacy Violations</h1>
+        <h2>Why Compliance Matters</h2>
+        <p>Data privacy laws are designed to protect consumers' personal information. Non-compliance with these laws can lead to significant financial penalties, damage to reputation, and loss of customer trust. Understanding the different ways in which your company could violate these laws is essential for mitigating risks.</p>
+
+        <h2>Common Ways to Violate Data Privacy Laws</h2>
+        <h3>Tracking Data Without Consent</h3>
+        <p>Deploying an analytics pixel or cookie on a website that tracks users without obtaining their explicit opt-in consent. This is required under laws like the GDPR and CCPA.</p>
+        <p>Source: California Consumer Privacy Act (CCPA) Text, State of California Legislature, https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?division=3.&part=4.&lawCode=CIV&title=1.81.5</p>
+
+        <h3>Not Honoring Opt-Out Requests</h3>
+        <p>Continuing to process or sell a consumer’s personal data after they have opted out. This is required under laws like the Virginia Consumer Data Protection Act (VCDPA).</p>
+        <p>Source: Virginia Consumer Data Protection Act (VCDPA), Commonwealth of Virginia, https://law.lis.virginia.gov/vacode/title59.1/chapter53/</p>
+
+        <h3>Inadequate Security Measures Leading to Data Breach</h3>
+        <p>Failing to secure personal data, leading to a breach where unauthorized individuals access the data. This is a violation under laws like GDPR and CCPA.</p>
+        <p>Source: General Data Protection Regulation (GDPR), European Commission, https://ec.europa.eu/info/law/law-topic/data-protection_en</p>
+
+        <!-- Add more sections as needed following this format -->
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const currentPath = window.location.pathname;
@@ -74,6 +95,10 @@
                 }
             });
         });
+
+        function calculateCMPImplementationCosts() {
+            // Existing script code here
+        }
     </script>
 </body>
 </html>

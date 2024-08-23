@@ -184,29 +184,32 @@ button.calculate-btn:hover {
     font-weight: 400;
 }
 
+
 /* Media Queries for Mobile Devices */
 @media screen and (max-width: 768px) {
     /* Header */
     .header-inner {
+        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center; /* Center the header content */
         padding: 1rem; /* Simplified padding */
         text-align: center;
         background: linear-gradient(to bottom, #000000 0%, #1f1f1f 100%);
-        width: 100%; /* Ensure full width */
+        width: 100%;
         box-sizing: border-box;
     }
 
     /* Logo */
     .logo img {
-        height: auto; /* Allow the logo to scale naturally */
-        margin-bottom: 1rem; /* Add some space between logo and navigation */
+        max-width: 100%;
+        height: auto; /* Ensure logo scales properly */
+        margin-bottom: 1rem; /* Space between logo and navigation */
     }
 
     /* Navigation */
     .site-navigation {
-        margin-top: 0.5rem;
+        margin-top: 0;
         width: 100%;
     }
 
@@ -219,7 +222,7 @@ button.calculate-btn:hover {
     }
 
     .site-navigation ul li {
-        margin: 10px 0;
+        margin: 5px 0;
         text-align: center;
     }
 
@@ -237,7 +240,7 @@ button.calculate-btn:hover {
         text-align: center;
     }
 
-    /* Adjustments for the Calculator Section */
+    /* Calculator Section */
     .calculator-container {
         padding: 1rem;
         margin: 2rem auto;

@@ -17,19 +17,17 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 2rem; /* Increased padding for logo placement */
-    background-color: rgba(0, 0, 0, 0.8);
-    border-bottom: none;
+    padding: 1.5rem 2rem; /* Padding to control the space inside the header */
+    background-color: rgba(0, 0, 0, 0.9); /* Darker background for header */
     position: relative;
-    height: 100px; /* Adjust this to increase the header height */
+    height: 120px; /* Adjusted height for better logo placement */
 }
 
 .logo img {
-    height: 50px; /* Adjust as needed */
-    margin-top: 15px; /* Adjusted margin to lower the logo */
-    position: relative;
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Adjust for perfect centering */
+    height: 50px; /* Standard logo size */
+    margin-top: 0; /* Remove unnecessary margin */
+    align-self: center; /* Center vertically */
+    transform: translateY(0); /* Reset any transform */
 }
 
 .site-navigation ul {
@@ -63,7 +61,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 200px; /* Adjusted for better background coverage */
+    height: 150px;
     z-index: -1;
 }
 

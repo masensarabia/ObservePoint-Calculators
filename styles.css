@@ -17,25 +17,28 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 3rem; /* Adjusted padding for better logo placement */
-    background-color: rgba(0, 0, 0, 0.8);
+    padding: 1rem 2rem;
+    background: linear-gradient(to bottom, #000000 0%, #1f1f1f 100%);
     border-bottom: none;
     position: relative;
-    height: 100px; /* Increase the header height for better logo placement */
+    height: 100px; /* Adjusted height to match the www site */
 }
 
 .logo img {
-    height: 36px; /* Adjusted height to match www.observepoint.com */
-    margin-top: 20px; /* Fine-tuned margin to lower the logo */
+    height: 40px; /* Adjust as needed */
+    margin-top: 10px; /* Added margin to lower the logo */
+    margin-left: 20px; /* Adjust left margin */
 }
 
+/* Site Navigation Styles */
 .site-navigation ul {
     list-style: none;
     display: flex;
-    justify-content: center;
-    width: 100%;
+    justify-content: flex-end;
+    width: auto;
     margin: 0;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Match the font */
 }
 
 .site-navigation ul li {
@@ -51,6 +54,7 @@ body {
 .site-navigation ul li.active-link a {
     color: #F1CD14; /* Yellow color for active link */
     text-decoration: none;
+    font-weight: bold; /* Match weight */
 }
 
 /* Header Gradient */
@@ -60,7 +64,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 150px;
+    height: 200px;
     z-index: -1;
 }
 

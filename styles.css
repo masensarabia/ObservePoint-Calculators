@@ -184,25 +184,50 @@ button.calculate-btn:hover {
     font-weight: 400;
 }
 
-/* Media Queries */
+/* Media Queries for Mobile Devices */
 @media screen and (max-width: 768px) {
-    .calculator-grid {
-        flex-direction: column;
-    }
-
-    .calculator-card {
-        width: 100%;
-    }
-
+    /* Header */
     .header-inner {
-        flex-direction: column;
+        flex-direction: column; /* Stack logo and navigation */
+        padding: 1rem; /* Adjust padding */
+        text-align: center;
     }
 
     .site-navigation ul {
-        flex-direction: column;
+        flex-direction: column; /* Stack navigation links vertically */
+        padding: 0;
+        margin-top: 1rem;
     }
 
     .site-navigation ul li {
-        margin: 10px 0;
+        margin: 10px 0; /* Add space between links */
+    }
+
+    .calculator-container {
+        padding: 1rem; /* Adjust padding for smaller screens */
+        margin: 1.5rem auto;
+    }
+
+    .calculator-grid {
+        flex-direction: column; /* Stack the cards vertically */
+        gap: 1rem; /* Reduce gap between cards */
+    }
+
+    .description-section {
+        padding: 1rem; /* Adjust padding inside the box */
+        margin: 1.5rem auto; /* Adjust margin */
+    }
+
+    h1, h2 {
+        font-size: 1.5rem; /* Adjust font size for headings */
+    }
+
+    p, label {
+        font-size: 1rem; /* Adjust font size for text */
+    }
+
+    button.calculate-btn {
+        font-size: 1rem; /* Adjust button font size */
+        padding: 0.75rem; /* Adjust button padding */
     }
 }

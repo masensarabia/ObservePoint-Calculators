@@ -202,40 +202,38 @@ button.calculate-btn:hover {
     font-weight: 400;
 }
 
-/* Key Terms Section - Compact and Transparent Styles */
 .key-terms-section {
-    border: 2px solid #ffffff; /* White border */
-    border-radius: 10px;       /* Rounded corners */
-    padding: 1rem;             /* Reduced padding inside the box */
-    margin: 1.5rem auto;       /* Reduced margin around the box */
-    max-width: 800px;          /* Same width */
-    background-color: rgba(31, 31, 31, 0.9); /* Transparent background */
-}
-
-/* For the white lines under the headings */
-.terms-section h2 {
-    color: white; /* Title color */
-    border-bottom: 2px solid white; /* Adds the white line */
-    padding-bottom: 0.5rem; /* Adds space between the title and the line */
-    margin-bottom: 1rem; /* Adds space below the line */
-}
-
-.terms-section {
-    background-color: transparent; /* Ensure the background is transparent */
+    background-color: transparent; /* Transparent background */
     border: 2px solid white; /* White border */
-    padding: 1.5rem; /* Padding inside the box */
-    margin: 2rem auto; /* Margin around the box */
-    max-width: 1000px; /* Aligns with other boxes on the page */
+    padding: 1rem; /* Smaller padding to reduce height */
+    margin: 2rem auto; /* Centered and consistent margin */
+    max-width: 1000px; /* Consistent width with other sections */
+    font-size: 0.9rem; /* Smaller font size for this section */
 }
 
-/* Key Takeaway Styling */
-.terms-section p strong {
-    color: white; /* Ensure 'Key Takeaway' is white */
+.key-terms-section h2 {
+    color: white; /* White titles */
+    font-size: 1.2rem; /* Slightly smaller title size */
+    text-transform: uppercase; /* Consistent text style */
+    margin-bottom: 1rem; /* Spacing below title */
+    text-align: center; /* Center align the title */
 }
 
-/* Ensures the text inside the section is smaller */
-.terms-section p {
-    font-size: 0.9rem; /* Slightly smaller font size */
+.key-terms-section p {
+    color: #F1CD14; /* Yellow text */
+    margin-bottom: 1rem; /* Space between paragraphs */
+    line-height: 1.5; /* Comfortable line height */
+}
+
+.key-terms-section .key-takeaway {
+    color: white; /* White text for Key Takeaway */
+    font-weight: bold; /* Bold text */
+}
+
+.key-terms-section hr {
+    border: none; 
+    border-top: 1px solid white; /* White horizontal line */
+    margin: 1.5rem 0; /* Consistent spacing around the line */
 }
 
 

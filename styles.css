@@ -214,7 +214,7 @@ button.calculate-btn:hover {
 
 /* Key Terms Typography */
 .key-terms-section h2 {
-    color: rgba(255, 255, 255, 0.2); /* Transparent white */
+    color: #666666; /* Grey color for the main title */
     font-size: 1.8rem; /* Slightly larger header font size */
     text-align: center; /* Center-align the header */
     margin-bottom: 1.5rem;
@@ -222,7 +222,7 @@ button.calculate-btn:hover {
 }
 
 .key-terms-section h3 {
-    color: rgba(255, 255, 255, 0.2); /* Transparent white for subheadings */
+    color: #666666; /* Grey color for subheadings */
     font-size: 1.4rem; /* Slightly larger subheading font size */
     margin-bottom: 0.75rem;
     font-weight: 700; /* Make the subheadings bold */
@@ -235,6 +235,11 @@ button.calculate-btn:hover {
     line-height: 1.8; /* Comfortable line height */
 }
 
+/* Key Takeaway Style */
+.key-terms-section p strong {
+    color: #666666; /* Grey color for the "Key Takeaway:" text */
+}
+
 /* Optional Divider Lines */
 .key-terms-section h3::after {
     content: '';
@@ -244,6 +249,7 @@ button.calculate-btn:hover {
     background: #666666; /* Grey line */
     margin: 0.75rem 0; /* Space around the line */
 }
+
 
 
 

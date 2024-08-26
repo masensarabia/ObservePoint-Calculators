@@ -214,20 +214,22 @@ button.calculate-btn:hover {
 
 /* Key Terms Typography */
 .key-terms-section h2 {
-    color: #FFFFFF; /* White headers */
+    color: rgba(255, 255, 255, 0.2); /* Transparent white */
     font-size: 1.8rem; /* Slightly larger header font size */
-    text-align: left; /* Left-align the header */
+    text-align: center; /* Center-align the header */
     margin-bottom: 1.5rem;
+    font-weight: 700; /* Make the title bold */
 }
 
 .key-terms-section h3 {
-    color: #FFFFFF; /* White for subheadings */
+    color: rgba(255, 255, 255, 0.2); /* Transparent white for subheadings */
     font-size: 1.4rem; /* Slightly larger subheading font size */
     margin-bottom: 0.75rem;
+    font-weight: 700; /* Make the subheadings bold */
 }
 
 .key-terms-section p {
-    color: #666666; /* Grey text for paragraphs */
+    color: #ffffff; /* White text for paragraphs */
     font-size: 1.1rem; /* Slightly larger text */
     margin-bottom: 1rem; /* Increased space between paragraphs */
     line-height: 1.8; /* Comfortable line height */
@@ -242,6 +244,7 @@ button.calculate-btn:hover {
     background: #666666; /* Grey line */
     margin: 0.75rem 0; /* Space around the line */
 }
+
 
 
 

@@ -202,27 +202,47 @@ button.calculate-btn:hover {
     font-weight: 400;
 }
 
-/* Key Terms Section */
+/* Key Terms Section - Updated Styles */
 .key-terms-section {
-    border: 2px solid #F1CD14; /* Yellow border */
+    border: 2px solid #666666; /* Grey border */
     border-radius: 10px;       /* Rounded corners */
     padding: 1.5rem;           /* Padding inside the box */
     margin: 2rem auto;         /* Margin around the box */
     max-width: 1000px;         /* Maximum width */
-    background-color: transparent; /* Background color */
+    background-color: #F1CD14; /* Yellow background */
 }
 
-.key-terms-section h2, 
+/* Key Terms Typography */
+.key-terms-section h2 {
+    color: #FFFFFF; /* White headers */
+    font-size: 1.8rem; /* Slightly larger header font size */
+    text-align: left; /* Left-align the header */
+    margin-bottom: 1.5rem;
+}
+
 .key-terms-section h3 {
-    color: #F1CD14; /* Yellow */
+    color: #FFFFFF; /* White for subheadings */
+    font-size: 1.4rem; /* Slightly larger subheading font size */
+    margin-bottom: 0.75rem;
 }
 
 .key-terms-section p {
-    color: #f0f0f0; /* White for detailed text */
-    font-size: 1rem; /* Font size for paragraphs */
-    margin-bottom: 0.75rem; /* Space below the paragraphs */
-    line-height: 1.6; /* Line height for paragraphs */
+    color: #666666; /* Grey text for paragraphs */
+    font-size: 1.1rem; /* Slightly larger text */
+    margin-bottom: 1rem; /* Increased space between paragraphs */
+    line-height: 1.8; /* Comfortable line height */
 }
+
+/* Optional Divider Lines */
+.key-terms-section h3::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: #666666; /* Grey line */
+    margin: 0.75rem 0; /* Space around the line */
+}
+
 
 
 /* Content Section Styles */

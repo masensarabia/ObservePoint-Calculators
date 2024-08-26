@@ -212,31 +212,32 @@ button.calculate-btn:hover {
     background-color: rgba(31, 31, 31, 0.9); /* Transparent background */
 }
 
-/* Key Terms Typography - Compact */
-.key-terms-section h2 {
-    color: #ffffff; /* White color for the main title */
-    font-size: 1.4rem; /* Smaller header font size */
-    text-align: center; /* Center-align the header */
-    margin-bottom: 0.75rem; /* Reduced bottom margin */
+/* For the white lines under the headings */
+.terms-section h2 {
+    color: white; /* Title color */
+    border-bottom: 2px solid white; /* Adds the white line */
+    padding-bottom: 0.5rem; /* Adds space between the title and the line */
+    margin-bottom: 1rem; /* Adds space below the line */
 }
 
-.key-terms-section h3 {
-    color: #ffffff; /* White color for subheadings */
-    font-size: 1.1rem; /* Smaller subheading font size */
-    margin-bottom: 0.5rem; /* Reduced space below subheadings */
+.terms-section {
+    background-color: transparent; /* Ensure the background is transparent */
+    border: 2px solid white; /* White border */
+    padding: 1.5rem; /* Padding inside the box */
+    margin: 2rem auto; /* Margin around the box */
+    max-width: 1000px; /* Aligns with other boxes on the page */
 }
 
-.key-terms-section p {
-    color: #F1CD14; /* Yellow text for paragraphs */
-    font-size: 0.9rem; /* Smaller text */
-    margin-bottom: 0.5rem; /* Reduced space between paragraphs */
-    line-height: 1.4; /* Reduced line height */
+/* Key Takeaway Styling */
+.terms-section p strong {
+    color: white; /* Ensure 'Key Takeaway' is white */
 }
 
-/* Key Takeaway Style */
-.key-terms-section p strong {
-    color: #F1CD14; /* Yellow color for the "Key Takeaway:" text */
+/* Ensures the text inside the section is smaller */
+.terms-section p {
+    font-size: 0.9rem; /* Slightly smaller font size */
 }
+
 
 
 

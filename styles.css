@@ -208,47 +208,36 @@ button.calculate-btn:hover {
     border-radius: 10px;       /* Rounded corners */
     padding: 1rem;             /* Reduced padding inside the box */
     margin: 1.5rem auto;       /* Reduced margin around the box */
-    max-width: 800px;          /* Smaller maximum width */
-    background-color: rgba(0, 0, 0, 0.7); /* Transparent background to show the default background */
+    max-width: 800px;          /* Same width */
+    background-color: rgba(31, 31, 31, 0.9); /* Transparent background */
 }
 
 /* Key Terms Typography - Compact */
 .key-terms-section h2 {
     color: #ffffff; /* White color for the main title */
-    font-size: 1.5rem; /* Smaller header font size */
+    font-size: 1.4rem; /* Smaller header font size */
     text-align: center; /* Center-align the header */
-    margin-bottom: 1rem; /* Reduced bottom margin */
-    font-weight: 600; /* Slightly less bold */
+    margin-bottom: 0.75rem; /* Reduced bottom margin */
 }
 
 .key-terms-section h3 {
     color: #ffffff; /* White color for subheadings */
-    font-size: 1.2rem; /* Smaller subheading font size */
+    font-size: 1.1rem; /* Smaller subheading font size */
     margin-bottom: 0.5rem; /* Reduced space below subheadings */
-    font-weight: 600; /* Slightly less bold */
 }
 
 .key-terms-section p {
     color: #F1CD14; /* Yellow text for paragraphs */
-    font-size: 1rem; /* Smaller text */
-    margin-bottom: 0.75rem; /* Reduced space between paragraphs */
-    line-height: 1.6; /* Slightly reduced line height */
+    font-size: 0.9rem; /* Smaller text */
+    margin-bottom: 0.5rem; /* Reduced space between paragraphs */
+    line-height: 1.4; /* Reduced line height */
 }
 
-/* Key Takeaway Style - Compact */
+/* Key Takeaway Style */
 .key-terms-section p strong {
     color: #F1CD14; /* Yellow color for the "Key Takeaway:" text */
 }
 
-/* Optional Divider Lines - Compact */
-.key-terms-section h3::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 1px;
-    background: #ffffff; /* White line */
-    margin: 0.5rem 0; /* Reduced space around the line */
-}
 
 
 /* Content Section Styles */

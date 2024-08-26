@@ -205,33 +205,34 @@ button.calculate-btn:hover {
 .key-terms-section {
     background-color: transparent; /* Transparent background */
     border: 2px solid white; /* White border */
-    padding: 0.5rem 1rem; /* Reduced padding to decrease height */
-    margin: 2rem auto; /* Centered and consistent margin */
+    padding: 0.25rem 0.75rem; /* Reduced padding to decrease height */
+    margin: 1.5rem auto; /* Slightly reduced margin */
     max-width: 1000px; /* Consistent width with other sections */
-    font-size: 0.9rem; /* Smaller font size for this section */
+    font-size: 0.85rem; /* Slightly smaller font size */
     border-radius: 10px; /* Rounded corners */
+    line-height: 1.3; /* Tighter line height */
 }
 
 .key-terms-section h3 {
     color: white;
     font-weight: bold;
     border-bottom: 1px solid white; /* Adds the white underline */
-    padding-bottom: 0.5rem; /* Adds some space between the title and the underline */
-    margin-bottom: 1rem; /* Adds space below the underline */
+    padding-bottom: 0.25rem; /* Reduced padding between the title and the underline */
+    margin-bottom: 0.75rem; /* Reduced space below the underline */
 }
 
 .key-terms-section h2 {
     color: white; /* White titles */
-    font-size: 1.2rem; /* Slightly smaller title size */
+    font-size: 1.1rem; /* Slightly smaller title size */
     text-transform: uppercase; /* Consistent text style */
-    margin-bottom: 1rem; /* Spacing below title */
+    margin-bottom: 0.75rem; /* Reduced spacing below title */
     text-align: center; /* Center align the title */
 }
 
 .key-terms-section p {
     color: #F1CD14; /* Yellow text */
-    margin-bottom: 0.75rem; /* Reduced space between paragraphs */
-    line-height: 1.4; /* Slightly tighter line height */
+    margin-bottom: 0.5rem; /* Reduced space between paragraphs */
+    line-height: 1.3; /* Slightly tighter line height */
     font-style: italic; /* Italicize the body text */
 }
 
@@ -252,12 +253,8 @@ button.calculate-btn:hover {
 .key-terms-section hr {
     border: none; 
     border-top: 1px solid white; /* White horizontal line */
-    margin: 1rem 0; /* Reduced spacing around the line */
+    margin: 0.75rem 0; /* Reduced spacing around the line */
 }
-
-
-
-
 
 /* Content Section Styles */
 .content-section {

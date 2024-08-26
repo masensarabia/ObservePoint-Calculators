@@ -212,6 +212,15 @@ button.calculate-btn:hover {
     border-radius: 10px; /* Rounded corners */
 }
 
+.key-terms-section h3 {
+    color: white;
+    font-weight: bold;
+    border-bottom: 1px solid white; /* Adds the white underline */
+    padding-bottom: 0.5rem; /* Adds some space between the title and the underline */
+    margin-bottom: 1rem; /* Adds space below the underline */
+}
+
+
 .key-terms-section h2 {
     color: white; /* White titles */
     font-size: 1.2rem; /* Slightly smaller title size */
@@ -227,9 +236,17 @@ button.calculate-btn:hover {
 }
 
 .key-terms-section .key-takeaway {
-    color: white; /* White text for Key Takeaway */
-    font-weight: bold; /* Bold text */
+    color: white; /* White title for Key Takeaway */
+    font-weight: bold; /* Bold for the title */
+    display: inline; /* Keep it on the same line */
 }
+
+.key-terms-section .key-takeaway-content {
+    color: #F1CD14; /* Yellow for the content */
+    font-weight: normal; /* Regular font weight for the content */
+    display: inline; /* Keep it on the same line */
+}
+
 
 .key-terms-section hr {
     border: none; 

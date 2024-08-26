@@ -204,17 +204,17 @@ button.calculate-btn:hover {
 
 /* Key Terms Section - Updated Styles */
 .key-terms-section {
-    border: 2px solid #666666; /* Grey border */
+    border: 2px solid #ffffff; /* White border */
     border-radius: 10px;       /* Rounded corners */
     padding: 1.5rem;           /* Padding inside the box */
     margin: 2rem auto;         /* Margin around the box */
     max-width: 1000px;         /* Maximum width */
-    background-color: #F1CD14; /* Yellow background */
+    background-color: rgba(0, 0, 0, 0.7); /* Transparent background */
 }
 
 /* Key Terms Typography */
 .key-terms-section h2 {
-    color: #666666; /* Grey color for the main title */
+    color: #ffffff; /* White color for the main title */
     font-size: 1.8rem; /* Slightly larger header font size */
     text-align: center; /* Center-align the header */
     margin-bottom: 1.5rem;
@@ -222,14 +222,14 @@ button.calculate-btn:hover {
 }
 
 .key-terms-section h3 {
-    color: #666666; /* Grey color for subheadings */
+    color: #ffffff; /* White color for subheadings */
     font-size: 1.4rem; /* Slightly larger subheading font size */
     margin-bottom: 0.75rem;
     font-weight: 700; /* Make the subheadings bold */
 }
 
 .key-terms-section p {
-    color: #ffffff; /* White text for paragraphs */
+    color: #F1CD14; /* Yellow text for paragraphs */
     font-size: 1.1rem; /* Slightly larger text */
     margin-bottom: 1rem; /* Increased space between paragraphs */
     line-height: 1.8; /* Comfortable line height */
@@ -237,7 +237,7 @@ button.calculate-btn:hover {
 
 /* Key Takeaway Style */
 .key-terms-section p strong {
-    color: #666666; /* Grey color for the "Key Takeaway:" text */
+    color: #F1CD14; /* Yellow color for the "Key Takeaway:" text */
 }
 
 /* Optional Divider Lines */
@@ -246,11 +246,9 @@ button.calculate-btn:hover {
     display: block;
     width: 100%;
     height: 1px;
-    background: #666666; /* Grey line */
+    background: #ffffff; /* White line */
     margin: 0.75rem 0; /* Space around the line */
 }
-
-
 
 
 

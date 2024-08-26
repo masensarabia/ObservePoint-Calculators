@@ -220,7 +220,6 @@ button.calculate-btn:hover {
     margin-bottom: 1rem; /* Adds space below the underline */
 }
 
-
 .key-terms-section h2 {
     color: white; /* White titles */
     font-size: 1.2rem; /* Slightly smaller title size */
@@ -233,26 +232,29 @@ button.calculate-btn:hover {
     color: #F1CD14; /* Yellow text */
     margin-bottom: 0.75rem; /* Reduced space between paragraphs */
     line-height: 1.4; /* Slightly tighter line height */
+    font-style: italic; /* Italicize the body text */
 }
 
 .key-terms-section .key-takeaway {
     color: white; /* White title for Key Takeaway */
     font-weight: bold; /* Bold for the title */
     display: inline; /* Keep it on the same line */
+    font-style: normal; /* Keep Key Takeaway title in standard form */
 }
 
 .key-terms-section .key-takeaway-content {
     color: #F1CD14; /* Yellow for the content */
     font-weight: normal; /* Regular font weight for the content */
     display: inline; /* Keep it on the same line */
+    font-style: italic; /* Italicize the content */
 }
-
 
 .key-terms-section hr {
     border: none; 
     border-top: 1px solid white; /* White horizontal line */
     margin: 1rem 0; /* Reduced spacing around the line */
 }
+
 
 
 

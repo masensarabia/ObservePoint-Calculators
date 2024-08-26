@@ -205,10 +205,11 @@ button.calculate-btn:hover {
 .key-terms-section {
     background-color: transparent; /* Transparent background */
     border: 2px solid white; /* White border */
-    padding: 1rem; /* Smaller padding to reduce height */
+    padding: 0.5rem 1rem; /* Reduced padding to decrease height */
     margin: 2rem auto; /* Centered and consistent margin */
     max-width: 1000px; /* Consistent width with other sections */
     font-size: 0.9rem; /* Smaller font size for this section */
+    border-radius: 10px; /* Rounded corners */
 }
 
 .key-terms-section h2 {
@@ -221,8 +222,8 @@ button.calculate-btn:hover {
 
 .key-terms-section p {
     color: #F1CD14; /* Yellow text */
-    margin-bottom: 1rem; /* Space between paragraphs */
-    line-height: 1.5; /* Comfortable line height */
+    margin-bottom: 0.75rem; /* Reduced space between paragraphs */
+    line-height: 1.4; /* Slightly tighter line height */
 }
 
 .key-terms-section .key-takeaway {
@@ -233,7 +234,7 @@ button.calculate-btn:hover {
 .key-terms-section hr {
     border: none; 
     border-top: 1px solid white; /* White horizontal line */
-    margin: 1.5rem 0; /* Consistent spacing around the line */
+    margin: 1rem 0; /* Reduced spacing around the line */
 }
 
 

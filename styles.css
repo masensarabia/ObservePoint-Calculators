@@ -202,6 +202,29 @@ button.calculate-btn:hover {
     font-weight: 400;
 }
 
+/* Key Terms Section */
+.key-terms-section {
+    border: 2px solid #F1CD14; /* Yellow border */
+    border-radius: 10px;       /* Rounded corners */
+    padding: 1.5rem;           /* Padding inside the box */
+    margin: 2rem auto;         /* Margin around the box */
+    max-width: 1000px;         /* Maximum width */
+    background-color: transparent; /* Background color */
+}
+
+.key-terms-section h2, 
+.key-terms-section h3 {
+    color: #F1CD14; /* Yellow */
+}
+
+.key-terms-section p {
+    color: #f0f0f0; /* White for detailed text */
+    font-size: 1rem; /* Font size for paragraphs */
+    margin-bottom: 0.75rem; /* Space below the paragraphs */
+    line-height: 1.6; /* Line height for paragraphs */
+}
+
+
 /* Content Section Styles */
 .content-section {
     border: 2px solid #F1CD14; /* Yellow border */

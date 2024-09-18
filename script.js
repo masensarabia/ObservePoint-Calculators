@@ -52,3 +52,7 @@ function calculateSavings() {
     document.getElementById('actualTotalHoursSaved').textContent = actualTimeSaved.toFixed(4) + " hours";
     document.getElementById('actualTotalMoneySaved').textContent = "$" + actualCostSaved.toLocaleString(undefined, {minimumFractionDigits: 2});
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('opRate').value = 70;
+});

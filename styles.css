@@ -77,6 +77,7 @@ body {
 .description-section p {
     margin-bottom: 1rem;
     line-height: 1.4;
+    text-align: left; /* Ensure body text is left-aligned */
 }
 
 /* Titles */
@@ -85,7 +86,7 @@ h1, h2 {
     color: #F1CD14;
     text-transform: uppercase;
     margin-bottom: 1rem;
-    text-align: center;
+    text-align: center; /* Keep headings centered */
 }
 
 h1 {
@@ -97,12 +98,19 @@ h1 {
 .content-section {
     border: 2px solid #F1CD14;
     border-radius: 10px;
-    padding: 1.5rem;
-    margin: 2rem auto;
+    padding: 2rem 2rem; /* Add padding for breathing room */
     max-width: 1000px;
-    background-color: #1f1f1f; /* Match background to rest of the page */
-    text-align: center;
-    color: #f0f0f0; /* Ensure text is readable */
+    margin: 2rem auto;
+    text-align: left; /* Ensure white text is left-aligned */
+}
+
+/* Key takeaway styling */
+.key-takeaway {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #F1CD14; /* Make it yellow like other headings */
+    display: inline-block;
+    margin-bottom: 1rem;
 }
 
 /* Calculator Container */
@@ -226,7 +234,7 @@ label {
 
 /* Results Summary */
 .results-summary {
-    margin-top: 2rem;
+    margin-top: 3rem; /* Ensure space above total fine output */
 }
 
 .results-summary h2 {
@@ -236,8 +244,9 @@ label {
 }
 
 .results-summary p {
-    font-size: 1.2rem;
+    font-size: 1.5rem; /* Increase font size for emphasis */
     margin: 0.5rem 0;
+    padding: 1rem 0;
 }
 
 /* Button Styles */

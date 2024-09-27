@@ -1,8 +1,53 @@
+// Function to format numbers with commas
+function formatNumberWithCommas(input) {
+    let value = input.value.replace(/,/g, ''); // Remove commas
+    if (!isNaN(value) && value !== '') {
+        input.value = parseFloat(value).toLocaleString(); // Add commas
+    }
+}
+
+// Function to format the input field with a dollar sign
+function formatDollarInput(input) {
+    let value = input.value.replace(/[^0-9.]/g, ''); // Remove non-numeric characters except decimal point
+    if (!isNaN(value) && value !== '') {
+        input.value = `$${parseFloat(value).toFixed(2)}`; // Format with a dollar sign and 2 decimal places
+    } else {
+        input.value = '$'; // Default value if empty
+    }
+}
+
+// Add event listeners for formatting numbers with commas
+document.getElementById('pagesToTest').addEventListener('input', function() {
+    formatNumberWithCommas(this);
+});
+document.getElementById('opPages').addEventListener('input', function() {
+    formatNumberWithCommas(this);
+});
+document.getElementById('actualPagesTested').addEventListener('input', function() {
+    formatNumberWithCommas(this);
+});
+
+// Add event listeners for formatting dollar inputs
+document.getElementById('manualRate').addEventListener('input', function() {
+    formatDollarInput(this);
+});
+document.getElementById('opCost').addEventListener('input', function() {
+    formatDollarInput(this);
+});
+document.getElementById('actualOPCost').addEventListener('input', function() {
+    formatDollarInput(this);
+});
+
+// Pre-populate the "Actual ObservePoint Scanning Rate" field with 70
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('actualOPRate').value = 70;
+});
+
 function calculateSavings() {
     // Hypothetical Manual Employee Testing
     let manualTime = parseFloat(document.getElementById('manualTime').value);
-    let pagesToTest = parseFloat(document.getElementById('pagesToTest').value);
-    let manualRate = parseFloat(document.getElementById('manualRate').value);
+    let pagesToTest = parseFloat(document.getElementById('pagesToTest').value.replace(/,/g, ''));
+    let manualRate = parseFloat(document.getElementById('manualRate').value.replace(/[^0-9.]/g, ''));
     
     let totalManualTestingTime = (manualTime * pagesToTest) / 60;
     let totalManualCost = totalManualTestingTime * manualRate;
@@ -12,8 +57,8 @@ function calculateSavings() {
 
     // Hypothetical ObservePoint Scanning
     let opRate = parseFloat(document.getElementById('opRate').value);
-    let opPages = parseFloat(document.getElementById('opPages').value);
-    let opCost = parseFloat(document.getElementById('opCost').value);
+    let opPages = parseFloat(document.getElementById('opPages').value.replace(/,/g, ''));
+    let opCost = parseFloat(document.getElementById('opCost').value.replace(/[^0-9.]/g, ''));
     
     let totalOPTestingTime = (opPages / opRate) / 60;
     let totalOPCost = opPages * opCost;
@@ -42,14 +87,14 @@ function calculateSavings() {
 
     // Actual Manual Employee Testing
     let actualManualTime = parseFloat(document.getElementById('actualManualTime').value);
-    let actualPagesTested = parseFloat(document.getElementById('actualPagesTested').value);
+    let actualPagesTested = parseFloat(document.getElementById('actualPagesTested').value.replace(/,/g, ''));
     let actualManualCost = actualManualTime * manualRate;
     
     document.getElementById('actualManualCost').textContent = "$" + actualManualCost.toLocaleString(undefined, {minimumFractionDigits: 2});
     
     // Actual ObservePoint Testing
     let actualOPRate = parseFloat(document.getElementById('actualOPRate').value);
-    let actualOPCostPerPage = parseFloat(document.getElementById('actualOPCost').value);
+    let actualOPCostPerPage = parseFloat(document.getElementById('actualOPCost').value.replace(/[^0-9.]/g, ''));
     
     let actualOPTestingTime = (actualPagesTested / actualOPRate) / 60;
     let actualTotalOPCost = actualPagesTested * actualOPCostPerPage;
@@ -68,7 +113,3 @@ function calculateSavings() {
     document.getElementById('actualTotalHoursSaved').textContent = actualTimeSaved.toFixed(4) + " hours";
     document.getElementById('actualTotalMoneySaved').textContent = "$" + actualCostSaved.toLocaleString(undefined, {minimumFractionDigits: 2});
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('opRate').value = 70; // Set default value for ObservePoint rate
-});

@@ -26,7 +26,6 @@ body {
     height: 100px;
 }
 
-/* Site Navigation */
 .site-navigation {
     margin-left: 4rem;
 }
@@ -37,7 +36,7 @@ body {
     margin-left: 16px;
 }
 
-/* Navigation List */
+/* Navigation */
 .site-navigation ul {
     list-style: none;
     display: flex;
@@ -138,6 +137,31 @@ label {
 .calculator-input:focus {
     outline: none;
     border-color: #F1CD14;
+}
+
+/* Prefix for Dollar Input */
+.input-prefix {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    border: 1px solid #666;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.input-prefix .prefix {
+    margin-right: 0.5rem;
+    color: #f0f0f0;
+    font-size: 1rem;
+}
+
+.dollar-input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #f0f0f0;
+    width: 100%;
 }
 
 /* Tooltip */

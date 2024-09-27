@@ -6,11 +6,11 @@ function formatNumberWithCommas(input) {
     }
 }
 
-// Function to format the input field with a dollar sign
+// Function to format the input field with a dollar sign without automatically adding '.00'
 function formatDollarInput(input) {
     let value = input.value.replace(/[^0-9.]/g, ''); // Remove non-numeric characters except decimal point
     if (!isNaN(value) && value !== '') {
-        input.value = `$${parseFloat(value).toFixed(2)}`; // Format with a dollar sign and 2 decimal places
+        input.value = value; // Allow free typing without auto-formatting
     } else {
         input.value = ''; // Keep it empty if no valid input
     }

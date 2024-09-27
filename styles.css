@@ -157,6 +157,25 @@ label {
     font-size: 1rem; /* Consistent font size */
 }
 
+/* Input Box for Violations */
+#violations {
+    background-color: #333;
+    color: #f0f0f0;
+    border: 1px solid #666;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+/* Placeholder Text Styling */
+input::placeholder {
+    color: #f0f0f0; /* Light color for placeholder text */
+    opacity: 1; /* Ensure placeholder is visible */
+}
+
 /* Prefix for Dollar Input */
 .input-prefix {
     display: flex;

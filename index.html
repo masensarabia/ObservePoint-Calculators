@@ -127,7 +127,7 @@
                 link.parentElement.classList.add('active-link');
             }
         });
-        
+
         // Add yellow highlight for prefix divs when focused
         const highlightableDivs = document.querySelectorAll('.highlightable');
         highlightableDivs.forEach(div => {
@@ -139,14 +139,9 @@
                 div.style.borderColor = '#666';  // Reset border on blur
             });
         });
-        
-        // Prevent non-numeric characters in dollar fields
-        const dollarInputs = document.querySelectorAll('.dollar-input');
-        dollarInputs.forEach(input => {
-            input.addEventListener('input', () => {
-                input.value = input.value.replace(/[^0-9]/g, '');  // Remove any non-numeric input
-            });
-        });
+
+        // **Removed previous dollar input handling logic**
+        // Prevents unexpected duplication
     });
 </script>
 </body>

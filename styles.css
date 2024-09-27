@@ -152,6 +152,7 @@ label {
     border-radius: 5px;
     padding: 0.5rem;
     margin-bottom: 1rem;
+    width: 100%; /* Ensure the same width */
     transition: border-color 0.3s ease;
 }
 
@@ -166,7 +167,7 @@ label {
     border: none;
     outline: none;
     color: #f0f0f0;
-    width: 100%;
+    width: 100%; /* Ensure the dollar input field is the same size */
 }
 
 /* Highlight yellow on focus for entire input div */
@@ -294,4 +295,3 @@ button.calculate-btn:hover {
         padding: 0.75rem;
     }
 }
-

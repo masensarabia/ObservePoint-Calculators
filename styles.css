@@ -133,15 +133,7 @@ label {
     margin-bottom: 1rem;
     width: 100%; /* Ensure uniform width */
     box-sizing: border-box; /* Ensure padding doesn't affect width */
-}
-
-.calculator-input::placeholder {
-    color: #B1BAC3;
-}
-
-.calculator-input:focus {
-    outline: none;
-    border-color: #F1CD14;
+    font-size: 1rem; /* Consistent font size */
 }
 
 /* Prefix for Dollar Input */
@@ -170,6 +162,7 @@ label {
     color: #f0f0f0;
     width: 100%; /* Ensure the dollar input field is the same size */
     box-sizing: border-box;
+    font-size: 1rem; /* Consistent font size */
 }
 
 /* Highlight yellow on focus for entire input div */

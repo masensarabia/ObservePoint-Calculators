@@ -92,6 +92,19 @@ h1 {
     text-decoration: underline;
 }
 
+/* Center content for the privacy page (key terms and additional sections) */
+.key-terms-section,
+.content-section {
+    border: 2px solid #F1CD14;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 2rem auto;
+    max-width: 1000px;
+    background-color: #1f1f1f; /* Match background to rest of the page */
+    text-align: center;
+    color: #f0f0f0; /* Ensure text is readable */
+}
+
 /* Calculator Container */
 .calculator-container {
     max-width: 1000px;

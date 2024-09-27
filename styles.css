@@ -152,6 +152,7 @@ label {
     border-radius: 5px;
     padding: 0.5rem;
     margin-bottom: 1rem;
+    transition: border-color 0.3s ease;
 }
 
 .input-prefix .prefix {
@@ -166,6 +167,16 @@ label {
     outline: none;
     color: #f0f0f0;
     width: 100%;
+}
+
+/* Highlight yellow on focus for entire input div */
+.highlightable input:focus {
+    border-color: #F1CD14 !important;
+    outline: none;
+}
+
+.highlightable:focus-within {
+    border-color: #F1CD14;
 }
 
 /* Tooltip */

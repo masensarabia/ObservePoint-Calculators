@@ -147,22 +147,26 @@ label {
     margin-bottom: 1rem;
     width: 100%; /* Match the width with other input fields */
     box-sizing: border-box; /* Ensure consistent sizing with padding */
+    font-size: 1rem; /* Ensure consistent text size */
 }
 
-.input-prefix .prefix {
-    margin-right: 0.5rem;
-    color: #f0f0f0;
-    font-size: 1rem;
-}
-
+/* Remove extra spacing inside dollar input */
 .dollar-input {
     background-color: transparent;
     border: none;
     outline: none;
     color: #f0f0f0;
     width: 100%; /* Ensure the dollar input field is the same size */
+    padding: 0; /* Remove any additional padding */
+    margin: 0; /* Remove any margin */
     box-sizing: border-box;
     font-size: 1rem; /* Consistent font size */
+}
+
+.input-prefix .prefix {
+    margin-right: 0.5rem;
+    color: #f0f0f0;
+    font-size: 1rem;
 }
 
 /* Highlight yellow on focus for entire input div */

@@ -134,6 +134,10 @@ label {
     width: 100%;
 }
 
+.calculator-input::placeholder {
+    color: #B1BAC3;
+}
+
 .calculator-input:focus {
     outline: none;
     border-color: #F1CD14;

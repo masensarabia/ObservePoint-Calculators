@@ -24,9 +24,21 @@ function calculateSavings() {
     // Time and Cost Saved (Hypothetical)
     let timeSaved = totalManualTestingTime - totalOPTestingTime;
     let moneySaved = totalManualCost - totalOPCost;
+
+    // Ensure no negative values for time and cost saved
+    timeSaved = Math.max(0, timeSaved);
+    moneySaved = Math.max(0, moneySaved);
     
     document.getElementById('totalHoursSaved').textContent = timeSaved.toFixed(2) + " hours";
     document.getElementById('totalMoneySaved').textContent = "$" + moneySaved.toLocaleString(undefined, {minimumFractionDigits: 2});
+
+    // Additional Metrics: FTE and Annual Cost per Employee
+    let annualHoursPerFTE = 2080; // Assuming 40 hours per week for 52 weeks
+    let totalFTEs = totalManualTestingTime / annualHoursPerFTE;
+    let annualCostPerFTE = totalManualCost / totalFTEs;
+
+    document.getElementById('totalFTEs').textContent = totalFTEs.toFixed(2) + " FTEs";
+    document.getElementById('annualCostPerFTE').textContent = "$" + annualCostPerFTE.toLocaleString(undefined, {minimumFractionDigits: 2});
 
     // Actual Manual Employee Testing
     let actualManualTime = parseFloat(document.getElementById('actualManualTime').value);
@@ -44,6 +56,10 @@ function calculateSavings() {
     
     let actualTimeSaved = actualManualTime - actualOPTestingTime;
     let actualCostSaved = actualManualCost - actualTotalOPCost;
+
+    // Ensure no negative values for actual time and cost saved
+    actualTimeSaved = Math.max(0, actualTimeSaved);
+    actualCostSaved = Math.max(0, actualCostSaved);
     
     document.getElementById('actualOPTime').textContent = actualOPTestingTime.toFixed(4) + " hours";
     document.getElementById('actualOPTotalCost').textContent = "$" + actualTotalOPCost.toLocaleString(undefined, {minimumFractionDigits: 2});
@@ -54,5 +70,5 @@ function calculateSavings() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('opRate').value = 70;
+    document.getElementById('opRate').value = 70; // Set default value for ObservePoint rate
 });

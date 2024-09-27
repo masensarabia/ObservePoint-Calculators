@@ -140,8 +140,14 @@
             });
         });
 
-        // **Removed previous dollar input handling logic**
-        // Prevents unexpected duplication
+        // Prevent non-numeric characters and decimals in dollar fields
+        const dollarInputs = document.querySelectorAll('.dollar-input');
+        dollarInputs.forEach(input => {
+            input.addEventListener('input', () => {
+                // Only allow integers without any decimals
+                input.value = input.value.replace(/[^0-9]/g, '');
+            });
+        });
     });
 </script>
 </body>

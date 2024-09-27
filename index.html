@@ -47,7 +47,10 @@
             <label for="pagesToTest">Total Number of Pages to Test:</label>
             <input type="text" id="pagesToTest" class="calculator-input" placeholder="Enter number of pages here">
             <label for="manualRate">Employee's Hourly Rate for Manual Testing:</label>
-            <input type="number" id="manualRate" class="calculator-input" placeholder="0.00" min="0" step="0.01">
+            <div class="input-prefix">
+                <span class="prefix">$</span>
+                <input type="text" id="manualRate" class="calculator-input dollar-input" placeholder="0.00">
+            </div>
             <p>Total Manual Testing Time: <span id="totalManualTime">0 hours</span></p>
             <p>Total Cost for Employee Manual Testing: <span id="totalManualCost">$0</span></p>
         </div>
@@ -62,7 +65,10 @@
             <label for="opPages">Total Number of Pages to Scan:</label>
             <input type="text" id="opPages" class="calculator-input" placeholder="Enter number of pages here">
             <label for="opCost">ObservePoint Cost per Page:</label>
-            <input type="number" id="opCost" class="calculator-input" placeholder="0.00" min="0" step="0.01">
+            <div class="input-prefix">
+                <span class="prefix">$</span>
+                <input type="text" id="opCost" class="calculator-input dollar-input" placeholder="0.00">
+            </div>
             <p>Total ObservePoint Scanning Time: <span id="totalOPTime">0 hours</span></p>
             <p>Total Cost for ObservePoint Scanning: <span id="totalOPCost">$0</span></p>
         </div>
@@ -91,7 +97,10 @@
             <label for="actualOPRate">Actual ObservePoint Scanning Rate (pages per minute):</label>
             <input type="number" id="actualOPRate" class="calculator-input" value="70" placeholder="70">
             <label for="actualOPCost">Actual Cost per Page:</label>
-            <input type="number" id="actualOPCost" class="calculator-input" placeholder="0.00" min="0" step="0.01">
+            <div class="input-prefix">
+                <span class="prefix">$</span>
+                <input type="text" id="actualOPCost" class="calculator-input dollar-input" placeholder="0.00">
+            </div>
             <p>Total ObservePoint Scanning Time: <span id="actualOPTime">0 hours</span></p>
             <p>Total Cost for ObservePoint Scanning: <span id="actualOPTotalCost">$0</span></p>
         </div>

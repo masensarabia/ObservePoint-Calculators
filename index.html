@@ -115,40 +115,7 @@
     <button class="calculate-btn" onclick="calculateSavings()">Calculate</button>
 </div>
 
+<!-- Include external JS file -->
 <script src="script.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const currentPath = window.location.pathname;
-        const navLinks = document.querySelectorAll('.site-navigation ul li a');
-
-        navLinks.forEach(link => {
-            const linkPath = link.getAttribute('href');
-            if (linkPath === currentPath || (linkPath === 'index.html' && currentPath === '/')) {
-                link.parentElement.classList.add('active-link');
-            }
-        });
-
-        // Add yellow highlight for prefix divs when focused
-        const highlightableDivs = document.querySelectorAll('.highlightable');
-        highlightableDivs.forEach(div => {
-            const input = div.querySelector('input');
-            input.addEventListener('focus', () => {
-                div.style.borderColor = '#F1CD14';  // Yellow border on focus
-            });
-            input.addEventListener('blur', () => {
-                div.style.borderColor = '#666';  // Reset border on blur
-            });
-        });
-
-        // Prevent non-numeric characters and decimals in dollar fields
-        const dollarInputs = document.querySelectorAll('.dollar-input');
-        dollarInputs.forEach(input => {
-            input.addEventListener('input', () => {
-                // Only allow integers without any decimals
-                input.value = input.value.replace(/[^0-9]/g, '');
-            });
-        });
-    });
-</script>
 </body>
 </html>

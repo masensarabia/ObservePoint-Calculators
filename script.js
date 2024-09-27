@@ -12,7 +12,7 @@ function formatDollarInput(input) {
     if (!isNaN(value) && value !== '') {
         input.value = `$${parseFloat(value).toFixed(2)}`; // Format with a dollar sign and 2 decimal places
     } else {
-        input.value = '$'; // Default value if empty
+        input.value = ''; // Keep it empty if no valid input
     }
 }
 

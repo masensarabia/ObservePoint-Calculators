@@ -11,7 +11,7 @@ body {
     background-position: right bottom, left;
     background-attachment: fixed;
     font-weight: 400;
-    line-height: 1.6; /* Keeps overall line-height comfortable */
+    line-height: 1.6;
 }
 
 /* Header Styles */
@@ -19,15 +19,16 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5rem 1rem 3rem; /* Original padding */
+    padding: 1rem 5rem 1rem 3rem;
     background: linear-gradient(to bottom, #000000 0%, #1f1f1f 100%);
     border-bottom: none;
     position: relative;
     height: 100px;
 }
 
+/* Site Navigation */
 .site-navigation {
-    margin-left: 4rem; /* Original margin */
+    margin-left: 4rem;
 }
 
 .logo img {
@@ -36,12 +37,11 @@ body {
     margin-left: 16px;
 }
 
-/* Site Navigation Styles */
+/* Navigation List */
 .site-navigation ul {
     list-style: none;
     display: flex;
     justify-content: flex-end;
-    width: auto;
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
@@ -51,51 +51,33 @@ body {
     margin: 0 20px;
 }
 
-/* Header Links */
 .site-navigation ul li a {
-    color: #B1BAC3; /* Default color */
+    color: #B1BAC3;
     text-decoration: none;
     font-size: 0.9rem;
-    font-weight: 400;
-    transition: color 0.3s ease; /* Smooth transition */
+    transition: color 0.3s ease;
 }
 
 .site-navigation ul li a:hover {
-    color: #F1CD14; /* Yellow on hover */
+    color: #F1CD14;
 }
 
-/* Active Link */
 .site-navigation ul li.active-link a {
-    color: #F1CD14; /* Yellow for the active link */
-    text-decoration: none;
-    font-weight: 400;
+    color: #F1CD14;
 }
 
-
-/* Header Gradient */
-.header-gradient {
-    background: linear-gradient(to bottom, #000000 0%, #1f1f1f 100%);
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 200px;
-    z-index: -1;
-}
-
-/* Instruction Section Box */
+/* Description Section */
 .description-section {
     border: 2px solid #F1CD14;
     border-radius: 10px;
-    padding: 1.5rem; /* Adjusted padding inside the box */
-    margin: 2rem auto; /* Margin around the box */
+    padding: 1.5rem;
+    margin: 2rem auto;
     max-width: 1000px;
-    background-color: transparent;
 }
 
 .description-section p {
-    margin-bottom: 1rem; /* Adjust space between paragraphs */
-    line-height: 1.4; /* Adjust space between lines of text */
+    margin-bottom: 1rem;
+    line-height: 1.4;
 }
 
 /* Titles */
@@ -108,12 +90,7 @@ h1, h2 {
 }
 
 h1 {
-    text-decoration: underline; /* Underline main heading */
-}
-
-/* Bold Styling Only for the Specific Heading */
-.calculator-container h1 {
-    font-weight: 700;
+    text-decoration: underline;
 }
 
 /* Calculator Container */
@@ -121,7 +98,7 @@ h1 {
     max-width: 1000px;
     margin: 2rem auto;
     padding: 2rem;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); /* Black to transparent gradient */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
     border-radius: 10px;
 }
 
@@ -132,7 +109,6 @@ h1 {
     gap: 2rem;
 }
 
-/* Calculator Card */
 .calculator-card {
     background-color: #1a1a1a;
     padding: 1.5rem;
@@ -141,6 +117,30 @@ h1 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/* Calculator Input Fields */
+.calculator-input {
+    background-color: #333;
+    color: #f0f0f0;
+    border: 1px solid #666;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.calculator-input:focus {
+    outline: none;
+    border-color: #F1CD14;
+}
+
+/* Tooltip */
 .tooltip {
     position: relative;
     display: inline-block;
@@ -157,12 +157,12 @@ h1 {
     padding: 5px;
     position: absolute;
     z-index: 1;
-    bottom: 125%; /* Position it above the text */
+    bottom: 125%;
     left: 50%;
-    margin-left: -110px; /* Adjust to center it */
+    margin-left: -110px;
     opacity: 0;
     transition: opacity 0.3s;
-    font-size: 0.9rem; /* Adjust the size */
+    font-size: 0.9rem;
 }
 
 .tooltip:hover .tooltiptext {
@@ -170,53 +170,7 @@ h1 {
     opacity: 1;
 }
 
-
-
-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-    font-weight: 400;
-}
-
-input[type="number"] {
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border-radius: 5px;
-    border: 1px solid #666;
-    background-color: #333;
-    color: #f0f0f0;
-}
-
-input[type="number"]:focus {
-    outline: none;
-    border-color: #F1CD14;
-}
-
-/* Button Styles */
-button.calculate-btn {
-    color: #F1CD14; /* Yellow lettering */
-    background-color: transparent; /* Transparent background */
-    border: 2px solid #F1CD14; /* Yellow outline */
-    padding: 1rem;
-    font-size: 1.2rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 700;
-    width: 100%; /* Make the button stretch across the container */
-    text-align: center;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
-}
-
-button.calculate-btn:hover {
-    background-color: #F1CD14; /* Yellow background on hover */
-    color: #0c0c0c; /* Black text on hover */
-}
-
-
-
-
+/* Results Summary */
 .results-summary {
     margin-top: 2rem;
 }
@@ -230,92 +184,29 @@ button.calculate-btn:hover {
 .results-summary p {
     font-size: 1.2rem;
     margin: 0.5rem 0;
-    font-weight: 400;
 }
 
-.key-terms-section {
-    background-color: transparent; /* Transparent background */
-    border: 2px solid white; /* White border */
-    padding: 0.25rem 0.75rem; /* Reduced padding to decrease height */
-    margin: 1.5rem auto; /* Slightly reduced margin */
-    max-width: 1000px; /* Consistent width with other sections */
-    font-size: 0.85rem; /* Slightly smaller font size */
-    border-radius: 10px; /* Rounded corners */
-    line-height: 1.3; /* Tighter line height */
+/* Button Styles */
+button.calculate-btn {
+    color: #F1CD14;
+    background-color: transparent;
+    border: 2px solid #F1CD14;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.key-terms-section h3 {
-    color: white;
-    font-weight: bold;
-    border-bottom: 1px solid white; /* Adds the white underline */
-    padding-bottom: 0.25rem; /* Reduced padding between the title and the underline */
-    margin-bottom: 0.75rem; /* Reduced space below the underline */
+button.calculate-btn:hover {
+    background-color: #F1CD14;
+    color: #0c0c0c;
 }
 
-.key-terms-section h2 {
-    color: white; /* White titles */
-    font-size: 1.1rem; /* Slightly smaller title size */
-    text-transform: uppercase; /* Consistent text style */
-    margin-bottom: 0.75rem; /* Reduced spacing below title */
-    text-align: center; /* Center align the title */
-}
-
-.key-terms-section p {
-    color: #F1CD14; /* Yellow text */
-    margin-bottom: 0.5rem; /* Reduced space between paragraphs */
-    line-height: 1.3; /* Slightly tighter line height */
-    font-style: italic; /* Italicize the body text */
-}
-
-.key-terms-section .key-takeaway {
-    color: white; /* White title for Key Takeaway */
-    font-weight: bold; /* Bold for the title */
-    display: inline; /* Keep it on the same line */
-    font-style: normal; /* Keep Key Takeaway title in standard form */
-}
-
-.key-terms-section .key-takeaway-content {
-    color: #F1CD14; /* Yellow for the content */
-    font-weight: normal; /* Regular font weight for the content */
-    display: inline; /* Keep it on the same line */
-    font-style: italic; /* Italicize the content */
-}
-
-.key-terms-section hr {
-    border: none; 
-    border-top: 1px solid white; /* White horizontal line */
-    margin: 0.75rem 0; /* Reduced spacing around the line */
-}
-
-/* Content Section Styles */
-.content-section {
-    border: 2px solid #F1CD14; /* Yellow border */
-    border-radius: 10px;       /* Rounded corners */
-    padding: 1.5rem;           /* Padding inside the box */
-    margin: 2rem auto;         /* Margin around the box */
-    max-width: 1000px;         /* Maximum width */
-    background-color: transparent; /* Background color */
-}
-
-.content-section h1 {
-    color: #F1CD14; /* Yellow */
-    text-decoration: underline; /* Underline */
-    text-align: center; /* Center align */
-}
-
-.content-section h2, 
-.content-section h3 {
-    color: #F1CD14; /* Yellow */
-}
-
-.content-section p {
-    color: #f0f0f0; /* White for detailed text */
-    font-size: 1rem; /* Font size for paragraphs */
-    margin-bottom: 0.75rem; /* Space below the paragraphs */
-    line-height: 1.6; /* Line height for paragraphs */
-}
-
-/* Media Queries for Mobile Devices */
+/* Media Queries for Mobile */
 @media screen and (max-width: 768px) {
     .header-inner {
         padding: 1rem;

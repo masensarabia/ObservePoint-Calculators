@@ -169,17 +169,16 @@ label {
     font-size: 1rem;
 }
 
-/* Highlight yellow on focus for entire input div */
-.highlightable input:focus {
-    border-color: #F1CD14 !important; /* Ensuring yellow focus border for all inputs */
-    outline: none;
+/* Ensure yellow focus on the entire input-prefix when the dollar input is focused */
+.input-prefix:focus-within {
+    border-color: #F1CD14 !important; /* Apply the yellow border to the container */
 }
 
-/* Added focus for calculator inputs to fix the red outline issue */
+/* Highlight yellow on focus for regular input fields */
 .calculator-input:focus, 
 .dollar-input:focus {
     outline: none;
-    border-color: #F1CD14 !important; /* Ensuring consistent yellow focus border */
+    border-color: #F1CD14 !important; /* Ensure consistent yellow border for all inputs */
 }
 
 /* Tooltip */

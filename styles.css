@@ -198,25 +198,27 @@ input::placeholder {
 .selected-region {
     display: inline-block;
     margin: 5px;
-    padding: 5px;
+    padding: 5px 10px;
     background-color: #333;
     color: #fff;
     border-radius: 5px;
 }
 
 .remove-btn {
-    background-color: red;
+    background-color: transparent;
     border: none;
-    color: white;
-    padding: 0 5px;
+    color: #ccc; /* Light grey color for the 'X' */
+    padding: 0 8px;
     cursor: pointer;
     margin-left: 10px;
-    border-radius: 3px;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .remove-btn:hover {
-    background-color: darkred;
+    color: #fff; /* White color on hover */
 }
+
 
 
 /* Prefix for Dollar Input */

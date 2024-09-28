@@ -111,7 +111,15 @@ select.calculator-input:hover {
     border-color: #FFD700; /* On hover, keep the yellow border */
 }
 
+select option:checked {
+    background-color: #F1CD14; /* Yellow background for selected option */
+    color: black; /* Black text for contrast */
+}
 
+select option {
+    background-color: #333; /* Ensure dropdown options have a dark background */
+    color: #f0f0f0; /* White text for dropdown options */
+}
 
 /* Titles */
 h1, h2 {
@@ -222,10 +230,30 @@ select option {
     color: #f0f0f0; /* White text for dropdown options */
 }
 
+/* Fix for the red highlight on focus */
+select:focus {
+    border-color: #F1CD14; /* Yellow border on focus */
+    background-color: #333; /* Same background color on focus */
+    outline: none; /* Remove the outline */
+}
+
 /* Adjust placeholder text color */
 input::placeholder {
     color: #aaa; /* Darker gray for placeholder text */
     opacity: 1; /* Ensure placeholder is visible */
+}
+
+/* Annual Revenue Input Field */
+#annualRevenue {
+    background-color: #555; /* Matches the input field background */
+    color: #f0f0f0; /* White text */
+    border: 1px solid #666;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1rem;
 }
 
 .selected-region {
@@ -297,36 +325,6 @@ input::placeholder {
 .dollar-input:focus {
     outline: none;
     border-color: #F1CD14 !important; /* Ensure consistent yellow border for all inputs */
-}
-
-/* Tooltip */
-.tooltip {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 220px;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -110px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 0.9rem;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
 }
 
 /* Results Summary */

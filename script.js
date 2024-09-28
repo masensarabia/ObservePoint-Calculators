@@ -1,115 +1,129 @@
-// Function to format numbers with commas
-function formatNumberWithCommas(input) {
-    let value = input.value.replace(/,/g, ''); // Remove commas
-    if (!isNaN(value) && value !== '') {
-        input.value = parseFloat(value).toLocaleString(); // Add commas
-    }
-}
-
-// Function to format the input field with a dollar sign without automatically adding '.00'
-function formatDollarInput(input) {
-    let value = input.value.replace(/[^0-9.]/g, ''); // Remove non-numeric characters except decimal point
-    if (!isNaN(value) && value !== '') {
-        input.value = value; // Allow free typing without auto-formatting
+function toggleFineOptions() {
+    const regions = Array.from(document.getElementById('region').selectedOptions).map(option => option.value);
+    const annualRevenueInput = document.getElementById('annualRevenueInput');
+    if (regions.includes('gdpr_2') || regions.includes('gdpr_4')) {
+        annualRevenueInput.style.display = 'block';
     } else {
-        input.value = ''; // Keep it empty if no valid input
+        annualRevenueInput.style.display = 'none';
     }
 }
 
-// Add event listeners for formatting numbers with commas
-document.getElementById('pagesToTest').addEventListener('input', function() {
-    formatNumberWithCommas(this);
-});
-document.getElementById('opPages').addEventListener('input', function() {
-    formatNumberWithCommas(this);
-});
-document.getElementById('actualPagesTested').addEventListener('input', function() {
-    formatNumberWithCommas(this);
-});
+function calculateFine() {
+    const violations = parseInt(document.getElementById('violations').value);
+    const regions = Array.from(document.getElementById('region').selectedOptions).map(option => option.value);
+    const annualRevenue = parseFloat(document.getElementById('annualRevenue').value);
+    let totalFineOutput = '';
+    let currency = "USD";
 
-// Add event listeners for formatting dollar inputs
-document.getElementById('manualRate').addEventListener('input', function() {
-    formatDollarInput(this);
-});
-document.getElementById('opCost').addEventListener('input', function() {
-    formatDollarInput(this);
-});
-document.getElementById('actualOPCost').addEventListener('input', function() {
-    formatDollarInput(this);
-});
+    if (!violations || violations <= 0) {
+        alert("Please enter a valid number of violations.");
+        return;
+    }
 
-// Pre-populate the "Actual ObservePoint Scanning Rate" field with 70
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('actualOPRate').value = 70;
-});
+    regions.forEach(region => {
+        let finePerViolation = 0;
+        let totalFine = 0;
 
-function calculateSavings() {
-    // Hypothetical Manual Employee Testing
-    let manualTime = parseFloat(document.getElementById('manualTime').value);
-    let pagesToTest = parseFloat(document.getElementById('pagesToTest').value.replace(/,/g, ''));
-    let manualRate = parseFloat(document.getElementById('manualRate').value.replace(/[^0-9.]/g, ''));
-    
-    let totalManualTestingTime = (manualTime * pagesToTest) / 60;
-    let totalManualCost = totalManualTestingTime * manualRate;
-    
-    document.getElementById('totalManualTime').textContent = totalManualTestingTime.toLocaleString() + " hours";
-    document.getElementById('totalManualCost').textContent = "$" + totalManualCost.toLocaleString(undefined, {minimumFractionDigits: 2});
+        switch (region) {
+            case "utah":
+                finePerViolation = 7500;
+                break;
+            case "california":
+                finePerViolation = 2500; // Negligence
+                break;
+            case "california_intentional":
+                finePerViolation = 7500; // Intentional
+                break;
+            case "california_minors":
+                finePerViolation = 7500; // Minors
+                break;
+            case "colorado":
+                finePerViolation = 20000; // Standard
+                break;
+            case "colorado_elderly":
+                finePerViolation = 50000; // Elderly Involved
+                break;
+            case "virginia":
+                finePerViolation = 7500;
+                break;
+            case "connecticut":
+                finePerViolation = 5000;
+                break;
+            case "delaware":
+                finePerViolation = 10000;
+                break;
+            case "indiana":
+                finePerViolation = 7500;
+                break;
+            case "iowa":
+                finePerViolation = 7500;
+                break;
+            case "kentucky":
+                finePerViolation = 7500;
+                break;
+            case "maryland":
+                finePerViolation = 10000;
+                break;
+            case "minnesota":
+                finePerViolation = 7500; // Placeholder, adjust as needed
+                break;
+            case "montana":
+                finePerViolation = 7500;
+                break;
+            case "nebraska":
+                finePerViolation = 7500;
+                break;
+            case "newhampshire":
+                finePerViolation = 7500;
+                break;
+            case "newjersey":
+                finePerViolation = 10000;
+                break;
+            case "oregon":
+                finePerViolation = 7500;
+                break;
+            case "rhodeisland":
+                finePerViolation = 7500;
+                break;
+            case "tennessee":
+                finePerViolation = 7500;
+                break;
+            case "texas":
+                finePerViolation = 7500;
+                break;
+            case "washington":
+                finePerViolation = 7500;
+                break;
+            case "gdpr_2":
+                totalFine = 0.02 * annualRevenue;
+                currency = "EUR";
+                break;
+            case "gdpr_4":
+                totalFine = 0.04 * annualRevenue;
+                currency = "EUR";
+                break;
+            default:
+                finePerViolation = 0;
+        }
 
-    // Hypothetical ObservePoint Scanning
-    let opRate = parseFloat(document.getElementById('opRate').value);
-    let opPages = parseFloat(document.getElementById('opPages').value.replace(/,/g, ''));
-    let opCost = parseFloat(document.getElementById('opCost').value.replace(/[^0-9.]/g, ''));
-    
-    let totalOPTestingTime = (opPages / opRate) / 60;
-    let totalOPCost = opPages * opCost;
-    
-    document.getElementById('totalOPTime').textContent = totalOPTestingTime.toFixed(4) + " hours";
-    document.getElementById('totalOPCost').textContent = "$" + totalOPCost.toLocaleString(undefined, {minimumFractionDigits: 2});
-    
-    // Time and Cost Saved (Hypothetical)
-    let timeSaved = totalManualTestingTime - totalOPTestingTime;
-    let moneySaved = totalManualCost - totalOPCost;
+        if (region !== 'gdpr_2' && region !== 'gdpr_4') {
+            totalFine = violations * finePerViolation;
+        }
 
-    // Ensure no negative values for time and cost saved
-    timeSaved = Math.max(0, timeSaved);
-    moneySaved = Math.max(0, moneySaved);
-    
-    document.getElementById('totalHoursSaved').textContent = timeSaved.toFixed(2) + " hours";
-    document.getElementById('totalMoneySaved').textContent = "$" + moneySaved.toLocaleString(undefined, {minimumFractionDigits: 2});
+        // Format the fine for the region
+        const formattedFine = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: currency
+        }).format(totalFine);
 
-    // Additional Metrics: FTE and Annual Cost per Employee
-    let annualHoursPerFTE = 2080; // Assuming 40 hours per week for 52 weeks
-    let totalFTEs = totalManualTestingTime / annualHoursPerFTE;
-    let annualCostPerFTE = totalManualCost / totalFTEs;
+        // Append the result for each region
+        totalFineOutput += `${capitalizeFirstLetter(region)}: ${formattedFine}<br>`;
+    });
 
-    document.getElementById('totalFTEs').textContent = totalFTEs.toFixed(2) + " FTEs";
-    document.getElementById('annualCostPerFTE').textContent = "$" + annualCostPerFTE.toLocaleString(undefined, {minimumFractionDigits: 2});
+    // Display the results in the "totalFine" section
+    document.getElementById('totalFine').innerHTML = totalFineOutput;
+}
 
-    // Actual Manual Employee Testing
-    let actualManualTime = parseFloat(document.getElementById('actualManualTime').value);
-    let actualPagesTested = parseFloat(document.getElementById('actualPagesTested').value.replace(/,/g, ''));
-    let actualManualCost = actualManualTime * manualRate;
-    
-    document.getElementById('actualManualCost').textContent = "$" + actualManualCost.toLocaleString(undefined, {minimumFractionDigits: 2});
-    
-    // Actual ObservePoint Testing
-    let actualOPRate = parseFloat(document.getElementById('actualOPRate').value);
-    let actualOPCostPerPage = parseFloat(document.getElementById('actualOPCost').value.replace(/[^0-9.]/g, ''));
-    
-    let actualOPTestingTime = (actualPagesTested / actualOPRate) / 60;
-    let actualTotalOPCost = actualPagesTested * actualOPCostPerPage;
-    
-    let actualTimeSaved = actualManualTime - actualOPTestingTime;
-    let actualCostSaved = actualManualCost - actualTotalOPCost;
-
-    // Ensure no negative values for actual time and cost saved
-    actualTimeSaved = Math.max(0, actualTimeSaved);
-    actualCostSaved = Math.max(0, actualCostSaved);
-    
-    document.getElementById('actualOPTime').textContent = actualOPTestingTime.toFixed(4) + " hours";
-    document.getElementById('actualOPTotalCost').textContent = "$" + actualTotalOPCost.toLocaleString(undefined, {minimumFractionDigits: 2});
-
-    // Actual Time and Cost Saved (Summary)
-    document.getElementById('actualTotalHoursSaved').textContent = actualTimeSaved.toFixed(4) + " hours";
-    document.getElementById('actualTotalMoneySaved').textContent = "$" + actualCostSaved.toLocaleString(undefined, {minimumFractionDigits: 2});
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }

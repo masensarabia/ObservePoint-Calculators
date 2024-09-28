@@ -1,7 +1,7 @@
 function toggleFineOptions() {
     const regions = Array.from(document.getElementById('region').selectedOptions).map(option => option.value);
     const annualRevenueInput = document.getElementById('annualRevenueInput');
-    if (regions.includes('gdpr_2') || regions.includes('gdpr_4')) {
+    if (regions.includes('gdpr-2%') || regions.includes('gdpr-4%')) { // Match these to your select option values
         annualRevenueInput.style.display = 'block';
     } else {
         annualRevenueInput.style.display = 'none';

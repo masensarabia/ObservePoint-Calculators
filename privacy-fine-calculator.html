@@ -23,7 +23,7 @@
         </nav>
     </header>
 
-     <div class="key-terms-section">
+    <div class="key-terms-section">
         <h2>Key Terms: Violation and Cure Period</h2>
         <h3>What is a Violation?</h3>
         <p>In the context of data privacy laws, a violation refers to any action or inaction that breaches the specific requirements set by the law. Violations can vary widely depending on the regulation, but they typically include actions like unauthorized data collection, failure to secure personal information, not honoring opt-out requests, or mishandling sensitive data. Each occurrence of a breach (e.g., each instance of failing to delete user data upon request) is considered a separate violation, and fines are often calculated on a "per violation" basis.</p>
@@ -41,10 +41,10 @@
         <div class="calculator-grid">
             <div class="calculator-card">
                 <label for="violations">Number of Violations:</label>
-               <input type="number" id="violations" class="calculator-input" placeholder="Enter number of violations">
+                <input type="number" id="violations" class="calculator-input" placeholder="Enter number of violations">
             
-                <label for="region">Select Region:</label>
-                <select id="region" onchange="toggleFineOptions()">
+                <label for="region">Select Region(s):</label>
+                <select id="region" class="calculator-input" multiple onchange="toggleFineOptions()">
                     <option value="utah">Utah</option>
                     <option value="california">California - Negligence</option>
                     <option value="california_intentional">California - Intentional</option>
@@ -81,11 +81,11 @@
             </div>
         </div>
 
-    <div class="results-summary">
-        <h2>Total Fine</h2>
-        <p id="totalFine">$0</p>
+        <div class="results-summary">
+            <h2>Total Fine</h2>
+            <p id="totalFine">$0</p>
+        </div>
     </div>
-</div>
 
 
 

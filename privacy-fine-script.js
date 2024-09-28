@@ -48,16 +48,16 @@ function calculateFine() {
             case "california":
                 finePerViolation = 2500; // Negligence
                 break;
-            case "california_intentional":
+            case "california-intentional":
                 finePerViolation = 7500; // Intentional
                 break;
-            case "california_minors":
+            case "california-minors":
                 finePerViolation = 7500; // Minors
                 break;
             case "colorado":
                 finePerViolation = 20000; // Standard
                 break;
-            case "colorado_elderly":
+            case "colorado-elderly":
                 finePerViolation = 50000; // Elderly Involved
                 break;
             case "virginia":
@@ -111,11 +111,11 @@ function calculateFine() {
             case "washington":
                 finePerViolation = 7500;
                 break;
-            case "gdpr_2":
+            case "gdpr-2%":
                 totalFine = 0.02 * annualRevenue;
                 currency = "EUR";
                 break;
-            case "gdpr_4":
+            case "gdpr-4%":
                 totalFine = 0.04 * annualRevenue;
                 currency = "EUR";
                 break;
@@ -123,7 +123,7 @@ function calculateFine() {
                 finePerViolation = 0;
         }
 
-        if (region !== 'gdpr_2' && region !== 'gdpr_4') {
+        if (region !== 'gdpr-2%' && region !== 'gdpr-4%') {
             totalFine = violations * finePerViolation;
         }
 

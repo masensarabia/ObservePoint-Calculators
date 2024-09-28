@@ -1,18 +1,24 @@
-function toggleFineOptions() {
-    const region = document.getElementById('region').value;
-    const annualRevenueInput = document.getElementById('annualRevenueInput');
-    if (region === 'gdpr_2' || region === 'gdpr_4') {
-        annualRevenueInput.style.display = 'block';
-    } else {
-        annualRevenueInput.style.display = 'none';
-    }
+let selectedRegionsSet = new Set();
+
+function addRegion() {
+    const selectedRegionOptions = Array.from(document.getElementById('region').selectedOptions).map(option => option.value);
+    selectedRegionOptions.forEach(region => {
+        selectedRegionsSet.add(region); // Add region to the set
+    });
+    displaySelectedRegions(); // Display the selected regions
+}
+
+function displaySelectedRegions() {
+    const selectedRegionsDiv = document.getElementById('selectedRegions');
+    selectedRegionsDiv.innerHTML = ''; // Clear the content
+    selectedRegionsSet.forEach(region => {
+        selectedRegionsDiv.innerHTML += `${capitalizeFirstLetter(region)}<br>`;
+    });
 }
 
 function calculateFine() {
     const violations = parseInt(document.getElementById('violations').value);
-    const regions = Array.from(document.getElementById('region').selectedOptions).map(option => option.value);
     const annualRevenue = parseFloat(document.getElementById('annualRevenue').value);
-
     let totalFineOutput = '';
     let currency = "USD";
 
@@ -21,7 +27,7 @@ function calculateFine() {
         return;
     }
 
-    regions.forEach(region => {
+    selectedRegionsSet.forEach(region => {
         let finePerViolation = 0;
         let totalFine = 0;
 
@@ -66,7 +72,7 @@ function calculateFine() {
                 finePerViolation = 10000;
                 break;
             case "minnesota":
-                finePerViolation = 7500; // Placeholder, adjust as needed
+                finePerViolation = 7500;
                 break;
             case "montana":
                 finePerViolation = 7500;

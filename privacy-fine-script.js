@@ -1,16 +1,3 @@
-// Toggle annual revenue input for GDPR regions
-function toggleFineOptions() {
-    const selectedRegions = Array.from(document.getElementById('region').selectedOptions).map(option => option.value);
-    const annualRevenueInput = document.getElementById('annualRevenueInput');
-
-    // Check if either GDPR option is selected
-    if (selectedRegions.includes('gdpr-2%') || selectedRegions.includes('gdpr-4%')) {
-        annualRevenueInput.style.display = 'block';
-    } else {
-        annualRevenueInput.style.display = 'none';
-    }
-}
-
 // Add region and allow removal of selected regions
 function addRegion() {
     const regionSelect = document.getElementById('region');
@@ -40,9 +27,6 @@ function addRegion() {
 // Remove region from the list
 function removeRegion(regionToRemove) {
     const regionSelect = document.getElementById('region');
-    const selectedRegions = Array.from(regionSelect.selectedOptions).map(option => option.value);
-    
-    // Deselect the region
     Array.from(regionSelect.options).forEach(option => {
         if (option.value === regionToRemove) {
             option.selected = false;
@@ -50,6 +34,19 @@ function removeRegion(regionToRemove) {
     });
 
     addRegion(); // Update displayed regions after removal
+}
+
+// Toggle annual revenue input for GDPR regions
+function toggleFineOptions() {
+    const selectedRegions = Array.from(document.getElementById('region').selectedOptions).map(option => option.value);
+    const annualRevenueInput = document.getElementById('annualRevenueInput');
+
+    // Check if either GDPR option is selected and show/hide the annual revenue input
+    if (selectedRegions.includes('gdpr-2%') || selectedRegions.includes('gdpr-4%')) {
+        annualRevenueInput.style.display = 'block';
+    } else {
+        annualRevenueInput.style.display = 'none';
+    }
 }
 
 // Calculate fine based on selected regions and violations

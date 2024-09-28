@@ -92,6 +92,26 @@ body {
     color: #333;
 }
 
+/* Change the dropdown selection color to yellow */
+select.calculator-input option:checked {
+    background-color: #FFD700; /* This sets the background of the selected option to a yellow color */
+    color: black; /* Sets the text color to black for good contrast */
+}
+
+/* Optional: Style the dropdown to match your theme */
+select.calculator-input {
+    border: 1px solid #FFD700; /* Yellow border to match your theme */
+    background-color: #333333; /* Dropdown background to blend with your dark theme */
+    color: white; /* Text color */
+    padding: 0.5rem; /* Adjust padding */
+    border-radius: 4px; /* Slight border radius for better aesthetics */
+}
+
+select.calculator-input:hover {
+    border-color: #FFD700; /* On hover, keep the yellow border */
+}
+
+
 
 /* Titles */
 h1, h2 {

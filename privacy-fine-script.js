@@ -1,14 +1,15 @@
 let selectedRegionsSet = new Set();
 
+// Function to add region
 function addRegion() {
     const selectedRegionOptions = Array.from(document.getElementById('region').selectedOptions).map(option => option.value);
     selectedRegionOptions.forEach(region => {
         selectedRegionsSet.add(region); // Add region to the set
     });
     displaySelectedRegions(); // Display the selected regions
-    toggleFineOptions(); // Check if GDPR was selected and show/hide revenue input
 }
 
+// Function to display selected regions
 function displaySelectedRegions() {
     const selectedRegionsDiv = document.getElementById('selectedRegions');
     selectedRegionsDiv.innerHTML = ''; // Clear the content
@@ -22,26 +23,16 @@ function displaySelectedRegions() {
     });
 }
 
+// Function to remove region
 function removeRegion(region) {
     selectedRegionsSet.delete(region); // Remove the region from the set
     displaySelectedRegions(); // Update the displayed list
-    toggleFineOptions(); // Update visibility of revenue input if needed
 }
 
-function toggleFineOptions() {
-    const hasGdprSelected = [...selectedRegionsSet].some(region => region === 'gdpr-2%' || region === 'gdpr-4%');
-    const annualRevenueInput = document.getElementById('annualRevenueInput');
-
-    if (hasGdprSelected) {
-        annualRevenueInput.style.display = 'block'; // Show the annual revenue input if GDPR is selected
-    } else {
-        annualRevenueInput.style.display = 'none'; // Hide it otherwise
-    }
-}
-
+// Function to calculate fines
 function calculateFine() {
-    const violations = parseInt(document.getElementById('violations').value);
-    const annualRevenue = parseFloat(document.getElementById('annualRevenue').value);
+    const violations = parseInt(document.getElementById('violations').value.replace(/,/g, ''));
+    const annualRevenue = parseFloat(document.getElementById('annualRevenue').value.replace(/,/g, ''));
     let totalFineOutput = '';
     let currency = "USD";
 
@@ -125,18 +116,10 @@ function calculateFine() {
                 finePerViolation = 7500;
                 break;
             case "gdpr-2%":
-                if (!annualRevenue || annualRevenue <= 0) {
-                    alert("Please enter a valid annual revenue for GDPR fines.");
-                    return;
-                }
                 totalFine = 0.02 * annualRevenue;
                 currency = "EUR";
                 break;
             case "gdpr-4%":
-                if (!annualRevenue || annualRevenue <= 0) {
-                    alert("Please enter a valid annual revenue for GDPR fines.");
-                    return;
-                }
                 totalFine = 0.04 * annualRevenue;
                 currency = "EUR";
                 break;
@@ -162,6 +145,33 @@ function calculateFine() {
     document.getElementById('totalFine').innerHTML = totalFineOutput;
 }
 
+// Function to capitalize the first letter of the string
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+// Function to format the number with commas
+function formatNumberWithCommas(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+// Event listener to format the annual revenue input field
+document.getElementById('annualRevenue').addEventListener('input', function (e) {
+    let inputValue = e.target.value.replace(/,/g, ''); // Remove existing commas
+    if (!isNaN(inputValue) && inputValue.length > 0) {
+        e.target.value = formatNumberWithCommas(inputValue);
+    }
+});
+
+// Function to toggle the visibility of the annual revenue input field for GDPR regions
+function toggleFineOptions() {
+    const selectedRegionOptions = Array.from(document.getElementById('region').selectedOptions).map(option => option.value);
+    const annualRevenueInputDiv = document.getElementById('annualRevenueInput');
+
+    // Check if GDPR-2% or GDPR-4% is selected
+    if (selectedRegionOptions.includes('gdpr-2%') || selectedRegionOptions.includes('gdpr-4%')) {
+        annualRevenueInputDiv.style.display = 'block'; // Show the annual revenue input field
+    } else {
+        annualRevenueInputDiv.style.display = 'none'; // Hide the annual revenue input field
+    }
 }

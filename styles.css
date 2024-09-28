@@ -170,6 +170,25 @@ label {
     font-size: 1rem;
 }
 
+/* Style the select dropdown to match the input fields */
+select {
+    background-color: #555; /* Lighter gray background to match the input fields */
+    color: #f0f0f0; /* White text */
+    border: 1px solid #666; /* Border to match input fields */
+    border-radius: 5px; /* Rounded corners */
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    box-sizing: border-box; /* Ensure consistent width */
+    font-size: 1rem; /* Same font size as input fields */
+}
+
+/* Style the dropdown arrow */
+select option {
+    background-color: #333; /* Ensure dropdown options have a dark background */
+    color: #f0f0f0; /* White text for dropdown options */
+}
+
 /* Adjust placeholder text color */
 input::placeholder {
     color: #aaa; /* Darker gray for placeholder text */

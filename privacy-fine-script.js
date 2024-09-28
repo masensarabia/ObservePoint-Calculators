@@ -12,8 +12,18 @@ function displaySelectedRegions() {
     const selectedRegionsDiv = document.getElementById('selectedRegions');
     selectedRegionsDiv.innerHTML = ''; // Clear the content
     selectedRegionsSet.forEach(region => {
-        selectedRegionsDiv.innerHTML += `${capitalizeFirstLetter(region)}<br>`;
+        selectedRegionsDiv.innerHTML += `
+            <div class="selected-region">
+                ${capitalizeFirstLetter(region)} 
+                <button class="remove-btn" onclick="removeRegion('${region}')">x</button>
+            </div>
+        `;
     });
+}
+
+function removeRegion(region) {
+    selectedRegionsSet.delete(region); // Remove the region from the set
+    displaySelectedRegions(); // Update the displayed list
 }
 
 function calculateFine() {

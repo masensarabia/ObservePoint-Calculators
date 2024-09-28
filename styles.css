@@ -195,6 +195,30 @@ input::placeholder {
     opacity: 1; /* Ensure placeholder is visible */
 }
 
+.selected-region {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.remove-btn {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 0 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 3px;
+}
+
+.remove-btn:hover {
+    background-color: darkred;
+}
+
+
 /* Prefix for Dollar Input */
 .input-prefix {
     display: flex;

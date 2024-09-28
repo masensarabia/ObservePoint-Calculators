@@ -6,6 +6,7 @@ function addRegion() {
         selectedRegionsSet.add(region); // Add region to the set
     });
     displaySelectedRegions(); // Display the selected regions
+    toggleFineOptions(); // Check if GDPR was selected and show/hide revenue input
 }
 
 function displaySelectedRegions() {
@@ -24,6 +25,18 @@ function displaySelectedRegions() {
 function removeRegion(region) {
     selectedRegionsSet.delete(region); // Remove the region from the set
     displaySelectedRegions(); // Update the displayed list
+    toggleFineOptions(); // Update visibility of revenue input if needed
+}
+
+function toggleFineOptions() {
+    const hasGdprSelected = [...selectedRegionsSet].some(region => region === 'gdpr-2%' || region === 'gdpr-4%');
+    const annualRevenueInput = document.getElementById('annualRevenueInput');
+
+    if (hasGdprSelected) {
+        annualRevenueInput.style.display = 'block'; // Show the annual revenue input if GDPR is selected
+    } else {
+        annualRevenueInput.style.display = 'none'; // Hide it otherwise
+    }
 }
 
 function calculateFine() {
@@ -112,10 +125,18 @@ function calculateFine() {
                 finePerViolation = 7500;
                 break;
             case "gdpr-2%":
+                if (!annualRevenue || annualRevenue <= 0) {
+                    alert("Please enter a valid annual revenue for GDPR fines.");
+                    return;
+                }
                 totalFine = 0.02 * annualRevenue;
                 currency = "EUR";
                 break;
             case "gdpr-4%":
+                if (!annualRevenue || annualRevenue <= 0) {
+                    alert("Please enter a valid annual revenue for GDPR fines.");
+                    return;
+                }
                 totalFine = 0.04 * annualRevenue;
                 currency = "EUR";
                 break;

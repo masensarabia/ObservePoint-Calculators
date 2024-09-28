@@ -44,7 +44,7 @@
                 <input type="number" id="violations" class="calculator-input" placeholder="Enter number of violations">
             
                 <label for="region">Select Region(s):</label>
-                <select id="region" class="calculator-input" multiple onchange="toggleFineOptions()">
+                <select id="region" class="calculator-input" multiple onchange="addRegion()">
                     <option value="utah">Utah</option>
                     <option value="california">California - Negligence</option>
                     <option value="california_intentional">California - Intentional</option>
@@ -82,6 +82,8 @@
         </div>
 
         <div class="results-summary">
+            <h2>Selected Regions</h2>
+            <div id="selectedRegions"></div>
             <h2>Total Fine</h2>
             <p id="totalFine">$0</p>
         </div>

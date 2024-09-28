@@ -1,6 +1,5 @@
 let selectedRegionsSet = new Set();
 
-// Function to add region
 function addRegion() {
     const selectedRegionOptions = Array.from(document.getElementById('region').selectedOptions).map(option => option.value);
     selectedRegionOptions.forEach(region => {
@@ -9,7 +8,6 @@ function addRegion() {
     displaySelectedRegions(); // Display the selected regions
 }
 
-// Function to display selected regions
 function displaySelectedRegions() {
     const selectedRegionsDiv = document.getElementById('selectedRegions');
     selectedRegionsDiv.innerHTML = ''; // Clear the content
@@ -23,15 +21,13 @@ function displaySelectedRegions() {
     });
 }
 
-// Function to remove region
 function removeRegion(region) {
     selectedRegionsSet.delete(region); // Remove the region from the set
     displaySelectedRegions(); // Update the displayed list
 }
 
-// Function to calculate fines
 function calculateFine() {
-    const violations = parseInt(document.getElementById('violations').value.replace(/,/g, ''));
+    const violations = parseInt(document.getElementById('violations').value);
     const annualRevenue = parseFloat(document.getElementById('annualRevenue').value.replace(/,/g, ''));
     let totalFineOutput = '';
     let currency = "USD";
@@ -145,33 +141,20 @@ function calculateFine() {
     document.getElementById('totalFine').innerHTML = totalFineOutput;
 }
 
-// Function to capitalize the first letter of the string
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-// Function to format the number with commas
-function formatNumberWithCommas(number) {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
-// Event listener to format the annual revenue input field
+// Adding commas in the annual revenue input
 document.getElementById('annualRevenue').addEventListener('input', function (e) {
-    let inputValue = e.target.value.replace(/,/g, ''); // Remove existing commas
-    if (!isNaN(inputValue) && inputValue.length > 0) {
-        e.target.value = formatNumberWithCommas(inputValue);
+    let value = e.target.value.replace(/,/g, ''); // Remove any existing commas
+    if (isNaN(value)) {
+        e.target.value = ''; // Clear the input if it's not a valid number
+    } else {
+        e.target.value = formatWithCommas(value); // Format and display the value with commas
     }
 });
 
-// Function to toggle the visibility of the annual revenue input field for GDPR regions
-function toggleFineOptions() {
-    const selectedRegionOptions = Array.from(document.getElementById('region').selectedOptions).map(option => option.value);
-    const annualRevenueInputDiv = document.getElementById('annualRevenueInput');
-
-    // Check if GDPR-2% or GDPR-4% is selected
-    if (selectedRegionOptions.includes('gdpr-2%') || selectedRegionOptions.includes('gdpr-4%')) {
-        annualRevenueInputDiv.style.display = 'block'; // Show the annual revenue input field
-    } else {
-        annualRevenueInputDiv.style.display = 'none'; // Hide the annual revenue input field
-    }
+function formatWithCommas(value) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }

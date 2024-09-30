@@ -27,7 +27,7 @@ function removeRegion(region) {
 }
 
 function calculateFine() {
-    const violations = parseInt(document.getElementById('violations').value);
+    const violations = parseInt(document.getElementById('violations').value.replace(/,/g, '')); // Get value without commas
     const annualRevenue = parseFloat(document.getElementById('annualRevenue').value.replace(/,/g, ''));
     let totalFineOutput = '';
     let currency = "USD";
@@ -175,6 +175,16 @@ function calculateFine() {
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+// Adding commas in the number of violations input
+document.getElementById('violations').addEventListener('input', function (e) {
+    let value = e.target.value.replace(/,/g, ''); // Remove any existing commas
+    if (isNaN(value)) {
+        e.target.value = ''; // Clear the input if it's not a valid number
+    } else {
+        e.target.value = formatWithCommas(value); // Format and display the value with commas
+    }
+});
 
 // Adding commas in the annual revenue input
 document.getElementById('annualRevenue').addEventListener('input', function (e) {

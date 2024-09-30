@@ -180,19 +180,25 @@ function capitalizeFirstLetter(string) {
 
 // Helper function to format numbers with commas
 function formatWithCommas(value) {
-    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 // Adding commas in the number of violations input
 document.getElementById('violations').addEventListener('input', function (e) {
-    let cursorPosition = e.target.selectionStart;  // Save the cursor position
-    let value = e.target.value.replace(/,/g, ''); // Remove any existing commas
-    
+    let value = e.target.value.replace(/,/g, ''); // Remove existing commas
     if (!isNaN(value) && value !== '') {
-        e.target.value = formatWithCommas(value); // Format and display the value with commas
+        const formattedValue = formatWithCommas(value); // Format the value with commas
+
+        // Save the current cursor position
+        const cursorPosition = e.target.selectionStart;
+        const lengthDifference = formattedValue.length - e.target.value.length;
+
+        // Set the formatted value back in the input field
+        e.target.value = formattedValue;
+
+        // Restore the cursor position to where the user was typing
+        e.target.selectionStart = cursorPosition + lengthDifference;
+        e.target.selectionEnd = cursorPosition + lengthDifference;
     }
-    
-    // Restore the cursor position
-    e.target.selectionStart = cursorPosition;
-    e.target.selectionEnd = cursorPosition;
 });
+

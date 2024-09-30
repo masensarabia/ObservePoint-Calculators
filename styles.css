@@ -211,29 +211,6 @@ input::placeholder {
     opacity: 1;
 }
 
-/* Style the select dropdown */
-select.calculator-input {
-    border: 1px solid #F1CD14; /* Always show yellow border */
-    background-color: #333; /* Dark background for the dropdown */
-    color: #fff; /* White text */
-    padding: 0.5rem;
-    border-radius: 4px;
-}
-
-/* Ensure the focus state (when selecting a region) stays yellow */
-select.calculator-input:focus,
-select.calculator-input option:focus {
-    border-color: #F1CD14; /* Yellow border on focus */
-    background-color: #333; /* Same dark background on focus */
-    color: #fff; /* White text for options */
-    outline: none; /* Remove default focus outline */
-}
-
-/* Style selected options */
-select.calculator-input option:checked {
-    background-color: #F1CD14; /* Yellow background for selected options */
-    color: black; /* Black text for contrast */
-}
 
 
 /* Titles */

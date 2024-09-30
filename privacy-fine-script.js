@@ -183,22 +183,20 @@ function formatWithCommas(value) {
     return value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-// Adding commas in the number of violations input
-document.getElementById('violations').addEventListener('input', function (e) {
-    let value = e.target.value.replace(/,/g, ''); // Remove existing commas
+// Event listener to format number with commas on blur (when user leaves the input field)
+document.getElementById('violations').addEventListener('blur', function (e) {
+    let value = e.target.value.replace(/,/g, ''); // Remove any existing commas
     if (!isNaN(value) && value !== '') {
-        const formattedValue = formatWithCommas(value); // Format the value with commas
-
-        // Save the current cursor position
-        const cursorPosition = e.target.selectionStart;
-        const lengthDifference = formattedValue.length - e.target.value.length;
-
-        // Set the formatted value back in the input field
-        e.target.value = formattedValue;
-
-        // Restore the cursor position to where the user was typing
-        e.target.selectionStart = cursorPosition + lengthDifference;
-        e.target.selectionEnd = cursorPosition + lengthDifference;
+        e.target.value = formatWithCommas(value); // Format and display the value with commas when input loses focus
     }
 });
+
+// Ensure the input only accepts numbers without commas while typing
+document.getElementById('violations').addEventListener('input', function (e) {
+    let value = e.target.value.replace(/,/g, ''); // Remove commas as the user types
+    if (!isNaN(value) && value !== '') {
+        e.target.value = value; // Allow input to continue without commas during typing
+    }
+});
+
 

@@ -26,6 +26,23 @@ body {
     height: 100px;
 }
 
+/* General focus state for all elements */
+*:focus {
+    outline: 2px solid #F1CD14; /* Change the focus outline to yellow */
+    outline-offset: 2px; /* Optional: create space between the element and outline */
+}
+
+/* Specific focus styling for links */
+a:focus {
+    outline: 2px solid #F1CD14; /* Ensure links have the same yellow focus outline */
+}
+
+/* Specific focus styling for buttons */
+button:focus {
+    outline: 2px solid #F1CD14; /* Ensure buttons have the same yellow focus outline */
+}
+
+
 .site-navigation {
     margin-left: 4rem;
 }
@@ -91,6 +108,8 @@ body {
     background-color: #f9f9f9;
     color: #333;
 }
+
+
 
 /* Change the dropdown selection color to yellow */
 select.calculator-input option:checked {

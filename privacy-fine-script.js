@@ -182,15 +182,15 @@ function formatWithCommas(value) {
     return value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-// Adding commas in the number of violations input
+// Event listener to add commas as you type
 document.getElementById('violations').addEventListener('input', function (e) {
     let value = e.target.value.replace(/,/g, ''); // Remove any existing commas
     if (!isNaN(value) && value !== '') {
-        let cursorPosition = e.target.selectionStart; // Get the cursor position before formatting
-        e.target.value = formatWithCommas(value); // Apply formatting with commas
-        e.target.setSelectionRange(cursorPosition, cursorPosition); // Restore cursor position
+        let formattedValue = formatWithCommas(value); // Format the value with commas
+        e.target.value = formattedValue;
     }
 });
+
 
 
 

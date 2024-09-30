@@ -176,3 +176,23 @@ function calculateFine() {
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+
+// Helper function to format numbers with commas
+function formatWithCommas(value) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+// Adding commas in the number of violations input
+document.getElementById('violations').addEventListener('input', function (e) {
+    let cursorPosition = e.target.selectionStart;  // Save the cursor position
+    let value = e.target.value.replace(/,/g, ''); // Remove any existing commas
+    
+    if (!isNaN(value) && value !== '') {
+        e.target.value = formatWithCommas(value); // Format and display the value with commas
+    }
+    
+    // Restore the cursor position
+    e.target.selectionStart = cursorPosition;
+    e.target.selectionEnd = cursorPosition;
+});

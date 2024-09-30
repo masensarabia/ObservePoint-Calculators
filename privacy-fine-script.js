@@ -111,6 +111,36 @@ function calculateFine() {
             case "washington":
                 finePerViolation = 7500;
                 break;
+
+            // New states
+            case "massachusetts":
+                finePerViolation = 7500; // Placeholder, no fines declared yet
+                break;
+            case "michigan":
+                finePerViolation = 7500; // Fine declared
+                break;
+            case "ohio":
+                finePerViolation = 0; // No fines specified yet
+                break;
+            case "pennsylvania":
+                finePerViolation = 7500; // Fine declared
+                break;
+            case "georgia":
+                finePerViolation = 0; // No fines declared yet
+                break;
+            case "hawaii":
+                finePerViolation = 0; // No fines declared yet
+                break;
+            case "illinois":
+                finePerViolation = 7500; // Fine declared
+                break;
+            case "louisiana":
+                finePerViolation = 0; // No fines declared yet
+                break;
+            case "vermont":
+                finePerViolation = 0; // No fines declared yet
+                break;
+
             case "gdpr-2%":
                 totalFine = 0.02 * annualRevenue;
                 currency = "EUR";

@@ -27,12 +27,13 @@ function removeRegion(region) {
 }
 
 function calculateFine() {
-    const violations = parseInt(document.getElementById('violations').value.replace(/,/g, '')); // Get value without commas
+    const violationsInput = document.getElementById('violations').value.replace(/,/g, '');
+    const violations = parseInt(violationsInput, 10); // Get value as a number
     const annualRevenue = parseFloat(document.getElementById('annualRevenue').value.replace(/,/g, ''));
     let totalFineOutput = '';
     let currency = "USD";
 
-    if (!violations || violations <= 0) {
+    if (isNaN(violations) || violations <= 0) {
         alert("Please enter a valid number of violations.");
         return;
     }
@@ -158,7 +159,7 @@ function calculateFine() {
             totalFine = violations * finePerViolation;
         }
 
-        // Format the fine for the region
+      // Format the fine for the region
         const formattedFine = new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: currency
@@ -176,26 +177,15 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-// Adding commas in the number of violations input
-document.getElementById('violations').addEventListener('input', function (e) {
-    let value = e.target.value.replace(/,/g, ''); // Remove any existing commas
-    if (isNaN(value)) {
-        e.target.value = ''; // Clear the input if it's not a valid number
-    } else {
-        e.target.value = formatWithCommas(value); // Format and display the value with commas
-    }
-});
-
-// Adding commas in the annual revenue input
-document.getElementById('annualRevenue').addEventListener('input', function (e) {
-    let value = e.target.value.replace(/,/g, ''); // Remove any existing commas
-    if (isNaN(value)) {
-        e.target.value = ''; // Clear the input if it's not a valid number
-    } else {
-        e.target.value = formatWithCommas(value); // Format and display the value with commas
-    }
-});
-
+// Helper function to format numbers with commas
 function formatWithCommas(value) {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+// Adding commas in the number of violations input
+document.getElementById('violations').addEventListener('input', function (e) {
+    let value = e.target.value.replace(/,/g, ''); // Remove any existing commas
+    if (!isNaN(value) && value !== '') {
+        e.target.value = formatWithCommas(value); // Format and display the value with commas
+    }
+});

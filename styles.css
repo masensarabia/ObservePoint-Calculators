@@ -26,27 +26,6 @@ body {
     height: 100px;
 }
 
-/* General focus state for all elements */
-*:focus {
-    outline: 2px solid #F1CD14; /* Change the focus outline to yellow */
-    outline-offset: 2px; /* Optional: create space between the element and outline */
-}
-
-/* Specific focus styling for links */
-a:focus {
-    outline: 2px solid #F1CD14; /* Ensure links have the same yellow focus outline */
-}
-
-/* Specific focus styling for buttons */
-button:focus {
-    outline: 2px solid #F1CD14; /* Ensure buttons have the same yellow focus outline */
-}
-
-
-.site-navigation {
-    margin-left: 4rem;
-}
-
 .logo img {
     height: 35px;
     margin-top: 8px;
@@ -54,6 +33,10 @@ button:focus {
 }
 
 /* Navigation */
+.site-navigation {
+    margin-left: 4rem;
+}
+
 .site-navigation ul {
     list-style: none;
     display: flex;
@@ -82,6 +65,22 @@ button:focus {
     color: #F1CD14;
 }
 
+/* General focus state for all elements */
+*:focus {
+    outline: 2px solid #F1CD14; /* Change the focus outline to yellow */
+    outline-offset: 2px; /* Optional: create space between the element and outline */
+}
+
+/* Specific focus styling for links */
+a:focus {
+    outline: 2px solid #F1CD14; /* Ensure links have the same yellow focus outline */
+}
+
+/* Specific focus styling for buttons */
+button:focus {
+    outline: 2px solid #F1CD14; /* Ensure buttons have the same yellow focus outline */
+}
+
 /* Description Section */
 .description-section {
     border: 2px solid #F1CD14;
@@ -95,127 +94,6 @@ button:focus {
     margin-bottom: 1rem;
     line-height: 1.4;
     text-align: left; /* Ensure body text is left-aligned */
-}
-
-.calculator-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    background-color: #f9f9f9;
-    color: #333;
-}
-
-
-
-/* Change the dropdown selection color to yellow */
-select.calculator-input option:checked {
-    background-color: #FFD700; /* This sets the background of the selected option to a yellow color */
-    color: black; /* Sets the text color to black for good contrast */
-}
-
-/* Optional: Style the dropdown to match your theme */
-select.calculator-input {
-    border: 1px solid #FFD700; /* Yellow border to match your theme */
-    background-color: #333333; /* Dropdown background to blend with your dark theme */
-    color: white; /* Text color */
-    padding: 0.5rem; /* Adjust padding */
-    border-radius: 4px; /* Slight border radius for better aesthetics */
-}
-
-select.calculator-input:hover {
-    border-color: #FFD700; /* On hover, keep the yellow border */
-}
-
-select option:checked {
-    background-color: #F1CD14; /* Yellow background for selected option */
-    color: black; /* Black text for contrast */
-}
-
-select option {
-    background-color: #333; /* Ensure dropdown options have a dark background */
-    color: #f0f0f0; /* White text for dropdown options */
-}
-
-/* Tooltip container */
-.tooltip {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
-
-/* Tooltip text */
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 250px; /* Adjust width as needed */
-    background-color: #333; /* Dark background to match theme */
-    color: #fff; /* White text */
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%; /* Adjust position */
-    left: 50%;
-    margin-left: -125px; /* Center the tooltip */
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-/* Show the tooltip text when hovering over the tooltip container */
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-}
-
-
-/* Titles */
-h1, h2 {
-    font-weight: 400;
-    color: #F1CD14;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    text-align: center; /* Keep headings centered */
-}
-
-h1 {
-    text-decoration: underline;
-}
-
-/* Center content for the privacy page (key terms and additional sections) */
-.key-terms-section,
-.content-section {
-    border: 2px solid #F1CD14;
-    border-radius: 10px;
-    padding: 2rem 2rem; /* Add padding for breathing room */
-    max-width: 1000px;
-    margin: 2rem auto;
-    text-align: left; /* Ensure white text is left-aligned */
-}
-
-/* Key takeaway styling */
-.key-takeaway {
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #F1CD14; /* Make it yellow like other headings */
-    display: inline-block;
-    margin-bottom: 1rem;
-}
-
-/* General link styles */
-a {
-    color: #F1CD14; /* Yellow color */
-    text-decoration: none; /* Remove underline by default */
-    transition: color 0.3s ease; /* Smooth transition for color changes */
-}
-
-/* Link hover effect */
-a:hover {
-    color: #FFD700; /* Slightly lighter yellow on hover */
-    text-decoration: underline; /* Add underline when hovered */
 }
 
 /* Calculator Container */
@@ -262,33 +140,30 @@ label {
     font-size: 1rem; /* Consistent font size */
 }
 
-
-#violations {
-    background-color: #555; /* Lighter gray background like the other page */
-    color: #f0f0f0; /* White text */
-    border: 1px solid #666; /* Border color to match other inputs */
-    border-radius: 5px;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 1rem;
+/* Change the dropdown selection color to yellow */
+select.calculator-input option:checked {
+    background-color: #FFD700; /* This sets the background of the selected option to a yellow color */
+    color: black; /* Sets the text color to black for good contrast */
 }
 
-/* Style the select dropdown to match the input fields */
-select {
-    background-color: #555; /* Lighter gray background to match the input fields */
-    color: #f0f0f0; /* White text */
-    border: 1px solid #666; /* Border to match input fields */
-    border-radius: 5px; /* Rounded corners */
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    width: 100%;
-    box-sizing: border-box; /* Ensure consistent width */
-    font-size: 1rem; /* Same font size as input fields */
+/* Optional: Style the dropdown to match your theme */
+select.calculator-input {
+    border: 1px solid #FFD700; /* Yellow border to match your theme */
+    background-color: #333333; /* Dropdown background to blend with your dark theme */
+    color: white; /* Text color */
+    padding: 0.5rem; /* Adjust padding */
+    border-radius: 4px; /* Slight border radius for better aesthetics */
 }
 
-/* Style the dropdown arrow */
+select.calculator-input:hover {
+    border-color: #FFD700; /* On hover, keep the yellow border */
+}
+
+select option:checked {
+    background-color: #F1CD14; /* Yellow background for selected option */
+    color: black; /* Black text for contrast */
+}
+
 select option {
     background-color: #333; /* Ensure dropdown options have a dark background */
     color: #f0f0f0; /* White text for dropdown options */
@@ -307,88 +182,67 @@ input::placeholder {
     opacity: 1; /* Ensure placeholder is visible */
 }
 
-/* Annual Revenue Input Field */
-#annualRevenue {
-    background-color: #555; /* Matches the input field background */
-    color: #f0f0f0; /* White text */
-    border: 1px solid #666;
-    border-radius: 5px;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 1rem;
-}
-
-.selected-region {
+/* Tooltip Styles */
+.tooltip {
+    position: relative;
     display: inline-block;
-    margin: 5px;
-    padding: 5px 10px;
-    background-color: #333;
-    color: #fff;
-    border-radius: 5px;
-}
-
-.remove-btn {
-    background-color: transparent;
-    border: none;
-    color: #ccc; /* Light grey color for the 'X' */
-    padding: 0 8px;
     cursor: pointer;
-    margin-left: 10px;
-    font-weight: bold;
-    font-size: 16px;
 }
 
-.remove-btn:hover {
-    color: #fff; /* White color on hover */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 250px; /* Adjust width as needed */
+    background-color: #333; /* Dark background to match theme */
+    color: #fff; /* White text */
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Adjust position */
+    left: 50%;
+    margin-left: -125px; /* Center the tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
 
-
-/* Prefix for Dollar Input */
-.input-prefix {
-    display: flex;
-    align-items: center;
-    background-color: #333;
-    border: 1px solid #666;
-    border-radius: 5px;
-    padding: 0.5rem;
+/* Titles */
+h1, h2 {
+    font-weight: 400;
+    color: #F1CD14;
+    text-transform: uppercase;
     margin-bottom: 1rem;
-    width: 100%; /* Match the width with other input fields */
-    box-sizing: border-box; /* Ensure consistent sizing with padding */
-    font-size: 1rem; /* Ensure consistent text size */
+    text-align: center; /* Keep headings centered */
 }
 
-/* Remove extra spacing inside dollar input */
-.dollar-input {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    color: #f0f0f0;
-    width: 100%; /* Ensure the dollar input field is the same size */
-    padding: 0; /* Remove any additional padding */
-    margin: 0; /* Remove any margin */
-    box-sizing: border-box;
-    font-size: 1rem; /* Consistent font size */
+h1 {
+    text-decoration: underline;
 }
 
-.input-prefix .prefix {
-    margin-right: 0.5rem;
-    color: #f0f0f0;
-    font-size: 1rem;
+/* Key takeaway styling */
+.key-takeaway {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #F1CD14; /* Make it yellow like other headings */
+    display: inline-block;
+    margin-bottom: 1rem;
 }
 
-/* Ensure yellow focus on the entire input-prefix when the dollar input is focused */
-.input-prefix:focus-within {
-    border-color: #F1CD14 !important; /* Apply the yellow border to the container */
+/* General link styles */
+a {
+    color: #F1CD14; /* Yellow color */
+    text-decoration: none; /* Remove underline by default */
+    transition: color 0.3s ease; /* Smooth transition for color changes */
 }
 
-/* Highlight yellow on focus for regular input fields */
-.calculator-input:focus, 
-.dollar-input:focus {
-    outline: none;
-    border-color: #F1CD14 !important; /* Ensure consistent yellow border for all inputs */
+a:hover {
+    color: #FFD700; /* Slightly lighter yellow on hover */
+    text-decoration: underline; /* Add underline when hovered */
 }
 
 /* Results Summary */
@@ -402,13 +256,11 @@ input::placeholder {
     font-weight: 400;
 }
 
-/* Results Summary */
 .results-summary p {
     font-size: 1.5rem; /* Adjust the font size as needed */
     margin: 0.25rem 0; /* Decrease the margin between the lines */
     padding: 0.5rem 0; /* Decrease padding if necessary */
 }
-
 
 /* Button Styles */
 button.calculate-btn {

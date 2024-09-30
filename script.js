@@ -176,26 +176,4 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-// Function to format numbers with commas while typing
-function formatNumberWithCommas(input) {
-    let cursorPosition = input.selectionStart; // Save the cursor position
-    let value = input.value.replace(/,/g, ''); // Remove commas
-    if (!isNaN(value) && value !== '') {
-        let formattedValue = parseFloat(value).toLocaleString(); // Add commas
-
-        input.value = formattedValue; // Set the formatted value back to the input
-        // Restore cursor position after formatting
-        input.setSelectionRange(cursorPosition, cursorPosition);
-    }
-}
-
-// Add event listener for formatting numbers with commas in the violations field
-document.getElementById('violations').addEventListener('input', function() {
-    formatNumberWithCommas(this);
-});
-
-// Ensure annual revenue input also has commas and restores cursor position
-document.getElementById('annualRevenue').addEventListener('input', function () {
-    formatNumberWithCommas(this);
-});
 

@@ -40,6 +40,10 @@ document.getElementById('actualOPCost').addEventListener('input', function() {
     formatDollarInput(this);
 });
 
+document.getElementById('actualManualTime').addEventListener('input', function() {
+    formatNumberWithCommas(this);
+});
+
 // Pre-populate the "Actual ObservePoint Scanning Rate" field with 70
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('actualOPRate').value = 70;

@@ -177,7 +177,6 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-
 // Helper function to format numbers with commas
 function formatWithCommas(value) {
     return value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");

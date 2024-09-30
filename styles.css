@@ -154,6 +154,19 @@ h1 {
     margin-bottom: 1rem;
 }
 
+/* General link styles */
+a {
+    color: #F1CD14; /* Yellow color */
+    text-decoration: none; /* Remove underline by default */
+    transition: color 0.3s ease; /* Smooth transition for color changes */
+}
+
+/* Link hover effect */
+a:hover {
+    color: #FFD700; /* Slightly lighter yellow on hover */
+    text-decoration: underline; /* Add underline when hovered */
+}
+
 /* Calculator Container */
 .calculator-container {
     max-width: 1000px;

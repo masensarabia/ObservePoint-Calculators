@@ -383,11 +383,13 @@ input::placeholder {
     font-weight: 400;
 }
 
+/* Results Summary */
 .results-summary p {
-    font-size: 1.5rem; /* Increase font size for emphasis */
-    margin: 0.5rem 0;
-    padding: 1rem 0;
+    font-size: 1.5rem; /* Adjust the font size as needed */
+    margin: 0.25rem 0; /* Decrease the margin between the lines */
+    padding: 0.5rem 0; /* Decrease padding if necessary */
 }
+
 
 /* Button Styles */
 button.calculate-btn {

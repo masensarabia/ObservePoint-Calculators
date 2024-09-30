@@ -66,6 +66,9 @@ function calculateFine() {
             case "delaware":
                 finePerViolation = 10000;
                 break;
+            case "florida":
+                finePerViolation = 50000;
+                break;
             case "indiana":
                 finePerViolation = 7500;
                 break;

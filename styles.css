@@ -111,43 +111,28 @@ button:focus {
 
 
 
-/* Change the dropdown selection color to yellow */
-select.calculator-input option:checked {
-    background-color: #FFD700; /* This sets the background of the selected option to a yellow color */
-    color: black; /* Sets the text color to black for good contrast */
+/* Ensure consistent yellow for all selected options */
+select option:checked, 
+select option:focus, 
+select:focus option {
+    background-color: #F1CD14 !important; /* Yellow background for all selected and focused options */
+    color: black !important; /* Ensure black text for contrast */
 }
 
-/* Optional: Style the dropdown to match your theme */
-select.calculator-input {
-    border: 1px solid #FFD700; /* Yellow border to match your theme */
-    background-color: #333333; /* Dropdown background to blend with your dark theme */
-    color: white; /* Text color */
-    padding: 0.5rem; /* Adjust padding */
-    border-radius: 4px; /* Slight border radius for better aesthetics */
-}
-
-select.calculator-input:hover {
-    border-color: #FFD700; /* On hover, keep the yellow border */
-}
-
-select option:checked, select option:focus {
-    background-color: #F1CD14; /* Yellow background for both checked and focused options */
-    color: black; /* Keep black text for contrast */
-}
-
-/* Focus styling for the select dropdown itself */
+/* Make sure the select box has the yellow border when focused */
 select:focus {
     border-color: #F1CD14; /* Yellow border on focus */
-    background-color: #333; /* Keep the background consistent for the dropdown */
-    outline: none; /* Remove the default outline */
+    background-color: #333; /* Keep dropdown background consistent */
+    outline: none; /* Remove default focus outline */
 }
 
-/* General focus state for all elements - Keep this */
+/* Ensure yellow outline for all focused elements */
 *:focus {
-    outline: 2px solid #F1CD14; /* Change the focus outline to yellow */
-    outline-offset: 2px; /* Optional: create space between the element and outline */
+    outline: 2px solid #F1CD14; /* Apply yellow outline */
+    outline-offset: 2px;
 }
 
+/* Dropdown options style */
 select option {
     background-color: #333; /* Ensure dropdown options have a dark background */
     color: #f0f0f0; /* White text for dropdown options */

@@ -111,57 +111,6 @@ button:focus {
 
 
 
-/* Ensure consistent yellow for all selected options */
-select option:checked, 
-select option:focus, 
-select:focus option {
-    background-color: #F1CD14 !important; /* Yellow background for selected and focused options */
-    color: black !important; /* Black text for contrast */
-}
-
-/* Ensure the select menu maintains its style when focused */
-select:focus {
-    border-color: #F1CD14 !important; /* Yellow border on focus */
-    background-color: #333 !important; /* Keep the select box background consistent */
-    outline: none !important; /* Remove the default outline */
-}
-
-/* Keep hover consistent for all options */
-select option:hover {
-    background-color: #F1CD14 !important; /* Yellow background on hover */
-    color: black !important; /* Black text on hover */
-}
-
-/* Ensure consistent style for all options in the menu */
-select option {
-    background-color: #333 !important; /* Dark background for non-selected options */
-    color: #f0f0f0 !important; /* Light text for unselected options */
-}
-
-/* Ensure no red background on select option click */
-select {
-    -webkit-appearance: none; /* Remove default select styling in WebKit browsers */
-    appearance: none; /* Remove default select styling */
-}
-
-select option:active,
-select option:focus {
-    background-color: #F1CD14 !important; /* Make sure active/focused options stay yellow */
-    color: black !important; /* Ensure text is black */
-}
-
-select option:checked {
-    background-color: #F1CD14 !important; /* Ensure selected option remains yellow */
-    color: black !important; /* Ensure text is black */
-}
-
-select {
-    border: 1px solid #F1CD14 !important; /* Yellow border to keep consistency */
-    background-color: #333 !important; /* Make sure select menu background stays dark */
-    color: #f0f0f0 !important; /* White text for dropdown options */
-    outline: none !important; /* Remove default outline */
-}
-
 
 
 /* Tooltip container */

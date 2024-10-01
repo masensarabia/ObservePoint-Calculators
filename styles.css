@@ -123,10 +123,12 @@ select option:hover {
     color: black !important; /* Black text on hover */
 }
 
-/* Fix for the red highlight on select option click */
-select:focus option:checked {
-    background-color: #F1CD14 !important; /* Ensure yellow background when focused */
-    color: black !important; /* Black text when focused */
+/* Fix for red background during click/active states */
+select option:active, 
+select option:focus, 
+select option:checked:focus {
+    background-color: #F1CD14 !important; /* Make sure active/focused options stay yellow */
+    color: black !important; /* Ensure text is black */
 }
 
 /* General dropdown select menu styling */
@@ -137,12 +139,18 @@ select {
     outline: none !important; /* Remove default outline */
 }
 
-/* Keep hover and active styles consistent for select box */
-select option:active,
-select option:focus {
-    background-color: #F1CD14 !important; /* Yellow background for active and focused options */
+/* Ensure yellow background for selected options when focus is lost */
+select:focus-within option:checked {
+    background-color: #F1CD14 !important; /* Keep selected option yellow even after focus */
     color: black !important; /* Ensure black text */
 }
+
+/* Override browser default click styling */
+select option:active {
+    background-color: #F1CD14 !important; /* Yellow during click */
+    color: black !important; /* Black text */
+}
+
 
 
 

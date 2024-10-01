@@ -195,19 +195,20 @@ function calculateFine() {
             totalFine = violations * finePerViolation;
         }
 
-      // Format the fine for the region
+        // Format the fine for the region
         const formattedFine = new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: currency
         }).format(totalFine);
 
-        // Append the result for each region
-        totalFineOutput += `${capitalizeFirstLetter(region)}: ${formattedFine}<br>`;
+        // Append the result for each region with currency abbreviation
+        totalFineOutput += `${capitalizeFirstLetter(region)}: ${formattedFine} ${currency === 'USD' ? 'USD' : 'EUR'}<br>`;
     });
 
     // Display the results in the "totalFine" section
     document.getElementById('totalFine').innerHTML = totalFineOutput;
 }
+
 
 
 function capitalizeFirstLetter(string) {

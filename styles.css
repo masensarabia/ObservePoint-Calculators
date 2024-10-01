@@ -111,45 +111,42 @@ button:focus {
 
 
 
-/* Ensure consistent yellow for all selected options */
-select option:checked {
-    background-color: #F1CD14 !important; /* Yellow background for selected option */
-    color: black !important; /* Black text for contrast */
-}
-
-/* Ensure consistent hover effect */
-select option:hover {
-    background-color: #F1CD14 !important; /* Yellow background on hover */
-    color: black !important; /* Black text on hover */
-}
-
-/* Fix for red background during click/active states */
-select option:active, 
-select option:focus, 
-select option:checked:focus {
-    background-color: #F1CD14 !important; /* Make sure active/focused options stay yellow */
-    color: black !important; /* Ensure text is black */
-}
-
 /* General dropdown select menu styling */
 select {
+    -webkit-appearance: none; /* Remove default appearance for WebKit browsers */
+    -moz-appearance: none; /* Remove default appearance for Mozilla browsers */
+    appearance: none; /* Remove default appearance */
     background-color: #333 !important; /* Dark background for the menu */
     color: #f0f0f0 !important; /* Light text for non-selected options */
     border: 1px solid #F1CD14 !important; /* Yellow border */
     outline: none !important; /* Remove default outline */
 }
 
-/* Ensure yellow background for selected options when focus is lost */
-select:focus-within option:checked {
-    background-color: #F1CD14 !important; /* Keep selected option yellow even after focus */
+/* Fix for the red highlight during active/click states */
+select option:active, 
+select option:focus, 
+select option:checked {
+    background-color: #F1CD14 !important; /* Yellow background for active/selected/focused options */
     color: black !important; /* Ensure black text */
 }
 
-/* Override browser default click styling */
-select option:active {
-    background-color: #F1CD14 !important; /* Yellow during click */
-    color: black !important; /* Black text */
+/* Override default red styles on click */
+select option:hover {
+    background-color: #F1CD14 !important; /* Keep the hover effect yellow */
+    color: black !important;
 }
+
+/* Forcing active/click focus states to maintain yellow */
+select option:active {
+    background-color: #F1CD14 !important;
+    color: black !important;
+}
+
+select:focus option:checked {
+    background-color: #F1CD14 !important;
+    color: black !important;
+}
+
 
 
 

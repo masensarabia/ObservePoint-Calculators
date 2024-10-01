@@ -25,17 +25,21 @@ function addRegion() {
 }
 
 function toggleFineOptions() {
+    // Retrieve all selected options
     const selectedRegionOptions = Array.from(document.getElementById('region').selectedOptions).map(option => option.value);
     
-    // Check if any GDPR option is selected
-    const gdprSelected = selectedRegionOptions.includes('gdpr-2%') || selectedRegionOptions.includes('gdpr-4%');
+    // Check if either GDPR-2% or GDPR-4% is selected
+    const gdprSelected = selectedRegionOptions.some(region => region === 'gdpr-2%' || region === 'gdpr-4%');
     
     if (gdprSelected) {
-        document.getElementById('annualRevenueInput').style.display = 'block'; // Show the annual revenue field
+        // Show the annual revenue input field if GDPR is selected
+        document.getElementById('annualRevenueInput').style.display = 'block';
     } else {
-        document.getElementById('annualRevenueInput').style.display = 'none'; // Hide it if no GDPR option is selected
+        // Hide the annual revenue input field if GDPR is not selected
+        document.getElementById('annualRevenueInput').style.display = 'none';
     }
 }
+
 
 
 

@@ -1,6 +1,6 @@
 /* General Styles */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: #f0f0f0;
     background-color: #1f1f1f;
     margin: 0;
@@ -10,8 +10,18 @@ body {
     background-repeat: no-repeat;
     background-position: right bottom, left;
     background-attachment: fixed;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.6;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+h1, h2, .site-navigation ul li a {
+    font-weight: 700; /* You can experiment with different weights */
 }
 
 /* Header Styles */

@@ -24,6 +24,20 @@ function addRegion() {
     displaySelectedRegions(); // Display the selected regions
 }
 
+function toggleFineOptions() {
+    const selectedRegionOptions = Array.from(document.getElementById('region').selectedOptions).map(option => option.value);
+    const annualRevenueInput = document.getElementById('annualRevenueInput');
+    
+    // Check if either of the GDPR options is selected
+    const gdprSelected = selectedRegionOptions.some(region => region === 'gdpr-2%' || region === 'gdpr-4%');
+    
+    if (gdprSelected) {
+        annualRevenueInput.style.display = 'block'; // Show annual revenue input
+    } else {
+        annualRevenueInput.style.display = 'none'; // Hide annual revenue input
+    }
+}
+
 
 function displaySelectedRegions() {
     const selectedRegionsDiv = document.getElementById('selectedRegions');

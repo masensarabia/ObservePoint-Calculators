@@ -67,7 +67,6 @@ function calculateFine() {
     const violations = parseInt(violationsInput, 10); // Get value as a number
     const annualRevenue = parseFloat(document.getElementById('annualRevenue').value.replace(/,/g, ''));
     let totalFineOutput = '';
-    let currency = "USD";
 
     if (isNaN(violations) || violations <= 0) {
         alert("Please enter a valid number of violations.");
@@ -77,6 +76,7 @@ function calculateFine() {
     selectedRegionsSet.forEach(region => {
         let finePerViolation = 0;
         let totalFine = 0;
+        let currency = "USD"; // Default currency set to USD
 
         switch (region) {
             case "utah":
@@ -181,11 +181,11 @@ function calculateFine() {
             // GDPR fines based on percentage of annual revenue
             case "gdpr-2%":
                 totalFine = 0.02 * annualRevenue;
-                currency = "EUR";
+                currency = "EUR"; // Set currency to EUR for GDPR
                 break;
             case "gdpr-4%":
                 totalFine = 0.04 * annualRevenue;
-                currency = "EUR";
+                currency = "EUR"; // Set currency to EUR for GDPR
                 break;
             default:
                 finePerViolation = 0;
@@ -208,6 +208,7 @@ function calculateFine() {
     // Display the results in the "totalFine" section
     document.getElementById('totalFine').innerHTML = totalFineOutput;
 }
+
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);

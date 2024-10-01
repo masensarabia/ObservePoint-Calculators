@@ -2,11 +2,28 @@ let selectedRegionsSet = new Set();
 
 function addRegion() {
     const selectedRegionOptions = Array.from(document.getElementById('region').selectedOptions).map(option => option.value);
+    let gdprSelected = false; // Flag to check if a GDPR option is selected
+    
     selectedRegionOptions.forEach(region => {
         selectedRegionsSet.add(region); // Add region to the set
+
+        // Check if GDPR is selected
+        if (region === 'gdpr-2%' || region === 'gdpr-4%') {
+            gdprSelected = true;
+        }
     });
+
+    // Toggle the visibility of the annualRevenueInput field
+    const annualRevenueInput = document.getElementById('annualRevenueInput');
+    if (gdprSelected) {
+        annualRevenueInput.style.display = 'block';
+    } else {
+        annualRevenueInput.style.display = 'none';
+    }
+
     displaySelectedRegions(); // Display the selected regions
 }
+
 
 function displaySelectedRegions() {
     const selectedRegionsDiv = document.getElementById('selectedRegions');

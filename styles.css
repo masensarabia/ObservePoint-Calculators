@@ -121,22 +121,29 @@ select:focus option {
 
 /* Make sure the select box has the yellow border when focused */
 select:focus {
-    border-color: #F1CD14; /* Yellow border on focus */
+    border-color: #F1CD14 !important; /* Yellow border on focus */
     background-color: #333; /* Keep dropdown background consistent */
     outline: none; /* Remove default focus outline */
 }
 
 /* Ensure yellow outline for all focused elements */
 *:focus {
-    outline: 2px solid #F1CD14; /* Apply yellow outline */
+    outline: 2px solid #F1CD14 !important; /* Apply yellow outline */
     outline-offset: 2px;
 }
 
 /* Dropdown options style */
 select option {
-    background-color: #333; /* Ensure dropdown options have a dark background */
-    color: #f0f0f0; /* White text for dropdown options */
+    background-color: #333 !important; /* Ensure dropdown options have a dark background */
+    color: #f0f0f0 !important; /* White text for dropdown options */
 }
+
+/* Apply the same yellow background on hover to make it visually consistent */
+select option:hover {
+    background-color: #F1CD14 !important; /* Yellow background for hovered options */
+    color: black !important; /* Black text for contrast */
+}
+
 
 /* Tooltip container */
 .tooltip {

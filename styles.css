@@ -349,6 +349,11 @@ input::placeholder {
     font-size: 1rem;
 }
 
+#region {
+    height: 200px; /* Adjust the height to your desired value */
+}
+
+
 .selected-region {
     display: inline-block;
     margin: 5px;

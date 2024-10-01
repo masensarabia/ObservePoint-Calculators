@@ -111,24 +111,39 @@ button:focus {
 
 
 
-/* Ensure the select menu maintains its style when focused */
-select:focus {
-    border-color: #F1CD14 !important; /* Yellow border on focus */
-    background-color: #333 !important; /* Keep the select box background consistent */
-    outline: none !important; /* Remove the default outline */
+/* Ensure consistent yellow for all selected options */
+select option:checked {
+    background-color: #F1CD14 !important; /* Yellow background for selected option */
+    color: black !important; /* Black text for contrast */
 }
 
-/* Keep hover consistent for all options */
+/* Ensure consistent hover effect */
 select option:hover {
     background-color: #F1CD14 !important; /* Yellow background on hover */
     color: black !important; /* Black text on hover */
 }
 
-/* Ensure consistent style for all options in the menu */
-select option {
-    background-color: #333 !important; /* Dark background for non-selected options */
-    color: #f0f0f0 !important; /* Light text for unselected options */
+/* Fix for the red highlight on select option click */
+select:focus option:checked {
+    background-color: #F1CD14 !important; /* Ensure yellow background when focused */
+    color: black !important; /* Black text when focused */
 }
+
+/* General dropdown select menu styling */
+select {
+    background-color: #333 !important; /* Dark background for the menu */
+    color: #f0f0f0 !important; /* Light text for non-selected options */
+    border: 1px solid #F1CD14 !important; /* Yellow border */
+    outline: none !important; /* Remove default outline */
+}
+
+/* Keep hover and active styles consistent for select box */
+select option:active,
+select option:focus {
+    background-color: #F1CD14 !important; /* Yellow background for active and focused options */
+    color: black !important; /* Ensure black text */
+}
+
 
 
 

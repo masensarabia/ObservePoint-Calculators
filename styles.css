@@ -130,9 +130,22 @@ select.calculator-input:hover {
     border-color: #FFD700; /* On hover, keep the yellow border */
 }
 
-select option:checked {
-    background-color: #F1CD14; /* Yellow background for selected option */
-    color: black; /* Black text for contrast */
+select option:checked, select option:focus {
+    background-color: #F1CD14; /* Yellow background for both checked and focused options */
+    color: black; /* Keep black text for contrast */
+}
+
+/* Focus styling for the select dropdown itself */
+select:focus {
+    border-color: #F1CD14; /* Yellow border on focus */
+    background-color: #333; /* Keep the background consistent for the dropdown */
+    outline: none; /* Remove the default outline */
+}
+
+/* General focus state for all elements - Keep this */
+*:focus {
+    outline: 2px solid #F1CD14; /* Change the focus outline to yellow */
+    outline-offset: 2px; /* Optional: create space between the element and outline */
 }
 
 select option {

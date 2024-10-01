@@ -222,6 +222,16 @@ document.getElementById('violations').addEventListener('input', function (e) {
     }
 });
 
+// Event listener to add commas as you type for annual revenue
+document.getElementById('annualRevenue').addEventListener('input', function (e) {
+    let value = e.target.value.replace(/,/g, ''); // Remove any existing commas
+    if (!isNaN(value) && value !== '') {
+        let formattedValue = formatWithCommas(value); // Format the value with commas
+        e.target.value = formattedValue;
+    }
+});
+
+
 
 
 

@@ -110,13 +110,6 @@ button:focus {
 }
 
 
-/* Ensure consistent yellow for all selected options */
-select option:checked, 
-select option:focus, 
-select:focus option {
-    background-color: #F1CD14 !important; /* Yellow background for selected and focused options */
-    color: black !important; /* Black text for contrast */
-}
 
 /* Ensure the select menu maintains its style when focused */
 select:focus {

@@ -187,13 +187,22 @@ select:focus option:checked {
 
 
 /* Titles */
-h1, h2 {
+h1 {
     font-weight: 400;
     color: #F1CD14;
     text-transform: uppercase;
     margin-bottom: 1rem;
-    text-align: center; /* Keep headings centered */
+    text-align: center; /* Keep h1 headings centered */
 }
+
+h2 {
+    font-weight: 400;
+    color: #F1CD14;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-align: left; /* Left-align h2 elements */
+}
+
 
 h1 {
     text-decoration: underline;

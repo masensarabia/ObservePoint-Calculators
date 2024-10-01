@@ -138,6 +138,30 @@ select option {
     color: #f0f0f0 !important; /* Light text for unselected options */
 }
 
+/* Ensure no red background on select option click */
+select {
+    -webkit-appearance: none; /* Remove default select styling in WebKit browsers */
+    appearance: none; /* Remove default select styling */
+}
+
+select option:active,
+select option:focus {
+    background-color: #F1CD14 !important; /* Make sure active/focused options stay yellow */
+    color: black !important; /* Ensure text is black */
+}
+
+select option:checked {
+    background-color: #F1CD14 !important; /* Ensure selected option remains yellow */
+    color: black !important; /* Ensure text is black */
+}
+
+select {
+    border: 1px solid #F1CD14 !important; /* Yellow border to keep consistency */
+    background-color: #333 !important; /* Make sure select menu background stays dark */
+    color: #f0f0f0 !important; /* White text for dropdown options */
+    outline: none !important; /* Remove default outline */
+}
+
 
 
 /* Tooltip container */

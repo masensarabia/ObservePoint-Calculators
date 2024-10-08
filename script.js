@@ -94,7 +94,7 @@ function calculateSavings() {
     // Actual Manual Employee Testing
     let actualManualTime = parseFloat(document.getElementById('actualManualTime').value) || 0;
     let actualPagesTested = parseFloat(document.getElementById('actualPagesTested').value.replace(/,/g, '')) || 0;
-    let actualManualCost = actualManualTime * manualRate;
+    let actualManualCost = actualManualTime * manualRate || 0;
 
     document.getElementById('actualManualCost').textContent = "$" + actualManualCost.toLocaleString(undefined, {minimumFractionDigits: 2});
 
@@ -102,8 +102,8 @@ function calculateSavings() {
     let actualOPRate = parseFloat(document.getElementById('actualOPRate').value) || 0;
     let actualOPCostPerPage = parseFloat(document.getElementById('actualOPCost').value.replace(/[^0-9.]/g, '')) || 0;
 
-    let actualOPTestingTime = (actualPagesTested / actualOPRate) / 60;
-    let actualTotalOPCost = actualPagesTested * actualOPCostPerPage;
+    let actualOPTestingTime = (actualPagesTested / actualOPRate) / 60 || 0;
+    let actualTotalOPCost = actualPagesTested * actualOPCostPerPage || 0;
 
     let actualTimeSaved = Math.max(0, actualManualTime - actualOPTestingTime);
     let actualCostSaved = Math.max(0, actualManualCost - actualTotalOPCost);

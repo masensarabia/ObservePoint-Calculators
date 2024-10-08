@@ -1,10 +1,13 @@
 // Function to format numbers with commas
 function formatNumberWithCommas(input) {
-    let value = input.value.replace(/,/g, ''); // Remove commas
+    let value = input.value.replace(/,/g, ''); // Remove existing commas
     if (!isNaN(value) && value !== '') {
-        input.value = parseFloat(value).toLocaleString(); // Add commas
+        let parts = value.split('.');
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ','); // Add commas to the integer part
+        input.value = parts.join('.'); // Join the integer and decimal parts (if any)
     }
 }
+
 
 // Function to format the input field with a dollar sign
 // Function to format the input field with a dollar sign without automatically adding '.00'

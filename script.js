@@ -6,13 +6,11 @@ function formatNumberWithCommas(input) {
     }
 }
 
-// Function to format the input field with a dollar sign
 // Function to format the input field with a dollar sign without automatically adding '.00'
 function formatDollarInput(input) {
     let value = input.value.replace(/[^0-9.]/g, ''); // Remove non-numeric characters except decimal point
     if (!isNaN(value) && value !== '') {
-        input.value = `$${parseFloat(value).toFixed(2)}`; // Format with a dollar sign and 2 decimal places
-        input.value = value; // Allow free typing without auto-formatting
+        input.value = parseFloat(value).toFixed(2); // Only format with decimal places
     } else {
         input.value = ''; // Keep it empty if no valid input
     }
@@ -51,9 +49,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function calculateSavings() {
     // Hypothetical Manual Employee Testing
-    let manualTime = parseFloat(document.getElementById('manualTime').value) || 0;
-    let pagesToTest = parseFloat(document.getElementById('pagesToTest').value.replace(/,/g, '')) || 0;
-    let manualRate = parseFloat(document.getElementById('manualRate').value.replace(/[^0-9.]/g, '')) || 0;
+    let manualTime = isNaN(parseFloat(document.getElementById('manualTime').value)) ? 0 : parseFloat(document.getElementById('manualTime').value);
+    let pagesToTest = isNaN(parseFloat(document.getElementById('pagesToTest').value.replace(/,/g, ''))) ? 0 : parseFloat(document.getElementById('pagesToTest').value.replace(/,/g, ''));
+    let manualRate = isNaN(parseFloat(document.getElementById('manualRate').value.replace(/[^0-9.]/g, ''))) ? 0 : parseFloat(document.getElementById('manualRate').value.replace(/[^0-9.]/g, ''));
 
     let totalManualTestingTime = (manualTime * pagesToTest) / 60;
     let totalManualCost = totalManualTestingTime * manualRate;
@@ -62,9 +60,9 @@ function calculateSavings() {
     document.getElementById('totalManualCost').textContent = "$" + totalManualCost.toLocaleString(undefined, {minimumFractionDigits: 2});
 
     // Hypothetical ObservePoint Scanning
-    let opRate = parseFloat(document.getElementById('opRate').value) || 0;
-    let opPages = parseFloat(document.getElementById('opPages').value.replace(/,/g, '')) || 0;
-    let opCost = parseFloat(document.getElementById('opCost').value.replace(/[^0-9.]/g, '')) || 0;
+    let opRate = isNaN(parseFloat(document.getElementById('opRate').value)) ? 0 : parseFloat(document.getElementById('opRate').value);
+    let opPages = isNaN(parseFloat(document.getElementById('opPages').value.replace(/,/g, ''))) ? 0 : parseFloat(document.getElementById('opPages').value.replace(/,/g, ''));
+    let opCost = isNaN(parseFloat(document.getElementById('opCost').value.replace(/[^0-9.]/g, ''))) ? 0 : parseFloat(document.getElementById('opCost').value.replace(/[^0-9.]/g, ''));
 
     let totalOPTestingTime = (opPages / opRate) / 60;
     let totalOPCost = opPages * opCost;
@@ -92,15 +90,15 @@ function calculateSavings() {
     document.getElementById('annualCostPerFTE').textContent = "$" + annualCostPerFTE.toLocaleString(undefined, {minimumFractionDigits: 2});
 
     // Actual Manual Employee Testing
-    let actualManualTime = parseFloat(document.getElementById('actualManualTime').value) || 0;
-    let actualPagesTested = parseFloat(document.getElementById('actualPagesTested').value.replace(/,/g, '')) || 0;
+    let actualManualTime = isNaN(parseFloat(document.getElementById('actualManualTime').value)) ? 0 : parseFloat(document.getElementById('actualManualTime').value);
+    let actualPagesTested = isNaN(parseFloat(document.getElementById('actualPagesTested').value.replace(/,/g, ''))) ? 0 : parseFloat(document.getElementById('actualPagesTested').value.replace(/,/g, ''));
     let actualManualCost = actualManualTime * manualRate || 0;
 
     document.getElementById('actualManualCost').textContent = "$" + actualManualCost.toLocaleString(undefined, {minimumFractionDigits: 2});
 
     // Actual ObservePoint Testing
-    let actualOPRate = parseFloat(document.getElementById('actualOPRate').value) || 0;
-    let actualOPCostPerPage = parseFloat(document.getElementById('actualOPCost').value.replace(/[^0-9.]/g, '')) || 0;
+    let actualOPRate = isNaN(parseFloat(document.getElementById('actualOPRate').value)) ? 0 : parseFloat(document.getElementById('actualOPRate').value);
+    let actualOPCostPerPage = isNaN(parseFloat(document.getElementById('actualOPCost').value.replace(/[^0-9.]/g, ''))) ? 0 : parseFloat(document.getElementById('actualOPCost').value.replace(/[^0-9.]/g, ''));
 
     let actualOPTestingTime = (actualPagesTested / actualOPRate) / 60 || 0;
     let actualTotalOPCost = actualPagesTested * actualOPCostPerPage || 0;

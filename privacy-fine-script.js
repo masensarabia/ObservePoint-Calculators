@@ -1,5 +1,6 @@
 let selectedRegionsSet = new Set();
 
+// Add region and display it properly in the "Selected Regions" section
 function addRegion() {
     const selectedRegionOptions = Array.from(document.getElementById('region').selectedOptions).map(option => option.value);
     let gdprSelected = false; // Flag to check if a GDPR option is selected
@@ -22,21 +23,36 @@ function addRegion() {
     }
 
     displaySelectedRegions(); // Display the selected regions
+
+    // If "Region to Violation Field" is selected, dynamically add fields
+    const violationType = document.getElementById('violationType').value;
+    if (violationType === 'region') {
+        handleViolationTypeChange(); // Re-trigger to add violation fields
+    }
 }
 
-function toggleFineOptions() {
-    // Retrieve all selected options
-    const selectedRegionOptions = Array.from(document.getElementById('region').selectedOptions).map(option => option.value);
+function displaySelectedRegions() {
+    const selectedRegionsDiv = document.getElementById('selectedRegions');
+    selectedRegionsDiv.innerHTML = ''; // Clear the content
+    selectedRegionsSet.forEach(region => {
+        selectedRegionsDiv.innerHTML += `
+            <div class="selected-region">
+                ${capitalizeFirstLetter(region)} 
+                <button class="remove-btn" onclick="removeRegion('${region}')">x</button>
+            </div>
+        `;
+    });
+}
 
-    // Check if either GDPR-2% or GDPR-4% is selected
-    const gdprSelected = selectedRegionOptions.some(region => region === 'gdpr-2%' || region === 'gdpr-4%');
+// Remove region and refresh the list of selected regions
+function removeRegion(region) {
+    selectedRegionsSet.delete(region); // Remove the region from the set
+    displaySelectedRegions(); // Update the displayed list
 
-    if (gdprSelected) {
-        // Show the annual revenue input field if GDPR is selected
-        document.getElementById('annualRevenueInput').style.display = 'block';
-    } else {
-        // Hide the annual revenue input field if GDPR is not selected
-        document.getElementById('annualRevenueInput').style.display = 'none';
+    // If "Region to Violation Field" is selected, dynamically remove fields
+    const violationType = document.getElementById('violationType').value;
+    if (violationType === 'region') {
+        handleViolationTypeChange(); // Re-trigger to adjust violation fields
     }
 }
 

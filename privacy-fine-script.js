@@ -88,28 +88,26 @@ function handleViolationTypeChange() {
 }
 
 
-// Dynamically creates multiple violation fields based on the count selected
 function createMultipleViolationFields(count) {
     const violationsContainer = document.getElementById('multipleViolationsContainer');
 
-    // Clear all except the first default field
-    while (violationsContainer.children.length > 2) { // Ensures we don't remove the first field
-        violationsContainer.removeChild(violationsContainer.lastChild);
-    }
+    // Clear all fields in the container
+    violationsContainer.innerHTML = '';
 
-    // Create fields starting from 2 to the selected number
-    for (let i = 1; i < count; i++) {
+    // Create fields based on the selected count
+    for (let i = 1; i <= count; i++) {
         const label = document.createElement('label');
-        label.textContent = `Number of Violations ${i + 1}:`;
+        label.textContent = `Number of Violations ${i}:`;
         const input = document.createElement('input');
         input.type = 'text';
         input.classList.add('calculator-input');
-        input.id = `violations${i + 1}`;
+        input.id = `violations${i}`;
         input.placeholder = 'Enter number of violations';
         violationsContainer.appendChild(label);
         violationsContainer.appendChild(input);
     }
 }
+
 
 
 // Create individual violation fields based on selected regions

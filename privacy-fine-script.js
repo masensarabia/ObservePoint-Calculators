@@ -173,7 +173,6 @@ function calculateFine() {
         let finePerViolation = 0;
         let currency = "USD"; // Default currency set to USD
 
-
         switch (region) {
             case "utah":
                 finePerViolation = 7500;
@@ -303,8 +302,8 @@ function calculateFine() {
                     currency: currency
                 }).format(totalFine);
 
-                // Append each fine result
-                totalFineOutput += `${capitalizeFirstLetter(region)} (Violation ${i + 1}): ${formattedFine} ${currency === 'USD' ? 'USD' : 'EUR'}<br>`;
+                // Append each fine result with the number of violations included
+                totalFineOutput += `${capitalizeFirstLetter(region)}: ${violations} violations = ${formattedFine} ${currency === 'USD' ? 'USD' : 'EUR'}<br>`;
             }
         } else if (violationType === 'region') {
             const violationField = document.getElementById(`violations_${region}`);
@@ -318,8 +317,8 @@ function calculateFine() {
                 currency: currency
             }).format(totalFine);
 
-            // Append each fine result
-            totalFineOutput += `${capitalizeFirstLetter(region)}: ${formattedFine} ${currency === 'USD' ? 'USD' : 'EUR'}<br>`;
+            // Append each fine result with the number of violations included
+            totalFineOutput += `${capitalizeFirstLetter(region)}: ${violations} violations = ${formattedFine} ${currency === 'USD' ? 'USD' : 'EUR'}<br>`;
         } else {
             const violationsInput = document.getElementById('violations');
             const violations = violationsInput ? parseInt(violationsInput.value.replace(/,/g, ''), 10) || 0 : 0;

@@ -3,7 +3,7 @@ let selectedRegionsSet = new Set();
 function addRegion() {
     const selectedRegionOptions = Array.from(document.getElementById('region').selectedOptions).map(option => option.value);
     let gdprSelected = false; // Flag to check if a GDPR option is selected
-    
+
     selectedRegionOptions.forEach(region => {
         selectedRegionsSet.add(region); // Add region to the set
 
@@ -27,10 +27,10 @@ function addRegion() {
 function toggleFineOptions() {
     // Retrieve all selected options
     const selectedRegionOptions = Array.from(document.getElementById('region').selectedOptions).map(option => option.value);
-    
+
     // Check if either GDPR-2% or GDPR-4% is selected
     const gdprSelected = selectedRegionOptions.some(region => region === 'gdpr-2%' || region === 'gdpr-4%');
-    
+
     if (gdprSelected) {
         // Show the annual revenue input field if GDPR is selected
         document.getElementById('annualRevenueInput').style.display = 'block';
@@ -40,43 +40,95 @@ function toggleFineOptions() {
     }
 }
 
+function handleViolationTypeChange() {
+    const violationType = document.getElementById('violationType').value;
+    const violationsContainer = document.getElementById('multipleViolationsContainer');
+    const selectedRegionsCount = selectedRegionsSet.size;
 
+    // Clear previous fields
+    violationsContainer.innerHTML = '';
 
+    if (violationType === 'multiple') {
+        // Create dropdown for selecting how many fields to display
+        const select = document.createElement('select');
+        select.id = 'multipleViolationCount';
+        for (let i = 1; i <= selectedRegionsCount; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.text = i;
+            select.appendChild(option);
+        }
+        select.addEventListener('change', function() {
+            createMultipleViolationFields(this.value);
+        });
+        violationsContainer.appendChild(select);
 
-
-function displaySelectedRegions() {
-    const selectedRegionsDiv = document.getElementById('selectedRegions');
-    selectedRegionsDiv.innerHTML = ''; // Clear the content
-    selectedRegionsSet.forEach(region => {
-        selectedRegionsDiv.innerHTML += `
-            <div class="selected-region">
-                ${capitalizeFirstLetter(region)} 
-                <button class="remove-btn" onclick="removeRegion('${region}')">x</button>
-            </div>
-        `;
-    });
+    } else if (violationType === 'region') {
+        // Create one violation field for each region selected
+        selectedRegionsSet.forEach(region => {
+            createViolationFieldForRegion(region);
+        });
+    }
 }
 
-function removeRegion(region) {
-    selectedRegionsSet.delete(region); // Remove the region from the set
-    displaySelectedRegions(); // Update the displayed list
+// Dynamically creates multiple violation fields
+function createMultipleViolationFields(count) {
+    const violationsContainer = document.getElementById('multipleViolationsContainer');
+    violationsContainer.innerHTML = ''; // Clear the existing fields
+    for (let i = 0; i < count; i++) {
+        const label = document.createElement('label');
+        label.textContent = `Number of Violations ${i + 1}:`;
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.classList.add('calculator-input');
+        input.id = `violations${i + 1}`;
+        input.placeholder = 'Enter number of violations';
+        violationsContainer.appendChild(label);
+        violationsContainer.appendChild(input);
+    }
+}
+
+// Create individual violation fields based on selected regions
+function createViolationFieldForRegion(region) {
+    const violationsContainer = document.getElementById('multipleViolationsContainer');
+    const label = document.createElement('label');
+    label.textContent = `Number of Violations for ${capitalizeFirstLetter(region)}:`;
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.classList.add('calculator-input');
+    input.id = `violations_${region}`;
+    input.placeholder = 'Enter number of violations';
+    violationsContainer.appendChild(label);
+    violationsContainer.appendChild(input);
 }
 
 function calculateFine() {
-    const violationsInput = document.getElementById('violations').value.replace(/,/g, '');
-    const violations = parseInt(violationsInput, 10); // Get value as a number
+    const violationType = document.getElementById('violationType').value;
     const annualRevenue = parseFloat(document.getElementById('annualRevenue').value.replace(/,/g, ''));
     let totalFineOutput = '';
-
-    if (isNaN(violations) || violations <= 0) {
-        alert("Please enter a valid number of violations.");
-        return;
-    }
 
     selectedRegionsSet.forEach(region => {
         let finePerViolation = 0;
         let totalFine = 0;
+        let violations = 0;
         let currency = "USD"; // Default currency set to USD
+
+        // Handle different violation input types
+        if (violationType === 'one') {
+            const violationsInput = document.getElementById('violations').value.replace(/,/g, '');
+            violations = parseInt(violationsInput, 10);
+
+        } else if (violationType === 'multiple') {
+            const violationCount = document.getElementById('multipleViolationCount').value;
+            for (let i = 0; i < violationCount; i++) {
+                const violationField = document.getElementById(`violations${i + 1}`).value.replace(/,/g, '');
+                violations += parseInt(violationField, 10);
+            }
+
+        } else if (violationType === 'region') {
+            const violationField = document.getElementById(`violations_${region}`).value.replace(/,/g, '');
+            violations = parseInt(violationField, 10);
+        }
 
         switch (region) {
             case "utah":

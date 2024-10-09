@@ -91,10 +91,31 @@ function handleViolationTypeChange() {
 function createMultipleViolationFields(count) {
     const violationsContainer = document.getElementById('multipleViolationsContainer');
 
-    // Clear all fields in the container
+    // Clear all existing fields in the container
     violationsContainer.innerHTML = '';
 
-    // Create fields based on the selected count
+    // Re-add the dropdown for number of violations
+    const selectLabel = document.createElement('label');
+    selectLabel.textContent = 'Select Number of Violations:';
+    const select = document.createElement('select');
+    select.id = 'multipleViolationCount';
+
+    for (let i = 1; i <= totalRegionOptions; i++) {
+        const option = document.createElement('option');
+        option.value = i;
+        option.text = i;
+        select.appendChild(option);
+    }
+
+    // Add event listener to regenerate fields when dropdown changes
+    select.addEventListener('change', function () {
+        createMultipleViolationFields(this.value);
+    });
+
+    violationsContainer.appendChild(selectLabel);
+    violationsContainer.appendChild(select);
+
+    // Now generate violation input fields based on the count
     for (let i = 1; i <= count; i++) {
         const label = document.createElement('label');
         label.textContent = `Number of Violations ${i}:`;
@@ -107,6 +128,7 @@ function createMultipleViolationFields(count) {
         violationsContainer.appendChild(input);
     }
 }
+
 
 
 

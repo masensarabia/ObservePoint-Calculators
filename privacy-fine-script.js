@@ -128,7 +128,8 @@ function createViolationFieldForRegion(region) {
 
 function calculateFine() {
     const violationType = document.getElementById('violationType').value;
-    const annualRevenue = parseFloat(document.getElementById('annualRevenue').value.replace(/,/g, '')) || 0;
+    const annualRevenueElement = document.getElementById('annualRevenue');
+    const annualRevenue = annualRevenueElement ? parseFloat(annualRevenueElement.value.replace(/,/g, '')) || 0 : 0;
     let totalFineOutput = '';
 
     selectedRegionsSet.forEach(region => {
@@ -139,19 +140,20 @@ function calculateFine() {
 
         // Handle different violation input types
         if (violationType === 'one') {
-            const violationsInput = document.getElementById('violations').value.replace(/,/g, '');
-            violations = parseInt(violationsInput, 10) || 0;
+            const violationsInput = document.getElementById('violations');
+            violations = violationsInput ? parseInt(violationsInput.value.replace(/,/g, ''), 10) || 0 : 0;
 
         } else if (violationType === 'multiple') {
-            const violationCount = document.getElementById('multipleViolationCount').value;
+            const violationCountElement = document.getElementById('multipleViolationCount');
+            const violationCount = violationCountElement ? violationCountElement.value : 0;
             for (let i = 0; i < violationCount; i++) {
-                const violationField = document.getElementById(`violations${i + 1}`).value.replace(/,/g, '');
-                violations += parseInt(violationField, 10) || 0;
+                const violationField = document.getElementById(`violations${i + 1}`);
+                violations += violationField ? parseInt(violationField.value.replace(/,/g, ''), 10) || 0 : 0;
             }
 
         } else if (violationType === 'region') {
-            const violationField = document.getElementById(`violations_${region}`).value.replace(/,/g, '');
-            violations = parseInt(violationField, 10) || 0;
+            const violationField = document.getElementById(`violations_${region}`);
+            violations = violationField ? parseInt(violationField.value.replace(/,/g, ''), 10) || 0 : 0;
         }
 
 

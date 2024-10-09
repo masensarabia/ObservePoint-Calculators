@@ -1,4 +1,5 @@
 let selectedRegionsSet = new Set();
+const totalRegionOptions = document.getElementById('region').options.length; // Get the total number of region options
 
 // Add region and display it properly in the "Selected Regions" section
 function addRegion() {
@@ -59,16 +60,15 @@ function removeRegion(region) {
 function handleViolationTypeChange() {
     const violationType = document.getElementById('violationType').value;
     const violationsContainer = document.getElementById('multipleViolationsContainer');
-    const selectedRegionsCount = selectedRegionsSet.size;
 
     // Clear previous fields
     violationsContainer.innerHTML = '';
 
     if (violationType === 'multiple') {
-        // Create dropdown for selecting how many fields to display
+        // Create dropdown for selecting how many fields to display based on total region options
         const select = document.createElement('select');
         select.id = 'multipleViolationCount';
-        for (let i = 1; i <= selectedRegionsCount; i++) {
+        for (let i = 1; i <= totalRegionOptions; i++) {  // Using total region options for the count
             const option = document.createElement('option');
             option.value = i;
             option.text = i;
@@ -87,7 +87,7 @@ function handleViolationTypeChange() {
     }
 }
 
-// Dynamically creates multiple violation fields
+// Dynamically creates multiple violation fields based on the count selected
 function createMultipleViolationFields(count) {
     const violationsContainer = document.getElementById('multipleViolationsContainer');
     violationsContainer.innerHTML = ''; // Clear the existing fields

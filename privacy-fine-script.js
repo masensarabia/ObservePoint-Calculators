@@ -62,10 +62,10 @@ function handleViolationTypeChange() {
     const violationsContainer = document.getElementById('multipleViolationsContainer');
 
     // Clear previous fields except for the first one
-    const defaultField = document.querySelector('#multipleViolationsContainer .calculator-input');
+    const defaultField = document.querySelector('#violationsContainer .calculator-input');
     violationsContainer.innerHTML = ''; 
 
-    // Re-add the first default field
+    // Re-add the first default field if it doesn't already exist
     if (!defaultField) {
         const defaultLabel = document.createElement('label');
         defaultLabel.textContent = `Number of Violations:`;
@@ -80,21 +80,18 @@ function handleViolationTypeChange() {
 
     if (violationType === 'multiple') {
         // Create dropdown for selecting how many fields to display based on total region options
-        let select = document.getElementById('multipleViolationCount');
-        if (!select) {
-            select = document.createElement('select');
-            select.id = 'multipleViolationCount';
-            for (let i = 1; i <= totalRegionOptions; i++) {  // Using total region options for the count
-                const option = document.createElement('option');
-                option.value = i;
-                option.text = i;
-                select.appendChild(option);
-            }
-            select.addEventListener('change', function () {
-                createMultipleViolationFields(this.value);
-            });
-            violationsContainer.appendChild(select);
+        const select = document.createElement('select');
+        select.id = 'multipleViolationCount';
+        for (let i = 1; i <= totalRegionOptions; i++) {  // Using total region options for the count
+            const option = document.createElement('option');
+            option.value = i;
+            option.text = i;
+            select.appendChild(option);
         }
+        select.addEventListener('change', function() {
+            createMultipleViolationFields(this.value);
+        });
+        violationsContainer.appendChild(select);
 
     } else if (violationType === 'region') {
         // Create one violation field for each region selected
@@ -140,6 +137,8 @@ function createViolationFieldForRegion(region) {
     violationsContainer.appendChild(label);
     violationsContainer.appendChild(input);
 }
+
+
 
 function calculateFine() {
     const violationType = document.getElementById('violationType').value;

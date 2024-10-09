@@ -60,32 +60,43 @@ function removeRegion(region) {
 function handleViolationTypeChange() {
     const violationType = document.getElementById('violationType').value;
     const violationsContainer = document.getElementById('multipleViolationsContainer');
+    const singleViolationField = document.getElementById('violations'); // Single violation input field
 
     // Clear previous fields completely
     violationsContainer.innerHTML = '';
 
-    if (violationType === 'multiple') {
-        // Create dropdown for selecting how many fields to display based on total region options
-        const select = document.createElement('select');
-        select.id = 'multipleViolationCount';
-        for (let i = 1; i <= totalRegionOptions; i++) {  // Using total region options for the count
-            const option = document.createElement('option');
-            option.value = i;
-            option.text = i;
-            select.appendChild(option);
-        }
-        select.addEventListener('change', function () {
-            createMultipleViolationFields(this.value);
-        });
-        violationsContainer.appendChild(select);
+    // If "multiple" or "region" is selected, hide the single violation input
+    if (violationType === 'multiple' || violationType === 'region') {
+        singleViolationField.style.display = 'none';
+        
+        if (violationType === 'multiple') {
+            // Create dropdown for selecting how many fields to display based on total region options
+            const select = document.createElement('select');
+            select.id = 'multipleViolationCount';
+            for (let i = 1; i <= totalRegionOptions; i++) {  // Using total region options for the count
+                const option = document.createElement('option');
+                option.value = i;
+                option.text = i;
+                select.appendChild(option);
+            }
+            select.addEventListener('change', function () {
+                createMultipleViolationFields(this.value);
+            });
+            violationsContainer.appendChild(select);
 
-    } else if (violationType === 'region') {
-        // Create one violation field for each region selected
-        selectedRegionsSet.forEach(region => {
-            createViolationFieldForRegion(region);
-        });
+        } else if (violationType === 'region') {
+            // Create one violation field for each region selected
+            selectedRegionsSet.forEach(region => {
+                createViolationFieldForRegion(region);
+            });
+        }
+
+    } else {
+        // If "one" is selected, show the single violation input field and hide the others
+        singleViolationField.style.display = 'block';
     }
 }
+
 
 
 function createMultipleViolationFields(count) {
@@ -132,8 +143,7 @@ function createMultipleViolationFields(count) {
     }
 }
 
-// Optionally, you can hide the first input field if you don't want it to show
-document.getElementById('violations').style.display = 'none';
+
 
 
 

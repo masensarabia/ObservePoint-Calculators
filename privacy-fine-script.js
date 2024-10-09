@@ -1,41 +1,41 @@
 let selectedRegionsSet = new Set();
-const totalRegionOptions = document.getElementById('region').options.length; // Get the total number of region options
+const totalRegionOptions = document.getElementById("region").options.length; // Get the total number of region options
 
 // Add region and display it properly in the "Selected Regions" section
 function addRegion() {
-    const selectedRegionOptions = Array.from(document.getElementById('region').selectedOptions).map(option => option.value);
+    const selectedRegionOptions = Array.from(document.getElementById("region").selectedOptions).map((option) => option.value);
     let gdprSelected = false; // Flag to check if a GDPR option is selected
 
-    selectedRegionOptions.forEach(region => {
+    selectedRegionOptions.forEach((region) => {
         selectedRegionsSet.add(region); // Add region to the set
 
         // Check if GDPR is selected
-        if (region === 'gdpr-2%' || region === 'gdpr-4%') {
+        if (region === "gdpr-2%" || region === "gdpr-4%") {
             gdprSelected = true;
         }
     });
 
     // Toggle the visibility of the annualRevenueInput field
-    const annualRevenueInput = document.getElementById('annualRevenueInput');
+    const annualRevenueInput = document.getElementById("annualRevenueInput");
     if (gdprSelected) {
-        annualRevenueInput.style.display = 'block';
+        annualRevenueInput.style.display = "block";
     } else {
-        annualRevenueInput.style.display = 'none';
+        annualRevenueInput.style.display = "none";
     }
 
     displaySelectedRegions(); // Display the selected regions
 
     // If "Region to Violation Field" is selected, dynamically add fields
-    const violationType = document.getElementById('violationType').value;
-    if (violationType === 'region') {
+    const violationType = document.getElementById("violationType").value;
+    if (violationType === "region") {
         handleViolationTypeChange(); // Re-trigger to add violation fields
     }
 }
 
 function displaySelectedRegions() {
-    const selectedRegionsDiv = document.getElementById('selectedRegions');
-    selectedRegionsDiv.innerHTML = ''; // Clear the content
-    selectedRegionsSet.forEach(region => {
+    const selectedRegionsDiv = document.getElementById("selectedRegions");
+    selectedRegionsDiv.innerHTML = ""; // Clear the content
+    selectedRegionsSet.forEach((region) => {
         selectedRegionsDiv.innerHTML += `
             <div class="selected-region">
                 ${capitalizeFirstLetter(region)} 
@@ -51,68 +51,65 @@ function removeRegion(region) {
     displaySelectedRegions(); // Update the displayed list
 
     // If "Region to Violation Field" is selected, dynamically remove fields
-    const violationType = document.getElementById('violationType').value;
-    if (violationType === 'region') {
+    const violationType = document.getElementById("violationType").value;
+    if (violationType === "region") {
         handleViolationTypeChange(); // Re-trigger to adjust violation fields
     }
 }
 
 function handleViolationTypeChange() {
-    const violationType = document.getElementById('violationType').value;
-    const violationsContainer = document.getElementById('multipleViolationsContainer');
-    const singleViolationField = document.getElementById('violations'); // Single violation input field
+    const violationType = document.getElementById("violationType").value;
+    const violationsContainer = document.getElementById("multipleViolationsContainer");
+    const singleViolationField = document.getElementById("violations"); // Single violation input field
 
     // Clear previous fields completely
-    violationsContainer.innerHTML = '';
+    violationsContainer.innerHTML = "";
 
     // If "multiple" or "region" is selected, hide the single violation input
-    if (violationType === 'multiple' || violationType === 'region') {
-        singleViolationField.style.display = 'none';
-        
-        if (violationType === 'multiple') {
+    if (violationType === "multiple" || violationType === "region") {
+        singleViolationField.style.display = "none";
+
+        if (violationType === "multiple") {
             // Create dropdown for selecting how many fields to display based on total region options
-            const select = document.createElement('select');
-            select.id = 'multipleViolationCount';
-            for (let i = 1; i <= totalRegionOptions; i++) {  // Using total region options for the count
-                const option = document.createElement('option');
+            const select = document.createElement("select");
+            select.id = "multipleViolationCount";
+            for (let i = 1; i <= totalRegionOptions; i++) {
+                // Using total region options for the count
+                const option = document.createElement("option");
                 option.value = i;
                 option.text = i;
                 select.appendChild(option);
             }
-            select.addEventListener('change', function () {
+            select.addEventListener("change", function () {
                 createMultipleViolationFields(this.value);
             });
             violationsContainer.appendChild(select);
-
-        } else if (violationType === 'region') {
+        } else if (violationType === "region") {
             // Create one violation field for each region selected
-            selectedRegionsSet.forEach(region => {
+            selectedRegionsSet.forEach((region) => {
                 createViolationFieldForRegion(region);
             });
         }
-
     } else {
         // If "one" is selected, show the single violation input field and hide the others
-        singleViolationField.style.display = 'block';
+        singleViolationField.style.display = "block";
     }
 }
 
-
-
 function createMultipleViolationFields(count) {
-    const violationsContainer = document.getElementById('multipleViolationsContainer');
+    const violationsContainer = document.getElementById("multipleViolationsContainer");
 
     // Clear all existing fields in the container
-    violationsContainer.innerHTML = '';
+    violationsContainer.innerHTML = "";
 
     // Add dropdown for selecting number of violations
-    const selectLabel = document.createElement('label');
-    selectLabel.textContent = 'Select Number of Violations:';
-    const select = document.createElement('select');
-    select.id = 'multipleViolationCount';
+    const selectLabel = document.createElement("label");
+    selectLabel.textContent = "Select Number of Violations:";
+    const select = document.createElement("select");
+    select.id = "multipleViolationCount";
 
     for (let i = 1; i <= totalRegionOptions; i++) {
-        const option = document.createElement('option');
+        const option = document.createElement("option");
         option.value = i;
         option.text = i;
         select.appendChild(option);
@@ -122,7 +119,7 @@ function createMultipleViolationFields(count) {
     select.value = count;
 
     // Add event listener to regenerate fields when dropdown changes
-    select.addEventListener('change', function () {
+    select.addEventListener("change", function () {
         createMultipleViolationFields(this.value);
     });
 
@@ -131,45 +128,39 @@ function createMultipleViolationFields(count) {
 
     // Create input fields starting from the second one (first can be hidden or used as you prefer)
     for (let i = 1; i <= count; i++) {
-        const label = document.createElement('label');
+        const label = document.createElement("label");
         label.textContent = `Number of Violations ${i}:`;
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.classList.add('calculator-input');
+        const input = document.createElement("input");
+        input.type = "text";
+        input.classList.add("calculator-input");
         input.id = `violations${i}`;
-        input.placeholder = 'Enter number of violations';
+        input.placeholder = "Enter number of violations";
         violationsContainer.appendChild(label);
         violationsContainer.appendChild(input);
     }
 }
 
-
-
-
-
-
-
 // Create individual violation fields based on selected regions
 function createViolationFieldForRegion(region) {
-    const violationsContainer = document.getElementById('multipleViolationsContainer');
-    const label = document.createElement('label');
+    const violationsContainer = document.getElementById("multipleViolationsContainer");
+    const label = document.createElement("label");
     label.textContent = `Number of Violations for ${capitalizeFirstLetter(region)}:`;
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.classList.add('calculator-input');
+    const input = document.createElement("input");
+    input.type = "text";
+    input.classList.add("calculator-input");
     input.id = `violations_${region}`;
-    input.placeholder = 'Enter number of violations';
+    input.placeholder = "Enter number of violations";
     violationsContainer.appendChild(label);
     violationsContainer.appendChild(input);
 }
 
 function calculateFine() {
-    const violationType = document.getElementById('violationType').value;
-    const annualRevenueElement = document.getElementById('annualRevenue');
-    const annualRevenue = annualRevenueElement ? parseFloat(annualRevenueElement.value.replace(/,/g, '')) || 0 : 0;
-    let totalFineOutput = '';
+    const violationType = document.getElementById("violationType").value;
+    const annualRevenueElement = document.getElementById("annualRevenue");
+    const annualRevenue = annualRevenueElement ? parseFloat(annualRevenueElement.value.replace(/,/g, "")) || 0 : 0;
+    let totalFineOutput = "";
 
-    selectedRegionsSet.forEach(region => {
+    selectedRegionsSet.forEach((region) => {
         let finePerViolation = 0;
         let currency = "USD"; // Default currency set to USD
 
@@ -282,65 +273,75 @@ function calculateFine() {
                 totalFine = 0.04 * annualRevenue;
                 currency = "EUR"; // Set currency to EUR for GDPR
                 break;
+
             default:
                 finePerViolation = 0;
         }
 
+        if (region === "gdpr-2%" || region === "gdpr-4%") {
+            // Format the fine
+            const formattedFine = new Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: currency,
+            }).format(totalFine);
+
+            // Append GDPR fine result
+            totalFineOutput += `${capitalizeFirstLetter(region)}: ${formattedFine} ${currency === "USD" ? "USD" : "EUR"}<br>`;
+        }
+
         // Calculate and display fine for each violation field
-        if (violationType === 'multiple') {
-            const violationCountElement = document.getElementById('multipleViolationCount');
+        if (violationType === "multiple") {
+            const violationCountElement = document.getElementById("multipleViolationCount");
             const violationCount = violationCountElement ? violationCountElement.value : 0;
             for (let i = 0; i < violationCount; i++) {
                 const violationField = document.getElementById(`violations${i + 1}`);
-                const violations = violationField ? parseInt(violationField.value.replace(/,/g, ''), 10) || 0 : 0;
-                
+                const violations = violationField ? parseInt(violationField.value.replace(/,/g, ""), 10) || 0 : 0;
+
                 let totalFine = violations * finePerViolation;
-                
+
                 // Format the fine
-                const formattedFine = new Intl.NumberFormat('en-US', {
-                    style: 'currency',
-                    currency: currency
+                const formattedFine = new Intl.NumberFormat("en-US", {
+                    style: "currency",
+                    currency: currency,
                 }).format(totalFine);
 
                 // Append each fine result with the number of violations included
-                totalFineOutput += `${capitalizeFirstLetter(region)}: ${violations} violations = ${formattedFine} ${currency === 'USD' ? 'USD' : 'EUR'}<br>`;
+                totalFineOutput += `${capitalizeFirstLetter(region)}: ${violations} violations = ${formattedFine} ${currency === "USD" ? "USD" : "EUR"}<br>`;
             }
-        } else if (violationType === 'region') {
+        } else if (violationType === "region") {
             const violationField = document.getElementById(`violations_${region}`);
-            const violations = violationField ? parseInt(violationField.value.replace(/,/g, ''), 10) || 0 : 0;
-            
+            const violations = violationField ? parseInt(violationField.value.replace(/,/g, ""), 10) || 0 : 0;
+
             let totalFine = violations * finePerViolation;
-            
+
             // Format the fine
-            const formattedFine = new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: currency
+            const formattedFine = new Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: currency,
             }).format(totalFine);
 
             // Append each fine result with the number of violations included
-            totalFineOutput += `${capitalizeFirstLetter(region)}: ${violations} violations = ${formattedFine} ${currency === 'USD' ? 'USD' : 'EUR'}<br>`;
+            totalFineOutput += `${capitalizeFirstLetter(region)}: ${violations} violations = ${formattedFine} ${currency === "USD" ? "USD" : "EUR"}<br>`;
         } else {
-            const violationsInput = document.getElementById('violations');
-            const violations = violationsInput ? parseInt(violationsInput.value.replace(/,/g, ''), 10) || 0 : 0;
+            const violationsInput = document.getElementById("violations");
+            const violations = violationsInput ? parseInt(violationsInput.value.replace(/,/g, ""), 10) || 0 : 0;
 
             let totalFine = violations * finePerViolation;
 
             // Format the fine
-            const formattedFine = new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: currency
+            const formattedFine = new Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: currency,
             }).format(totalFine);
 
             // Append each fine result
-            totalFineOutput += `${capitalizeFirstLetter(region)}: ${formattedFine} ${currency === 'USD' ? 'USD' : 'EUR'}<br>`;
+            totalFineOutput += `${capitalizeFirstLetter(region)}: ${formattedFine} ${currency === "USD" ? "USD" : "EUR"}<br>`;
         }
     });
 
     // Display the results in the "totalFine" section
-    document.getElementById('totalFine').innerHTML = totalFineOutput;
+    document.getElementById("totalFine").innerHTML = totalFineOutput;
 }
-
-
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -352,24 +353,19 @@ function formatWithCommas(value) {
 }
 
 // Event listener to add commas as you type
-document.getElementById('violations').addEventListener('input', function (e) {
-    let value = e.target.value.replace(/,/g, ''); // Remove any existing commas
-    if (!isNaN(value) && value !== '') {
+document.getElementById("violations").addEventListener("input", function (e) {
+    let value = e.target.value.replace(/,/g, ""); // Remove any existing commas
+    if (!isNaN(value) && value !== "") {
         let formattedValue = formatWithCommas(value); // Format the value with commas
         e.target.value = formattedValue;
     }
 });
 
 // Event listener to add commas as you type for annual revenue
-document.getElementById('annualRevenue').addEventListener('input', function (e) {
-    let value = e.target.value.replace(/,/g, ''); // Remove any existing commas
-    if (!isNaN(value) && value !== '') {
+document.getElementById("annualRevenue").addEventListener("input", function (e) {
+    let value = e.target.value.replace(/,/g, ""); // Remove any existing commas
+    if (!isNaN(value) && value !== "") {
         let formattedValue = formatWithCommas(value); // Format the value with commas
         e.target.value = formattedValue;
     }
 });
-
-
-
-
-

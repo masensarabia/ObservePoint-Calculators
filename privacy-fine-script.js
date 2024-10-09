@@ -163,6 +163,27 @@ function calculateFine() {
     selectedRegionsSet.forEach((region) => {
         let finePerViolation = 0;
         let currency = "USD"; // Default currency set to USD
+        let totalFine = 0; // Initialize totalFine here
+
+        // GDPR calculation block
+        if (region === "gdpr-2%" || region === "gdpr-4%") {
+            if (region === "gdpr-2%") {
+                totalFine = 0.02 * annualRevenue;
+                currency = "EUR";
+            } else if (region === "gdpr-4%") {
+                totalFine = 0.04 * annualRevenue;
+                currency = "EUR";
+            }
+
+            const formattedFine = new Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: currency,
+            }).format(totalFine);
+
+            // Append GDPR fine result and skip further processing
+            totalFineOutput += `${capitalizeFirstLetter(region)}: ${annualRevenue} revenue = ${formattedFine} ${currency === "USD" ? "USD" : "EUR"}<br>`;
+            return; // Skip non-GDPR processing for GDPR regions
+        }
 
         switch (region) {
             case "utah":
@@ -297,7 +318,7 @@ function calculateFine() {
                 const violationField = document.getElementById(`violations${i + 1}`);
                 const violations = violationField ? parseInt(violationField.value.replace(/,/g, ""), 10) || 0 : 0;
 
-                let totalFine = violations * finePerViolation;
+                totalFine = violations * finePerViolation;
 
                 // Format the fine
                 const formattedFine = new Intl.NumberFormat("en-US", {
@@ -312,7 +333,7 @@ function calculateFine() {
             const violationField = document.getElementById(`violations_${region}`);
             const violations = violationField ? parseInt(violationField.value.replace(/,/g, ""), 10) || 0 : 0;
 
-            let totalFine = violations * finePerViolation;
+            totalFine = violations * finePerViolation;
 
             // Format the fine
             const formattedFine = new Intl.NumberFormat("en-US", {
@@ -326,7 +347,7 @@ function calculateFine() {
             const violationsInput = document.getElementById("violations");
             const violations = violationsInput ? parseInt(violationsInput.value.replace(/,/g, ""), 10) || 0 : 0;
 
-            let totalFine = violations * finePerViolation;
+            totalFine = violations * finePerViolation;
 
             // Format the fine
             const formattedFine = new Intl.NumberFormat("en-US", {

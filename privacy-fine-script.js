@@ -61,8 +61,22 @@ function handleViolationTypeChange() {
     const violationType = document.getElementById('violationType').value;
     const violationsContainer = document.getElementById('multipleViolationsContainer');
 
-    // Clear previous fields
-    violationsContainer.innerHTML = '';
+    // Clear previous fields except for the first one
+    const defaultField = document.querySelector('#violationsContainer .calculator-input');
+    violationsContainer.innerHTML = ''; 
+
+    // Re-add the first default field
+    if (!defaultField) {
+        const defaultLabel = document.createElement('label');
+        defaultLabel.textContent = `Number of Violations:`;
+        const defaultInput = document.createElement('input');
+        defaultInput.type = 'text';
+        defaultInput.classList.add('calculator-input');
+        defaultInput.id = `violations`;
+        defaultInput.placeholder = 'Enter number of violations';
+        violationsContainer.appendChild(defaultLabel);
+        violationsContainer.appendChild(defaultInput);
+    }
 
     if (violationType === 'multiple') {
         // Create dropdown for selecting how many fields to display based on total region options
@@ -90,8 +104,14 @@ function handleViolationTypeChange() {
 // Dynamically creates multiple violation fields based on the count selected
 function createMultipleViolationFields(count) {
     const violationsContainer = document.getElementById('multipleViolationsContainer');
-    violationsContainer.innerHTML = ''; // Clear the existing fields
-    for (let i = 0; i < count; i++) {
+
+    // Clear all except the first default field
+    while (violationsContainer.children.length > 2) { // Ensures we don't remove the first field
+        violationsContainer.removeChild(violationsContainer.lastChild);
+    }
+
+    // Create fields starting from 2 to the selected number
+    for (let i = 1; i < count; i++) {
         const label = document.createElement('label');
         label.textContent = `Number of Violations ${i + 1}:`;
         const input = document.createElement('input');

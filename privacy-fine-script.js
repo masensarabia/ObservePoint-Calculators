@@ -142,18 +142,18 @@ function calculateFine() {
         // Handle different violation input types
         if (violationType === 'one') {
             const violationsInput = document.getElementById('violations').value.replace(/,/g, '');
-            violations = parseInt(violationsInput, 10);
+            violations = parseInt(violationsInput, 10) || 0;
 
         } else if (violationType === 'multiple') {
             const violationCount = document.getElementById('multipleViolationCount').value;
             for (let i = 0; i < violationCount; i++) {
                 const violationField = document.getElementById(`violations${i + 1}`).value.replace(/,/g, '');
-                violations += parseInt(violationField, 10);
+                violations += parseInt(violationField, 10) || 0;
             }
 
         } else if (violationType === 'region') {
             const violationField = document.getElementById(`violations_${region}`).value.replace(/,/g, '');
-            violations = parseInt(violationField, 10);
+            violations = parseInt(violationField, 10) || 0;
         }
 
 

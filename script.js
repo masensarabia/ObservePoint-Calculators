@@ -65,11 +65,16 @@ function calculateSavings() {
     document.getElementById('annualCostPerFTE').textContent = "$" + annualCostPerFTE.toLocaleString(undefined, {minimumFractionDigits: 2});
 
     // Actual Manual Employee Testing
-    let actualManualTime = parseFloat(document.getElementById('actualManualTime').value);
+    let actualManualTime = parseFloat(document.getElementById('actualManualTime').value.replace(/,/g, ''));
     let actualPagesTested = parseFloat(document.getElementById('actualPagesTested').value.replace(/,/g, ''));
 
     // Correcting the calculation for total manual cost
     let actualManualCost = actualManualTime * manualRate;
+
+    // Debugging logs
+    console.log('Actual Manual Time:', actualManualTime);  // Should log 1000
+    console.log('Manual Rate:', manualRate);  // Should log 15
+    console.log('Actual Manual Cost:', actualManualCost);  // Should log 15000
 
     document.getElementById('actualManualCost').textContent = "$" + actualManualCost.toLocaleString(undefined, {minimumFractionDigits: 2});
 

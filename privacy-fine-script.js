@@ -94,7 +94,7 @@ function createMultipleViolationFields(count) {
     // Clear all existing fields in the container
     violationsContainer.innerHTML = '';
 
-    // Re-add the dropdown for number of violations
+    // Add dropdown for selecting number of violations
     const selectLabel = document.createElement('label');
     selectLabel.textContent = 'Select Number of Violations:';
     const select = document.createElement('select');
@@ -107,6 +107,9 @@ function createMultipleViolationFields(count) {
         select.appendChild(option);
     }
 
+    // Set the dropdown value to the current count
+    select.value = count;
+
     // Add event listener to regenerate fields when dropdown changes
     select.addEventListener('change', function () {
         createMultipleViolationFields(this.value);
@@ -115,7 +118,7 @@ function createMultipleViolationFields(count) {
     violationsContainer.appendChild(selectLabel);
     violationsContainer.appendChild(select);
 
-    // Now generate violation input fields based on the count
+    // Create input fields starting from the second one (first can be hidden or used as you prefer)
     for (let i = 1; i <= count; i++) {
         const label = document.createElement('label');
         label.textContent = `Number of Violations ${i}:`;
@@ -128,6 +131,10 @@ function createMultipleViolationFields(count) {
         violationsContainer.appendChild(input);
     }
 }
+
+// Optionally, you can hide the first input field if you don't want it to show
+document.getElementById('violations').style.display = 'none';
+
 
 
 

@@ -6,8 +6,6 @@ function formatNumberWithCommas(input) {
     }
 }
 
-
-
 // Add event listeners for formatting numbers with commas
 document.getElementById('pagesToTest').addEventListener('input', function() {
     formatNumberWithCommas(this);
@@ -17,17 +15,6 @@ document.getElementById('opPages').addEventListener('input', function() {
 });
 document.getElementById('actualPagesTested').addEventListener('input', function() {
     formatNumberWithCommas(this);
-});
-
-// Add event listeners for formatting dollar inputs
-document.getElementById('manualRate').addEventListener('input', function() {
-    formatDollarInput(this);
-});
-document.getElementById('opCost').addEventListener('input', function() {
-    formatDollarInput(this);
-});
-document.getElementById('actualOPCost').addEventListener('input', function() {
-    formatDollarInput(this);
 });
 
 document.getElementById('actualManualTime').addEventListener('input', function() {
@@ -45,6 +32,10 @@ function calculateSavings() {
     let pagesToTest = parseFloat(document.getElementById('pagesToTest').value.replace(/,/g, ''));
     let manualRate = parseFloat(document.getElementById('manualRate').value.replace(/[^0-9.]/g, ''));
 
+    console.log('Manual Time:', manualTime);
+    console.log('Pages to Test:', pagesToTest);
+    console.log('Manual Rate:', manualRate);
+
     let totalManualTestingTime = (manualTime * pagesToTest) / 60;
     let totalManualCost = totalManualTestingTime * manualRate;
 
@@ -55,6 +46,10 @@ function calculateSavings() {
     let opRate = parseFloat(document.getElementById('opRate').value);
     let opPages = parseFloat(document.getElementById('opPages').value.replace(/,/g, ''));
     let opCost = parseFloat(document.getElementById('opCost').value.replace(/[^0-9.]/g, ''));
+
+    console.log('OP Rate:', opRate);
+    console.log('OP Pages:', opPages);
+    console.log('OP Cost:', opCost);
 
     let totalOPTestingTime = (opPages / opRate) / 60;
     let totalOPCost = opPages * opCost;
@@ -86,6 +81,10 @@ function calculateSavings() {
     let actualPagesTested = parseFloat(document.getElementById('actualPagesTested').value.replace(/,/g, ''));
     let actualManualCost = actualManualTime * manualRate;
 
+    console.log('Actual Manual Time:', actualManualTime);
+    console.log('Actual Pages Tested:', actualPagesTested);
+    console.log('Actual Manual Cost:', actualManualCost);
+
     document.getElementById('actualManualCost').textContent = "$" + actualManualCost.toLocaleString(undefined, {minimumFractionDigits: 2});
 
     // Actual ObservePoint Testing
@@ -94,6 +93,10 @@ function calculateSavings() {
 
     let actualOPTestingTime = (actualPagesTested / actualOPRate) / 60;
     let actualTotalOPCost = actualPagesTested * actualOPCostPerPage;
+
+    console.log('Actual OP Rate:', actualOPRate);
+    console.log('Actual OP Cost Per Page:', actualOPCostPerPage);
+    console.log('Actual OP Testing Time:', actualOPTestingTime);
 
     document.getElementById('actualOPTime').textContent = actualOPTestingTime.toFixed(4) + " hours";
     document.getElementById('actualOPTotalCost').textContent = "$" + actualTotalOPCost.toLocaleString(undefined, {minimumFractionDigits: 2});

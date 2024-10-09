@@ -67,9 +67,10 @@ function calculateSavings() {
     // Actual Manual Employee Testing
     let actualManualTime = parseFloat(document.getElementById('actualManualTime').value);
     let actualPagesTested = parseFloat(document.getElementById('actualPagesTested').value.replace(/,/g, ''));
-    let actualManualCost = actualManualTime * manualRate;
 
     // Correcting the calculation for total manual cost
+    let actualManualCost = actualManualTime * manualRate;
+
     document.getElementById('actualManualCost').textContent = "$" + actualManualCost.toLocaleString(undefined, {minimumFractionDigits: 2});
 
     // Actual ObservePoint Testing

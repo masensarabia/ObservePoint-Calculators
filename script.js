@@ -32,10 +32,6 @@ function calculateSavings() {
     let pagesToTest = parseFloat(document.getElementById('pagesToTest').value.replace(/,/g, ''));
     let manualRate = parseFloat(document.getElementById('manualRate').value.replace(/[^0-9.]/g, ''));
 
-    console.log('Manual Time:', manualTime);
-    console.log('Pages to Test:', pagesToTest);
-    console.log('Manual Rate:', manualRate);
-
     let totalManualTestingTime = (manualTime * pagesToTest) / 60;
     let totalManualCost = totalManualTestingTime * manualRate;
 
@@ -47,10 +43,6 @@ function calculateSavings() {
     let opPages = parseFloat(document.getElementById('opPages').value.replace(/,/g, ''));
     let opCost = parseFloat(document.getElementById('opCost').value.replace(/[^0-9.]/g, ''));
 
-    console.log('OP Rate:', opRate);
-    console.log('OP Pages:', opPages);
-    console.log('OP Cost:', opCost);
-
     let totalOPTestingTime = (opPages / opRate) / 60;
     let totalOPCost = opPages * opCost;
 
@@ -60,10 +52,6 @@ function calculateSavings() {
     // Time and Cost Saved (Hypothetical)
     let timeSaved = totalManualTestingTime - totalOPTestingTime;
     let moneySaved = totalManualCost - totalOPCost;
-
-    // Ensure no negative values for time and cost saved
-    timeSaved = Math.max(0, timeSaved);
-    moneySaved = Math.max(0, moneySaved);
 
     document.getElementById('totalHoursSaved').textContent = timeSaved.toFixed(2) + " hours";
     document.getElementById('totalMoneySaved').textContent = "$" + moneySaved.toLocaleString(undefined, {minimumFractionDigits: 2});
@@ -81,10 +69,7 @@ function calculateSavings() {
     let actualPagesTested = parseFloat(document.getElementById('actualPagesTested').value.replace(/,/g, ''));
     let actualManualCost = actualManualTime * manualRate;
 
-    console.log('Actual Manual Time:', actualManualTime);
-    console.log('Actual Pages Tested:', actualPagesTested);
-    console.log('Actual Manual Cost:', actualManualCost);
-
+    // Correcting the calculation for total manual cost
     document.getElementById('actualManualCost').textContent = "$" + actualManualCost.toLocaleString(undefined, {minimumFractionDigits: 2});
 
     // Actual ObservePoint Testing
@@ -94,16 +79,12 @@ function calculateSavings() {
     let actualOPTestingTime = (actualPagesTested / actualOPRate) / 60;
     let actualTotalOPCost = actualPagesTested * actualOPCostPerPage;
 
-    console.log('Actual OP Rate:', actualOPRate);
-    console.log('Actual OP Cost Per Page:', actualOPCostPerPage);
-    console.log('Actual OP Testing Time:', actualOPTestingTime);
-
     document.getElementById('actualOPTime').textContent = actualOPTestingTime.toFixed(4) + " hours";
     document.getElementById('actualOPTotalCost').textContent = "$" + actualTotalOPCost.toLocaleString(undefined, {minimumFractionDigits: 2});
 
     // Actual Time & Cost Saved (Summary)
-    let actualTimeSaved = Math.max(0, actualManualTime - actualOPTestingTime);
-    let actualCostSaved = Math.max(0, actualManualCost - actualTotalOPCost);
+    let actualTimeSaved = actualManualTime - actualOPTestingTime;
+    let actualCostSaved = actualManualCost - actualTotalOPCost;
 
     document.getElementById('actualTotalHoursSaved').textContent = actualTimeSaved.toFixed(4) + " hours";
     document.getElementById('actualTotalMoneySaved').textContent = "$" + actualCostSaved.toLocaleString(undefined, {minimumFractionDigits: 2});

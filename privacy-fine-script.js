@@ -126,14 +126,10 @@ function createViolationFieldForRegion(region) {
     violationsContainer.appendChild(input);
 }
 
-
-
 function calculateFine() {
     const violationType = document.getElementById('violationType').value;
     const annualRevenue = parseFloat(document.getElementById('annualRevenue').value.replace(/,/g, '')) || 0;
     let totalFineOutput = '';
-
-    console.log("Violation Type Selected:", violationType); // Debug log
 
     selectedRegionsSet.forEach(region => {
         let finePerViolation = 0;
@@ -148,17 +144,15 @@ function calculateFine() {
 
         } else if (violationType === 'multiple') {
             const violationCount = document.getElementById('multipleViolationCount').value;
-            console.log("Violation Count:", violationCount); // Debug log
             for (let i = 0; i < violationCount; i++) {
                 const violationField = document.getElementById(`violations${i + 1}`).value.replace(/,/g, '');
                 violations += parseInt(violationField, 10) || 0;
             }
+
         } else if (violationType === 'region') {
             const violationField = document.getElementById(`violations_${region}`).value.replace(/,/g, '');
             violations = parseInt(violationField, 10) || 0;
         }
-
-        console.log("Region:", region, "Violations:", violations); // Debug log
 
 
         switch (region) {

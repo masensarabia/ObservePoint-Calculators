@@ -134,27 +134,7 @@ function calculateFine() {
 
     selectedRegionsSet.forEach(region => {
         let finePerViolation = 0;
-        let totalFine = 0;
-        let violations = 0;
         let currency = "USD"; // Default currency set to USD
-
-        // Handle different violation input types
-        if (violationType === 'one') {
-            const violationsInput = document.getElementById('violations');
-            violations = violationsInput ? parseInt(violationsInput.value.replace(/,/g, ''), 10) || 0 : 0;
-
-        } else if (violationType === 'multiple') {
-            const violationCountElement = document.getElementById('multipleViolationCount');
-            const violationCount = violationCountElement ? violationCountElement.value : 0;
-            for (let i = 0; i < violationCount; i++) {
-                const violationField = document.getElementById(`violations${i + 1}`);
-                violations += violationField ? parseInt(violationField.value.replace(/,/g, ''), 10) || 0 : 0;
-            }
-
-        } else if (violationType === 'region') {
-            const violationField = document.getElementById(`violations_${region}`);
-            violations = violationField ? parseInt(violationField.value.replace(/,/g, ''), 10) || 0 : 0;
-        }
 
 
         switch (region) {
@@ -270,21 +250,54 @@ function calculateFine() {
                 finePerViolation = 0;
         }
 
-        // Calculate total fine for non-GDPR regions
-        if (region !== 'gdpr-2%' && region !== 'gdpr-4%') {
-            totalFine = violations * finePerViolation;
+        // Calculate and display fine for each violation field
+        if (violationType === 'multiple') {
+            const violationCountElement = document.getElementById('multipleViolationCount');
+            const violationCount = violationCountElement ? violationCountElement.value : 0;
+            for (let i = 0; i < violationCount; i++) {
+                const violationField = document.getElementById(`violations${i + 1}`);
+                const violations = violationField ? parseInt(violationField.value.replace(/,/g, ''), 10) || 0 : 0;
+                
+                let totalFine = violations * finePerViolation;
+                
+                // Format the fine
+                const formattedFine = new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: currency
+                }).format(totalFine);
+
+                // Append each fine result
+                totalFineOutput += `${capitalizeFirstLetter(region)} (Violation ${i + 1}): ${formattedFine} ${currency === 'USD' ? 'USD' : 'EUR'}<br>`;
+            }
+        } else if (violationType === 'region') {
+            const violationField = document.getElementById(`violations_${region}`);
+            const violations = violationField ? parseInt(violationField.value.replace(/,/g, ''), 10) || 0 : 0;
+            
+            let totalFine = violations * finePerViolation;
+            
+            // Format the fine
+            const formattedFine = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: currency
+            }).format(totalFine);
+
+            // Append each fine result
+            totalFineOutput += `${capitalizeFirstLetter(region)}: ${formattedFine} ${currency === 'USD' ? 'USD' : 'EUR'}<br>`;
+        } else {
+            const violationsInput = document.getElementById('violations');
+            const violations = violationsInput ? parseInt(violationsInput.value.replace(/,/g, ''), 10) || 0 : 0;
+
+            let totalFine = violations * finePerViolation;
+
+            // Format the fine
+            const formattedFine = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: currency
+            }).format(totalFine);
+
+            // Append each fine result
+            totalFineOutput += `${capitalizeFirstLetter(region)}: ${formattedFine} ${currency === 'USD' ? 'USD' : 'EUR'}<br>`;
         }
-
-        console.log("Total Fine for Region:", region, "is", totalFine); // Debug log
-
-        // Format the fine for the region
-        const formattedFine = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: currency
-        }).format(totalFine);
-
-        // Append the result for each region with currency abbreviation
-        totalFineOutput += `${capitalizeFirstLetter(region)}: ${formattedFine} ${currency === 'USD' ? 'USD' : 'EUR'}<br>`;
     });
 
     // Display the results in the "totalFine" section

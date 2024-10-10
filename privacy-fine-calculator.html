@@ -119,10 +119,30 @@
                 </div>
             </div>
 
-            <div class="results-summary">
-                <h2>Selected Regions</h2>
-                <div id="selectedRegions"></div>
-                <h2>Total Fine</h2>
+<div class="results-summary">
+    <h2>Selected Regions</h2>
+    <div id="selectedRegions"></div>
+
+    <h2>Total Fine</h2>
+
+    <table id="resultsTable">
+        <thead>
+            <tr>
+                <th>Region</th>
+                <th>Number of Violations</th>
+                <th>Total Fine</th>
+                <th>Currency</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- JS will dynamically insert rows here -->
+        </tbody>
+    </table>
+    
+    <!-- Export to CSV button -->
+    <button id="exportCsvBtn" onclick="exportToCSV()">Export to CSV</button>
+</div>
+
                 <p id="totalFine">$0</p>
             </div>
         </div>

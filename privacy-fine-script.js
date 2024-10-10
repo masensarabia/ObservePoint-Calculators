@@ -159,6 +159,11 @@ function calculateFine() {
     const annualRevenueElement = document.getElementById("annualRevenue");
     const annualRevenue = annualRevenueElement ? parseFloat(annualRevenueElement.value.replace(/,/g, "")) || 0 : 0;
     let totalFineOutput = "";
+    // Clear table body before adding new rows
+    const resultsTableBody = document.getElementById("resultsTable").querySelector("tbody");
+    resultsTableBody.innerHTML = "";  // Reset table
+    
+    let totalFineOverall = 0;  // To accumulate total fine across all regions
 
     selectedRegionsSet.forEach((region) => {
         let finePerViolation = 0;
@@ -174,6 +179,10 @@ function calculateFine() {
                 totalFine = 0.04 * annualRevenue;
                 currency = "EUR";
             }
+           // Add GDPR row to the table and skip further logic for this region
+            addRowToTable(region, "N/A", totalFine, currency);
+            totalFineOverall += totalFine;
+            return; 
 
             const formattedFine = new Intl.NumberFormat("en-US", {
                 style: "currency",
@@ -346,9 +355,34 @@ function calculateFine() {
         } else {
             const violationsInput = document.getElementById("violations");
             const violations = violationsInput ? parseInt(violationsInput.value.replace(/,/g, ""), 10) || 0 : 0;
-
             totalFine = violations * finePerViolation;
 
+        // Add row for non-GDPR region
+        addRowToTable(region, violations, totalFine, currency);
+        totalFineOverall += totalFine;  // Sum total fines
+    });
+
+    // Update total fine display (if needed)
+    document.getElementById("totalFine").textContent = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    }).format(totalFineOverall);
+}
+
+// Add a row to the results table
+function addRowToTable(region, violations, totalFine, currency) {
+    const resultsTableBody = document.getElementById("resultsTable").querySelector("tbody");
+
+    const row = document.createElement("tr");
+    row.innerHTML = `
+        <td>${capitalizeFirstLetter(region)}</td>
+        <td>${violations !== "N/A" ? violations : "N/A"}</td>
+        <td>${new Intl.NumberFormat('en-US', { style: 'currency', currency: currency }).format(totalFine)}</td>
+        <td>${currency}</td>
+    `;
+
+    resultsTableBody.appendChild(row);
+}
             // Format the fine
             const formattedFine = new Intl.NumberFormat("en-US", {
                 style: "currency",
@@ -390,3 +424,24 @@ document.getElementById("annualRevenue").addEventListener("input", function (e) 
         e.target.value = formattedValue;
     }
 });
+
+function exportToCSV() {
+    const rows = document.querySelectorAll("#resultsTable tr");
+    let csvContent = "";
+
+    rows.forEach(row => {
+        let rowData = Array.from(row.querySelectorAll("td, th"))
+                           .map(cell => cell.textContent)
+                           .join(",");
+        csvContent += rowData + "\n";
+    });
+
+    // Create a downloadable link
+    const blob = new Blob([csvContent], { type: "text/csv" });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.setAttribute("href", url);
+    a.setAttribute("download", "privacy_fines.csv");
+    a.click();
+}
+

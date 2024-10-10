@@ -3,11 +3,13 @@ const totalRegionOptions = document.getElementById("region").options.length; // 
 
 // Add region and display it properly in the "Selected Regions" section
 function addRegion() {
-    const selectedRegionOptions = Array.from(document.getElementById("region").selectedOptions).map((option) => option.value);
-    let gdprSelected = false; // Flag to check if a GDPR option is selected
+    // Retrieve the selected options from the region dropdown
+    const selectedRegionOptions = Array.from(document.getElementById("region").selectedOptions).map(option => option.value);
+    let gdprSelected = false;
 
-    selectedRegionOptions.forEach((region) => {
-        selectedRegionsSet.add(region); // Add region to the set
+    // Iterate through selected regions and add them to the Set
+    selectedRegionOptions.forEach(region => {
+        selectedRegionsSet.add(region); // Add region to Set if it's not already there
 
         // Check if GDPR is selected
         if (region === "gdpr-2%" || region === "gdpr-4%") {
@@ -15,7 +17,7 @@ function addRegion() {
         }
     });
 
-    // Toggle the visibility of the annualRevenueInput field
+    // Toggle visibility of annual revenue input if GDPR is selected
     const annualRevenueInput = document.getElementById("annualRevenueInput");
     if (gdprSelected) {
         annualRevenueInput.style.display = "block";
@@ -23,39 +25,45 @@ function addRegion() {
         annualRevenueInput.style.display = "none";
     }
 
-    displaySelectedRegions(); // Display the selected regions
+    // Display selected regions dynamically
+    displaySelectedRegions();
 
-    // If "Region to Violation Field" is selected, dynamically add fields
+    // Dynamically add violation fields based on the type of violation selected
     const violationType = document.getElementById("violationType").value;
     if (violationType === "region") {
-        handleViolationTypeChange(); // Re-trigger to add violation fields
+        handleViolationTypeChange(); // Re-trigger field generation for regions
     }
 }
 
+
 function displaySelectedRegions() {
     const selectedRegionsDiv = document.getElementById("selectedRegions");
-    selectedRegionsDiv.innerHTML = ""; // Clear the content
-    selectedRegionsSet.forEach((region) => {
+    selectedRegionsDiv.innerHTML = ""; // Clear current content
+
+    selectedRegionsSet.forEach(region => {
+        // Append each selected region with a remove button
         selectedRegionsDiv.innerHTML += `
             <div class="selected-region">
-                ${capitalizeFirstLetter(region)} 
+                ${capitalizeFirstLetter(region)}
                 <button class="remove-btn" onclick="removeRegion('${region}')">x</button>
             </div>
         `;
     });
 }
 
+
 // Remove region and refresh the list of selected regions
 function removeRegion(region) {
-    selectedRegionsSet.delete(region); // Remove the region from the set
-    displaySelectedRegions(); // Update the displayed list
+    selectedRegionsSet.delete(region); // Remove region from the set
+    displaySelectedRegions(); // Update displayed regions
 
-    // If "Region to Violation Field" is selected, dynamically remove fields
+    // Adjust fields if "Region to Violation Field" is selected
     const violationType = document.getElementById("violationType").value;
     if (violationType === "region") {
-        handleViolationTypeChange(); // Re-trigger to adjust violation fields
+        handleViolationTypeChange(); // Adjust violation fields dynamically
     }
 }
+
 
 function handleViolationTypeChange() {
     const violationType = document.getElementById("violationType").value;

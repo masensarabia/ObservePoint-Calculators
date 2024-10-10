@@ -158,31 +158,27 @@ function calculateFine() {
     const violationType = document.getElementById("violationType").value;
     const annualRevenueElement = document.getElementById("annualRevenue");
     const annualRevenue = annualRevenueElement ? parseFloat(annualRevenueElement.value.replace(/,/g, "")) || 0 : 0;
-    let totalFineOutput = "";
+
+    // Clear table body before adding new rows
+    const resultsTableBody = document.getElementById("resultsTable").querySelector("tbody");
+    resultsTableBody.innerHTML = "";  // Reset table
+    
+    let totalFineOverall = 0;  // To accumulate total fine across all regions
 
     selectedRegionsSet.forEach((region) => {
         let finePerViolation = 0;
-        let currency = "USD"; // Default currency set to USD
-        let totalFine = 0; // Initialize totalFine here
+        let currency = "USD";  // Default currency is USD
+        let totalFine = 0;
 
-        // GDPR calculation block
+        // Handle GDPR logic once
         if (region === "gdpr-2%" || region === "gdpr-4%") {
-            if (region === "gdpr-2%") {
-                totalFine = 0.02 * annualRevenue;
-                currency = "EUR";
-            } else if (region === "gdpr-4%") {
-                totalFine = 0.04 * annualRevenue;
-                currency = "EUR";
-            }
-
-            const formattedFine = new Intl.NumberFormat("en-US", {
-                style: "currency",
-                currency: currency,
-            }).format(totalFine);
-
-            // Append GDPR fine result and skip further processing
-            totalFineOutput += `${capitalizeFirstLetter(region)}: ${annualRevenue} revenue = ${formattedFine} ${currency === "USD" ? "USD" : "EUR"}<br>`;
-            return; // Skip non-GDPR processing for GDPR regions
+            totalFine = region === "gdpr-2%" ? 0.02 * annualRevenue : 0.04 * annualRevenue;
+            currency = "EUR";
+            
+            // Add GDPR row to the table and skip further logic for this region
+            addRowToTable(region, "N/A", totalFine, currency);
+            totalFineOverall += totalFine;
+            return;  // Skip non-GDPR processing for this region
         }
 
         switch (region) {
@@ -299,7 +295,36 @@ function calculateFine() {
                 finePerViolation = 0;
         }
 
-        if (region === "gdpr-2%" || region === "gdpr-4%") {
+        // Calculate total fine for non-GDPR regions
+        const violationsInput = document.getElementById("violations");
+        const violations = violationsInput ? parseInt(violationsInput.value.replace(/,/g, ""), 10) || 0 : 0;
+        totalFine = violations * finePerViolation;
+
+        // Add row for non-GDPR region
+        addRowToTable(region, violations, totalFine, currency);
+        totalFineOverall += totalFine;  // Sum total fines
+    });
+
+    // Update total fine display (if needed)
+    document.getElementById("totalFine").textContent = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    }).format(totalFineOverall);
+}
+
+function addRowToTable(region, violations, totalFine, currency) {
+    const resultsTableBody = document.getElementById("resultsTable").querySelector("tbody");
+
+    const row = document.createElement("tr");
+    row.innerHTML = `
+        <td>${capitalizeFirstLetter(region)}</td>
+        <td>${violations !== "N/A" ? violations : "N/A"}</td>
+        <td>${new Intl.NumberFormat('en-US', { style: 'currency', currency: currency }).format(totalFine)}</td>
+        <td>${currency}</td>
+    `;
+
+    resultsTableBody.appendChild(row);
+}
             // Format the fine
             const formattedFine = new Intl.NumberFormat("en-US", {
                 style: "currency",
@@ -390,3 +415,24 @@ document.getElementById("annualRevenue").addEventListener("input", function (e) 
         e.target.value = formattedValue;
     }
 });
+
+function exportToCSV() {
+    const rows = document.querySelectorAll("#resultsTable tr");
+    let csvContent = "";
+
+    rows.forEach(row => {
+        let rowData = Array.from(row.querySelectorAll("td, th"))
+                           .map(cell => cell.textContent)
+                           .join(",");
+        csvContent += rowData + "\n";
+    });
+
+    // Create a downloadable link
+    const blob = new Blob([csvContent], { type: "text/csv" });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.setAttribute("href", url);
+    a.setAttribute("download", "privacy_fines.csv");
+    a.click();
+}
+

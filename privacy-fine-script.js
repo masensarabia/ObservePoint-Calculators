@@ -3,6 +3,8 @@ const totalRegionOptions = document.getElementById("region").options.length; // 
 
 // Add region and display it properly in the "Selected Regions" section
 function addRegion() {
+    selectedRegionsSet.clear();  // Clear previous selections
+
     const selectedRegionOptions = Array.from(document.getElementById("region").selectedOptions).map((option) => option.value);
     let gdprSelected = false; // Flag to check if a GDPR option is selected
 
@@ -24,6 +26,8 @@ function addRegion() {
     }
 
     displaySelectedRegions(); // Display the selected regions
+}
+
 
     // If "Region to Violation Field" is selected, dynamically add fields
     const violationType = document.getElementById("violationType").value;
@@ -44,6 +48,7 @@ function displaySelectedRegions() {
         `;
     });
 }
+
 
 // Remove region and refresh the list of selected regions
 function removeRegion(region) {
@@ -171,15 +176,14 @@ function calculateFine() {
         let totalFine = 0;
 
         // Handle GDPR logic once
-        if (region === "gdpr-2%" || region === "gdpr-4%") {
-            totalFine = region === "gdpr-2%" ? 0.02 * annualRevenue : 0.04 * annualRevenue;
-            currency = "EUR";
-            
-            // Add GDPR row to the table and skip further logic for this region
-            addRowToTable(region, "N/A", totalFine, currency);
-            totalFineOverall += totalFine;
-            return;  // Skip non-GDPR processing for this region
-        }
+if (region === "gdpr-2%" || region === "gdpr-4%") {
+    totalFine = region === "gdpr-2%" ? 0.02 * annualRevenue : 0.04 * annualRevenue;
+    currency = "EUR";
+    addRowToTable(region, "N/A", totalFine, currency);
+    totalFineOverall += totalFine;
+    return;  // Return to skip non-GDPR processing for this region
+}
+
 
         switch (region) {
             case "utah":
@@ -325,6 +329,7 @@ function addRowToTable(region, violations, totalFine, currency) {
 
     resultsTableBody.appendChild(row);
 }
+
             // Format the fine
             const formattedFine = new Intl.NumberFormat("en-US", {
                 style: "currency",

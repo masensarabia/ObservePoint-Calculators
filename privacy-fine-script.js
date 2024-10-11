@@ -375,6 +375,7 @@ function capitalizeFirstLetter(string) {
 
 
 
+
 function exportToCSV() {
     const resultsTable = document.getElementById("resultsTable");
     const rows = Array.from(resultsTable.querySelectorAll("tr"));
@@ -386,16 +387,13 @@ function exportToCSV() {
         const cells = Array.from(row.querySelectorAll("td")).map((cell) => {
             let cellText = cell.innerText.trim();
 
-            // Check if the cell contains a large number that might require a quote to avoid Excel misinterpretation
-            const isNumber = !isNaN(cellText.replace(/[^0-9.-]/g, ''));
-            
-            // Add quotes only for very large numbers or numbers with commas/dots
-            if (isNumber && cellText.includes(",")) {
-                cellText = `"${cellText}"`;
+            // Only add single quotes to numeric values
+            if (!isNaN(cellText.replace(/[^0-9.-]/g, '')) && cellText !== '') { // Check if it's a number and not empty
+                cellText = `'${cellText}`; // Add a leading single quote for numbers
             }
 
             // Escape commas in text if necessary
-            if (cellText.includes(",") && !isNumber) {
+            if (cellText.includes(",")) {
                 cellText = `"${cellText}"`;
             }
 
@@ -414,6 +412,17 @@ function exportToCSV() {
     link.click();
     document.body.removeChild(link);
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

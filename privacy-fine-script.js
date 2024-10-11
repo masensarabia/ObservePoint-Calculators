@@ -200,19 +200,10 @@ function calculateFine() {
             return;
         }
 
-
+        // Define fine per violation for each region
         switch (region) {
             case "utah":
                 finePerViolation = 7500;
-                break;
-            case "california":
-                finePerViolation = 2500; // Negligence
-                break;
-            case "california-intentional":
-                finePerViolation = 7500; // Intentional
-                break;
-            case "california-minors":
-                finePerViolation = 7500; // Minors
                 break;
             case "colorado":
                 finePerViolation = 20000; // Standard
@@ -220,91 +211,9 @@ function calculateFine() {
             case "colorado-elderly":
                 finePerViolation = 50000; // Elderly Involved
                 break;
-            case "connecticut":
-                finePerViolation = 5000;
-                break;
-            case "delaware":
-                finePerViolation = 10000;
-                break;
-            case "florida":
-                finePerViolation = 50000;
-                break;
-            case "indiana":
-                finePerViolation = 7500;
-                break;
-            case "iowa":
-                finePerViolation = 7500;
-                break;
-            case "maryland":
-                finePerViolation = 10000;
-                break;
-            case "minnesota":
-                finePerViolation = 7500;
-                break;
-            case "montana":
-                finePerViolation = 7500;
-                break;
-            case "nebraska":
-                finePerViolation = 7500;
-                break;
-            case "newhampshire":
-                finePerViolation = 7500;
-                break;
-            case "newjersey":
-                finePerViolation = 10000;
-                break;
-            case "oregon":
-                finePerViolation = 7500;
-                break;
-            case "rhodeisland":
-                finePerViolation = 7500;
-                break;
-            case "tennessee":
-                finePerViolation = 7500;
-                break;
-            case "texas":
-                finePerViolation = 7500;
-                break;
-            case "virginia":
-                finePerViolation = 7500;
-                break;
-            case "washington":
-                finePerViolation = 7500;
-                break;
-
-            // Newly added states
-            case "michigan":
-                finePerViolation = 7500;
-                break;
-            case "pennsylvania":
-                finePerViolation = 7500;
-                break;
-            case "illinois":
-                finePerViolation = 7500;
-                break;
-            case "kentucky":
-                finePerViolation = 7500;
-                break;
-            case "maine":
-                finePerViolation = 7500;
-                break;
-            case "newyork":
-                finePerViolation = 7500;
-                break;
-            case "northcarolina":
-                finePerViolation = 7500;
-                break;
-            case "westvirginia":
-                finePerViolation = 7500;
-                break;
-            case "wisconsin":
-                finePerViolation = 7500;
-                break;
-
             default:
                 finePerViolation = 0;
         }
-
 
         // Handle multiple violations
         if (violationType === "multiple") {
@@ -352,10 +261,10 @@ function addRowToTable(region, violations, totalFine, currency) {
     const resultsTableBody = document.getElementById("resultsTable").querySelector("tbody");
     const row = document.createElement("tr");
     row.innerHTML = `
-        <td>${capitalizeFirstLetter(region)}</td>
-        <td>${violations !== "N/A" ? violations : "N/A"}</td>
-        <td>${new Intl.NumberFormat('en-US', { style: 'currency', currency: currency }).format(totalFine)}</td>
-        <td>${currency}</td>
+        <td>${region ? capitalizeFirstLetter(region) : ""}</td>
+        <td>${violations !== "N/A" ? violations : ""}</td>
+        <td>${totalFine ? new Intl.NumberFormat('en-US', { style: 'currency', currency: currency }).format(totalFine) : ""}</td>
+        <td>${currency || ""}</td>
     `;
     resultsTableBody.appendChild(row);
 }

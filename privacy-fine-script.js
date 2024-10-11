@@ -387,9 +387,9 @@ function exportToCSV() {
         const cells = Array.from(row.querySelectorAll("td")).map((cell) => {
             let cellText = cell.innerText.trim();
 
-            // To ensure large numbers are displayed properly in Excel, add a leading single quote
-            if (!isNaN(cellText.replace(/[^0-9.-]/g, ''))) { // Check if it's a number
-                cellText = `'${cellText}`; // Add a leading single quote
+            // Only add single quotes to numeric values
+            if (!isNaN(cellText.replace(/[^0-9.-]/g, '')) && cellText !== '') { // Check if it's a number and not empty
+                cellText = `'${cellText}`; // Add a leading single quote for numbers
             }
 
             // Escape commas in text if necessary
@@ -412,6 +412,7 @@ function exportToCSV() {
     link.click();
     document.body.removeChild(link);
 }
+
 
 
 

@@ -384,9 +384,9 @@ function exportToCSV() {
         const cells = Array.from(row.querySelectorAll("td")).map(cell => {
             let cellText = cell.innerText.trim();
 
-            // Handle large numbers or numbers with commas by enclosing them in double quotes
-            if (cellText.includes(",") || !isNaN(cellText)) {
-                cellText = `"${cellText}"`;
+            // Add single quote before numbers to treat them as text in Excel
+            if (!isNaN(cellText) && cellText.length > 0) {
+                cellText = `'${cellText}`;
             }
 
             return cellText ? cellText : ""; // Default empty cells to blank
@@ -404,6 +404,7 @@ function exportToCSV() {
     link.click();
     document.body.removeChild(link);
 }
+
 
 
 

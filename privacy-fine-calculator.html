@@ -119,28 +119,29 @@
                 </div>
             </div>
 
-<div class="results-summary">
-    <h2>Selected Regions</h2>
-    <div id="selectedRegions"></div>
+<!-- Add this in the results section for displaying the regions and total fine -->
+<h2>Selected Regions</h2>
+<div id="selectedRegions"></div>
 
-    <h2>Total Fine</h2>
+<h2>Total Fine</h2>
 
-    <table id="resultsTable">
-        <thead>
-            <tr>
-                <th>Region</th>
-                <th>Number of Violations</th>
-                <th>Total Fine</th>
-                <th>Currency</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- JS will dynamically insert rows here -->
-        </tbody>
-    </table>
-    
-    <!-- Export to CSV button -->
-    <button id="exportCsvBtn" onclick="exportToCSV()">Export to CSV</button>
+<!-- Results table will be displayed here, no need to dynamically build table via JS -->
+<table id="resultsTable" class="fine-table">
+    <thead>
+        <tr>
+            <th>Region</th>
+            <th>Number of Violations</th>
+            <th>Total Fine</th>
+            <th>Currency</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- JavaScript will only add rows here dynamically -->
+    </tbody>
+</table>
+
+<button id="exportCsvBtn" onclick="exportToCSV()">Export to CSV</button>
+
 </div>
 
                 <p id="totalFine">$0</p>

@@ -384,9 +384,10 @@ function exportToCSV() {
         const cells = Array.from(row.querySelectorAll("td")).map((cell, index) => {
             let cellText = cell.innerText.trim();
 
-            // Ensure Total Fine column (index 2) is formatted correctly as a number with commas and decimals
-            if (index === 2 && !isNaN(cellText) && cellText.length > 0) {
-                cellText = `$${parseFloat(cellText.replace(/[$,]/g, '')).toLocaleString('en-US', { minimumFractionDigits: 2 })}`; 
+            // Ensure the Total Fine column (index 2) is correctly formatted as a number with commas and decimals
+            if (index === 2 && cellText.length > 0 && !isNaN(cellText.replace(/[^0-9.]/g, ''))) {
+                const numberValue = parseFloat(cellText.replace(/[^0-9.]/g, ''));
+                cellText = `$${numberValue.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
             }
 
             return cellText ? cellText : ""; // Default empty cells to blank
@@ -404,6 +405,7 @@ function exportToCSV() {
     link.click();
     document.body.removeChild(link);
 }
+
 
 
 

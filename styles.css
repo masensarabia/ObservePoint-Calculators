@@ -38,7 +38,7 @@ h1, h2, .site-navigation ul li a {
 
 /* General focus state for all elements */
 *:focus {
-    outline: 2px solid #F1CD14; /* Change the focus outline to yellow */
+    outline: 2px solid #0000; /* Change the focus outline to yellow */
     outline-offset: 2px; /* Optional: create space between the element and outline */
 }
 

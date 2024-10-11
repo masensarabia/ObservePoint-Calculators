@@ -278,13 +278,19 @@ function exportToCSV() {
     const resultsTable = document.getElementById("resultsTable");
     const rows = Array.from(resultsTable.querySelectorAll("tr"));
 
-    let csvContent = "data:text/csv;charset=utf-8,Region,Number of Violations,Total Fine,Currency\n"; // Include the headers explicitly
+    // Build CSV content starting with the headers
+    let csvContent = "data:text/csv;charset=utf-8,Region,Number of Violations,Total Fine,Currency\n"; 
 
     rows.forEach((row) => {
-        const cells = Array.from(row.querySelectorAll("td, th")).map(cell => cell.innerText.trim());
+        const cells = Array.from(row.querySelectorAll("td, th")).map(cell => {
+            const cellText = cell.innerText.trim();
+            return cellText ? cellText : ""; // Handle any empty cells
+        });
+        // Add the row to the CSV content
         csvContent += cells.join(",") + "\n";
     });
 
+    // Create a download link for the CSV file
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
@@ -294,6 +300,7 @@ function exportToCSV() {
     link.click();
     document.body.removeChild(link);
 }
+
 
 
 // Helper function to format numbers with commas

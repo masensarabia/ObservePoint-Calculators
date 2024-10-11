@@ -44,12 +44,12 @@ h1, h2, .site-navigation ul li a {
 
 /* Specific focus styling for links */
 a:focus {
-    outline: 2px solid #F1CD14; /* Ensure links have the same yellow focus outline */
+    outline: 2px solid #0000; /* Ensure links have the same yellow focus outline */
 }
 
 /* Specific focus styling for buttons */
 button:focus {
-    outline: 2px solid #F1CD14; /* Ensure buttons have the same yellow focus outline */
+    outline: 2px solid #0000; /* Ensure buttons have the same yellow focus outline */
 }
 
 

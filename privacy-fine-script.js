@@ -306,10 +306,11 @@ function calculateFine() {
                 finePerViolation = 0;
         }
 
-       // Handle multiple violations based on violation type
+
         if (violationType === "multiple") {
             const violationCount = document.getElementById("multipleViolationCount").value;
 
+            // Process each violation field
             for (let i = 1; i <= violationCount; i++) {
                 const violationField = document.getElementById(`violations${i}`);
                 const violations = violationField ? parseInt(violationField.value.replace(/,/g, ""), 10) || 0 : 0;
@@ -318,19 +319,15 @@ function calculateFine() {
                 // Add row for each violation
                 addRowToTable(region, violations, totalFine, currency);
 
-                // Add to region's total fine and accumulate in the sub-total
-                regionTotalFine += totalFine;
-                subTotal += totalFine;
-                violationsList.push(totalFine); // Add each fine to a list
+                regionTotalFine += totalFine; // Add to region's total fine
+                totalFineOverall += totalFine; // Accumulate overall fine
             }
 
-            // Add a total row for the region if there are multiple violations
-            if (violationsList.length > 1) {
-                addRowToTable(`${capitalizeFirstLetter(region)} Total`, "", subTotal, currency);
-                // Add an empty row for spacing
-                addRowToTable("", "", "", "");
-            }
-            totalFineOverall += subTotal; // Update overall fine after region total
+            // Add a subtotal row for this region
+            addRowToTable(`${capitalizeFirstLetter(region)} Total`, "", regionTotalFine, currency);
+
+            // Add a blank row for spacing between different regions
+            addRowToTable("", "", "", "");
 
         } else if (violationType === "region") {
             const violationField = document.getElementById(`violations_${region}`);
@@ -339,7 +336,6 @@ function calculateFine() {
 
             // Add row to the table for region
             addRowToTable(region, violations, totalFine, currency);
-            regionTotalFine += totalFine;
             totalFineOverall += totalFine;  // Sum total fines
         }
     });

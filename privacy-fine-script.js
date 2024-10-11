@@ -171,18 +171,16 @@ function calculateFine() {
     const violationType = document.getElementById("violationType").value;
     const annualRevenueElement = document.getElementById("annualRevenue");
     const annualRevenue = annualRevenueElement ? parseFloat(annualRevenueElement.value.replace(/,/g, "")) || 0 : 0;
-    let totalFineOutput = "";
 
-    // Clear table body before adding new rows
+    // Clear the table before adding new results
     const resultsTableBody = document.getElementById("resultsTable").querySelector("tbody");
     resultsTableBody.innerHTML = "";  // Reset table
-
-    let totalFineOverall = 0; // To accumulate total fine across all regions
 
     selectedRegionsSet.forEach((region) => {
         let finePerViolation = 0;
         let currency = "USD"; // Default currency set to USD
         let totalFine = 0; // Initialize totalFine here
+        let violations = 0; // Initialize violations variable
 
         // GDPR calculation block
         if (region === "gdpr-2%" || region === "gdpr-4%") {
@@ -194,10 +192,9 @@ function calculateFine() {
                 currency = "EUR";
             }
 
-           // Add GDPR row to the table and skip further logic for this region
+            // Add GDPR row to the table and skip further logic for this region
             addRowToTable(region, "N/A", totalFine, currency);
-            totalFineOverall += totalFine;
-            return;
+            return; 
         }
 
         switch (region) {
@@ -304,6 +301,29 @@ function calculateFine() {
                 finePerViolation = 0;
         }
 
+        // For regions, extract the number of violations
+        const violationField = document.getElementById(`violations_${region}`);
+        violations = violationField ? parseInt(violationField.value.replace(/,/g, ""), 10) || 0 : 0;
+
+        totalFine = violations * finePerViolation; // Calculate total fine based on violations
+
+        // Add row to the table
+        addRowToTable(region, violations, totalFine, currency);
+    });
+}
+
+// Function to add rows to the table
+function addRowToTable(region, violations, totalFine, currency) {
+    const resultsTableBody = document.getElementById("resultsTable").querySelector("tbody");
+    const row = document.createElement("tr");
+    row.innerHTML = `
+        <td>${capitalizeFirstLetter(region)}</td>
+        <td>${violations !== "N/A" ? violations : "N/A"}</td>
+        <td>${new Intl.NumberFormat('en-US', { style: 'currency', currency: currency }).format(totalFine)}</td>
+        <td>${currency}</td>
+    `;
+    resultsTableBody.appendChild(row);
+}
         // Calculate and display fine for each violation field
         if (violationType === "region") {
             const violationField = document.getElementById(`violations_${region}`);

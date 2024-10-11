@@ -384,9 +384,9 @@ function exportToCSV() {
         const cells = Array.from(row.querySelectorAll("td")).map(cell => {
             let cellText = cell.innerText.trim();
 
-            // Force numbers to be treated as text by Excel by prefixing them with an equals sign and double quotes
+            // Forcing Excel to treat all numbers as text by adding a single quote before the number
             if (!isNaN(cellText) && cellText.length > 0) {
-                cellText = `"${cellText}"`;
+                cellText = `'${cellText}`;  // Force it as text
             }
 
             return cellText ? cellText : ""; // Default empty cells to blank
@@ -404,6 +404,7 @@ function exportToCSV() {
     link.click();
     document.body.removeChild(link);
 }
+
 
 
 

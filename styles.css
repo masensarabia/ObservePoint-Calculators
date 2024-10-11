@@ -400,7 +400,7 @@ input::placeholder {
     margin: 5px;
     background-color: #0000;
     border-radius: 5px;
-    border: 1px solid #F1CD14;
+    border: 1px solid #ddd;
 }
 
 /* Prefix for Dollar Input */

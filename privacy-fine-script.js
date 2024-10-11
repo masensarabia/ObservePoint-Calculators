@@ -171,8 +171,7 @@ function calculateFine() {
     const violationType = document.getElementById("violationType").value;
     const annualRevenueElement = document.getElementById("annualRevenue");
     const annualRevenue = annualRevenueElement ? parseFloat(annualRevenueElement.value.replace(/,/g, "")) || 0 : 0;
-    let totalFineOutput = "";
-
+    
     // Clear table body before adding new rows
     const resultsTableBody = document.getElementById("resultsTable").querySelector("tbody");
     resultsTableBody.innerHTML = "";  // Reset table
@@ -183,6 +182,7 @@ function calculateFine() {
         let finePerViolation = 0;
         let currency = "USD"; // Default currency set to USD
         let totalFine = 0; // Initialize totalFine here
+        let violations = 0; // Initialize violations variable
 
         // GDPR calculation block
         if (region === "gdpr-2%" || region === "gdpr-4%") {
@@ -194,7 +194,7 @@ function calculateFine() {
                 currency = "EUR";
             }
 
-           // Add GDPR row to the table and skip further logic for this region
+            // Add GDPR row to the table and skip further logic for this region
             addRowToTable(region, "N/A", totalFine, currency);
             totalFineOverall += totalFine;
             return;
@@ -304,10 +304,12 @@ function calculateFine() {
                 finePerViolation = 0;
         }
 
-        // Calculate and display fine for each violation field
-        if (violationType === "region") {
+        // For "multiple" or "region" violation types, get the number of violations for each region
+        if (violationType === "multiple" || violationType === "region") {
             const violationField = document.getElementById(`violations_${region}`);
-            const violations = violationField ? parseInt(violationField.value.replace(/,/g, ""), 10) || 0 : 0;
+            if (violationField) {
+                violations = parseInt(violationField.value.replace(/,/g, ""), 10) || 0;
+            }
             totalFine = violations * finePerViolation;
         }
 

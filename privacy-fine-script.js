@@ -384,8 +384,8 @@ function exportToCSV() {
         const cells = Array.from(row.querySelectorAll("td")).map(cell => {
             let cellText = cell.innerText.trim();
 
-            // If the text contains a comma (like 7,500), enclose it in double quotes
-            if (cellText.includes(",")) {
+            // Handle large numbers or numbers with commas by enclosing them in double quotes
+            if (cellText.includes(",") || !isNaN(cellText)) {
                 cellText = `"${cellText}"`;
             }
 
@@ -404,6 +404,7 @@ function exportToCSV() {
     link.click();
     document.body.removeChild(link);
 }
+
 
 
 

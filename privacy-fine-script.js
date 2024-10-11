@@ -373,34 +373,29 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+
+
+
 function exportToCSV() {
     const resultsTable = document.getElementById("resultsTable");
     const rows = Array.from(resultsTable.querySelectorAll("tr"));
 
-    // Start with the header row, ensuring it's only added once
+    // Start with the header row
     let csvContent = "Region,Number of Violations,Total Fine,Currency\n";
 
     rows.forEach((row) => {
-        const cells = Array.from(row.querySelectorAll("td")).map((cell, index) => {
+        const cells = Array.from(row.querySelectorAll("td")).map((cell) => {
             let cellText = cell.innerText.trim();
 
-            // Format the total fine with commas and two decimal places in the "Total Fine" column
-            if (index === 2 && cellText.length > 0) {
-                const numberValue = parseFloat(cellText.replace(/[^\d.-]/g, ""));
-                if (!isNaN(numberValue)) {
-                    cellText = `$${numberValue.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
-                }
-            }
-
-            // Ensure that commas within data are properly escaped
+            // No additional formatting is applied here; just ensure commas are escaped
             if (cellText.includes(",")) {
                 cellText = `"${cellText}"`;
             }
 
-            return cellText ? cellText : ""; // Ensure no empty cells
+            return cellText;
         });
-
-        csvContent += cells.join(",") + "\n"; // Join the cells for the current row
+        
+        csvContent += cells.join(",") + "\n";
     });
 
     // Generate the CSV file and prompt for download
@@ -412,8 +407,6 @@ function exportToCSV() {
     link.click();
     document.body.removeChild(link);
 }
-
-
 
 
 

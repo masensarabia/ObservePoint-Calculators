@@ -305,8 +305,9 @@ function calculateFine() {
                 finePerViolation = 0;
         }
 
+        // Handle multiple violations based on violation type
         if (violationType === "multiple") {
-            const violationCount = document.getElementById("multipleViolationCount").value;
+            violationCount = document.getElementById("multipleViolationCount").value;
             for (let i = 1; i <= violationCount; i++) {
                 const violationField = document.getElementById(`violations${i}`);
                 const violations = violationField ? parseInt(violationField.value.replace(/,/g, ""), 10) || 0 : 0;
@@ -330,8 +331,8 @@ function calculateFine() {
             totalFineOverall += totalFine;  // Sum total fines
         }
 
-        // Add a total row for the region
-        if (regionTotalFine > 0) {
+        // Add a total row for the region if there are multiple violations
+        if (violationCount > 1 || regionTotalFine > 0) {
             addRowToTable(`${capitalizeFirstLetter(region)} Total`, "", regionTotalFine, currency);
             // Add an empty row for spacing
             addRowToTable("", "", "", "");
@@ -343,6 +344,19 @@ function calculateFine() {
         style: 'currency',
         currency: 'USD'
     }).format(totalFineOverall);
+}
+
+// Utility function to add a row in the results table
+function addRowToTable(region, violations, totalFine, currency) {
+    const resultsTableBody = document.getElementById("resultsTable").querySelector("tbody");
+    const row = document.createElement("tr");
+    row.innerHTML = `
+        <td>${region}</td>
+        <td>${violations !== "N/A" ? violations : "N/A"}</td>
+        <td>${new Intl.NumberFormat('en-US', { style: 'currency', currency: currency }).format(totalFine)}</td>
+        <td>${currency}</td>
+    `;
+    resultsTableBody.appendChild(row);
 }
 
 function exportToCSV() {

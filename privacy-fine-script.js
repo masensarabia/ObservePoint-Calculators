@@ -387,14 +387,19 @@ function exportToCSV() {
         const cells = Array.from(row.querySelectorAll("td")).map((cell) => {
             let cellText = cell.innerText.trim();
 
-            // No additional formatting is applied here; just ensure commas are escaped
+            // To ensure large numbers are displayed properly in Excel, add a leading single quote
+            if (!isNaN(cellText.replace(/[^0-9.-]/g, ''))) { // Check if it's a number
+                cellText = `'${cellText}`; // Add a leading single quote
+            }
+
+            // Escape commas in text if necessary
             if (cellText.includes(",")) {
                 cellText = `"${cellText}"`;
             }
 
             return cellText;
         });
-        
+
         csvContent += cells.join(",") + "\n";
     });
 
@@ -407,6 +412,7 @@ function exportToCSV() {
     link.click();
     document.body.removeChild(link);
 }
+
 
 
 

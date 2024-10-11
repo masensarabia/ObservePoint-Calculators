@@ -307,6 +307,7 @@ function calculateFine() {
         }
 
 
+        // Handle multiple violations
         if (violationType === "multiple") {
             const violationCount = document.getElementById("multipleViolationCount").value;
 
@@ -352,12 +353,17 @@ function addRowToTable(region, violations, totalFine, currency) {
     const resultsTableBody = document.getElementById("resultsTable").querySelector("tbody");
     const row = document.createElement("tr");
     row.innerHTML = `
-        <td>${region}</td>
+        <td>${capitalizeFirstLetter(region)}</td>
         <td>${violations !== "N/A" ? violations : "N/A"}</td>
         <td>${new Intl.NumberFormat('en-US', { style: 'currency', currency: currency }).format(totalFine)}</td>
         <td>${currency}</td>
     `;
     resultsTableBody.appendChild(row);
+}
+
+// Capitalize first letter of any string (for region names)
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function exportToCSV() {

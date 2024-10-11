@@ -386,16 +386,16 @@ function exportToCSV() {
         const cells = Array.from(row.querySelectorAll("td")).map((cell) => {
             let cellText = cell.innerText.trim();
 
-            // Only add single quotes to numbers that are large or formatted (like with commas)
+            // Check if the cell contains a large number that might require a quote to avoid Excel misinterpretation
             const isNumber = !isNaN(cellText.replace(/[^0-9.-]/g, ''));
-            const hasCommaOrDot = cellText.includes(",") || cellText.includes(".");
             
-            if (isNumber && hasCommaOrDot) { 
-                cellText = cellText; // No single quote needed
+            // Add quotes only for very large numbers or numbers with commas/dots
+            if (isNumber && cellText.includes(",")) {
+                cellText = `"${cellText}"`;
             }
 
             // Escape commas in text if necessary
-            if (cellText.includes(",")) {
+            if (cellText.includes(",") && !isNumber) {
                 cellText = `"${cellText}"`;
             }
 
@@ -414,6 +414,7 @@ function exportToCSV() {
     link.click();
     document.body.removeChild(link);
 }
+
 
 
 

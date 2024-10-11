@@ -171,6 +171,8 @@ function calculateFine() {
     const violationType = document.getElementById("violationType").value;
     const annualRevenueElement = document.getElementById("annualRevenue");
     const annualRevenue = annualRevenueElement ? parseFloat(annualRevenueElement.value.replace(/,/g, "")) || 0 : 0;
+    const singleViolationInput = document.getElementById("violations").value;
+    const numberOfViolations = parseInt(singleViolationInput.replace(/,/g, ""), 10) || 0;
 
     // Clear the table body before adding new rows
     const resultsTableBody = document.getElementById("resultsTable").querySelector("tbody");
@@ -304,8 +306,16 @@ function calculateFine() {
                 finePerViolation = 0;
         }
 
-        // Handle multiple violations
-        if (violationType === "multiple") {
+        // Handle the "one" violation field type
+        if (violationType === "one") {
+            const totalFine = numberOfViolations * finePerViolation;
+
+            // Add row to the table for this region
+            addRowToTable(region, numberOfViolations, totalFine, currency);
+            totalFineOverall += totalFine;  // Sum total fines
+
+        } else if (violationType === "multiple") {
+            // Handle multiple violations
             const violationCount = parseInt(document.getElementById("multipleViolationCount").value, 10);
 
             // Process each violation field for this region

@@ -386,7 +386,7 @@ input::placeholder {
 
 .fine-table th, .fine-table td {
     padding: 10px;
-    border: 1px solid #F1CD14;
+    border: 1px solid #ddd;
     text-align: center;
 }
 
@@ -400,7 +400,7 @@ input::placeholder {
     margin: 5px;
     background-color: #0000;
     border-radius: 5px;
-    border: 1px solid #ddd;
+    border: 1px solid #F1CD14;
 }
 
 /* Prefix for Dollar Input */

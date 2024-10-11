@@ -3,13 +3,11 @@ const totalRegionOptions = document.getElementById("region").options.length; // 
 
 // Add region and display it properly in the "Selected Regions" section
 function addRegion() {
-    // Retrieve the selected options from the region dropdown
-    const selectedRegionOptions = Array.from(document.getElementById("region").selectedOptions).map(option => option.value);
-    let gdprSelected = false;
+    const selectedRegionOptions = Array.from(document.getElementById("region").selectedOptions).map((option) => option.value);
+    let gdprSelected = false; // Flag to check if a GDPR option is selected
 
-    // Iterate through selected regions and add them to the Set
-    selectedRegionOptions.forEach(region => {
-        selectedRegionsSet.add(region); // Add region to Set if it's not already there
+    selectedRegionOptions.forEach((region) => {
+        selectedRegionsSet.add(region); // Add region to the set
 
         // Check if GDPR is selected
         if (region === "gdpr-2%" || region === "gdpr-4%") {
@@ -17,7 +15,7 @@ function addRegion() {
         }
     });
 
-    // Toggle visibility of annual revenue input if GDPR is selected
+    // Toggle the visibility of the annualRevenueInput field
     const annualRevenueInput = document.getElementById("annualRevenueInput");
     if (gdprSelected) {
         annualRevenueInput.style.display = "block";
@@ -25,45 +23,39 @@ function addRegion() {
         annualRevenueInput.style.display = "none";
     }
 
-    // Display selected regions dynamically
-    displaySelectedRegions();
+    displaySelectedRegions(); // Display the selected regions
 
-    // Dynamically add violation fields based on the type of violation selected
+    // If "Region to Violation Field" is selected, dynamically add fields
     const violationType = document.getElementById("violationType").value;
     if (violationType === "region") {
-        handleViolationTypeChange(); // Re-trigger field generation for regions
+        handleViolationTypeChange(); // Re-trigger to add violation fields
     }
 }
 
-
 function displaySelectedRegions() {
     const selectedRegionsDiv = document.getElementById("selectedRegions");
-    selectedRegionsDiv.innerHTML = ""; // Clear current content
-
-    selectedRegionsSet.forEach(region => {
-        // Append each selected region with a remove button
+    selectedRegionsDiv.innerHTML = ""; // Clear the content
+    selectedRegionsSet.forEach((region) => {
         selectedRegionsDiv.innerHTML += `
             <div class="selected-region">
-                ${capitalizeFirstLetter(region)}
+                ${capitalizeFirstLetter(region)} 
                 <button class="remove-btn" onclick="removeRegion('${region}')">x</button>
             </div>
         `;
     });
 }
 
-
 // Remove region and refresh the list of selected regions
 function removeRegion(region) {
-    selectedRegionsSet.delete(region); // Remove region from the set
-    displaySelectedRegions(); // Update displayed regions
+    selectedRegionsSet.delete(region); // Remove the region from the set
+    displaySelectedRegions(); // Update the displayed list
 
-    // Adjust fields if "Region to Violation Field" is selected
+    // If "Region to Violation Field" is selected, dynamically remove fields
     const violationType = document.getElementById("violationType").value;
     if (violationType === "region") {
-        handleViolationTypeChange(); // Adjust violation fields dynamically
+        handleViolationTypeChange(); // Re-trigger to adjust violation fields
     }
 }
-
 
 function handleViolationTypeChange() {
     const violationType = document.getElementById("violationType").value;
@@ -167,11 +159,6 @@ function calculateFine() {
     const annualRevenueElement = document.getElementById("annualRevenue");
     const annualRevenue = annualRevenueElement ? parseFloat(annualRevenueElement.value.replace(/,/g, "")) || 0 : 0;
     let totalFineOutput = "";
-    // Clear table body before adding new rows
-    const resultsTableBody = document.getElementById("resultsTable").querySelector("tbody");
-    resultsTableBody.innerHTML = "";  // Reset table
-    
-    let totalFineOverall = 0;  // To accumulate total fine across all regions
 
     selectedRegionsSet.forEach((region) => {
         let finePerViolation = 0;
@@ -187,10 +174,6 @@ function calculateFine() {
                 totalFine = 0.04 * annualRevenue;
                 currency = "EUR";
             }
-           // Add GDPR row to the table and skip further logic for this region
-            addRowToTable(region, "N/A", totalFine, currency);
-            totalFineOverall += totalFine;
-            return; 
 
             const formattedFine = new Intl.NumberFormat("en-US", {
                 style: "currency",
@@ -363,34 +346,9 @@ function calculateFine() {
         } else {
             const violationsInput = document.getElementById("violations");
             const violations = violationsInput ? parseInt(violationsInput.value.replace(/,/g, ""), 10) || 0 : 0;
+
             totalFine = violations * finePerViolation;
 
-        // Add row for non-GDPR region
-        addRowToTable(region, violations, totalFine, currency);
-        totalFineOverall += totalFine;  // Sum total fines
-    });
-
-    // Update total fine display (if needed)
-    document.getElementById("totalFine").textContent = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD'
-    }).format(totalFineOverall);
-}
-
-// Add a row to the results table
-function addRowToTable(region, violations, totalFine, currency) {
-    const resultsTableBody = document.getElementById("resultsTable").querySelector("tbody");
-
-    const row = document.createElement("tr");
-    row.innerHTML = `
-        <td>${capitalizeFirstLetter(region)}</td>
-        <td>${violations !== "N/A" ? violations : "N/A"}</td>
-        <td>${new Intl.NumberFormat('en-US', { style: 'currency', currency: currency }).format(totalFine)}</td>
-        <td>${currency}</td>
-    `;
-
-    resultsTableBody.appendChild(row);
-}
             // Format the fine
             const formattedFine = new Intl.NumberFormat("en-US", {
                 style: "currency",
@@ -432,24 +390,3 @@ document.getElementById("annualRevenue").addEventListener("input", function (e) 
         e.target.value = formattedValue;
     }
 });
-
-function exportToCSV() {
-    const rows = document.querySelectorAll("#resultsTable tr");
-    let csvContent = "";
-
-    rows.forEach(row => {
-        let rowData = Array.from(row.querySelectorAll("td, th"))
-                           .map(cell => cell.textContent)
-                           .join(",");
-        csvContent += rowData + "\n";
-    });
-
-    // Create a downloadable link
-    const blob = new Blob([csvContent], { type: "text/csv" });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.setAttribute("href", url);
-    a.setAttribute("download", "privacy_fines.csv");
-    a.click();
-}
-

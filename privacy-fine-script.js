@@ -171,7 +171,7 @@ function calculateFine() {
     const violationType = document.getElementById("violationType").value;
     const annualRevenueElement = document.getElementById("annualRevenue");
     const annualRevenue = annualRevenueElement ? parseFloat(annualRevenueElement.value.replace(/,/g, "")) || 0 : 0;
-    
+
     // Clear table body before adding new rows
     const resultsTableBody = document.getElementById("resultsTable").querySelector("tbody");
     resultsTableBody.innerHTML = "";  // Reset table
@@ -194,7 +194,7 @@ function calculateFine() {
                 currency = "EUR";
             }
 
-            // Add GDPR row to the table and skip further logic for this region
+           // Add GDPR row to the table and skip further logic for this region
             addRowToTable(region, "N/A", totalFine, currency);
             totalFineOverall += totalFine;
             return;
@@ -304,14 +304,20 @@ function calculateFine() {
                 finePerViolation = 0;
         }
 
-        // For "multiple" or "region" violation types, get the number of violations for each region
-        if (violationType === "multiple" || violationType === "region") {
+        // Fetch the violations based on the region
+        if (violationType === "region") {
             const violationField = document.getElementById(`violations_${region}`);
             if (violationField) {
                 violations = parseInt(violationField.value.replace(/,/g, ""), 10) || 0;
             }
-            totalFine = violations * finePerViolation;
+        } else if (violationType === "multiple") {
+            // Handle multiple violation inputs here, if applicable
+            const violationCountElement = document.getElementById("multipleViolationCount");
+            const count = violationCountElement ? parseInt(violationCountElement.value, 10) || 0 : 0;
+            violations = document.getElementById(`violations${count}`).value;
         }
+
+        totalFine = violations * finePerViolation;
 
         // Add row to the table
         addRowToTable(region, violations, totalFine, currency);
@@ -324,6 +330,27 @@ function calculateFine() {
         currency: 'USD'
     }).format(totalFineOverall);
 }
+
+function exportToCSV() {
+    const resultsTable = document.getElementById("resultsTable");
+    const rows = Array.from(resultsTable.querySelectorAll("tr"));
+
+    let csvContent = "data:text/csv;charset=utf-8,";
+    rows.forEach((row) => {
+        const cells = Array.from(row.querySelectorAll("td, th")).map(cell => cell.innerText);
+        csvContent += cells.join(",") + "\n";
+    });
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "privacy_fine_calculator_results.csv");
+    document.body.appendChild(link);
+
+    link.click();
+    document.body.removeChild(link);
+}
+
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);

@@ -278,20 +278,27 @@ function exportToCSV() {
     const resultsTable = document.getElementById("resultsTable");
     const rows = Array.from(resultsTable.querySelectorAll("tr"));
 
-    // Build CSV content starting with the headers
-    let csvContent = "data:text/csv;charset=utf-8,Region,Number of Violations,Total Fine,Currency\n"; 
+    // Start with the header row, and ensure it's added only once
+    let csvContent = "Region,Number of Violations,Total Fine,Currency\n";
 
-    rows.forEach((row) => {
-        const cells = Array.from(row.querySelectorAll("td, th")).map(cell => {
-            const cellText = cell.innerText.trim();
-            return cellText ? cellText : ""; // Handle any empty cells
-        });
-        // Add the row to the CSV content
-        csvContent += cells.join(",") + "\n";
+    rows.forEach((row, index) => {
+        if (index > 0) { // Skip any duplicate headers in the body
+            const cells = Array.from(row.querySelectorAll("td")).map(cell => {
+                let cellText = cell.innerText.trim();
+
+                // Ensure numbers and currency symbols don't get split across columns
+                if (cellText.includes("$")) {
+                    cellText = cellText.replace(/\$/g, "").trim();
+                }
+
+                return cellText || ""; // Default empty cells to blank
+            });
+            csvContent += cells.join(",") + "\n";
+        }
     });
 
-    // Create a download link for the CSV file
-    const encodedUri = encodeURI(csvContent);
+    // Generate the CSV file for download
+    const encodedUri = encodeURI("data:text/csv;charset=utf-8," + csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
     link.setAttribute("download", "privacy_fine_calculator_results.csv");
@@ -300,6 +307,7 @@ function exportToCSV() {
     link.click();
     document.body.removeChild(link);
 }
+
 
 
 

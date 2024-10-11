@@ -183,7 +183,6 @@ function calculateFine() {
         let finePerViolation = 0;
         let currency = "USD"; // Default currency set to USD
         let regionTotalFine = 0;  // Total fine for a specific region
-        let subTotal = 0;  // Subtotal for each region
 
         // GDPR calculation block
         if (region === "gdpr-2%" || region === "gdpr-4%") {
@@ -384,11 +383,6 @@ function exportToCSV() {
 
     link.click();
     document.body.removeChild(link);
-}
-
-
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 // Helper function to format numbers with commas

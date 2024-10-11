@@ -154,11 +154,30 @@ function createViolationFieldForRegion(region) {
     violationsContainer.appendChild(input);
 }
 
+// Add a row to the results table
+function addRowToTable(region, violations, totalFine, currency) {
+    const resultsTableBody = document.getElementById("resultsTable").querySelector("tbody");
+    const row = document.createElement("tr");
+    row.innerHTML = `
+        <td>${capitalizeFirstLetter(region)}</td>
+        <td>${violations !== "N/A" ? violations : "N/A"}</td>
+        <td>${new Intl.NumberFormat('en-US', { style: 'currency', currency: currency }).format(totalFine)}</td>
+        <td>${currency}</td>
+    `;
+    resultsTableBody.appendChild(row);
+}
+
 function calculateFine() {
     const violationType = document.getElementById("violationType").value;
     const annualRevenueElement = document.getElementById("annualRevenue");
     const annualRevenue = annualRevenueElement ? parseFloat(annualRevenueElement.value.replace(/,/g, "")) || 0 : 0;
     let totalFineOutput = "";
+
+    // Clear table body before adding new rows
+    const resultsTableBody = document.getElementById("resultsTable").querySelector("tbody");
+    resultsTableBody.innerHTML = "";  // Reset table
+
+    let totalFineOverall = 0; // To accumulate total fine across all regions
 
     selectedRegionsSet.forEach((region) => {
         let finePerViolation = 0;
@@ -175,14 +194,10 @@ function calculateFine() {
                 currency = "EUR";
             }
 
-            const formattedFine = new Intl.NumberFormat("en-US", {
-                style: "currency",
-                currency: currency,
-            }).format(totalFine);
-
-            // Append GDPR fine result and skip further processing
-            totalFineOutput += `${capitalizeFirstLetter(region)}: ${annualRevenue} revenue = ${formattedFine} ${currency === "USD" ? "USD" : "EUR"}<br>`;
-            return; // Skip non-GDPR processing for GDPR regions
+           // Add GDPR row to the table and skip further logic for this region
+            addRowToTable(region, "N/A", totalFine, currency);
+            totalFineOverall += totalFine;
+            return;
         }
 
         switch (region) {
@@ -268,7 +283,7 @@ function calculateFine() {
                 break;
             case "kentucky":
                 finePerViolation = 7500;
-                break; // Kentucky (added)
+                break;
             case "maine":
                 finePerViolation = 7500;
                 break;
@@ -285,83 +300,27 @@ function calculateFine() {
                 finePerViolation = 7500;
                 break;
 
-            // GDPR fines based on percentage of annual revenue
-            case "gdpr-2%":
-                totalFine = 0.02 * annualRevenue;
-                currency = "EUR"; // Set currency to EUR for GDPR
-                break;
-            case "gdpr-4%":
-                totalFine = 0.04 * annualRevenue;
-                currency = "EUR"; // Set currency to EUR for GDPR
-                break;
-
             default:
                 finePerViolation = 0;
         }
 
-        if (region === "gdpr-2%" || region === "gdpr-4%") {
-            // Format the fine
-            const formattedFine = new Intl.NumberFormat("en-US", {
-                style: "currency",
-                currency: currency,
-            }).format(totalFine);
-
-            // Append GDPR fine result
-            totalFineOutput += `${capitalizeFirstLetter(region)}: ${formattedFine} ${currency === "USD" ? "USD" : "EUR"}<br>`;
-        }
-
         // Calculate and display fine for each violation field
-        if (violationType === "multiple") {
-            const violationCountElement = document.getElementById("multipleViolationCount");
-            const violationCount = violationCountElement ? violationCountElement.value : 0;
-            for (let i = 0; i < violationCount; i++) {
-                const violationField = document.getElementById(`violations${i + 1}`);
-                const violations = violationField ? parseInt(violationField.value.replace(/,/g, ""), 10) || 0 : 0;
-
-                totalFine = violations * finePerViolation;
-
-                // Format the fine
-                const formattedFine = new Intl.NumberFormat("en-US", {
-                    style: "currency",
-                    currency: currency,
-                }).format(totalFine);
-
-                // Append each fine result with the number of violations included
-                totalFineOutput += `${capitalizeFirstLetter(region)}: ${violations} violations = ${formattedFine} ${currency === "USD" ? "USD" : "EUR"}<br>`;
-            }
-        } else if (violationType === "region") {
+        if (violationType === "region") {
             const violationField = document.getElementById(`violations_${region}`);
             const violations = violationField ? parseInt(violationField.value.replace(/,/g, ""), 10) || 0 : 0;
-
             totalFine = violations * finePerViolation;
-
-            // Format the fine
-            const formattedFine = new Intl.NumberFormat("en-US", {
-                style: "currency",
-                currency: currency,
-            }).format(totalFine);
-
-            // Append each fine result with the number of violations included
-            totalFineOutput += `${capitalizeFirstLetter(region)}: ${violations} violations = ${formattedFine} ${currency === "USD" ? "USD" : "EUR"}<br>`;
-        } else {
-            const violationsInput = document.getElementById("violations");
-            const violations = violationsInput ? parseInt(violationsInput.value.replace(/,/g, ""), 10) || 0 : 0;
-
-            totalFine = violations * finePerViolation;
-
-            // Format the fine
-            const formattedFine = new Intl.NumberFormat("en-US", {
-                style: "currency",
-                currency: currency,
-            }).format(totalFine);
-
-            // Append each fine result
-            totalFineOutput += `${capitalizeFirstLetter(region)}: ${formattedFine} ${currency === "USD" ? "USD" : "EUR"}<br>`;
         }
+
+        // Add row to the table
+        addRowToTable(region, violations, totalFine, currency);
+        totalFineOverall += totalFine;  // Sum total fines
     });
 
-    // Display the results in the "totalFine" section
-    document.getElementById("totalFine").innerHTML = totalFineOutput;
+    // Update total fine display
+    document.getElementById("totalFine").textContent = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    }).format(totalFineOverall);
 }
 
 function capitalizeFirstLetter(string) {

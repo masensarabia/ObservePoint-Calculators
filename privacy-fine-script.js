@@ -282,19 +282,17 @@ function exportToCSV() {
     let csvContent = "Region,Number of Violations,Total Fine,Currency\n";
 
     rows.forEach((row, index) => {
-        if (index > 0) { // Skip any duplicate headers in the body
-            const cells = Array.from(row.querySelectorAll("td")).map(cell => {
-                let cellText = cell.innerText.trim();
+        const cells = Array.from(row.querySelectorAll("td")).map(cell => {
+            let cellText = cell.innerText.trim();
 
-                // Ensure numbers and currency symbols don't get split across columns
-                if (cellText.includes("$")) {
-                    cellText = cellText.replace(/\$/g, "").trim();
-                }
+            // If the text contains a comma (like 7,500), enclose it in double quotes
+            if (cellText.includes(",")) {
+                cellText = `"${cellText}"`;
+            }
 
-                return cellText || ""; // Default empty cells to blank
-            });
-            csvContent += cells.join(",") + "\n";
-        }
+            return cellText ? cellText : ""; // Default empty cells to blank
+        });
+        csvContent += cells.join(",") + "\n";
     });
 
     // Generate the CSV file for download
@@ -307,6 +305,7 @@ function exportToCSV() {
     link.click();
     document.body.removeChild(link);
 }
+
 
 
 

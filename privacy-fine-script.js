@@ -311,7 +311,7 @@ function calculateFine() {
         if (violationType === "multiple") {
             const violationCount = parseInt(document.getElementById("multipleViolationCount").value, 10);
 
-            // Process each violation for this region
+            // Process each violation field for this region
             for (let i = 1; i <= violationCount; i++) {
                 const violationField = document.getElementById(`violations${i}`);
                 const violations = violationField ? parseInt(violationField.value.replace(/,/g, ""), 10) || 0 : 0;

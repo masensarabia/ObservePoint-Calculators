@@ -377,34 +377,42 @@ function exportToCSV() {
     const resultsTable = document.getElementById("resultsTable");
     const rows = Array.from(resultsTable.querySelectorAll("tr"));
 
-    // Start with the header row
+    // Start with the header row, ensuring it's only added once
     let csvContent = "Region,Number of Violations,Total Fine,Currency\n";
 
     rows.forEach((row) => {
         const cells = Array.from(row.querySelectorAll("td")).map((cell, index) => {
             let cellText = cell.innerText.trim();
 
-            // Ensure the Total Fine column (index 2) is correctly formatted as a number with commas and decimals
-            if (index === 2 && cellText.length > 0 && !isNaN(cellText.replace(/[^0-9.]/g, ''))) {
-                const numberValue = parseFloat(cellText.replace(/[^0-9.]/g, ''));
-                cellText = `$${numberValue.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
+            // Format the total fine with commas and two decimal places in the "Total Fine" column
+            if (index === 2 && cellText.length > 0) {
+                const numberValue = parseFloat(cellText.replace(/[^\d.-]/g, ""));
+                if (!isNaN(numberValue)) {
+                    cellText = `$${numberValue.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
+                }
             }
 
-            return cellText ? cellText : ""; // Default empty cells to blank
+            // Ensure that commas within data are properly escaped
+            if (cellText.includes(",")) {
+                cellText = `"${cellText}"`;
+            }
+
+            return cellText ? cellText : ""; // Ensure no empty cells
         });
-        csvContent += cells.join(",") + "\n";
+
+        csvContent += cells.join(",") + "\n"; // Join the cells for the current row
     });
 
-    // Generate the CSV file for download
+    // Generate the CSV file and prompt for download
     const encodedUri = encodeURI("data:text/csv;charset=utf-8," + csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
     link.setAttribute("download", "privacy_fine_calculator_results.csv");
     document.body.appendChild(link);
-
     link.click();
     document.body.removeChild(link);
 }
+
 
 
 

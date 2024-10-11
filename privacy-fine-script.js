@@ -178,11 +178,12 @@ function calculateFine() {
 
     let totalFineOverall = 0; // To accumulate total fine across all regions
 
-    selectedRegionsSet.forEach((region) => {
+   selectedRegionsSet.forEach((region) => {
         let finePerViolation = 0;
         let currency = "USD"; // Default currency set to USD
         let regionTotalFine = 0;  // Total fine for a specific region
-        let regionViolations = []; // Array to hold the violations for each region
+        let violationsList = [];  // Store each violation fine
+        let subTotal = 0;  // Subtotal for each region
 
         // GDPR calculation block
         if (region === "gdpr-2%" || region === "gdpr-4%") {
@@ -305,11 +306,9 @@ function calculateFine() {
                 finePerViolation = 0;
         }
 
-        // Handle multiple violations based on violation type
+       // Handle multiple violations based on violation type
         if (violationType === "multiple") {
-            violationCount = document.getElementById("multipleViolationCount").value;
-            let violationsList = [];
-            let subTotal = 0; // Region sub-total
+            const violationCount = document.getElementById("multipleViolationCount").value;
 
             for (let i = 1; i <= violationCount; i++) {
                 const violationField = document.getElementById(`violations${i}`);

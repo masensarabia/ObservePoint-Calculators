@@ -377,16 +377,17 @@ function exportToCSV() {
     const resultsTable = document.getElementById("resultsTable");
     const rows = Array.from(resultsTable.querySelectorAll("tr"));
 
-    // Start with the header row, and ensure it's added only once
+    // Start with the header row
     let csvContent = "Region,Number of Violations,Total Fine,Currency\n";
 
-    rows.forEach((row, index) => {
+    rows.forEach((row) => {
         const cells = Array.from(row.querySelectorAll("td")).map(cell => {
             let cellText = cell.innerText.trim();
 
-            // Ensure numbers and currency symbols don't get split across columns
-            if (cellText.includes(",")) {
-                cellText = `"${cellText}"`; // Enclose numbers with commas in quotes
+            // For large numbers, treat them as plain text to avoid Excel auto-formatting
+            if (!isNaN(cellText) && parseFloat(cellText) > 1000) {
+                // Force large numbers to scientific notation or plain text with quotes
+                cellText = `"${cellText}"`;
             }
 
             return cellText ? cellText : ""; // Default empty cells to blank
@@ -404,6 +405,7 @@ function exportToCSV() {
     link.click();
     document.body.removeChild(link);
 }
+
 
 
 

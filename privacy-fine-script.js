@@ -331,9 +331,11 @@ function calculateFine() {
         }
 
         // Add a total row for the region
-        addRowToTable(`${capitalizeFirstLetter(region)} Total`, "", regionTotalFine, currency);
-        // Add an empty row for spacing
-        addRowToTable("", "", "", "");
+        if (regionTotalFine > 0) {
+            addRowToTable(`${capitalizeFirstLetter(region)} Total`, "", regionTotalFine, currency);
+            // Add an empty row for spacing
+            addRowToTable("", "", "", "");
+        }
     });
 
     // Update total fine display

@@ -384,9 +384,8 @@ function exportToCSV() {
         const cells = Array.from(row.querySelectorAll("td")).map(cell => {
             let cellText = cell.innerText.trim();
 
-            // For large numbers, treat them as plain text to avoid Excel auto-formatting
-            if (!isNaN(cellText) && parseFloat(cellText) > 1000) {
-                // Force large numbers to scientific notation or plain text with quotes
+            // Enclose numbers with commas or large numbers in double quotes
+            if (cellText.includes(",") || !isNaN(cellText)) {
                 cellText = `"${cellText}"`;
             }
 
@@ -405,6 +404,7 @@ function exportToCSV() {
     link.click();
     document.body.removeChild(link);
 }
+
 
 
 

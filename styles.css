@@ -402,25 +402,27 @@ input::placeholder {
     border-radius: 5px;
     border: 1px solid #ddd;
 }
-/* Export to CSV button styles, matching the Calculate button */
+/* Export to CSV button styles, matching the Calculate button but keeping it smaller */
 button#exportCsvBtn {
     color: #F1CD14;
     background-color: transparent;
     border: 2px solid #F1CD14;
-    padding: 1rem;
-    font-size: 1.2rem;
+    padding: 0.5rem 1rem; /* Adjusted padding for smaller size */
+    font-size: 1rem; /* Adjusted font size for smaller button */
     border-radius: 5px;
     cursor: pointer;
     font-weight: 700;
-    width: 100%;
     text-align: center;
     transition: background-color 0.3s ease, color 0.3s ease;
+    display: inline-block; /* Ensures the button stays inline */
+    margin-top: 1rem; /* Adds space between the button and the table */
 }
 
 button#exportCsvBtn:hover {
     background-color: #F1CD14;
     color: #0c0c0c;
 }
+
 
 /* Prefix for Dollar Input */
 .input-prefix {

@@ -278,9 +278,10 @@ function exportToCSV() {
     const resultsTable = document.getElementById("resultsTable");
     const rows = Array.from(resultsTable.querySelectorAll("tr"));
 
-    let csvContent = "data:text/csv;charset=utf-8,";
+    let csvContent = "data:text/csv;charset=utf-8,Region,Number of Violations,Total Fine,Currency\n"; // Include the headers explicitly
+
     rows.forEach((row) => {
-        const cells = Array.from(row.querySelectorAll("td, th")).map(cell => cell.innerText);
+        const cells = Array.from(row.querySelectorAll("td, th")).map(cell => cell.innerText.trim());
         csvContent += cells.join(",") + "\n";
     });
 
@@ -293,6 +294,7 @@ function exportToCSV() {
     link.click();
     document.body.removeChild(link);
 }
+
 
 // Helper function to format numbers with commas
 function formatWithCommas(value) {

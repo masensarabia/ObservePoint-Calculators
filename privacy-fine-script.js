@@ -200,6 +200,7 @@ function calculateFine() {
             return;
         }
 
+
         switch (region) {
             case "utah":
                 finePerViolation = 7500;
@@ -307,14 +308,14 @@ function calculateFine() {
         // Fetch the violations based on the region
         if (violationType === "region") {
             const violationField = document.getElementById(`violations_${region}`);
-            if (violationField) {
+            if (violationField && violationField.value) {
                 violations = parseInt(violationField.value.replace(/,/g, ""), 10) || 0;
             }
-        } else if (violationType === "multiple") {
-            // Handle multiple violation inputs here, if applicable
-            const violationCountElement = document.getElementById("multipleViolationCount");
-            const count = violationCountElement ? parseInt(violationCountElement.value, 10) || 0 : 0;
-            violations = document.getElementById(`violations${count}`).value;
+        } else {
+            const violationsInput = document.getElementById("violations");
+            if (violationsInput && violationsInput.value) {
+                violations = parseInt(violationsInput.value.replace(/,/g, ""), 10) || 0;
+            }
         }
 
         totalFine = violations * finePerViolation;

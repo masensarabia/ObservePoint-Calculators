@@ -308,6 +308,9 @@ function calculateFine() {
         // Handle multiple violations based on violation type
         if (violationType === "multiple") {
             violationCount = document.getElementById("multipleViolationCount").value;
+            let violationsList = [];
+            let subTotal = 0; // Region sub-total
+
             for (let i = 1; i <= violationCount; i++) {
                 const violationField = document.getElementById(`violations${i}`);
                 const violations = violationField ? parseInt(violationField.value.replace(/,/g, ""), 10) || 0 : 0;
@@ -316,10 +319,20 @@ function calculateFine() {
                 // Add row for each violation
                 addRowToTable(region, violations, totalFine, currency);
 
-                // Add to region's total fine
+                // Add to region's total fine and accumulate in the sub-total
                 regionTotalFine += totalFine;
-                totalFineOverall += totalFine; // Add to the overall total
+                subTotal += totalFine;
+                violationsList.push(totalFine); // Add each fine to a list
             }
+
+            // Add a total row for the region if there are multiple violations
+            if (violationsList.length > 1) {
+                addRowToTable(`${capitalizeFirstLetter(region)} Total`, "", subTotal, currency);
+                // Add an empty row for spacing
+                addRowToTable("", "", "", "");
+            }
+            totalFineOverall += subTotal; // Update overall fine after region total
+
         } else if (violationType === "region") {
             const violationField = document.getElementById(`violations_${region}`);
             const violations = violationField ? parseInt(violationField.value.replace(/,/g, ""), 10) || 0 : 0;
@@ -329,13 +342,6 @@ function calculateFine() {
             addRowToTable(region, violations, totalFine, currency);
             regionTotalFine += totalFine;
             totalFineOverall += totalFine;  // Sum total fines
-        }
-
-        // Add a total row for the region if there are multiple violations
-        if (violationCount > 1 || regionTotalFine > 0) {
-            addRowToTable(`${capitalizeFirstLetter(region)} Total`, "", regionTotalFine, currency);
-            // Add an empty row for spacing
-            addRowToTable("", "", "", "");
         }
     });
 

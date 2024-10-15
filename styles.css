@@ -53,21 +53,29 @@ button:focus {
 }
 
 
-.site-navigation {
-    margin-left: 4rem;
-}
-
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Adjust depending on alignment */
-  padding: 10px 20px; /* Add some padding */
+  justify-content: center; /* Centers both logo and navigation */
+  padding: 10px 20px;
 }
 
 .logo {
-  margin-left: auto;
-  margin-right: auto;
+  margin-right: auto; /* Pushes the logo towards the center */
 }
+
+.site-navigation {
+  display: flex;
+  justify-content: center; /* Centers the navigation */
+  margin-left: 0; /* Remove the 4rem margin to better center the links */
+}
+
+
+.site-navigation {
+  display: flex;
+  gap: 20px; /* Adjusts spacing between links */
+}
+
 
 .logo img {
   height: 275px; /* Adjust to your preferred size */

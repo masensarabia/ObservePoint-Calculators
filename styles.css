@@ -52,7 +52,7 @@ button:focus {
     background: linear-gradient(to bottom, #000000 0%, #1f1f1f 100%);
     border-bottom: none;
     position: relative;
-    height: 100px;
+    height: 150px;
     gap: 30px; /* Space between logo and navigation */
 }
 

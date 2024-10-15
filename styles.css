@@ -1,7 +1,9 @@
 img {
-  width: 200px; /* or any size you prefer */
-  height: auto; /* to maintain aspect ratio */
+  width: auto; 
+  max-width: 150px; /* Adjust to your desired size */
+  height: auto;
 }
+
 
 /* General Styles */
 body {

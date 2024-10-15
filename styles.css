@@ -103,7 +103,7 @@ button:focus {
 .site-navigation ul li a {
     color: #B1BAC3;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 1.5rem;
     transition: color 0.3s ease;
 }
 

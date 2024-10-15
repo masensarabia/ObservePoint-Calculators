@@ -26,6 +26,7 @@
     </nav>
 </header>
 
+
 <section class="description-section">
     <h2>Purpose:</h2>
     <p>This calculator helps you compare the time and cost savings of using ObservePoint's automated scanning versus manual employee testing for customer journeys.</p>
@@ -33,10 +34,10 @@
     <h2>How It Works:</h2>
     <p><strong>1. Enter Your Current Data:</strong> Provide details about your current manual testing process, including time spent and costs for Customer Journeys.</p>
     <p><strong>2. Enter Automated Data:</strong> Input data for ObservePoint’s automated scanning process, including steps per journey and funnel testing.</p>
-    <p><strong>3. See the Results:</strong> The calculator will show you the total time and cost for both methods, and highlight the savings you could achieve by switching to automated scanning.</p>
+    <p><strong>3. See the Results:</strong> The calculator will show you the total time and cost for both methods and highlight the savings you could achieve by switching to automated scanning.</p>
 
     <h2>Make Smarter Decisions:</h2>
-    <p>Use the results to make informed choices about improving your journey testing process, increasing efficiency, and cutting costs.</p>
+    <p>Use the results to make informed choices about improving your journey testing processes, increasing efficiency, and cutting costs.</p>
 </section>
 
 <div class="calculator-container">
@@ -44,44 +45,43 @@
     <div class="calculator-grid">
         <div class="calculator-card">
             <h2>Manual Employee Testing</h2>
-            <label for="manualTime">Employee's Time to Manually Test a Customer Journey (minutes):</label>
+            <label for="manualTime">Employee's Time to Manually Test One Journey (minutes):</label>
             <input type="number" id="manualTime" class="calculator-input" placeholder="Enter minutes here">
             <label for="journeysToTest">Total Number of Customer Journeys to Test in a Month:</label>
             <input type="text" id="journeysToTest" class="calculator-input" placeholder="Enter number of journeys here">
-            <label for="testFrequency">Number of Times to Test Each Journey in a Month:</label>
-            <input type="number" id="testFrequency" class="calculator-input" placeholder="Enter test frequency here">
+            <label for="testFrequency">Number of Times You Test Each Journey in a Month:</label>
+            <input type="text" id="testFrequency" class="calculator-input" placeholder="Enter test frequency here">
             <label for="manualRate">Employee's Hourly Rate for Manual Testing:</label>
             <div class="input-prefix highlightable">
                 <span class="prefix">$</span>
                 <input type="text" id="manualRate" class="calculator-input dollar-input" placeholder="Enter rate here">
             </div>
-            <p>Total Manual Testing Time: <span id="totalManualTime">0 hours</span></p>
-            <p>Total Cost for Employee Manual Testing: <span id="totalManualCost">$0</span></p>
+            <p>Total Manual Testing Time (Monthly): <span id="totalManualTime">0 hours</span></p>
+            <p>Total Cost for Employee Manual Testing (Monthly): <span id="totalManualCost">$0</span></p>
+            <p>Total Annual Manual Testing Time: <span id="annualManualTime">0 hours</span></p>
+            <p>Total Annual Cost for Manual Testing: <span id="annualManualCost">$0</span></p>
         </div>
 
-  <div class="calculator-card">
-    <h2>Manual Employee Testing</h2>
-    <label for="manualTime">Employee's Time to Manually Test One Journey (minutes):</label>
-    <input type="number" id="manualTime" class="calculator-input" placeholder="Enter minutes here">
-
-    <label for="journeysToTest">Total Number of Customer Journeys to Test in a Month:</label>
-    <input type="text" id="journeysToTest" class="calculator-input" placeholder="Enter number of journeys here">
-
-    <label for="testFrequency">Number of Times You Test Each Journey in a Month:</label>
-    <input type="text" id="testFrequency" class="calculator-input" placeholder="Enter test frequency here">
-
-    <label for="manualRate">Employee's Hourly Rate for Manual Testing:</label>
-    <div class="input-prefix highlightable">
-        <span class="prefix">$</span>
-        <input type="text" id="manualRate" class="calculator-input dollar-input" placeholder="Enter rate here">
+        <div class="calculator-card">
+            <h2>ObservePoint Scanning</h2>
+            <label for="opRate" class="tooltip">
+                ObservePoint Scanning Rate (steps per minute):
+                <span class="tooltiptext">When using the maximum auditing speed, ObservePoint can scan up to 70 steps per minute.</span>
+            </label>
+            <input type="number" id="opRate" class="calculator-input" value="70" placeholder="Enter pages per minute here">
+            <label for="opJourneys">Total Number of Customer Journeys to Test:</label>
+            <input type="text" id="opJourneys" class="calculator-input" placeholder="Enter number of journeys here">
+            <label for="opSteps">Total Number of Steps in Each Journey:</label>
+            <input type="text" id="opSteps" class="calculator-input" placeholder="Enter number of steps here">
+            <label for="opCost">ObservePoint Cost per Journey Run:</label>
+            <div class="input-prefix highlightable">
+                <span class="prefix">$</span>
+                <input type="text" id="opCost" class="calculator-input dollar-input" placeholder="Enter cost here">
+            </div>
+            <p>Total ObservePoint Scanning Time: <span id="totalOPTime">0 hours</span></p>
+            <p>Total Cost for ObservePoint Scanning: <span id="totalOPCost">$0</span></p>
+        </div>
     </div>
-
-    <p>Total Manual Testing Time (Monthly): <span id="totalManualTime">0 hours</span></p>
-    <p>Total Cost for Employee Manual Testing (Monthly): <span id="totalManualCost">$0</span></p>
-    <p>Total Annual Manual Testing Time: <span id="totalAnnualManualTime">0 hours</span></p>
-    <p>Total Annual Cost for Manual Testing: <span id="totalAnnualManualCost">$0</span></p>
-</div>
-
 
     <div class="results-summary">
         <h1>Time & Cost Saved</h1>
@@ -97,14 +97,14 @@
             <label for="actualManualTime">Time Spent Each Year Manually Testing Customer Journey (hours):</label>
             <input type="text" id="actualManualTime" class="calculator-input" placeholder="Enter hours here">
             <label for="actualJourneysTested">Total Number of Customer Journeys Tested Within That Time:</label>
-            <input type="text" id="actualJourneysTested" class="calculator-input" placeholder="Enter number of journeys here">
+            <input type="text" id="actualJourneysTested" class="calculator-input" placeholder="Enter number of pages here">
             <p>Total Actual Cost Per Year for Manual Testing: <span id="actualManualCost">$0</span></p>
         </div>
 
         <div class="calculator-card">
             <h2>Actual ObservePoint Testing</h2>
             <label for="actualOPRate">Actual ObservePoint Scanning Rate (steps per minute):</label>
-            <input type="number" id="actualOPRate" class="calculator-input" value="70" placeholder="Enter steps per minute here">
+            <input type="number" id="actualOPRate" class="calculator-input" value="70" placeholder="Enter pages per minute here">
             <label for="actualOPCost">Actual Cost per Journey:</label>
             <div class="input-prefix highlightable">
                 <span class="prefix">$</span>

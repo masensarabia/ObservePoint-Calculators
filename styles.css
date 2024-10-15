@@ -1,3 +1,8 @@
+img {
+  width: 200px; /* or any size you prefer */
+  height: auto; /* to maintain aspect ratio */
+}
+
 /* General Styles */
 body {
     font-family: 'Poppins', sans-serif;

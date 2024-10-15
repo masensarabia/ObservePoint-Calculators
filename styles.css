@@ -55,26 +55,21 @@ button:focus {
 
 .header {
   display: flex;
+  justify-content: space-between; /* Adjusts logo and navigation balance */
   align-items: center;
-  justify-content: center; /* Centers both logo and navigation */
-  padding: 10px 20px;
+  padding: 0 50px; /* Adjust padding to center the content better */
 }
 
 .logo {
-  margin-right: auto; /* Pushes the logo towards the center */
+  margin-left: 20px; /* Adds a bit more space to balance it */
 }
 
 .site-navigation {
   display: flex;
-  justify-content: center; /* Centers the navigation */
-  margin-left: 0; /* Remove the 4rem margin to better center the links */
+  justify-content: flex-end; /* Keeps links to the right, balanced with the logo */
+  gap: 20px; /* Adjust link spacing */
 }
 
-
-.site-navigation {
-  display: flex;
-  gap: 20px; /* Adjusts spacing between links */
-}
 
 
 .logo img {

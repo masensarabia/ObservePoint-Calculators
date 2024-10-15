@@ -46,26 +46,31 @@ button:focus {
 
 .header-inner {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Center the header content */
     align-items: center;
-    padding: 1rem 2rem; /* Adjusted padding for better balance */
+    padding: 1rem 3rem; /* Adjust the padding */
     background: linear-gradient(to bottom, #000000 0%, #1f1f1f 100%);
     border-bottom: none;
     position: relative;
     height: 100px;
+    gap: 30px; /* Space between logo and navigation */
 }
 
 .logo img {
-  height: 70px; /* Smaller height for better alignment */
+  height: 70px; /* Set an appropriate height */
   margin: 0; /* Reset margins */
 }
 
-.site-navigation {
-  display: flex;
-  justify-content: center; /* Center the navigation */
-  gap: 30px; /* Space between links */
-  flex: 1; /* Allow navigation to take up more space */
+.site-navigation ul {
+    list-style: none;
+    display: flex;
+    justify-content: center; /* Center the navigation */
+    gap: 30px; /* Add space between links */
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
 }
+
 
 .header {
     display: flex;

@@ -25,16 +25,7 @@ h1, h2, .site-navigation ul li a {
 }
 
 /* Header Styles */
-.header-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5rem 1rem 3rem;
-    background: linear-gradient(to bottom, #000000 0%, #1f1f1f 100%);
-    border-bottom: none;
-    position: relative;
-    height: 100px;
-}
+
 
 /* General focus state for all elements */
 *:focus {
@@ -53,41 +44,52 @@ button:focus {
 }
 
 
-.header {
-  display: flex;
-  justify-content: space-between; /* Adjusts logo and navigation balance */
-  align-items: center;
-  padding: 0 50px; /* Adjust padding to center the content better */
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem; /* Adjusted padding for better balance */
+    background: linear-gradient(to bottom, #000000 0%, #1f1f1f 100%);
+    border-bottom: none;
+    position: relative;
+    height: 100px;
 }
 
-.logo {
-  margin-left: 20px; /* Adds a bit more space to balance it */
+.logo img {
+  height: 70px; /* Smaller height for better alignment */
+  margin: 0; /* Reset margins */
 }
 
 .site-navigation {
   display: flex;
-  justify-content: flex-end; /* Keeps links to the right, balanced with the logo */
-  gap: 20px; /* Adjust link spacing */
+  justify-content: center; /* Center the navigation */
+  gap: 30px; /* Space between links */
+  flex: 1; /* Allow navigation to take up more space */
 }
 
-
-
-.logo img {
-  height: 275px; /* Adjust to your preferred size */
-  margin-top: 8px;
-  margin-left: 16px;
-}
-
-
-/* Navigation */
-.site-navigation ul {
-    list-style: none;
+.header {
     display: flex;
-    justify-content: flex-end;
-    margin: 0;
+    justify-content: center;
+    align-items: center;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
 }
+
+.site-navigation ul {
+    justify-content: space-between; /* Ensures links are spread out evenly */
+    margin-right: 0; /* Remove extra right margin */
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .site-navigation ul li {
     margin: 0 20px;

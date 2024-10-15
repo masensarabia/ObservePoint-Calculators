@@ -57,6 +57,18 @@ button:focus {
     margin-left: 4rem;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Adjust depending on alignment */
+  padding: 10px 20px; /* Add some padding */
+}
+
+.logo {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .logo img {
   height: 275px; /* Adjust to your preferred size */
   margin-top: 8px;

@@ -1,4 +1,3 @@
-
 // Function to format numbers with commas
 function formatNumberWithCommas(input) {
     let value = input.value.replace(/,/g, ''); // Remove commas
@@ -28,56 +27,55 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function calculateSavings() {
-    // Hypothetical Manual Employee Testing
+    // Manual Employee Testing calculations
     let manualTime = parseFloat(document.getElementById('manualTime').value);
-    let pagesToTest = parseFloat(document.getElementById('pagesToTest').value.replace(/,/g, ''));
+    let journeysToTest = parseFloat(document.getElementById('journeysToTest').value.replace(/,/g, ''));
+    let testFrequency = parseFloat(document.getElementById('testFrequency').value.replace(/,/g, ''));
     let manualRate = parseFloat(document.getElementById('manualRate').value.replace(/[^0-9.]/g, ''));
 
-    let totalManualTestingTime = (manualTime * pagesToTest) / 60;
-    let totalManualCost = totalManualTestingTime * manualRate;
+    let totalManualTestingTimeMonthly = (manualTime * journeysToTest * testFrequency) / 60;
+    let totalManualCostMonthly = totalManualTestingTimeMonthly * manualRate;
+    let totalManualTestingTimeAnnually = totalManualTestingTimeMonthly * 12;
+    let totalManualCostAnnually = totalManualCostMonthly * 12;
 
-    document.getElementById('totalManualTime').textContent = totalManualTestingTime.toLocaleString() + " hours";
-    document.getElementById('totalManualCost').textContent = "$" + totalManualCost.toLocaleString(undefined, {minimumFractionDigits: 2});
+    document.getElementById('totalManualTime').textContent = totalManualTestingTimeMonthly.toLocaleString() + " hours";
+    document.getElementById('totalManualCost').textContent = "$" + totalManualCostMonthly.toLocaleString(undefined, { minimumFractionDigits: 2 });
+    document.getElementById('totalAnnualManualTime').textContent = totalManualTestingTimeAnnually.toLocaleString() + " hours";
+    document.getElementById('totalAnnualManualCost').textContent = "$" + totalManualCostAnnually.toLocaleString(undefined, { minimumFractionDigits: 2 });
 
-    // Hypothetical ObservePoint Scanning
+    // ObservePoint Scanning calculations
     let opRate = parseFloat(document.getElementById('opRate').value);
-    let opPages = parseFloat(document.getElementById('opPages').value.replace(/,/g, ''));
+    let opJourneys = parseFloat(document.getElementById('opJourneys').value.replace(/,/g, ''));
     let opCost = parseFloat(document.getElementById('opCost').value.replace(/[^0-9.]/g, ''));
 
-    let totalOPTestingTime = (opPages / opRate) / 60;
-    let totalOPCost = opPages * opCost;
+    let totalOPTestingTime = (opJourneys / opRate) / 60;
+    let totalOPCost = opJourneys * opCost;
 
     document.getElementById('totalOPTime').textContent = totalOPTestingTime.toFixed(4) + " hours";
-    document.getElementById('totalOPCost').textContent = "$" + totalOPCost.toLocaleString(undefined, {minimumFractionDigits: 2});
+    document.getElementById('totalOPCost').textContent = "$" + totalOPCost.toLocaleString(undefined, { minimumFractionDigits: 2 });
 
     // Time and Cost Saved (Hypothetical)
-    let timeSaved = totalManualTestingTime - totalOPTestingTime;
-    let moneySaved = totalManualCost - totalOPCost;
+    let timeSaved = totalManualTestingTimeMonthly - totalOPTestingTime;
+    let moneySaved = totalManualCostMonthly - totalOPCost;
 
     document.getElementById('totalHoursSaved').textContent = timeSaved.toFixed(2) + " hours";
-    document.getElementById('totalMoneySaved').textContent = "$" + moneySaved.toLocaleString(undefined, {minimumFractionDigits: 2});
+    document.getElementById('totalMoneySaved').textContent = "$" + moneySaved.toLocaleString(undefined, { minimumFractionDigits: 2 });
 
     // Additional Metrics: FTE and Annual Cost per Employee
     let annualHoursPerFTE = 2080; // Assuming 40 hours per week for 52 weeks
-    let totalFTEs = totalManualTestingTime / annualHoursPerFTE;
-    let annualCostPerFTE = totalManualCost / totalFTEs;
+    let totalFTEs = totalManualTestingTimeAnnually / annualHoursPerFTE;
+    let annualCostPerFTE = totalManualCostAnnually / totalFTEs;
 
     document.getElementById('totalFTEs').textContent = totalFTEs.toFixed(2) + " FTEs";
-    document.getElementById('annualCostPerFTE').textContent = "$" + annualCostPerFTE.toLocaleString(undefined, {minimumFractionDigits: 2});
+    document.getElementById('annualCostPerFTE').textContent = "$" + annualCostPerFTE.toLocaleString(undefined, { minimumFractionDigits: 2 });
 
     // Actual Manual Employee Testing
     let actualManualTime = parseFloat(document.getElementById('actualManualTime').value.replace(/,/g, ''));
     let actualPagesTested = parseFloat(document.getElementById('actualPagesTested').value.replace(/,/g, ''));
 
-    // Correcting the calculation for total manual cost
     let actualManualCost = actualManualTime * manualRate;
 
-    // Debugging logs
-    console.log('Actual Manual Time:', actualManualTime);  // Should log 1000
-    console.log('Manual Rate:', manualRate);  // Should log 15
-    console.log('Actual Manual Cost:', actualManualCost);  // Should log 15000
-
-    document.getElementById('actualManualCost').textContent = "$" + actualManualCost.toLocaleString(undefined, {minimumFractionDigits: 2});
+    document.getElementById('actualManualCost').textContent = "$" + actualManualCost.toLocaleString(undefined, { minimumFractionDigits: 2 });
 
     // Actual ObservePoint Testing
     let actualOPRate = parseFloat(document.getElementById('actualOPRate').value);
@@ -87,12 +85,12 @@ function calculateSavings() {
     let actualTotalOPCost = actualPagesTested * actualOPCostPerPage;
 
     document.getElementById('actualOPTime').textContent = actualOPTestingTime.toFixed(4) + " hours";
-    document.getElementById('actualOPTotalCost').textContent = "$" + actualTotalOPCost.toLocaleString(undefined, {minimumFractionDigits: 2});
+    document.getElementById('actualOPTotalCost').textContent = "$" + actualTotalOPCost.toLocaleString(undefined, { minimumFractionDigits: 2 });
 
     // Actual Time & Cost Saved (Summary)
     let actualTimeSaved = actualManualTime - actualOPTestingTime;
     let actualCostSaved = actualManualCost - actualTotalOPCost;
 
     document.getElementById('actualTotalHoursSaved').textContent = actualTimeSaved.toFixed(4) + " hours";
-    document.getElementById('actualTotalMoneySaved').textContent = "$" + actualCostSaved.toLocaleString(undefined, {minimumFractionDigits: 2});
+    document.getElementById('actualTotalMoneySaved').textContent = "$" + actualCostSaved.toLocaleString(undefined, { minimumFractionDigits: 2 });
 }

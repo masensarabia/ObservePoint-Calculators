@@ -283,8 +283,10 @@ a:hover {
 .calculator-grid {
     display: flex;
     justify-content: space-between;
+    align-items: stretch; /* Ensure both columns stretch to the same height */
     gap: 2rem;
 }
+
 
 .calculator-card {
     background-color: #1a1a1a;
@@ -292,6 +294,10 @@ a:hover {
     border-radius: 8px;
     width: 48%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.calculator-card p {
+    margin-bottom: 20px; /* Adjust margin to create uniform space */
 }
 
 label {

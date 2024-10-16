@@ -70,19 +70,17 @@
                 Average Time to Test One Step (minutes):
             </label>
             <input type="number" id="opRate" class="calculator-input" value="2" placeholder="Enter minutes here">
-            <label for="opJourneys">Total Number of Customer Journeys to Test:</label>
-            <input type="number" id="opJourneys" class="calculator-input" placeholder="Enter number here">
-            <label for="opSteps">Total Number of Steps in Each Journey:</label>
-            <input type="number" id="opSteps" class="calculator-input" placeholder="Enter number of steps here">
-            <label for="opCost">ObservePoint Cost per Journey Run:</label>
-            <div class="input-prefix highlightable">
-                <span class="prefix">$</span>
-                <input type="text" id="opCost" class="calculator-input dollar-input" placeholder="Enter cost here">
-            </div>
-            <p>Total ObservePoint Scanning Time: <span id="totalOPTime">0 hours</span></p>
-            <p>Total Cost for ObservePoint Scanning: <span id="totalOPCost">$0</span></p>
-        </div>
+      <p>Total Number of Customer Journeys to Test (Annually): <span id="totalJourneys">0</span></p>
+    
+    <label for="opCost">ObservePoint Cost per Journey Run:</label>
+    <div class="input-prefix highlightable">
+        <span class="prefix">$</span>
+        <input type="text" id="opCost" class="calculator-input dollar-input" placeholder="Enter cost here">
     </div>
+    <p>Total ObservePoint Scanning Time (Annually): <span id="totalOPTime">0 hours</span></p>
+    <p>Total Cost for ObservePoint Scanning (Monthly): <span id="totalOPCostMonthly">$0</span></p>
+    <p>Total Cost for ObservePoint Scanning (Annually): <span id="totalOPCost">$0</span></p>
+</div>
 
 
     <div class="results-summary">

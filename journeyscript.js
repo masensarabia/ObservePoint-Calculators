@@ -42,7 +42,8 @@ function calculateSavings() {
     let totalJourneysAnnually = journeysToTest * testFrequency * 12;
     let opCost = parseFloat(document.getElementById('opCost').value.replace(/[^0-9.]/g, ''));
 
-    let totalOPTestingTimeAnnually = (totalJourneysAnnually * stepsPerJourney * opRate) / 60;
+    // Update ObservePoint testing logic to include step count
+    let totalOPTestingTimeAnnually = (totalJourneysAnnually * stepsPerJourney * 2) / 60;
     let totalOPCostMonthly = (totalJourneysAnnually / 12) * opCost;
     let totalOPCostAnnually = totalJourneysAnnually * opCost;
 

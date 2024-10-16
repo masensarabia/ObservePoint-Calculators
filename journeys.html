@@ -26,7 +26,6 @@
     </nav>
 </header>
 
-
 <section class="description-section">
     <h2>Purpose:</h2>
     <p>This calculator helps you compare the time and cost savings of using ObservePoint's automated scanning versus manual employee testing for customer journeys.</p>
@@ -52,6 +51,8 @@
             <input type="number" id="pagesToTest" class="calculator-input" placeholder="Enter number here">
             <label for="testFrequency">Number of Times You Test Each Journey in a Month:</label>
             <input type="number" id="testFrequency" class="calculator-input" placeholder="Enter test frequency here">
+            <label for="stepsPerJourney">Average Number of Steps/Actions in Each Journey:</label>
+            <input type="number" id="stepsPerJourney" class="calculator-input" placeholder="Enter steps per journey here">
             <label for="manualRate">Employee's Hourly Rate for Manual Testing:</label>
             <div class="input-prefix highlightable">
                 <span class="prefix">$</span>
@@ -70,18 +71,17 @@
                 Average Time to Test One Step (minutes):
             </label>
             <input type="number" id="opRate" class="calculator-input" value="2" placeholder="Enter minutes here">
-      <p>Total Number of Customer Journeys to Test (Annually): <span id="totalJourneys">0</span></p>
-    
-    <label for="opCost">ObservePoint Cost per Journey Run:</label>
-    <div class="input-prefix highlightable">
-        <span class="prefix">$</span>
-        <input type="text" id="opCost" class="calculator-input dollar-input" placeholder="Enter cost here">
+            <p>Total Number of Customer Journeys to Test (Annually): <span id="opJourneys">0</span></p>
+            <label for="opCost">ObservePoint Cost per Journey Run:</label>
+            <div class="input-prefix highlightable">
+                <span class="prefix">$</span>
+                <input type="text" id="opCost" class="calculator-input dollar-input" placeholder="Enter cost here">
+            </div>
+            <p>Total ObservePoint Scanning Time (Annually): <span id="totalOPTime">0 hours</span></p>
+            <p>Total Cost for ObservePoint Scanning (Monthly): <span id="totalOPCostMonthly">$0</span></p>
+            <p>Total Cost for ObservePoint Scanning (Annually): <span id="totalOPCost">$0</span></p>
+        </div>
     </div>
-    <p>Total ObservePoint Scanning Time (Annually): <span id="totalOPTime">0 hours</span></p>
-    <p>Total Cost for ObservePoint Scanning (Monthly): <span id="totalOPCostMonthly">$0</span></p>
-    <p>Total Cost for ObservePoint Scanning (Annually): <span id="totalOPCost">$0</span></p>
-</div>
-
 
     <div class="results-summary">
         <h1>Time & Cost Saved</h1>

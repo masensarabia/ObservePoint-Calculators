@@ -283,9 +283,10 @@ a:hover {
 .calculator-grid {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* Align elements at the top */
+    align-items: stretch; /* Ensure both columns stretch to the same height */
     gap: 2rem;
 }
+
 
 .calculator-card {
     background-color: #1a1a1a;
@@ -293,29 +294,10 @@ a:hover {
     border-radius: 8px;
     width: 48%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    min-height: 100%;
 }
 
-.results-summary,
-.actual-calculator-grid {
-    text-align: center;
-    margin-top: 2rem;
-}
-
-
-/* Adjust the alignment for p tags */
 .calculator-card p {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px; /* Reduces space to keep alignment tighter */
-}
-
-
-/* Button alignment */
-.calculate-btn {
-    width: 100%;
-    text-align: center;
-    margin-top: 20px;
+    margin-bottom: 20px; /* Adjust margin to create uniform space */
 }
 
 

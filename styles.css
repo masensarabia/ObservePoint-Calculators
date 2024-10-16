@@ -301,10 +301,10 @@ a:hover {
 }
 
 .total-section {
-    display: inline-block; /* Keeps both sections aligned horizontally */
-    width: 48%; /* Ensures both sections take equal width */
-    vertical-align: top; /* Align both sections at the top */
+    display: flex;
+    justify-content: space-between;
 }
+
 
 .total-section p {
     white-space: nowrap;

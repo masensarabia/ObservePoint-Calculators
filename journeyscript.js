@@ -47,7 +47,6 @@ function calculateSavings() {
     let totalOPCostAnnually = totalJourneysAnnually * opCost;
 
     document.getElementById('opJourneys').textContent = totalJourneysAnnually.toLocaleString();
-    document.getElementById('totalOPTimeMonthly').textContent = (totalOPTestingTimeAnnually / 12).toFixed(2) + " hours";
     document.getElementById('totalOPTime').textContent = totalOPTestingTimeAnnually.toFixed(2) + " hours";
     document.getElementById('totalOPCostMonthly').textContent = "$" + totalOPCostMonthly.toLocaleString(undefined, { minimumFractionDigits: 2 });
     document.getElementById('totalOPCost').textContent = "$" + totalOPCostAnnually.toLocaleString(undefined, { minimumFractionDigits: 2 });
@@ -58,10 +57,8 @@ function calculateSavings() {
     let timeSavedAnnually = totalManualTestingTimeAnnually - totalOPTestingTimeAnnually;
     let costSavedAnnually = totalManualCostAnnually - totalOPCostAnnually;
 
-    document.getElementById('totalHoursSavedMonthly').textContent = timeSavedMonthly.toFixed(2) + " hours";
-    document.getElementById('totalMoneySavedMonthly').textContent = "$" + costSavedMonthly.toLocaleString(undefined, { minimumFractionDigits: 2 });
-    document.getElementById('totalHoursSavedAnnually').textContent = timeSavedAnnually.toFixed(2) + " hours";
-    document.getElementById('totalMoneySavedAnnually').textContent = "$" + costSavedAnnually.toLocaleString(undefined, { minimumFractionDigits: 2 });
+    document.getElementById('totalHoursSaved').textContent = timeSavedMonthly.toFixed(2) + " hours";
+    document.getElementById('totalMoneySaved').textContent = "$" + costSavedMonthly.toLocaleString(undefined, { minimumFractionDigits: 2 });
 
     // Additional Metrics: FTE and Annual Cost per Employee
     let annualHoursPerFTE = 2080; // Assuming 40 hours per week for 52 weeks

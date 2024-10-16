@@ -279,24 +279,26 @@ a:hover {
     border-radius: 10px;
 }
 
-/* Calculator Grid */
 .calculator-grid {
     display: flex;
-    justify-content: flex-start; /* Aligns both columns */
-    align-items: flex-start; /* Ensures columns start at the same height */
+    justify-content: space-between;
+    align-items: flex-start; /* Align items at the start */
     gap: 2rem;
 }
 
+.calculator-card p {
+    margin-bottom: 0.8rem; /* Uniform spacing for paragraphs */
+    line-height: 1.4; /* Ensures consistent text spacing */
+}
+
 .calculator-card {
+    display: flex;
+    flex-direction: column; /* Ensure vertical stacking */
     background-color: #1a1a1a;
     padding: 1.5rem;
     border-radius: 8px;
-    flex: 1; /* Allow cards to take equal space */
+    width: 48%; /* Ensure both cards remain the same width */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.calculator-card p {
-    margin-bottom: 1rem; /* Adjust margin for uniform spacing */
 }
 
 

@@ -307,10 +307,11 @@ a:hover {
 }
 
 .total-section p {
-    min-height: 2rem; /* Ensures that both sections have equal line heights */
-    margin-bottom: 10px; /* Adjust margin to create equal spacing */
+    white-space: nowrap;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
-
 
 
 

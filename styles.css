@@ -300,6 +300,18 @@ a:hover {
     margin-bottom: 20px; /* Adjust margin to create uniform space */
 }
 
+.total-section {
+    display: inline-block; /* Keeps both sections aligned horizontally */
+    width: 48%; /* Ensures both sections take equal width */
+    vertical-align: top; /* Align both sections at the top */
+}
+
+.total-section p {
+    min-height: 2rem; /* Ensures that both sections have equal line heights */
+    margin-bottom: 10px; /* Adjust margin to create equal spacing */
+}
+
+
 
 
 label {

@@ -283,10 +283,25 @@ a:hover {
 .calculator-grid {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* Ensures both sides align properly from the top */
+    align-items: flex-start; /* Align elements at the top */
     gap: 2rem;
-    flex-wrap: wrap; /* Allows the layout to wrap on smaller screens */
 }
+
+.calculator-card {
+    background-color: #1a1a1a;
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 48%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    min-height: 100%;
+}
+
+.results-summary,
+.actual-calculator-grid {
+    text-align: center;
+    margin-top: 2rem;
+}
+
 
 /* Adjust the alignment for p tags */
 .calculator-card p {
@@ -295,14 +310,6 @@ a:hover {
     margin-bottom: 15px; /* Reduces space to keep alignment tighter */
 }
 
-.calculator-card {
-    background-color: #1a1a1a;
-    padding: 1.5rem;
-    border-radius: 8px;
-    width: 48%; /* Adjust width to ensure columns fit side by side */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    min-height: 500px; /* Ensures both columns stretch to a similar height */
-}
 
 /* Button alignment */
 .calculate-btn {

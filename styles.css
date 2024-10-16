@@ -270,38 +270,47 @@ a:hover {
     text-decoration: underline; /* Add underline when hovered */
 }
 
+/* Calculator Container */
+.calculator-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+    border-radius: 10px;
+}
+
 /* Calculator Grid */
 .calculator-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: start; /* Ensures that both sides start aligned at the top */
-}
-
-/* Ensure both cards are the same height */
-.calculator-card {
-    background-color: #1a1a1a;
-    padding: 1.5rem;
-    border-radius: 8px;
-    height: 100%; /* Ensure both cards fill available height */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-
-.calculator-card p {
-    margin-bottom: 0.8rem; /* Uniform spacing for paragraphs */
-    line-height: 1.4; /* Ensures consistent text spacing */
-}
-
-.calculator-card {
     display: flex;
-    flex-direction: column; /* Ensure vertical stacking */
+    justify-content: space-between;
+    align-items: flex-start; /* Ensures both sides align properly from the top */
+    gap: 2rem;
+    flex-wrap: wrap; /* Allows the layout to wrap on smaller screens */
+}
+
+/* Adjust the alignment for p tags */
+.calculator-card p {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px; /* Reduces space to keep alignment tighter */
+}
+
+.calculator-card {
     background-color: #1a1a1a;
     padding: 1.5rem;
     border-radius: 8px;
-    width: 48%; /* Ensure both cards remain the same width */
+    width: 48%; /* Adjust width to ensure columns fit side by side */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    min-height: 500px; /* Ensures both columns stretch to a similar height */
 }
+
+/* Button alignment */
+.calculate-btn {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
 
 
 label {

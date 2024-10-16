@@ -270,21 +270,23 @@ a:hover {
     text-decoration: underline; /* Add underline when hovered */
 }
 
-/* Calculator Container */
-.calculator-container {
-    max-width: 1000px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
-    border-radius: 10px;
+/* Calculator Grid */
+.calculator-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start; /* Ensures that both sides start aligned at the top */
 }
 
-.calculator-grid {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start; /* Align items at the start */
-    gap: 2rem;
+/* Ensure both cards are the same height */
+.calculator-card {
+    background-color: #1a1a1a;
+    padding: 1.5rem;
+    border-radius: 8px;
+    height: 100%; /* Ensure both cards fill available height */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
 
 .calculator-card p {
     margin-bottom: 0.8rem; /* Uniform spacing for paragraphs */

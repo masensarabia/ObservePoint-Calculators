@@ -240,7 +240,7 @@ h2 {
 /* Center content for the privacy page (key terms and additional sections) */
 .key-terms-section,
 .content-section {
-    border: 2px solid #F1CD14;
+    border: 6px solid #F1CD14;
     border-radius: 10px;
     padding: 2rem 2rem; /* Add padding for breathing room */
     max-width: 1000px;

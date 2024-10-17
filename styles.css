@@ -270,7 +270,7 @@ a:hover {
     text-decoration: underline; /* Add underline when hovered */
 }
 
-/* Existing Calculator Container - No Change */
+/* Keep this as is */
 .calculator-container {
     max-width: 1000px;
     margin: 2rem auto;
@@ -279,7 +279,7 @@ a:hover {
     border-radius: 10px;
 }
 
-/* Existing Calculator Grid - No Change */
+/* Keep this as is */
 .calculator-grid {
     display: flex;
     justify-content: space-between;
@@ -287,18 +287,20 @@ a:hover {
     gap: 2rem;
 }
 
-/* Existing Calculator Card - Retain this, but we’ll extend it slightly */
+/* Update this: Add flex-direction: column and justify-content: space-between */
 .calculator-card {
     background-color: #1a1a1a;
     padding: 1.5rem;
     border-radius: 8px;
     width: 48%;
     display: flex;
-    flex-direction: column; /* Added to stack input and total sections */
+    flex-direction: column; /* Ensure input and total sections stack */
+    justify-content: space-between; /* Distribute content evenly */
+    min-height: 600px; /* Ensures cards fill vertical space */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Add New Input and Total Section Styling */
+/* Add new input and total section styles */
 .input-section, .total-section {
     background-color: #2a2a2a;
     padding: 1.5rem;
@@ -307,13 +309,13 @@ a:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Adjust margins and spacing for input fields */
+/* Adjust input section elements */
 .input-section label, .input-section input {
     display: block;
     margin-bottom: 1rem;
 }
 
-/* Update Total Section Styling */
+/* Adjust total section elements */
 .total-section p {
     display: flex;
     justify-content: space-between;
@@ -321,10 +323,11 @@ a:hover {
     margin: 0.5rem 0;
 }
 
-/* Ensure proper alignment of total sections */
+/* Ensure the total section is aligned at the bottom */
 .calculator-card .total-section {
-    margin-top: auto; /* Push total-section to the bottom */
+    margin-top: auto;
 }
+
 
 
 

@@ -279,42 +279,40 @@ a:hover {
     border-radius: 10px;
 }
 
-/* Ensure both columns align properly in the calculator grid */
+/* Calculator Grid */
 .calculator-grid {
     display: flex;
     justify-content: space-between;
+    align-items: stretch; /* Ensure both columns stretch to the same height */
     gap: 2rem;
-    align-items: flex-start; /* Align items at the top */
-    min-height: 600px; /* You can adjust this based on your actual desired height */
 }
 
-/* Ensure both cards take up equal space and distribute the content evenly */
+
 .calculator-card {
     background-color: #1a1a1a;
     padding: 1.5rem;
     border-radius: 8px;
     width: 48%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Push content evenly */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Ensure the total sections are aligned at the bottom */
-.total-section {
-    margin-top: auto; /* Push the total section to the bottom */
+.calculator-card p {
+    margin-bottom: 20px; /* Adjust margin to create uniform space */
 }
+
+.total-section {
+    display: inline-block; /* Keeps both sections aligned horizontally */
+    width: 48%; /* Ensures both sections take equal width */
+    vertical-align: top; /* Align both sections at the top */
+}
+
 
 .total-section p {
+    white-space: nowrap;
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    white-space: nowrap; /* Prevent wrapping */
-    margin: 0.5rem 0;
 }
-
-
-
-
 
 
 

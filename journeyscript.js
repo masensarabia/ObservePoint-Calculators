@@ -1,604 +1,77 @@
-/* General Styles */
-body {
-    font-family: 'Poppins', sans-serif;
-    color: #f0f0f0;
-    background-color: #1f1f1f;
-    margin: 0;
-    padding: 0;
-    background-image: url('home-vector-slider.png'), linear-gradient(to right, #1f1f1f 50%, #1f1f1f 50%);
-    background-size: auto 80%, 100%;
-    background-repeat: no-repeat;
-    background-position: right bottom, left;
-    background-attachment: fixed;
-    font-weight: 500;
-    line-height: 1.6;
-}
-
-body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-
-h1, h2, .site-navigation ul li a {
-    font-weight: 700; /* You can experiment with different weights */
-}
-
-/* Header Styles */
-
-
-/* General focus state for all elements */
-*:focus {
-    outline: 2px solid #0000; /* Change the focus outline to yellow */
-    outline-offset: 2px; /* Optional: create space between the element and outline */
-}
-
-/* Specific focus styling for links */
-a:focus {
-    outline: 2px solid #0000; /* Ensure links have the same yellow focus outline */
-}
-
-/* Specific focus styling for buttons */
-button:focus {
-    outline: 2px solid #0000; /* Ensure buttons have the same yellow focus outline */
-}
-
-
-.header-inner {
-    display: flex;
-    justify-content: center; /* Center the header content */
-    align-items: center;
-    padding: 1rem 3rem; /* Adjust the padding */
-    background: linear-gradient(to bottom, #000000 0%, #1f1f1f 100%);
-    border-bottom: none;
-    position: relative;
-    height: 150px;
-    gap: 30px; /* Space between logo and navigation */
-}
-
-.logo img {
-  height: 275px; /* Set an appropriate height */
-  margin: 0; /* Reset margins */
-}
-
-.site-navigation ul {
-    list-style: none;
-    display: flex;
-    justify-content: center; /* Center the navigation */
-    gap: 30px; /* Add space between links */
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-}
-
-
-.header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-}
-
-.site-navigation ul {
-    justify-content: space-between; /* Ensures links are spread out evenly */
-    margin-right: 0; /* Remove extra right margin */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-.site-navigation ul li {
-    margin: 0 20px;
-}
-
-.site-navigation ul li a {
-    color: #B1BAC3;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
-}
-
-.site-navigation ul li a:hover {
-    color: #F1CD14;
-}
-
-.site-navigation ul li.active-link a {
-    color: #F1CD14;
-}
-
-/* Description Section */
-.description-section {
-    border: 6px solid #F1CD14;
-    border-radius: 10px;
-    padding: 1.5rem;
-    margin: 2rem auto;
-    max-width: 1000px;
-}
-
-.description-section p {
-    margin-bottom: 1rem;
-    line-height: 1.4;
-    text-align: left; /* Ensure body text is left-aligned */
-}
-
-.calculator-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    background-color: #f9f9f9;
-    color: #333;
-}
-
-
-
-/* General dropdown select menu styling */
-select {
-    -webkit-appearance: none; /* Remove default appearance for WebKit browsers */
-    -moz-appearance: none; /* Remove default appearance for Mozilla browsers */
-    appearance: none; /* Remove default appearance */
-    background-color: #333 !important; /* Dark background for the menu */
-    color: #f0f0f0 !important; /* Light text for non-selected options */
-    border: 1px solid #F1CD14 !important; /* Yellow border */
-    outline: none !important; /* Remove default outline */
-}
-
-/* Fix for the red highlight during active/click states */
-select option:active, 
-select option:focus, 
-select option:checked {
-    background-color: #F1CD14 !important; /* Yellow background for active/selected/focused options */
-    color: black !important; /* Ensure black text */
-}
-
-/* Override default red styles on click */
-select option:hover {
-    background-color: #F1CD14 !important; /* Keep the hover effect yellow */
-    color: black !important;
-}
-
-/* Forcing active/click focus states to maintain yellow */
-select option:active {
-    background-color: #F1CD14 !important;
-    color: black !important;
-}
-
-select:focus option:checked {
-    background-color: #F1CD14 !important;
-    color: black !important;
-}
-
-
-
-
-
-
-
-
-/* Tooltip container */
-.tooltip {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
-
-/* Tooltip text */
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 250px; /* Adjust width as needed */
-    background-color: #333; /* Dark background to match theme */
-    color: #fff; /* White text */
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%; /* Adjust position */
-    left: 50%;
-    margin-left: -125px; /* Center the tooltip */
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-/* Show the tooltip text when hovering over the tooltip container */
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-}
-
-
-/* Titles */
-h1 {
-    font-weight: 400;
-    color: #F1CD14;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    text-align: center; /* Keep h1 headings centered */
-}
-
-h2 {
-    font-weight: 400;
-    color: #F1CD14;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    text-align: left; /* Left-align h2 elements */
-}
-
-
-/* Center content for the privacy page (key terms and additional sections) */
-.key-terms-section,
-.content-section {
-    border: 6px solid #F1CD14;
-    border-radius: 10px;
-    padding: 2rem 2rem; /* Add padding for breathing room */
-    max-width: 1000px;
-    margin: 2rem auto;
-    text-align: left; /* Ensure white text is left-aligned */
-}
-
-/* Key takeaway styling */
-.key-takeaway {
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #F1CD14; /* Make it yellow like other headings */
-    display: inline-block;
-    margin-bottom: 1rem;
-}
-
-/* General link styles */
-a {
-    color: #F1CD14; /* Yellow color */
-    text-decoration: none; /* Remove underline by default */
-    transition: color 0.3s ease; /* Smooth transition for color changes */
-}
-
-/* Link hover effect */
-a:hover {
-    color: #FFD700; /* Slightly lighter yellow on hover */
-    text-decoration: underline; /* Add underline when hovered */
-}
-
-/* Calculator Container */
-.calculator-container {
-    max-width: 1000px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
-    border-radius: 10px;
-}
-
-/* Calculator Grid */
-.calculator-grid {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch; /* Ensure both columns stretch to the same height */
-    gap: 2rem;
-}
-
-
-.calculator-card {
-    background-color: #1a1a1a;
-    padding: 1.5rem;
-    border-radius: 8px;
-    width: 48%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.calculator-card p {
-    margin-bottom: 20px; /* Adjust margin to create uniform space */
-}
-
-.total-section {
-    display: inline-block; /* Keeps both sections aligned horizontally */
-    width: 48%; /* Ensures both sections take equal width */
-    vertical-align: top; /* Align both sections at the top */
-}
-
-
-.total-section p {
-    white-space: nowrap;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-
-
-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-    font-weight: 400;
-}
-
-/* Calculator Input Fields */
-.calculator-input {
-    background-color: #333;
-    color: #f0f0f0;
-    border: 1px solid #666;
-    border-radius: 5px;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    width: 100%; /* Ensure uniform width */
-    box-sizing: border-box; /* Ensure padding doesn't affect width */
-    font-size: 1rem; /* Consistent font size */
-}
-
-
-#violations {
-    background-color: #555; /* Lighter gray background like the other page */
-    color: #f0f0f0; /* White text */
-    border: 1px solid #666; /* Border color to match other inputs */
-    border-radius: 5px;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 1rem;
-}
-
-/* Style the select dropdown to match the input fields */
-select {
-    background-color: #555; /* Lighter gray background to match the input fields */
-    color: #f0f0f0; /* White text */
-    border: 1px solid #666; /* Border to match input fields */
-    border-radius: 5px; /* Rounded corners */
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    width: 100%;
-    box-sizing: border-box; /* Ensure consistent width */
-    font-size: 1rem; /* Same font size as input fields */
-}
-
-/* Style the dropdown arrow */
-select option {
-    background-color: #333; /* Ensure dropdown options have a dark background */
-    color: #f0f0f0; /* White text for dropdown options */
-}
-
-/* Fix for the red highlight on focus */
-select:focus {
-    border-color: #F1CD14; /* Yellow border on focus */
-    background-color: #333; /* Same background color on focus */
-    outline: none; /* Remove the outline */
-}
-
-/* Adjust placeholder text color */
-input::placeholder {
-    color: #aaa; /* Darker gray for placeholder text */
-    opacity: 1; /* Ensure placeholder is visible */
-}
-
-/* Annual Revenue Input Field */
-#annualRevenue {
-    background-color: #555; /* Matches the input field background */
-    color: #f0f0f0; /* White text */
-    border: 1px solid #666;
-    border-radius: 5px;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 1rem;
-}
-
-#region {
-    height: 200px; /* Adjust the height to your desired value */
-}
-
-
-.selected-region {
-    display: inline-block;
-    margin: 5px;
-    padding: 5px 10px;
-    background-color: #333;
-    color: #fff;
-    border-radius: 5px;
-}
-
-.remove-btn {
-    background-color: transparent;
-    border: none;
-    color: #ccc; /* Light grey color for the 'X' */
-    padding: 0 8px;
-    cursor: pointer;
-    margin-left: 10px;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.remove-btn:hover {
-    color: #fff; /* White color on hover */
-}
-
-
-.fine-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.fine-table th, .fine-table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: center;
-}
-
-.fine-table th {
-    background-color: #0000;
-}
-
-.selected-region {
-    display: inline-block;
-    padding: 5px 10px;
-    margin: 5px;
-    background-color: #0000;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-}
-/* Export to CSV button styles, matching the Calculate button but keeping it smaller */
-button#exportCsvBtn {
-    color: #F1CD14;
-    background-color: transparent;
-    border: 2px solid #F1CD14;
-    padding: 0.5rem 1rem; /* Adjusted padding for smaller size */
-    font-size: 1rem; /* Adjusted font size for smaller button */
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 700;
-    text-align: center;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    display: inline-block; /* Ensures the button stays inline */
-    margin-top: 1rem; /* Adds space between the button and the table */
-}
-
-button#exportCsvBtn:hover {
-    background-color: #F1CD14;
-    color: #0c0c0c;
-}
-
-
-/* Prefix for Dollar Input */
-.input-prefix {
-    display: flex;
-    align-items: center;
-    background-color: #333;
-    border: 1px solid #666;
-    border-radius: 5px;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    width: 100%; /* Match the width with other input fields */
-    box-sizing: border-box; /* Ensure consistent sizing with padding */
-    font-size: 1rem; /* Ensure consistent text size */
-}
-
-/* Remove extra spacing inside dollar input */
-.dollar-input {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    color: #f0f0f0;
-    width: 100%; /* Ensure the dollar input field is the same size */
-    padding: 0; /* Remove any additional padding */
-    margin: 0; /* Remove any margin */
-    box-sizing: border-box;
-    font-size: 1rem; /* Consistent font size */
-}
-
-.input-prefix .prefix {
-    margin-right: 0.5rem;
-    color: #f0f0f0;
-    font-size: 1rem;
-}
-
-/* Ensure yellow focus on the entire input-prefix when the dollar input is focused */
-.input-prefix:focus-within {
-    border-color: #F1CD14 !important; /* Apply the yellow border to the container */
-}
-
-/* Highlight yellow on focus for regular input fields */
-.calculator-input:focus, 
-.dollar-input:focus {
-    outline: none;
-    border-color: #F1CD14 !important; /* Ensure consistent yellow border for all inputs */
-}
-
-/* Results Summary */
-.results-summary {
-    margin-top: 3rem; /* Ensure space above total fine output */
-}
-
-.results-summary h2 {
-    font-size: 1.5rem;
-    color: #F1CD14;
-    font-weight: 400;
-}
-
-/* Results Summary */
-.results-summary p {
-    font-size: 1.5rem; /* Adjust the font size as needed */
-    margin: 0.25rem 0; /* Decrease the margin between the lines */
-    padding: 0.5rem 0; /* Decrease padding if necessary */
-}
-
-
-/* Button Styles */
-button.calculate-btn {
-    color: #F1CD14;
-    background-color: transparent;
-    border: 2px solid #F1CD14;
-    padding: 1rem;
-    font-size: 1.2rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 700;
-    width: 100%;
-    text-align: center;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-button.calculate-btn:hover {
-    background-color: #F1CD14;
-    color: #0c0c0c;
-}
-
-/* Media Queries for Mobile */
-@media screen and (max-width: 768px) {
-    .header-inner {
-        padding: 1rem;
-        flex-direction: column;
-        align-items: center;
+// Function to format numbers with commas
+function formatNumberWithCommas(input) {
+    let value = input.value.replace(/,/g, ''); // Remove commas
+    if (!isNaN(value) && value !== '') {
+        input.value = parseFloat(value).toLocaleString(); // Add commas
     }
+}
 
-    .site-navigation ul {
-        flex-direction: column;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-    }
+// Add event listeners for formatting numbers with commas
+document.getElementById('pagesToTest').addEventListener('input', function() {
+    formatNumberWithCommas(this);
+});
+document.getElementById('actualManualTime').addEventListener('input', function() {
+    formatNumberWithCommas(this);
+});
 
-    .site-navigation ul li {
-        margin: -4px 0;
-    }
+// Pre-populate the "Actual ObservePoint Scanning Rate" field with 70
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('actualOPRate').value = 70;
+});
 
-    .description-section {
-        margin: 2rem auto;
-        padding: 1.5rem;
-        text-align: center;
-        width: 100%;
-    }
+function calculateSavings() {
+    // Manual Employee Testing calculations
+    let manualTime = parseFloat(document.getElementById('manualTime').value);
+    let journeysToTest = parseFloat(document.getElementById('pagesToTest').value.replace(/,/g, ''));
+    let testFrequency = parseFloat(document.getElementById('testFrequency').value.replace(/,/g, ''));
+    let stepsPerJourney = parseFloat(document.getElementById('stepsPerJourney').value.replace(/,/g, ''));
+    let manualRate = parseFloat(document.getElementById('manualRate').value.replace(/[^0-9.]/g, ''));
 
-    .calculator-container {
-        padding: 1rem;
-        margin: 2rem auto;
-    }
+    let totalManualTestingTimeMonthly = (manualTime * journeysToTest * testFrequency) / 60;
+    let totalManualCostMonthly = totalManualTestingTimeMonthly * manualRate;
+    let totalManualTestingTimeAnnually = totalManualTestingTimeMonthly * 12;
+    let totalManualCostAnnually = totalManualCostMonthly * 12;
 
-    .calculator-grid {
-        flex-direction: column;
-        gap: 1rem;
-    }
+    document.getElementById('totalManualTime').textContent = totalManualTestingTimeMonthly.toLocaleString() + " hours";
+    document.getElementById('totalManualCost').textContent = "$" + totalManualCostMonthly.toLocaleString(undefined, { minimumFractionDigits: 2 });
+    document.getElementById('totalAnnualManualTime').textContent = totalManualTestingTimeAnnually.toLocaleString() + " hours";
+    document.getElementById('totalAnnualManualCost').textContent = "$" + totalManualCostAnnually.toLocaleString(undefined, { minimumFractionDigits: 2 });
 
-    h1, h2 {
-        font-size: 1.5rem;
-    }
+    // ObservePoint Scanning calculations
+    let opRate = parseFloat(document.getElementById('opRate').value);
+    let totalJourneysAnnually = journeysToTest * testFrequency * 12;
+    let opCost = parseFloat(document.getElementById('opCost').value.replace(/[^0-9.]/g, ''));
 
-    p, label {
-        font-size: 1rem;
-    }
+    // Update ObservePoint testing logic to include step count
+    let totalOPTestingTimeAnnually = (totalJourneysAnnually * stepsPerJourney * 2) / 60;
+    let totalOPCostMonthly = (totalJourneysAnnually / 12) * opCost;
+    let totalOPCostAnnually = totalJourneysAnnually * opCost;
 
-    button.calculate-btn {
-        font-size: 1rem;
-        padding: 0.75rem;
-    }
+    document.getElementById('opJourneys').textContent = totalJourneysAnnually.toLocaleString();
+    document.getElementById('totalOPTime').textContent = totalOPTestingTimeAnnually.toFixed(2) + " hours";
+    document.getElementById('totalOPCostMonthly').textContent = "$" + totalOPCostMonthly.toLocaleString(undefined, { minimumFractionDigits: 2 });
+    document.getElementById('totalOPCost').textContent = "$" + totalOPCostAnnually.toLocaleString(undefined, { minimumFractionDigits: 2 });
+
+    // Time and Cost Saved
+    let timeSavedMonthly = totalManualTestingTimeMonthly - (totalOPTestingTimeAnnually / 12);
+    let costSavedMonthly = totalManualCostMonthly - totalOPCostMonthly;
+    let timeSavedAnnually = totalManualTestingTimeAnnually - totalOPTestingTimeAnnually;
+    let costSavedAnnually = totalManualCostAnnually - totalOPCostAnnually;
+
+    document.getElementById('totalHoursSaved').textContent = timeSavedMonthly.toFixed(2) + " hours";
+    document.getElementById('totalMoneySaved').textContent = "$" + costSavedMonthly.toLocaleString(undefined, { minimumFractionDigits: 2 });
+
+    // Additional Metrics: FTE and Annual Cost per Employee
+    let annualHoursPerFTE = 2080; // Assuming 40 hours per week for 52 weeks
+    let totalFTEs = totalManualTestingTimeAnnually / annualHoursPerFTE;
+    let annualCostPerFTE = totalManualCostAnnually / totalFTEs;
+
+    document.getElementById('totalFTEs').textContent = totalFTEs.toFixed(2) + " FTEs";
+    document.getElementById('annualCostPerFTE').textContent = "$" + annualCostPerFTE.toLocaleString(undefined, { minimumFractionDigits: 2 });
+
+    // Actual Testing
+    let actualManualTime = parseFloat(document.getElementById('actualManualTime').value.replace(/,/g, ''));
+    let actualManualCost = actualManualTime * manualRate;
+
+    document.getElementById('actualManualCost').textContent = "$" + actualManualCost.toLocaleString(undefined, { minimumFractionDigits: 2 });
 }

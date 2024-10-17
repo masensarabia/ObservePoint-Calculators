@@ -285,32 +285,33 @@ a:hover {
     justify-content: space-between;
     gap: 2rem;
     align-items: flex-start; /* Align items at the top */
+    min-height: 600px; /* You can adjust this based on your actual desired height */
 }
 
-/* Ensure the two calculator cards are the same height */
+/* Ensure both cards take up equal space and distribute the content evenly */
 .calculator-card {
     background-color: #1a1a1a;
     padding: 1.5rem;
     border-radius: 8px;
-    width: 48%; /* Both cards take up equal width */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 48%;
     display: flex;
-    flex-direction: column; /* Stack content vertically */
-    justify-content: space-between; /* Distribute content, keep totals at the bottom */
-    min-height: 100%; /* Ensures cards are of equal height */
+    flex-direction: column;
+    justify-content: space-between; /* Push content evenly */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Align total sections at the bottom */
+/* Ensure the total sections are aligned at the bottom */
 .total-section {
-    margin-top: auto; /* Push the totals to the bottom of the card */
+    margin-top: auto; /* Push the total section to the bottom */
 }
 
 .total-section p {
     display: flex;
     justify-content: space-between;
-    white-space: nowrap; /* Prevent text wrapping */
+    white-space: nowrap; /* Prevent wrapping */
     margin: 0.5rem 0;
 }
+
 
 
 

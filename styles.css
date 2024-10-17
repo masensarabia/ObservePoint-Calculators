@@ -270,7 +270,7 @@ a:hover {
     text-decoration: underline; /* Add underline when hovered */
 }
 
-/* Calculator Container */
+/* Existing Calculator Container - No Change */
 .calculator-container {
     max-width: 1000px;
     margin: 2rem auto;
@@ -279,40 +279,53 @@ a:hover {
     border-radius: 10px;
 }
 
-/* Calculator Grid */
+/* Existing Calculator Grid - No Change */
 .calculator-grid {
     display: flex;
     justify-content: space-between;
-    align-items: stretch; /* Ensure both columns stretch to the same height */
+    align-items: stretch;
     gap: 2rem;
 }
 
-
+/* Existing Calculator Card - Retain this, but we’ll extend it slightly */
 .calculator-card {
     background-color: #1a1a1a;
     padding: 1.5rem;
     border-radius: 8px;
     width: 48%;
+    display: flex;
+    flex-direction: column; /* Added to stack input and total sections */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.calculator-card p {
-    margin-bottom: 20px; /* Adjust margin to create uniform space */
+/* Add New Input and Total Section Styling */
+.input-section, .total-section {
+    background-color: #2a2a2a;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.total-section {
-    display: inline-block; /* Keeps both sections aligned horizontally */
-    width: 48%; /* Ensures both sections take equal width */
-    vertical-align: top; /* Align both sections at the top */
+/* Adjust margins and spacing for input fields */
+.input-section label, .input-section input {
+    display: block;
+    margin-bottom: 1rem;
 }
 
-
+/* Update Total Section Styling */
 .total-section p {
-    white-space: nowrap;
-    width: 100%;
     display: flex;
     justify-content: space-between;
+    white-space: nowrap;
+    margin: 0.5rem 0;
 }
+
+/* Ensure proper alignment of total sections */
+.calculator-card .total-section {
+    margin-top: auto; /* Push total-section to the bottom */
+}
+
 
 
 

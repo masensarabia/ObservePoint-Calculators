@@ -279,40 +279,41 @@ a:hover {
     border-radius: 10px;
 }
 
-/* Calculator Grid */
+/* Ensure both columns align properly in the calculator grid */
 .calculator-grid {
     display: flex;
     justify-content: space-between;
-    align-items: stretch; /* Ensure both columns stretch to the same height */
-    gap: 2rem;
+    align-items: flex-start; /* Align at the top */
+    gap: 2rem; /* Space between columns */
 }
-
 
 .calculator-card {
     background-color: #1a1a1a;
     padding: 1.5rem;
     border-radius: 8px;
-    width: 48%;
+    width: 48%; /* Both cards take up equal width */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.calculator-card p {
-    margin-bottom: 20px; /* Adjust margin to create uniform space */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: flex-start;
+    height: 100%; /* Ensure both sections stretch to equal height */
 }
 
 .total-section {
-    display: inline-block; /* Keeps both sections aligned horizontally */
-    width: 48%; /* Ensures both sections take equal width */
-    vertical-align: top; /* Align both sections at the top */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
 }
-
 
 .total-section p {
-    white-space: nowrap;
-    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Align the text properly */
+    white-space: nowrap; /* Prevent text wrapping */
+    margin: 0.5rem 0;
 }
+
+
 
 
 

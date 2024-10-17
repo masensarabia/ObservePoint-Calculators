@@ -279,28 +279,27 @@ a:hover {
     border-radius: 10px;
 }
 
-/* Ensure both calculator cards align properly */
 .calculator-grid {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* Ensure both cards align at the top */
+    align-items: flex-start; /* Ensures both cards start aligned at the top */
     gap: 2rem;
 }
 
-/* Make sure calculator cards take up the full height */
+/* Fix calculator card height */
 .calculator-card {
     background-color: #1a1a1a;
     padding: 1.5rem;
     border-radius: 8px;
     width: 48%;
     display: flex;
-    flex-direction: column; /* Stack input and total sections */
-    justify-content: space-between; /* Distribute content evenly */
-    min-height: 600px; /* Ensures cards fill vertical space */
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 600px; /* Ensures both cards fill the same height */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Input and total section styling */
+/* Adjust alignment between the input and total sections */
 .input-section, .total-section {
     background-color: #2a2a2a;
     padding: 1.5rem;
@@ -323,9 +322,9 @@ a:hover {
     margin: 0.5rem 0;
 }
 
-/* Ensure the total section is aligned at the bottom of the card */
+/* Fix total section positioning */
 .calculator-card .total-section {
-    margin-top: auto;
+    margin-top: auto; /* Ensures total sections are aligned at the bottom */
 }
 
 /* Label styling */

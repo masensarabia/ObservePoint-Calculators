@@ -338,25 +338,25 @@ a:hover {
 /* Remove unused class or combine with input-section if needed */
 
 
-/* Label styling */
+/* Ensure input labels and fields have consistent vertical spacing */
 label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem; /* Reduce space between label and input */
     font-size: 1rem;
     font-weight: 400;
 }
 
-/* Calculator Input Fields */
+/* Ensure input fields have consistent spacing */
 .calculator-input {
     background-color: #333;
     color: #f0f0f0;
     border: 1px solid #666;
     border-radius: 5px;
     padding: 0.5rem;
-    margin-bottom: 1rem;
-    width: 100%; /* Ensure uniform width */
-    box-sizing: border-box; /* Ensure padding doesn't affect width */
-    font-size: 1rem; /* Consistent font size */
+    margin-bottom: 0.8rem; /* Reduce the margin between input fields */
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1rem;
 }
 
 

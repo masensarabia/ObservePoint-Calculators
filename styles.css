@@ -350,6 +350,30 @@ a:hover {
 }
 
 
+/* Specific styles for Audits page */
+.audit-calculator-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.audit-calculator-card {
+    background-color: #1a1a1a;
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 48%; /* Adjust the width as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Adjust min-height specifically for audit pages */
+.audit-calculator-card {
+    min-height: 600px; /* Adjust the height as per your requirements */
+}
+
+
 /* Remove unused class or combine with input-section if needed */
 
 

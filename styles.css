@@ -378,6 +378,9 @@ a:hover {
 
 /* Remove unused class or combine with input-section if needed */
 
+.highlight-text {
+    color: #F1CD14; /* This matches the yellow color used elsewhere */
+}
 
 /* Label styling */
 label {

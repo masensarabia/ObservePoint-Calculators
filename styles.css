@@ -12,12 +12,10 @@ body {
     background-attachment: fixed;
     font-weight: 500;
     line-height: 1.6;
-}
-
-body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
 
 
 h1, h2, .site-navigation ul li a {

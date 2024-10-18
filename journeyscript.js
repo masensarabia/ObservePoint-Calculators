@@ -16,7 +16,7 @@ document.getElementById('actualManualTime').addEventListener('input', function()
 
 // Pre-populate the "Actual ObservePoint Scanning Rate" field with 70
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('actualOPRate').value = 2;
+    document.getElementById('actualOPRate').value = 0.5;
 });
 
 // Function to format numbers with commas
@@ -37,7 +37,7 @@ document.getElementById('actualManualTime').addEventListener('input', function()
 
 // Pre-populate the "Actual ObservePoint Scanning Rate" field with 70
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('actualOPRate').value = 2;
+    document.getElementById('actualOPRate').value = 0.5;
 });
 
 function calculateSavings() {

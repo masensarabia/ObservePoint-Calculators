@@ -75,11 +75,14 @@
             </label>
             <input type="number" id="opRate" class="calculator-input" placeholder="Enter minutes here">
             <p>Total Number of Customer Journeys to Test (Annually): <span id="opJourneys" class="highlight-text">0</span></p>
+           <label for="opJourneysAtOnce" class="tooltip">Number of Journeys ObservePoint Can Test at Once:</label>
+            <input type="number" id="opJourneysAtOnce" class="calculator-input" placeholder="Enter number of simultaneous journeys">
             <label for="opCost">ObservePoint Cost per Journey Run:</label>
             <div class="input-prefix highlightable">
                 <span class="prefix">$</span>
                 <input type="text" id="opCost" class="calculator-input dollar-input" placeholder="Enter cost here">
             </div>
+            
             <!-- Grey box for totals -->
             <div class="total-section grey-box">
                 <p>ObservePoint Scanning Time (monthly): <span id="totalOPTimeMonthly">0 hours</span></p>

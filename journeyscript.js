@@ -27,11 +27,13 @@ function calculateSavings() {
     let stepsPerJourney = parseFloat(document.getElementById('stepsPerJourney').value.replace(/,/g, ''));
     let manualRate = parseFloat(document.getElementById('manualRate').value.replace(/[^0-9.]/g, ''));
 
+    // Calculate manual testing time and cost
     let totalManualTestingTimeMonthly = (manualTime * journeysToTest * testFrequency) / 60;
     let totalManualCostMonthly = totalManualTestingTimeMonthly * manualRate;
     let totalManualTestingTimeAnnually = totalManualTestingTimeMonthly * 12;
     let totalManualCostAnnually = totalManualCostMonthly * 12;
 
+    // Display manual testing results
     document.getElementById('totalManualTime').textContent = totalManualTestingTimeMonthly.toLocaleString() + " hours";
     document.getElementById('totalManualCost').textContent = "$" + totalManualCostMonthly.toLocaleString(undefined, { minimumFractionDigits: 2 });
     document.getElementById('totalAnnualManualTime').textContent = totalManualTestingTimeAnnually.toLocaleString() + " hours";
@@ -42,10 +44,12 @@ function calculateSavings() {
     let totalJourneysAnnually = journeysToTest * testFrequency * 12;
     let opCost = parseFloat(document.getElementById('opCost').value.replace(/[^0-9.]/g, ''));
 
-    let totalOPTestingTimeAnnually = (totalJourneysAnnually * stepsPerJourney * 2) / 60;
+    // Calculate ObservePoint testing time based on steps
+    let totalOPTestingTimeAnnually = (totalJourneysAnnually * stepsPerJourney * opRate) / 60;
     let totalOPCostMonthly = (totalJourneysAnnually / 12) * opCost;
     let totalOPCostAnnually = totalJourneysAnnually * opCost;
 
+    // Display ObservePoint testing results
     document.getElementById('opJourneys').textContent = totalJourneysAnnually.toLocaleString();
     document.getElementById('totalOPTime').textContent = totalOPTestingTimeAnnually.toFixed(2) + " hours";
     document.getElementById('totalOPCostMonthly').textContent = "$" + totalOPCostMonthly.toLocaleString(undefined, { minimumFractionDigits: 2 });
@@ -57,6 +61,7 @@ function calculateSavings() {
     let timeSavedAnnually = Math.max(0, totalManualTestingTimeAnnually - totalOPTestingTimeAnnually);
     let costSavedAnnually = Math.max(0, totalManualCostAnnually - totalOPCostAnnually);
 
+    // Display savings
     document.getElementById('totalHoursSaved').textContent = timeSavedMonthly.toFixed(2) + " hours";
     document.getElementById('totalMoneySaved').textContent = "$" + costSavedMonthly.toLocaleString(undefined, { minimumFractionDigits: 2 });
 
@@ -79,4 +84,3 @@ function calculateSavings() {
 
     document.getElementById('actualManualCost').textContent = "$" + actualManualCost.toLocaleString(undefined, { minimumFractionDigits: 2 });
 }
-

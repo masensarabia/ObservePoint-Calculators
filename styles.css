@@ -322,11 +322,13 @@ a:hover {
 
 /* Grey box for total sections */
 .total-section p {
-    display: flex;
-    justify-content: space-between;
-    white-space: nowrap;
-    margin: 0.5rem 0;
+    display: block; /* Change from flex to block to allow text wrapping */
+    white-space: normal; /* Allow text to wrap to the next line */
+    margin: 0.75rem 0; /* Increase the vertical space between lines */
+    padding: 0; /* Keep padding minimal */
+    word-wrap: break-word; /* Ensure long words break if needed */
 }
+
 
 /* Ensure total sections stay aligned at the bottom of their cards */
 .calculator-card .total-section {

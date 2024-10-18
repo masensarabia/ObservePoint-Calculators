@@ -42,7 +42,6 @@ function calculateSavings() {
     let totalJourneysAnnually = journeysToTest * testFrequency * 12;
     let opCost = parseFloat(document.getElementById('opCost').value.replace(/[^0-9.]/g, ''));
 
-    // Update ObservePoint testing logic to include step count
     let totalOPTestingTimeAnnually = (totalJourneysAnnually * stepsPerJourney * 2) / 60;
     let totalOPCostMonthly = (totalJourneysAnnually / 12) * opCost;
     let totalOPCostAnnually = totalJourneysAnnually * opCost;
@@ -53,10 +52,10 @@ function calculateSavings() {
     document.getElementById('totalOPCost').textContent = "$" + totalOPCostAnnually.toLocaleString(undefined, { minimumFractionDigits: 2 });
 
     // Time and Cost Saved
-    let timeSavedMonthly = totalManualTestingTimeMonthly - (totalOPTestingTimeAnnually / 12);
-    let costSavedMonthly = totalManualCostMonthly - totalOPCostMonthly;
-    let timeSavedAnnually = totalManualTestingTimeAnnually - totalOPTestingTimeAnnually;
-    let costSavedAnnually = totalManualCostAnnually - totalOPCostAnnually;
+    let timeSavedMonthly = Math.max(0, totalManualTestingTimeMonthly - (totalOPTestingTimeAnnually / 12));
+    let costSavedMonthly = Math.max(0, totalManualCostMonthly - totalOPCostMonthly);
+    let timeSavedAnnually = Math.max(0, totalManualTestingTimeAnnually - totalOPTestingTimeAnnually);
+    let costSavedAnnually = Math.max(0, totalManualCostAnnually - totalOPCostAnnually);
 
     document.getElementById('totalHoursSaved').textContent = timeSavedMonthly.toFixed(2) + " hours";
     document.getElementById('totalMoneySaved').textContent = "$" + costSavedMonthly.toLocaleString(undefined, { minimumFractionDigits: 2 });
@@ -64,10 +63,15 @@ function calculateSavings() {
     // Additional Metrics: FTE and Annual Cost per Employee
     let annualHoursPerFTE = 2080; // Assuming 40 hours per week for 52 weeks
     let totalFTEs = totalManualTestingTimeAnnually / annualHoursPerFTE;
-    let annualCostPerFTE = totalManualCostAnnually / totalFTEs;
+
+    if (totalFTEs > 0) {
+        let annualCostPerFTE = totalManualCostAnnually / totalFTEs;
+        document.getElementById('annualCostPerFTE').textContent = "$" + annualCostPerFTE.toLocaleString(undefined, { minimumFractionDigits: 2 });
+    } else {
+        document.getElementById('annualCostPerFTE').textContent = "$0";
+    }
 
     document.getElementById('totalFTEs').textContent = totalFTEs.toFixed(2) + " FTEs";
-    document.getElementById('annualCostPerFTE').textContent = "$" + annualCostPerFTE.toLocaleString(undefined, { minimumFractionDigits: 2 });
 
     // Actual Testing
     let actualManualTime = parseFloat(document.getElementById('actualManualTime').value.replace(/,/g, ''));
@@ -75,3 +79,4 @@ function calculateSavings() {
 
     document.getElementById('actualManualCost').textContent = "$" + actualManualCost.toLocaleString(undefined, { minimumFractionDigits: 2 });
 }
+

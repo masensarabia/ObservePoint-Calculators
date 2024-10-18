@@ -334,6 +334,10 @@ a:hover {
     margin-top: auto; /* Push total sections to the bottom */
 }
 
+.calculator-card label, 
+.calculator-card input {
+    margin-bottom: 0.8rem; /* This value should match the top sections' spacing */
+}
 /* Remove unused class or combine with input-section if needed */
 
 

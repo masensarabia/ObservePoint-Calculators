@@ -306,6 +306,13 @@ a:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.total-section {
+    width: 100%; /* Make sure it takes 100% of the parent container's width */
+    box-sizing: border-box; /* Ensures padding doesn't affect the width */
+    padding: 1.5rem; /* Keep the padding but ensure it doesn't push out of bounds */
+}
+
+
 /* Ensure input section elements are well aligned */
 .input-section label, .input-section input {
     display: block;

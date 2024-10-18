@@ -289,13 +289,12 @@ a:hover {
     background-color: #1a1a1a;
     padding: 1.5rem;
     border-radius: 8px;
-    width: 48%; /* Ensures equal width for both cards */
+    width: 50%; /* Increase width to make cards wider */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 600px; /* Ensures both cards fill the same height */
+    min-height: 600px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    box-sizing: border-box; /* Ensures padding is considered within width */
 }
 
 /* Adjust alignment between the input and total sections */
@@ -309,9 +308,9 @@ a:hover {
 
 /* Total section fix */
 .total-section {
-    width: calc(100% - 3rem); /* Ensures the padding does not extend beyond the container */
-    box-sizing: border-box; /* Ensures padding doesn't affect the width */
-    padding: 1.5rem; /* Keep padding but make sure it's within the bounds */
+    width: 100%; /* Make sure it takes the full width of the card */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    padding: 1.5rem;
 }
 
 /* Ensure input section elements are well aligned */

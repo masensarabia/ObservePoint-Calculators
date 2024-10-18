@@ -282,8 +282,8 @@ a:hover {
 .calculator-grid {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* Ensures both cards start aligned at the top */
-    gap: 2rem;
+    gap: 2rem; /* Maintain consistent gap between columns */
+    align-items: stretch; /* Ensures both cards stretch to fill the same height */
 }
 
 /* Fix calculator card height */
@@ -291,7 +291,7 @@ a:hover {
     background-color: #1a1a1a;
     padding: 1.5rem;
     border-radius: 8px;
-    width: 48%;
+    width: 48%; /* Ensures equal width for both cards */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -308,13 +308,13 @@ a:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Adjust input section elements */
+/* Ensure input section elements are well aligned */
 .input-section label, .input-section input {
     display: block;
     margin-bottom: 1rem;
 }
 
-/* Ensure total section is formatted properly */
+/* Grey box for total sections */
 .total-section p {
     display: flex;
     justify-content: space-between;
@@ -322,10 +322,13 @@ a:hover {
     margin: 0.5rem 0;
 }
 
-/* Fix total section positioning */
+/* Ensure total sections stay aligned at the bottom of their cards */
 .calculator-card .total-section {
-    margin-top: auto; /* Ensures total sections are aligned at the bottom */
+    margin-top: auto; /* Push total sections to the bottom */
 }
+
+/* Remove unused class or combine with input-section if needed */
+
 
 /* Label styling */
 label {

@@ -60,16 +60,15 @@ function calculateSavings() {
 
     // ObservePoint Scanning calculations
     let opRate = parseFloat(document.getElementById('opRate').value);
-    let opJourneysToTestAnnually = parseFloat(document.getElementById('opJourneysToTestAnnually').value.replace(/,/g, ''));
+    let journeysToTest = parseFloat(document.getElementById('pagesToTest').value.replace(/,/g, ''));
     let stepsPerJourney = parseFloat(document.getElementById('stepsPerJourney').value.replace(/,/g, ''));
     let opCost = parseFloat(document.getElementById('opCost').value.replace(/[^0-9.]/g, ''));
 
-    // Calculate total ObservePoint scanning time
     let totalOPTestingTimeMonthly = (journeysToTest * stepsPerJourney * opRate) / 60;
     let totalOPTestingTimeAnnually = totalOPTestingTimeMonthly * 12;
 
-    let totalOPCostMonthly = (opJourneysToTestAnnually / 12) * opCost;
-    let totalOPCostAnnually = opJourneysToTestAnnually * opCost;
+    let totalOPCostMonthly = (journeysToTest * opCost) / 12;
+    let totalOPCostAnnually = journeysToTest * opCost;
 
     document.getElementById('totalOPTime').textContent = totalOPTestingTimeMonthly.toFixed(2) + " hours";
     document.getElementById('totalAnnualOPTime').textContent = totalOPTestingTimeAnnually.toFixed(2) + " hours";
@@ -93,3 +92,7 @@ function calculateSavings() {
     document.getElementById('totalFTEs').textContent = totalFTEs.toFixed(2) + " FTEs";
     document.getElementById('annualCostPerFTE').textContent = "$" + annualCostPerFTE.toLocaleString(undefined, { minimumFractionDigits: 2 });
 }
+
+// Make sure the calculate button is linked correctly
+document.getElementById('calculateButton').addEventListener('click', calculateSavings);
+

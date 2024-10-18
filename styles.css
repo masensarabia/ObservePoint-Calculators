@@ -334,22 +334,21 @@ a:hover {
     margin-top: auto; /* Push total sections to the bottom */
 }
 
-/* Specific spacing for the Actual Manual section */
-.actual-manual label, 
-.actual-manual input {
-    margin-bottom: 0.5rem; /* Adjust as necessary */
+/* For the grey boxes in the Actual sections */
+.actual-manual, .actual-observepoint {
+    min-height: 400px; /* Adjust this value to reduce the height */
+    padding: 1.5rem; /* Ensure there's enough padding, but not too much */
 }
 
-/* Specific spacing for the Actual ObservePoint section */
-.actual-observepoint label, 
-.actual-observepoint input {
-    margin-bottom: 0.5rem; /* Adjust as necessary */
+/* Ensure inputs and labels are spaced properly */
+.actual-manual label, .actual-observepoint label {
+    margin-bottom: 0.5rem; /* Adjust margin between labels and inputs */
 }
 
-/* If you need to change the input-prefix spacing */
-.actual-observepoint .input-prefix {
-    margin-bottom: 0.5rem; /* Match the rest of the section */
+.actual-manual .calculator-input, .actual-observepoint .calculator-input {
+    margin-bottom: 1rem; /* Consistent spacing below inputs */
 }
+
 
 /* Remove unused class or combine with input-section if needed */
 

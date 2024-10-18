@@ -268,28 +268,29 @@ a:hover {
     text-decoration: underline; /* Add underline when hovered */
 }
 
-/* Keep this as is */
+/* Adjusting the overall container */
 .calculator-container {
-    max-width: 1000px;
+    max-width: 1200px; /* Increase the maximum width */
     margin: 2rem auto;
     padding: 2rem;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
     border-radius: 10px;
 }
 
+/* Adjusting the grid to ensure the cards have more space */
 .calculator-grid {
     display: flex;
     justify-content: space-between;
-    gap: 2rem; /* Maintain consistent gap between columns */
-    align-items: stretch; /* Ensures both cards stretch to fill the same height */
+    gap: 1.5rem; /* Reduce the gap slightly */
+    align-items: stretch;
 }
 
-/* Fix calculator card height */
+/* Adjusting the card width to take up more space */
 .calculator-card {
     background-color: #1a1a1a;
     padding: 1.5rem;
     border-radius: 8px;
-    width: 50%; /* Increase width to make cards wider */
+    width: 49%; /* Increase the card width */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -306,13 +307,12 @@ a:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Total section fix */
+/* Ensure the total-section takes full width */
 .total-section {
-    width: 100%; /* Make sure it takes the full width of the card */
-    box-sizing: border-box; /* Ensure padding is included in the width */
+    width: 100%;
+    box-sizing: border-box;
     padding: 1.5rem;
 }
-
 /* Ensure input section elements are well aligned */
 .input-section label, .input-section input {
     display: block;

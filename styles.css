@@ -334,6 +334,22 @@ a:hover {
     margin-top: auto; /* Push total sections to the bottom */
 }
 
+/* Specific spacing for the Actual Manual section */
+.actual-manual label, 
+.actual-manual input {
+    margin-bottom: 0.5rem; /* Adjust as necessary */
+}
+
+/* Specific spacing for the Actual ObservePoint section */
+.actual-observepoint label, 
+.actual-observepoint input {
+    margin-bottom: 0.5rem; /* Adjust as necessary */
+}
+
+/* If you need to change the input-prefix spacing */
+.actual-observepoint .input-prefix {
+    margin-bottom: 0.5rem; /* Match the rest of the section */
+}
 
 /* Remove unused class or combine with input-section if needed */
 

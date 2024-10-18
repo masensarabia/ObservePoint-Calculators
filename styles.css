@@ -336,7 +336,7 @@ a:hover {
 
 /* For the grey boxes in the Actual sections */
 .actual-manual, .actual-observepoint {
-    min-height: 400px; /* Adjust this value to reduce the height */
+    min-height: 450px; /* Adjust this value to reduce the height */
     padding: 1.5rem; /* Ensure there's enough padding, but not too much */
 }
 

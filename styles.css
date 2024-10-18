@@ -366,11 +366,13 @@ a:hover {
     flex-direction: column;
     justify-content: space-between;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    height: auto; /* Remove min-height and allow cards to adapt */
+    margin-bottom: 2rem; /* Add margin to ensure spacing between sections */
 }
 
 /* Adjust min-height specifically for audit pages */
 .audit-calculator-card {
-    min-height: 600px; /* Adjust the height as per your requirements */
+    min-height: auto; /* No fixed height */
 }
 
 

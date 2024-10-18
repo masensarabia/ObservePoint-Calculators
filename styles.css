@@ -295,6 +295,7 @@ a:hover {
     justify-content: space-between;
     min-height: 600px; /* Ensures both cards fill the same height */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box; /* Ensures padding is considered within width */
 }
 
 /* Adjust alignment between the input and total sections */
@@ -306,12 +307,12 @@ a:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+/* Total section fix */
 .total-section {
-    width: 100%; /* Make sure it takes 100% of the parent container's width */
+    width: calc(100% - 3rem); /* Ensures the padding does not extend beyond the container */
     box-sizing: border-box; /* Ensures padding doesn't affect the width */
-    padding: 1.5rem; /* Keep the padding but ensure it doesn't push out of bounds */
+    padding: 1.5rem; /* Keep padding but make sure it's within the bounds */
 }
-
 
 /* Ensure input section elements are well aligned */
 .input-section label, .input-section input {
@@ -331,6 +332,7 @@ a:hover {
 .calculator-card .total-section {
     margin-top: auto; /* Push total sections to the bottom */
 }
+
 
 /* Remove unused class or combine with input-section if needed */
 

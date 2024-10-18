@@ -32,7 +32,6 @@ function calculateSavings() {
     let totalManualTestingTimeAnnually = totalManualTestingTimeMonthly * 12;
     let totalManualCostAnnually = totalManualCostMonthly * 12;
 
-    // Display manual testing results
     document.getElementById('totalManualTime').textContent = totalManualTestingTimeMonthly.toLocaleString() + " hours";
     document.getElementById('totalManualCost').textContent = "$" + totalManualCostMonthly.toLocaleString(undefined, { minimumFractionDigits: 2 });
     document.getElementById('totalAnnualManualTime').textContent = totalManualTestingTimeAnnually.toLocaleString() + " hours";
@@ -41,47 +40,41 @@ function calculateSavings() {
     // ObservePoint Scanning calculations
     let opRate = parseFloat(document.getElementById('opRate').value);
     let totalJourneysAnnually = journeysToTest * testFrequency * 12;
+    let stepsPerJourneyOP = parseFloat(document.getElementById('stepsPerJourney').value.replace(/,/g, ''));
     let opCost = parseFloat(document.getElementById('opCost').value.replace(/[^0-9.]/g, ''));
 
-    // Calculate ObservePoint testing time based on steps
-    let totalOPTestingTimeAnnually = (totalJourneysAnnually * stepsPerJourney * opRate) / 60;
+    // Update ObservePoint testing logic to include step count
+    // Calculate the time ObservePoint would take to scan per month and per year
+    let totalActionsMonthly = journeysToTest * testFrequency * stepsPerJourneyOP; // Total actions per month
+    let totalActionsAnnually = totalJourneysAnnually * stepsPerJourneyOP; // Total actions per year
+
+    let totalOPTestingTimeMonthly = (totalActionsMonthly * 2) / 60; // Convert to hours (2 minutes per action)
+    let totalOPTestingTimeAnnually = (totalActionsAnnually * 2) / 60; // Convert to hours (2 minutes per action)
+
     let totalOPCostMonthly = (totalJourneysAnnually / 12) * opCost;
     let totalOPCostAnnually = totalJourneysAnnually * opCost;
 
-    // Display ObservePoint testing results
     document.getElementById('opJourneys').textContent = totalJourneysAnnually.toLocaleString();
     document.getElementById('totalOPTime').textContent = totalOPTestingTimeAnnually.toFixed(2) + " hours";
     document.getElementById('totalOPCostMonthly').textContent = "$" + totalOPCostMonthly.toLocaleString(undefined, { minimumFractionDigits: 2 });
     document.getElementById('totalOPCost').textContent = "$" + totalOPCostAnnually.toLocaleString(undefined, { minimumFractionDigits: 2 });
 
     // Time and Cost Saved
-    let timeSavedMonthly = totalManualTestingTimeMonthly - (totalOPTestingTimeAnnually / 12);
+    let timeSavedMonthly = totalManualTestingTimeMonthly - totalOPTestingTimeMonthly;
     let costSavedMonthly = totalManualCostMonthly - totalOPCostMonthly;
     let timeSavedAnnually = totalManualTestingTimeAnnually - totalOPTestingTimeAnnually;
     let costSavedAnnually = totalManualCostAnnually - totalOPCostAnnually;
 
-    // Ensure savings can't go negative
-    if (timeSavedMonthly < 0) timeSavedMonthly = 0;
-    if (timeSavedAnnually < 0) timeSavedAnnually = 0;
-    if (costSavedMonthly < 0) costSavedMonthly = 0;
-    if (costSavedAnnually < 0) costSavedAnnually = 0;
-
-    // Display savings
     document.getElementById('totalHoursSaved').textContent = timeSavedMonthly.toFixed(2) + " hours";
     document.getElementById('totalMoneySaved').textContent = "$" + costSavedMonthly.toLocaleString(undefined, { minimumFractionDigits: 2 });
 
     // Additional Metrics: FTE and Annual Cost per Employee
     let annualHoursPerFTE = 2080; // Assuming 40 hours per week for 52 weeks
     let totalFTEs = totalManualTestingTimeAnnually / annualHoursPerFTE;
-
-    if (totalFTEs > 0) {
-        let annualCostPerFTE = totalManualCostAnnually / totalFTEs;
-        document.getElementById('annualCostPerFTE').textContent = "$" + annualCostPerFTE.toLocaleString(undefined, { minimumFractionDigits: 2 });
-    } else {
-        document.getElementById('annualCostPerFTE').textContent = "$0";
-    }
+    let annualCostPerFTE = totalManualCostAnnually / totalFTEs;
 
     document.getElementById('totalFTEs').textContent = totalFTEs.toFixed(2) + " FTEs";
+    document.getElementById('annualCostPerFTE').textContent = "$" + annualCostPerFTE.toLocaleString(undefined, { minimumFractionDigits: 2 });
 
     // Actual Testing
     let actualManualTime = parseFloat(document.getElementById('actualManualTime').value.replace(/,/g, ''));

@@ -16,7 +16,7 @@ document.getElementById('actualManualTime').addEventListener('input', function()
 
 // Pre-populate the "Actual ObservePoint Scanning Rate" field with 70
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('actualOPRate').value = 70;
+    document.getElementById('actualOPRate').value = 2;
 });
 
 function calculateSavings() {

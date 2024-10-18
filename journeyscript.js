@@ -62,11 +62,12 @@ function calculateSavings() {
         // ObservePoint Scanning calculations
         let opRate = parseFloat(document.getElementById('opRate').value) || 0;
         let opCost = parseFloat(document.getElementById('opCost').value.replace(/[^0-9.]/g, '')) || 0;
+        let opJourneysAtOnce = parseFloat(document.getElementById('opJourneysAtOnce').value) || 1; // New input field for journeys at once
 
         let totalJourneysAnnually = journeysToTest * testFrequency * 12;
 
-        // Calculate ObservePoint Scanning Time based on actions and steps
-        let totalOPTestingTimeAnnually = (totalJourneysAnnually * stepsPerJourney * opRate) / 60;
+        // Calculate ObservePoint Scanning Time based on actions, steps, and simultaneous journeys
+        let totalOPTestingTimeAnnually = (totalJourneysAnnually * stepsPerJourney * opRate) / (60 * opJourneysAtOnce); // Dividing by number of simultaneous journeys
         let totalOPTestingTimeMonthly = totalOPTestingTimeAnnually / 12;
         let totalOPCostMonthly = (totalJourneysAnnually / 12) * opCost;
         let totalOPCostAnnually = totalJourneysAnnually * opCost;
@@ -105,5 +106,3 @@ function calculateSavings() {
         console.error("An error occurred: ", error);
     }
 }
-
-

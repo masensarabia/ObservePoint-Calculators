@@ -553,11 +553,11 @@ button#exportCsvBtn:hover {
     border: none;
     outline: none;
     color: #f0f0f0;
-    width: calc(100% - 30px); /* Subtract the width of the dollar prefix */
-    padding: 0; /* Remove any extra padding */
-    margin: 0; /* Ensure no margin is pushing it out */
+    width: 100%; /* Ensure the dollar input field is the same size */
+    padding: 0; /* Remove any additional padding */
+    margin: 0; /* Remove any margin */
     box-sizing: border-box;
-    font-size: 1rem;
+    font-size: 1rem; /* Consistent font size */
 }
 
 .input-prefix .prefix {

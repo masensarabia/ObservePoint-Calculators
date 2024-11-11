@@ -67,8 +67,11 @@ function calculateSavings() {
         document.getElementById('timeReductionPercentage').textContent = `${timeReductionPercentage}%`;
         document.getElementById('costReductionPercentage').textContent = `${costReductionPercentage}%`;
 
-        // Individual Employee Productivity (Corrected Logic)
-        let employeeProductivity = opRate > 0 ? (manualTime / (1 / opRate)).toFixed(2) : 0;
+        // Individual Employee Productivity
+        let timePerManualPage = manualTime / 60; // Time per manual page in hours
+        let timePerAutomatedPage = 1 / opRate; // Time per automated page in hours
+        let employeeProductivity = timePerAutomatedPage > 0 ? (timePerManualPage / timePerAutomatedPage).toFixed(2) : 0;
+
 
         // Update the Result Sentence
         updateResultSentence(timeReductionPercentage, costReductionPercentage, employeeProductivity);

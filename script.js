@@ -51,17 +51,14 @@ function calculateSavings() {
         // FTE Calculation
         let annualHoursPerFTE = 2080; // 40 hours per week for 52 weeks
         let totalFTEs = totalManualTestingTime / annualHoursPerFTE;
+
+        // Ensure FTE is valid and display
+        totalFTEs = isNaN(totalFTEs) || !isFinite(totalFTEs) ? 0 : totalFTEs;
         document.getElementById('totalFTEs').textContent = `${totalFTEs.toFixed(2)} FTEs`;
 
         // Annual Cost per FTE Calculation
         let annualCostPerFTE = totalFTEs > 0 ? (totalManualCost / totalFTEs) : 0;
         document.getElementById('annualCostPerFTE').textContent = `$${annualCostPerFTE.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
-
-
-        // Handle edge cases like NaN or Infinity
-        totalFTEs = isNaN(totalFTEs) || !isFinite(totalFTEs) ? 0 : totalFTEs;
-
-        document.getElementById('totalFTEs').textContent = `${totalFTEs.toFixed(2)} FTEs`;
 
         // Reduction Percentages
         let timeReductionPercentage = totalManualTestingTime > 0 ? ((timeSaved / totalManualTestingTime) * 100).toFixed(2) : 0;
@@ -70,12 +67,11 @@ function calculateSavings() {
         document.getElementById('timeReductionPercentage').textContent = `${timeReductionPercentage}%`;
         document.getElementById('costReductionPercentage').textContent = `${costReductionPercentage}%`;
 
-        // Productivity Metrics
-        let organizationProductivity = totalManualTestingTime > 0 ? (totalManualTestingTime / totalOPTestingTime).toFixed(2) : 0;
-        let employeeProductivity = opRate > 0 ? (manualTime / (opRate / 60)).toFixed(2) : 0;
+        // Individual Employee Productivity
+        let employeeProductivity = opRate > 0 ? (manualTime / (1 / opRate)).toFixed(2) : 0;
 
         // Update the Result Sentence
-        updateResultSentence(timeReductionPercentage, costReductionPercentage, organizationProductivity, employeeProductivity);
+        updateResultSentence(timeReductionPercentage, costReductionPercentage, employeeProductivity);
 
     } catch (error) {
         console.error("An error occurred during calculation:", error);
@@ -83,7 +79,7 @@ function calculateSavings() {
 }
 
 // Function to update the result sentence
-function updateResultSentence(timeReduction, costReduction, organizationProductivity, employeeProductivity) {
+function updateResultSentence(timeReduction, costReduction, employeeProductivity) {
     let resultElement = document.querySelector('.result-sentence');
 
     // Construct the sentence dynamically
@@ -91,8 +87,6 @@ function updateResultSentence(timeReduction, costReduction, organizationProducti
         Results in percentage for OP Platform: 
         <span class="highlight-percentage">${timeReduction}%</span> reduction in time spent and 
         <span class="highlight-percentage">${costReduction}%</span> of the cost were saved compared to manual testing, 
-        making the organization as a whole 
-        <span class="highlight-percentage">${organizationProductivity} times</span> more productive, 
         while individual employees were 
         <span class="highlight-percentage">${employeeProductivity} times</span> more productive.
     `;

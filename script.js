@@ -7,64 +7,73 @@ function formatNumberWithCommas(input) {
 }
 
 // Add event listeners for formatting numbers with commas
-document.getElementById('pagesToTest').addEventListener('input', function() {
+document.getElementById('pagesToTest').addEventListener('input', function () {
     formatNumberWithCommas(this);
 });
-document.getElementById('opPages').addEventListener('input', function() {
+document.getElementById('opPages').addEventListener('input', function () {
     formatNumberWithCommas(this);
 });
 
 // Main calculation function
 function calculateSavings() {
-    // Manual Testing Inputs
-    let manualTime = parseFloat(document.getElementById('manualTime').value) || 0;
-    let pagesToTest = parseFloat(document.getElementById('pagesToTest').value.replace(/,/g, '')) || 0;
-    let manualRate = parseFloat(document.getElementById('manualRate').value.replace(/[^0-9.]/g, '')) || 0;
+    try {
+        // Manual Testing Inputs
+        let manualTime = parseFloat(document.getElementById('manualTime').value) || 0;
+        let pagesToTest = parseFloat(document.getElementById('pagesToTest').value.replace(/,/g, '')) || 0;
+        let manualRate = parseFloat(document.getElementById('manualRate').value.replace(/[^0-9.]/g, '')) || 0;
 
-    // ObservePoint Scanning Inputs
-    let opRate = parseFloat(document.getElementById('opRate').value) || 0;
-    let opPages = parseFloat(document.getElementById('opPages').value.replace(/,/g, '')) || 0;
-    let opCost = parseFloat(document.getElementById('opCost').value.replace(/[^0-9.]/g, '')) || 0;
+        // ObservePoint Scanning Inputs
+        let opRate = parseFloat(document.getElementById('opRate').value) || 0;
+        let opPages = parseFloat(document.getElementById('opPages').value.replace(/,/g, '')) || 0;
+        let opCost = parseFloat(document.getElementById('opCost').value.replace(/[^0-9.]/g, '')) || 0;
 
-    // Manual Testing Calculations
-    let totalManualTestingTime = (manualTime * pagesToTest) / 60; // Hours
-    let totalManualCost = totalManualTestingTime * manualRate;
+        // Manual Testing Calculations
+        let totalManualTestingTime = (manualTime * pagesToTest) / 60; // Convert to hours
+        let totalManualCost = totalManualTestingTime * manualRate;
 
-    document.getElementById('totalManualTime').textContent = `${totalManualTestingTime.toFixed(2)} hours`;
-    document.getElementById('totalManualCost').textContent = `$${totalManualCost.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+        document.getElementById('totalManualTime').textContent = `${totalManualTestingTime.toFixed(2)} hours`;
+        document.getElementById('totalManualCost').textContent = `$${totalManualCost.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
 
-    // ObservePoint Scanning Calculations
-    let totalOPTestingTime = (opPages / opRate) / 60; // Hours
-    let totalOPCost = opPages * opCost;
+        // ObservePoint Scanning Calculations
+        let totalOPTestingTime = (opPages / opRate) / 60; // Convert to hours
+        let totalOPCost = opPages * opCost;
 
-    document.getElementById('totalOPTime').textContent = `${totalOPTestingTime.toFixed(2)} hours`;
-    document.getElementById('totalOPCost').textContent = `$${totalOPCost.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+        document.getElementById('totalOPTime').textContent = `${totalOPTestingTime.toFixed(2)} hours`;
+        document.getElementById('totalOPCost').textContent = `$${totalOPCost.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
 
-    // Savings Calculations
-    let timeSaved = totalManualTestingTime - totalOPTestingTime;
-    let moneySaved = totalManualCost - totalOPCost;
+        // Savings Calculations
+        let timeSaved = totalManualTestingTime - totalOPTestingTime;
+        let moneySaved = totalManualCost - totalOPCost;
 
-    document.getElementById('totalHoursSaved').textContent = `${timeSaved.toFixed(2)} hours`;
-    document.getElementById('totalMoneySaved').textContent = `$${moneySaved.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+        document.getElementById('totalHoursSaved').textContent = `${timeSaved.toFixed(2)} hours`;
+        document.getElementById('totalMoneySaved').textContent = `$${moneySaved.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
 
-    // FTE Calculation
-    let annualHoursPerFTE = 2080; // 40 hours per week for 52 weeks
-    let totalFTEs = totalManualTestingTime / annualHoursPerFTE;
-    document.getElementById('totalFTEs').textContent = `${totalFTEs.toFixed(2)} FTEs`;
+        // FTE Calculation
+        let annualHoursPerFTE = 2080; // 40 hours per week for 52 weeks
+        let totalFTEs = totalManualTestingTime > 0 ? (totalManualTestingTime / annualHoursPerFTE) : 0;
 
-    // Reduction Percentages
-    let timeReductionPercentage = totalManualTestingTime > 0 ? ((timeSaved / totalManualTestingTime) * 100).toFixed(2) : 0;
-    let costReductionPercentage = totalManualCost > 0 ? ((moneySaved / totalManualCost) * 100).toFixed(2) : 0;
+        // Handle edge cases like NaN or Infinity
+        totalFTEs = isNaN(totalFTEs) || !isFinite(totalFTEs) ? 0 : totalFTEs;
 
-    document.getElementById('timeReductionPercentage').textContent = `${timeReductionPercentage}%`;
-    document.getElementById('costReductionPercentage').textContent = `${costReductionPercentage}%`;
+        document.getElementById('totalFTEs').textContent = `${totalFTEs.toFixed(2)} FTEs`;
 
-    // Productivity Metrics
-    let organizationProductivity = totalManualTestingTime > 0 ? (totalManualTestingTime / totalOPTestingTime).toFixed(2) : 0;
-    let employeeProductivity = opRate > 0 ? (manualTime / (opRate / 60)).toFixed(2) : 0;
+        // Reduction Percentages
+        let timeReductionPercentage = totalManualTestingTime > 0 ? ((timeSaved / totalManualTestingTime) * 100).toFixed(2) : 0;
+        let costReductionPercentage = totalManualCost > 0 ? ((moneySaved / totalManualCost) * 100).toFixed(2) : 0;
 
-    // Update the Result Sentence
-    updateResultSentence(timeReductionPercentage, costReductionPercentage, organizationProductivity, employeeProductivity);
+        document.getElementById('timeReductionPercentage').textContent = `${timeReductionPercentage}%`;
+        document.getElementById('costReductionPercentage').textContent = `${costReductionPercentage}%`;
+
+        // Productivity Metrics
+        let organizationProductivity = totalManualTestingTime > 0 ? (totalManualTestingTime / totalOPTestingTime).toFixed(2) : 0;
+        let employeeProductivity = opRate > 0 ? (manualTime / (opRate / 60)).toFixed(2) : 0;
+
+        // Update the Result Sentence
+        updateResultSentence(timeReductionPercentage, costReductionPercentage, organizationProductivity, employeeProductivity);
+
+    } catch (error) {
+        console.error("An error occurred during calculation:", error);
+    }
 }
 
 // Function to update the result sentence

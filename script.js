@@ -50,7 +50,13 @@ function calculateSavings() {
 
         // FTE Calculation
         let annualHoursPerFTE = 2080; // 40 hours per week for 52 weeks
-        let totalFTEs = totalManualTestingTime > 0 ? (totalManualTestingTime / annualHoursPerFTE) : 0;
+        let totalFTEs = totalManualTestingTime / annualHoursPerFTE;
+        document.getElementById('totalFTEs').textContent = `${totalFTEs.toFixed(2)} FTEs`;
+
+        // Annual Cost per FTE Calculation
+        let annualCostPerFTE = totalFTEs > 0 ? (totalManualCost / totalFTEs) : 0;
+        document.getElementById('annualCostPerFTE').textContent = `$${annualCostPerFTE.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+
 
         // Handle edge cases like NaN or Infinity
         totalFTEs = isNaN(totalFTEs) || !isFinite(totalFTEs) ? 0 : totalFTEs;

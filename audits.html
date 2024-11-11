@@ -26,7 +26,6 @@
     </nav>
 </header>
 
-
 <section class="description-section">
     <h2>Purpose:</h2>
     <p>This calculator helps you compare the time and cost savings of using ObservePoint's automated scanning versus manual employee testing.</p>
@@ -58,7 +57,7 @@
             <p>Total Cost for Employee Manual Testing: <span id="totalManualCost">$0</span></p>
         </div>
 
-         <div class="audit-calculator-card">
+        <div class="audit-calculator-card">
             <h2>ObservePoint Scanning</h2>
             <label for="opRate" class="tooltip">
                 ObservePoint Scanning Rate (pages per minute):
@@ -83,36 +82,9 @@
         <p>Total Cost Saved: <span id="totalMoneySaved">$0</span></p>
         <p>Total Full-Time Employees (FTEs): <span id="totalFTEs">0 FTEs</span></p>
         <p>Annual Cost per Employee (FTE): <span id="annualCostPerFTE">$0</span></p>
-    </div>
-
-    <div class="audit-calculator-grid">
-        <div class="audit-calculator-card">
-            <h2>Actual Manual Employee Testing</h2>
-            <label for="actualManualTime">Time Spent Each Year Manually Testing Pages (hours):</label>
-            <input type="text" id="actualManualTime" class="calculator-input" placeholder="Enter hours here">
-            <label for="actualPagesTested">Total Number of Pages Tested Within That Time:</label>
-            <input type="text" id="actualPagesTested" class="calculator-input" placeholder="Enter number of pages here">
-            <p>Total Actual Cost Per Year for Manual Testing: <span id="actualManualCost">$0</span></p>
-        </div>
-
-        <div class="audit-calculator-card">
-            <h2>Actual ObservePoint Testing</h2>
-            <label for="actualOPRate">Actual ObservePoint Scanning Rate (pages per minute):</label>
-            <input type="number" id="actualOPRate" class="calculator-input" value="70" placeholder="Enter pages per minute here">
-            <label for="actualOPCost">Actual Cost per Page:</label>
-            <div class="input-prefix highlightable">
-                <span class="prefix">$</span>
-                <input type="text" id="actualOPCost" class="calculator-input dollar-input" placeholder="Enter cost here">
-            </div>
-            <p>Total ObservePoint Scanning Time: <span id="actualOPTime">0 hours</span></p>
-            <p>Total Cost for ObservePoint Scanning: <span id="actualOPTotalCost">$0</span></p>
-        </div>
-    </div>
-
-    <div class="results-summary">
-        <h1>Actual Time & Cost Saved</h1>
-        <p>Total Hours Saved: <span id="actualTotalHoursSaved">0 hours</span></p>
-        <p>Total Cost Saved: <span id="actualTotalMoneySaved">$0</span></p>
+        <h2>Percentage Reductions</h2>
+        <p>Reduction in Time: <span id="timeReductionPercentage">0%</span></p>
+        <p>Reduction in Cost: <span id="costReductionPercentage">0%</span></p>
     </div>
 
     <button class="calculate-btn" onclick="calculateSavings()">Calculate</button>

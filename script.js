@@ -21,6 +21,7 @@ function calculateSavings() {
         let manualTime = parseFloat(document.getElementById('manualTime').value) || 0;
         let pagesToTest = parseFloat(document.getElementById('pagesToTest').value.replace(/,/g, '')) || 0;
         let manualRate = parseFloat(document.getElementById('manualRate').value.replace(/[^0-9.]/g, '')) || 0;
+        let manualEmployees = parseFloat(document.getElementById('manualEmployees').value) || 1; // Default to 1 employee
 
         // ObservePoint Scanning Inputs
         let opRate = parseFloat(document.getElementById('opRate').value) || 0;
@@ -68,13 +69,10 @@ function calculateSavings() {
         document.getElementById('costReductionPercentage').textContent = `${costReductionPercentage}%`;
 
         // Individual Employee Productivity
-        let timePerManualPage = manualTime / 60; // Time per manual page in hours
-        let timePerAutomatedPage = 1 / opRate; // Time per automated page in hours
-        let employeeProductivity = timePerAutomatedPage > 0 ? (timePerManualPage / timePerAutomatedPage).toFixed(2) : 0;
-
+        let employeeProductivity = opRate > 0 ? ((manualTime / (1 / opRate)) / manualEmployees).toFixed(2) : 0;
 
         // Update the Result Sentence
-        updateResultSentence(timeReductionPercentage, costReductionPercentage, employeeProductivity);
+        updateResultSentence(timeReductionPercentage, costReductionPercentage, manualEmployees, employeeProductivity);
 
     } catch (error) {
         console.error("An error occurred during calculation:", error);
@@ -82,7 +80,7 @@ function calculateSavings() {
 }
 
 // Function to update the result sentence
-function updateResultSentence(timeReduction, costReduction, employeeProductivity) {
+function updateResultSentence(timeReduction, costReduction, manualEmployees, employeeProductivity) {
     let resultElement = document.querySelector('.result-sentence');
 
     // Construct the sentence dynamically
@@ -90,7 +88,7 @@ function updateResultSentence(timeReduction, costReduction, employeeProductivity
         Results in percentage for OP Platform: 
         <span class="highlight-percentage">${timeReduction}%</span> reduction in time spent and 
         <span class="highlight-percentage">${costReduction}%</span> of the cost were saved compared to manual testing, 
-        while individual employees were 
+        while individual employees (based on ${manualEmployees} employee(s)) were 
         <span class="highlight-percentage">${employeeProductivity} times</span> more productive.
     `;
 

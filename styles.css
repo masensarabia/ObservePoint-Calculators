@@ -403,6 +403,32 @@ label {
     font-size: 1rem; /* Consistent font size */
 }
 
+/* Style for the prominent result sentence */
+.result-sentence {
+    margin-top: 20px;
+    padding: 15px;
+    border: 2px solid gold;
+    background-color: #1a1a1a; /* Matches a dark theme */
+    color: #ffffff; /* White text for the main sentence */
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px; /* Slightly rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+}
+
+/* Add a style for percentages inside the sentence */
+.result-sentence .highlight-percentage {
+    color: #ffcc00; /* Yellow color for percentages */
+    font-weight: bold;
+}
+
+/* Add hover effect to emphasize the sentence */
+.result-sentence:hover {
+    background-color: #ffcc00; /* Gold background on hover */
+    color: #1a1a1a; /* Dark text on hover */
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+}
 
 
 #violations {

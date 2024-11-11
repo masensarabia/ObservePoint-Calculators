@@ -418,19 +418,37 @@ label {
     line-height: 1.5; /* Improved line spacing for readability */
 }
 
+.result-sentence {
+    margin-top: 20px;
+    padding: 15px;
+    border: 2px solid gold;
+    background-color: #1a1a1a; /* Matches a dark theme */
+    color: #ffffff; /* White text for the main sentence */
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px; /* Slightly rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+}
+
 /* Add a style for percentages inside the sentence */
 .result-sentence .highlight-percentage {
     color: #ffcc00; /* Yellow color for percentages */
     font-weight: bold;
-    text-decoration: underline; /* Emphasize percentages */
 }
 
-/* Add hover effect to emphasize the sentence */
+/* Remove hover effect on the result sentence */
 .result-sentence:hover {
-    background-color: #ffcc00; /* Gold background on hover */
-    color: #1a1a1a; /* Dark text on hover */
-    border-color: #ffffff; /* White border on hover for contrast */
-    transition: all 0.3s ease-in-out; /* Smooth transition */
+    background-color: #1a1a1a; /* Ensure no background change */
+    color: #ffffff; /* Ensure no text color change */
+    transition: none; /* Disable transition */
+}
+
+/* Button hover effect remains as is */
+.calculate-btn:hover {
+    background-color: #ffcc00;
+    color: #1a1a1a;
+    transition: all 0.3s ease-in-out;
 }
 
 /* Responsive adjustment for smaller screens */
